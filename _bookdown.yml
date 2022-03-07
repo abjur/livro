@@ -1,0 +1,12 @@
+book_filename: jurimetria_book
+delete_merged_file: true
+output_dir: docs
+rmd_files: ["index.Rmd", "01-intro.Rmd", "02-planejamento.Rmd"]
+language:
+  label:
+    fig: "Figura "
+    tab: "Tabela "
+  ui:
+    edit: "Edit"
+    chapter_name: "Capítulo "
+    appendix_name: "Apêndice "

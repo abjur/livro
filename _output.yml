@@ -1,0 +1,23 @@
+bookdown::gitbook:
+  dev: svglite
+  edit: null
+  css: ["assets/css/bookdown.css"]
+  config:
+    toc:
+      collapse: none
+      before: |
+        <li><a href="./">Jurimetria</a></li>
+      after: |
+        <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+    sharing:
+      github: no
+      facebook: no
+    download: ["pdf"]
+
+pagedown::thesis_paged:
+  toc: true
+  lof-title: "Lista de Figuras"
+  lot-title: "Lista de Tabelas"
+  css: ["thesis", "assets/css/pagedown.css"]
+  template: "assets/template.html"
+  self_contained: true

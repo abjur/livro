@@ -1,0 +1,27 @@
+body {
+  font-family: sans-serif;
+}
+
+p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.titulo {
+  max-width: 180px;
+}
+
+.equipe {
+  text-align: center;
+}
+
+.equipe p {
+  text-align: center;
+  font-size: 12px;
+  margin-block-start: 2px;
+  margin-block-end: 2px;
+}
