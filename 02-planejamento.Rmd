@@ -189,7 +189,7 @@ O primeiro exemplo foi extraído de uma revisão bibliográfica sobre viés de s
 
 Esse exemplo nos ajuda a elucidar também o viés em alguns estudos sobre violência doméstica. Se queremos responder a uma pergunta do tipo “quantas mulheres já sofreram violência doméstica em São Paulo?”; e, para responder a isto, utilizamos à base de dados da Secretaria de Segurança Pública de São Paulo (SSP/SP), encontraremos um grande viés. Os dados da SSP/SP foram gerados a partir de boletins de ocorrência (BOs). O problema que se põe é: quantas mulheres nunca registraram violência doméstica por medos de agressão de seus parceiros, ou por descrença nas autoridades policiais e jurídicas para tratar de seus problemas? 
 
-Um segundo exemplo, nós extraímos do texto Randomization and Fair Judgment in Law and Science, realizado por Stern et al (2020). Os autores tratam da randomização na distribuição de processos no Judiciário. Cada juiz possui sua própria história, suas próprias opiniões e referências de mundo. Então os autores se colocam: 
+Um segundo exemplo, nós extraímos do texto Randomization and Fair Judgment in Law and Science, realizado por Stern et al (2020). Os autores tratam da randomização na distribuição de processos no Judiciário. Como cada juiz possui sua própria história, suas próprias opiniões e referências de mundo, então os autores colocam: 
 
 > se a seleção dos juízes pudesse ser influenciada pelos litigantes ou por outra parte interessada, os ricos, aqueles mais bem informados, com melhores conexões, ou as partes mais fortes teriam maiores chances de obterem alguma vantagem em um processo direcionando o seu caso a um juiz simpático aos seus argumentos
 
