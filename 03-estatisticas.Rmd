@@ -306,8 +306,281 @@ p_normal + p_bimodal + p_multimodal + p_uniforme
 ```
 
 
+### Medidas de dispersão
+
+Para as variáveis quantitativas, além de falarmos dos valores mais “típicos” (ou “centrais”, como convencionamos chamar), podemos falar também em como esses valores variam, ou como esses valores se dispersam ao longo do conjunto de observações. Com um exemplo simples, percebemos como a informação da medida central isoladamente não é capaz de contar a história inteira dos dados. 
+
+```
+Grupo A (variável X):	3	4 5 6 7
+Grupo B (variável Y):	1 2 5 7	9
+Grupo C (variável Z):	5	5 5 5 5
+Grupo D (variável W):	3	5 5 7
+Grupo E (variável V):	3	5 5 6 6
+```
+
+Ao calcularmos a média desses 5 grupos, percebemos que todos possuem uma média 5,0. Entretanto, claramente os conjuntos são diferentes. A diferença que estes conjuntos apresentam não pode ser captada pelas medidas de centro. É por esta razão que utilizamos as medidas de dispersão. Há quatro medidas importantes aqui: amplitude, desvio médio, o desvio padrão e o intervalo inter-quartis, também chamado de IQR.
+
+A __amplitude__ indica, basicamente, o espectro dentro do qual as observações variam. Para calculá-la basta identificar o valor máximo do conjunto, bem como o seu valor mínimo. A diferença entre os dois números é a amplitude. 
+
+$$A(\boldsymbol x)=\max(\boldsymbol x)-\min(\boldsymbol x)$$
+Podemos retornar ao exemplo da base de leilões. O menor valor de avaliação que encontramos nesta base é de R$ 0,00 (zero reais). Esse valor é até frequente na base, pois vários bens arrecadados não possuem valor algum. O maior valor da base é R\$ 157.000.000,00, que representa o valor de um imóvel. Assim, a amplitude dessa variável é o valor mínimo subtraído do valor máximo, ou seja, $157.000.000,00 - 0$, ou seja, a amplitude dessa variável é de R\$ 157.000.000,00. A interpretação deste valor é que todas as observações estão dadas dentro de um intervalo de cento e cinquenta e sete milhões de reais. 
+
+A amplitude é uma medida simples de ser calculada, entretanto, ela não consegue indicar a relação da dispersão com as medidas centrais. Em seu lugar, as medidas de dispersão mais frequentemente usadas são o desvio médio e o desvio padrão. Vamos, a seguir, realizar uma explicação sobre as duas medidas, pois elas estão muito próximas.
+
+As duas medidas indicam a dispersão dos valores em torno da média. Ou seja, tomando a média (e não qualquer medida de centro!) como referencial, essas duas medidas indicam como os dados variam ao seu redor. As observações estão concentradas ao redor da média? Ou elas estão dispersas e longe umas das outras? A Figura \@ref(fig:normal-sd) mostra dois exemplo de conjuntos de dados com a mesma média, mas com dispersões das observações em torno da média totalmente diferentes. No primeiro gráfico, as observações estão concentradas; no segundo, elas estão dispersas. Observamos, ao compararmos estes dois gráficos, como que as medidas de centro não conseguem explicar as distribuições dos conjuntos muito bem, quando isoladas, mas quando combinadas com as medidas de dispersão, conseguimos descrever muito melhor os conjuntos. 
+
+
+```{r normal-sd, fig.cap="Duas distribuições com mesma média e variabilidades distintas.", fig.width=8, fig.height=3}
+
+set.seed(1)
+normal1 <- rnorm(10000)
+normal2 <- rnorm(10000, sd = 4)
+
+distribuicoes <- data.frame(normal1, normal2) |> 
+  dplyr::filter(
+    dplyr::between(normal1, -10, 10),
+    dplyr::between(normal2, -10, 10)
+  )
+
+cores_abj <- c("#102C68", "#AFCA0A", "#575756")
+# distribuicao normal -----------------------------------------------------
+p_normal1 <- ggplot2::ggplot(distribuicoes) +
+  ggplot2::aes(x = normal1) +
+  ggplot2::geom_density(fill = cores_abj[1], bins = 30) +
+  ggplot2::ggtitle("Distribuição com baixa variabilidade") +
+  ggplot2::theme(
+    axis.title.x = ggplot2::element_blank()
+  ) +
+  ggplot2::lims(x = c(-10,10), y = c(0, .45))
+p_normal2 <- ggplot2::ggplot(distribuicoes) +
+  ggplot2::aes(x = normal2) +
+  ggplot2::geom_density(fill = cores_abj[1], bins = 30) +
+  ggplot2::ggtitle("Distribuição com alta variabilidade") +
+  ggplot2::theme(
+    axis.title.x = ggplot2::element_blank()
+  ) +
+  ggplot2::lims(x = c(-10,10), y = c(0, .45))
+
+p_normal1 + p_normal2
+
+```
+
+Antes de entrarmos nas notações matemáticas, vamos pensar, intuitivamente como essas medidas de dispersão que se referem à média funcionam. Já deve ter ficado claro que a primeira informação essencial que temos de ter em mãos é a média. Sem o valor da média, não conseguimos calcular o desvio médio nem o desvio padrão. Uma vez que temos o valor médio, qual é o próximo passo? 
+
+Para responder a isso, imaginemos o seguinte conjunto de dados, cuja média é 5. 
+
+```{r dados-sem-desvio}
+tibble::tibble(
+  indice = stringr::str_glue("$x_{1:5}$"),
+  valor = c(3:7)
+) |> 
+  knitr::kable(
+    caption = "Dados para calcular desvios",
+    col.names = c("Índice", "Valor"), 
+    digits = 0
+  )
+```
+
+
+Uma pergunta que ainda não fizemos sobre o conjunto e que faz sentido colocar neste contexto é: o quão distante da média está cada uma das observações? Então, por exemplo, que número está mais próximo da média $5$: $x_1=3$ ou $x_5=7$? A resposta é óbvia, é $x_4$. E como conseguimos responder a isso? Com uma conta simples: calculando a distância da observação com a média. No caso do $x_5=7$, a conta é $7-5 = 2$; e no caso do $x_4=6$, a conta é $6 - 5 = 1$. Como $1 < 2$, então o número $6$ está mais próximo da média do que o número $7$.
+
+Se calcularmos esse valor para todas as observações, então teremos uma informação a mais a respeito desse conjunto: teremos a “diferença” de cada observação em relação à média. Com isso, conseguimos completar o conjunto acima com a seguinte informação
+
+```{r dados-com-desvio}
+tibble::tibble(
+  indice = stringr::str_glue("$x_{1:5}$"),
+  valor = c(3:7),
+  desvio = valor - 5
+) |> 
+  knitr::kable(
+    caption = "Dados para calcular desvios",
+    col.names = c("Índice", "Valor", "Desvio"), 
+    digits = 0
+  )
+```
+
+Uma vez que sabemos como cada observação se desvia da média, falta sabermos uma última informação relevante. Lembrando que estamos falando de medidas sobre conjuntos de *informações*, é possível perceber que a informação da diferença é uma informação de *cada observação* e não do conjunto como um todo. Então o que podemos nos perguntar é: como eu trato das diferenças do *conjunto* e não de cada observação? Uma alternativa seria fazer a média das diferenças.
+
+No entanto, a média das diferenças é sempre zero! Isso acontece porque estamos retirando a média em cada observação, e tirando a média do resultado. Isso é equivalente a retirar a média da média:
+
+$$\frac{1}{n}\sum_{i=1}^n(x-\bar x)=\frac{1}{n}\sum_{i=1}^n x - \frac{1}{n}\sum_{i=1}^n \bar x = \bar x - \frac{n}{n}\bar x = \bar x - \bar x = 0.$$
+
+Se ao invés de considerar as diferenças como positivas ou negativas, considerarmos apenas os valores *absolutos* das diferenças (ou seja, ignorar se o sinal é positivo ou negativo), obtemos os *desvios*. Nesse caso, a conta ficaria: $(2+1+0+1+2)/5 = 1,2$. Dessa forma podemos dizer que o nosso conjunto tem média 5 e que ele tem um *desvio médio* de $1,2$. 
+
+Apenas uma recordação: a notação do módulo de $x$ é dada por:
+
+$$
+|x| = \left\{\begin{align}&x, \text{ se }x\geq 0,\\ -&x, \text{ se x < 0}\end{align}\right.
+$$
+
+Então, o jeito de calcular o desvio médio é calcular a média dos valores absolutos das diferenças, que são os desvios. Em notação matemática, a conta fica assim:
+
+$$
+dm(x) = \frac{1}{n}\sum_{i=1}^n\left|x-\bar x\right|
+$$
+
+
+Como dissemos acima, o desvio médio e o desvio padrão são medidas com a mesma lógica por detrás, mas eles se diferenciam pela forma como eles lidam com um problema matemático: os valores negativos que podem surgir da operação $x_i-x$. Enquanto o desvio médio resolve esse problema calculando o *módulo* da diferença, o desvio padrão resolve este problema elevando o desvio ao quadrado. Não existe nenhum número real que, quando elevado ao quadrado, seja negativo, por isso essa solução também resolve o problema. Então se calculássemos a diferença ao quadrado, conseguiríamos o mesmo efeito de eliminar as diferenças negativas. 
+
+$$\text{desvio}^2=(|x-\bar x|)^2 = (x-\bar x)^2$$
+
+Agora, por mais que os valores das observações estejam um pouco distorcidas (pois elas estão elevadas quadrado), conseguimos pelo menos preservar a ordenação. Por exemplo, voltando àquele conjunto fictício de dados de média 5, se olharmos para $x_1=3$, $x_4=6$ e $x_5=7$, veremos que as diferenças são, respectivamente $-2$, $1$ e $2$. Se olharmos para o módulo (o que seria um passo para calcular o desvio médio), veremos que o desvio de $3$ e de $7$ para a média $5$ são a mesma. Agora, se olharmos para o quadrado das diferenças, veremos que essas mesmas relações se preservam, pois $(-2)^2=4$ e $1^2=1$ e $2^2=4$. Ou seja, se o que buscávamos era eliminar os negativos de forma que conseguíssemos ainda comparar os desvios, elevar ao quadrado os desvios cumpriu a sua função perfeitamente. 
+
+Assim, se repetirmos a fórmula do desvio médio, mas trocando o módulo para o desvio ao quadrado, teremos a seguinte fórmula:
+
+$$
+var(\boldsymbol x) = \frac{1}{n}\sum_{i=1}^n\left(x-\bar x\right)^2
+$$
+A fórmula acima é chamada de *variância*. A variância indica, igual ao desvio médio, o quanto as observações se distanciam da média. Entretanto – e nisso essas duas medidas se diferem entre si –, a variância indica a média dos desvios ao quadrado, e não dos desvios. 
+
+À uma primeira vista, parece ser mais preciso utilizar o desvio médio, no lugar da variância, pois o desvio médio não distorce os números ao elevá-los ao quadrado. Entretanto, o problema causado pelo desvio médio ao calcular o módulo dos valores é muito maior. Por essa razão, a variância é preferível ao desvio médio. 
+
+Como vimos, a variância retorna os resultados ao quadrado. Isso pode causar problemas de interpretação. Por essa razão, criamos uma medida de dispersão em torno da média que é simplesmente a raiz quadrada da variância. Essa medida é justamente o __desvio padrão__ (e cuidado para não confundir desvio padrão com desvio médio).
+
+
+$$
+dp(\boldsymbol x) = \sqrt{var(\boldsymbol x)} = \sqrt{\frac{1}{n}\sum_{i=1}^n\left(x-\bar x\right)^2}
+$$
+
+Pela fórmula do desvio padrão percebemos claramente como o desvio padrão nada mais é do que a raiz quadrada da variância. 
+
+Com isso, conseguimos compreender o significado e as fórmulas matemáticas dessas duas medidas: o desvio médio e o desvio padrão, definindo, no meio do caminho, a variância. Os mais utilizados são a variância e o desvio padrão. O desvio padrão é mais popular do que o médio por ser mais sensível a valores atípicos (o que geralmente é desejável aqui) e por ter algumas propriedades matemáticas de interesse na modelagem estatística. Essas propriedades serão omitidas por enquanto.
+
+Vamos antes de finalizar essa explicação das três medidas que indicam a dispersão dos dados em relação à média, dar um exemplo para dar concretude dessas medidas. O exemplo é o mesmo que vem acompanhando a gente nesta seção: o valor de avaliação dos bens alienados em processos de falência. A base usada é a base `leiloes`. Dessa vez, não vamos olhar apenas para 10 observações, mas para 483 observações da base (de um total de 1000 observações). Realizamos uma filtragem dessa base com fins didáticos apenas, para ficar mais fácil de calcular.
+
+```{r leiloes-var}
+nums <- c(126, 286, 420, 432, 750, 1660, 1900, 1949, 2500, 3700)
+dados <- tibble::tibble(descricao = paste("bem", 1:10), valores = nums)
+knitr::kable(
+  dados, 
+  caption = "Dados da base Leiloes para calcular medidas de dispersão",
+  col.names = c("Descrição", "Valores")
+)
+```
+
+Recomendamos fortemente que você tente calcular as duas medidas de dispersão desse conjunto. A média do valor de avaliação é R\$ 1.372,30. Tente calcular os desvios de cada um desses bens em relação à média. O resultado deve ser:
+
+```{r leiloes-var-dif}
+dados$dif <- nums - mean(nums)
+knitr::kable(
+  dados, 
+  caption = "Dados da base Leiloes para calcular medidas de dispersão",
+  col.names = c("Descrição", "Valores", "Diferença")
+)
+```
+
+A partir destes valores, podemos calcular o desvio médio, a variância e o desvio padrão. Tente calcular por sua conta o valor do desvio médio, da variância e do desvio padrão. Os resultados devem ser: 
+
+```{r}
+dados |> 
+  dplyr::summarise(
+    stat = c("desvio médio", "variância", "desvio padrão"),
+    res = c(
+      mean(abs(nums-mean(nums))),
+      mean((nums-mean(nums))^2),
+      sqrt(mean((nums-mean(nums))^2))
+    )
+  ) |> 
+  knitr::kable(
+    caption = "Resumo das medidas de dispersão ao redor da média do exemplo de leilões",
+    col.names = c("Medida de dispersão", "Valor"), 
+    digits = 2
+  )
+```
+
+Como interpretamos esses resultados? Primeiro, devemos nos lembrar de que a média de avaliação de cada bem é R\$ 1.372,30, pois essas três medidas dizem respeito à distribuição dos resultados ao redor da média. Uma vez que temos a média, então podemos dizer que:
+
+- Pelo desvio médio, podemos dizer que os valores variam em média R$ 969,50 ao redor da média. Isso significa que os valores estão pouco concentrados e muito dispersos. Percebemos isso porque o valor do desvio médio é muito próximo ao valor da média. 
+
+- Pela variância, podemos dizer que os valores ao quadrado variam em média 1.229.532,41 reais ao quadrado ao redor da média. Essa interpretação é difícil de ser feita, por isso olhamos para o desvio padrão. 
+
+- Pelo desvio padrão, podemos dizer que os valores variam em média R$ 1.108,84 ao redor da média. Vemos também como o desvio padrão acaba se assemelhando ao valor do desvio médio. Como comentado anteriormente, o desvio padrão tende a considerar mais os valores atípicos e por isso é um pouco maior que o desvio médio, mas os valores são próximos. Aqui, novamente, percebemos que os valores estão dispersos, jáq ue o desvio padrão e a média são próximos.
+
+Vale notar, na interpretação desses resultados, que essas medidas sempre indicam dispersão ao redor da média.
+
+Há uma última medida de variabilidade que é o *interquartile range* (IQR). Podemos dizer que os IQRs estão para o desvio padrão assim como a mediana está para a média. Se bem lembrarmos, a média padece de um problema: ela não é robusta, ou seja, ela é influenciável pelos valores extremos. Em seu lugar, podemos usar a mediana para indicar o centro da distribuição, pois essa medida é mais robusta. Da mesma forma, como a variância e o desvio padrão dependem da média para serem calculadas, elas também são medidas pouco robustas. O IQR, então, pode ser visto como uma medida de dispersão robusta. __Mas para compreendermos o IQR, devemos compreender o que são quantis empíricos__. 
+
+Um quantil empírico é um valor que divide um conjunto de dados em determinada proporção. Por exemplo, a mediana é o quantil empírico que indica o valor que divide o conjunto de dados em 50%. Existem outros quantis empíricos, como o quantil de 25%, que é um valor que divide o conjunto de observações entre 25-75, ou seja, 25% das observações estão antes deste valor e 75% das observações estão depois deste valor. 
+
+Existe um quantil empírico para cada porcentagem que se queira. Representamos, matematicamente, cada percentil como $q(p)$, em que $p$ é a proporção desejada. Por exemplo, o quantil de 25% é o $q(0,25)$; o quantil de 78% é o $q(0,78)$; o quantil de 1% é o $q(0,01)$, e assim por diante. 
+
+Alguns quantis possuem nomes específicos. Se dividirmos os quantis em 100, cada quantil será um “percentil”. E se dividirmos o conjunto em 10 partes iguais, cada quantil será um “decil”. Ainda, se dividirmos os quantis em 4 partes iguais, cada quantil será um “quartil”. Esta última divisão é uma das divisões mais importantes. Apesar de dividirmos o conjunto em 4 partes iguais, e apesar de o nome desse quantil ser “quartil” (o que, novamente, remete à ideia de 4 partes), há apenas 3 quartis:
+
+- quartil inferior, $q(0,25)$: Divide o conjunto no 25%, ou seja, um quarto dos dados estão abaixo deste quartil. 
+- mediana, $q(0,50)$: Divide o conjunto no 50%. É a mediana. 
+- quartil superior, $q(0,75)$: Divide o conjunto no 75%, ou seja, apenas um quarto dos dados estão acima deste quartil. 	
+
+Chamamos essas três medidas de quartis, não porque são 4 valores, mas porque conseguimos dividir o conjunto dos dados em 4 partes iguais a partir destes valores. A primeira é calculado como a amplitude entre o ponto mínimo, $q(0,00)$, e o primeiro quartil, $q(0,25)$; a segunda, entre o segundo quartil, $q(0,25)$ e a mediana, $q(0,50)$; a terceira, entre a mediana, $q(0,50)$ e o terceiro quartil, $q(0,75)$; e a quarta, entre o terceiro quartil, $q(0,75)$ e o valor máximo, $q(1,00)$. Assim temos:
+
+- Conjunto 1: $q(0,25) - q(0,00)$
+- Conjunto 2: $q(0,50) - q(0,25)$
+- Conjunto 3: $q(0,75) - q(0,50)$
+- Conjunto 4: $q(1,00) - q(0,75)$
+
+A partir dos quartis (isto é, os quantis que dividem o conjunto em 4 partes iguais), podemos construir a medida do IQR. Enquanto os quartis indicam pontos no conjunto de observações, o IQR indica uma amplitude. Entretanto, ao contrário da amplitude geral que vimos acima, que é construída a partir do valor mínimo, $q(0,00)$, e do valor máximo, $q(1,00)$, o IQR é construído pela amplitude entre o quartil inferior, $q(0,25)$, e o quartil superior, $q(0,75)$.
+
+Justamente por excluir os valores extremos (que estão no conjunto 1 e no conjunto 4, ou seja, entre o valor mínimo e o quartil inferior e entre o quartil superior e o valor máximo), dizemos que o IQR é uma medida mais robusta do que o desvio padrão para indicar a dispersão do conjunto. 
+
+Como exemplo final, podemos voltar à base de leilões. Dessa vez, vamos olhar para a base completa (as 1000 observações), ao invés de alguma amostra dela. Temos os seguintes quantis empíricos da variável sobre o valor de avaliação
+
+```{r}
+nums <- c(0, 104, 500, 3755, 157000000)
+dados <- tibble::tibble(
+  stat = c(
+    "min(0%)", 
+    "quartil inferior (25%)",
+    "mediana (50%)", 
+    "quartil superior (75%)",
+    "máximo (100%)"
+  ),
+  nums = nums
+)
+knitr::kable(
+  dados,
+  caption = "Resumo dos quantis empíricos do valor de avaliação",
+  col.names = c("Quantil", "Valor")
+)
+```
+Para calcular o IQR, basta subtrair o quartil inferior do quartil superior, ou seja 3755-104, que resulta em 3651. A interpretação desse resultado é os valores centrais da amostra se distribuem dentro de uma amplitude de R$ 3.651,00. Ou seja, 50% dos valores estão distribuídos dentro de um intervalo de R$ 3.651,00. É interessante comparar o IQR com a amplitude. A amplitude, como vimos, é igual a R$ 157.000.000,00, ou seja, todos os valores da base estão dentro de um intervalo de R$ 157.000.000,00, mas desse intervalo inteiro, 50% dos valores (e não quaisquer 50% dos valores, mas a metade dos valores centrais) estão apenas em um intervalo de amplitude R$ 3.651,00. Isso indica como que a população está muito dispersa, pois há uma concentração de metade dos valores em um pequeno intervalo, e uma outra metade distribuída em um grande intervalo. Por mais que ainda não tenhamos estudado gráficos, é útil neste momento compreender para o que estamos falando de forma visual (Figura \@ref(fig:grafico-variabilidade)).
+
+```{r grafico-variabilidade, fig.cap="Dados de valores de avaliação com alta variabilidade."}
+# a base que vamos usar
+q1 <- quantile(leiloes$valor_avaliacao_inicial, 0.25, na.rm=TRUE)
+q3 <- quantile(leiloes$valor_avaliacao_inicial, 0.75, na.rm=TRUE)
+
+set.seed(100)
+da <- leiloes |>
+  dplyr::filter(
+    valor_avaliacao_inicial > q1,
+    valor_avaliacao_inicial < q3
+  ) |>
+  dplyr::sample_n(10) |>
+  dplyr::select(descricao, valor_avaliacao_inicial) |>
+  dplyr::mutate(desvio = round(valor_avaliacao_inicial - mean(valor_avaliacao_inicial),2))
+
+mean(da$valor_avaliacao_inicial)
+mad(da$valor_avaliacao_inicial)
+var(da$valor_avaliacao_inicial)
+sd(da$valor_avaliacao_inicial)
+
+
+# exemplo dos quantis empíricos -------------------------------------------
+# aqui vamos usar a base completa
+
+cores_abj <- c("#102C68", "#AFCA0A", "#575756")
+
+abjData::leiloes |>
+  dplyr::filter(!is.na(valor_avaliacao_inicial)) |>
+  ggplot2::ggplot(ggplot2::aes(x = valor_avaliacao_inicial)) +
+  ggplot2::geom_histogram(fill = cores_abj[1], bins = 30) +
+  ggplot2::scale_x_continuous(labels = scales::dollar) +
+  ggplot2::geom_vline(
+    xintercept = c(104, 3755), colour = c("red", "green"),
+    linetype = c(1, 2)
+  )
+
+```
 
 
 
-
-
+Observamos neste gráfico uma altissima concentração em valores, que, por causa da escala, estão representados em cima do 0. Não é que, de fato, os valores sejam 0, mas é que, dentro de uma escala que vai até 150 milhões, a faixa de valores em que se encontram 50% dos dados é muito pequena (é uma faixa que varia de R\$ 104,00 até R\$ 3.755,00).
