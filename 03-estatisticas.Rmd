@@ -128,4 +128,186 @@ knitr::kable("assets/img/etnia_dummy.png")
 
 A questão importante dessa consideração era justamente chamar a atenção para o fato de que a quantidade de *dummies* criadas a partir da categorias é $n-1$. Isso não é uma escolha arbitrária, mas tem uma razão de ser. Mais para frente do livro, veremos que, se criássemos $n$ categorias, ao invés de $n-1$, teríamos um problema chamado multicolinearidade. Entretanto, por hora, de forma simplificada, podemos simplesmente afirmar que a categoria que foi deixada de fora, isto é, a categoria que não se transformou em dummy pode ser presumida. 
 
-	Vejamos na Figura \@ref(fig:etnia-dummy) que a categoria deixada de lado foi “S” (ou “sem preferência”). Entretanto, conseguimos identificar um pretendente que não possui preferência por nenhuma etnia quando todas as dummies são iguais a 0. Assim, se A = 0; B = 0; I = 0; N = 0; e P = 0, então teríamos (caso essa categoria existisse) que S = 1. Dizer que S = 1 equivale a dizer que todas as outras categorias são iguais a 0. Justamente por haver essa fungibilidade entre a representação de S = 1 com tudo = 0 que não criamos exatamente $n$ dummies, mas $n-1$. O que deve ficar de lição é que a categoria deixada de lado está presumida pela resposta às demais dummies; ela estará presente sempre que todas as outras categorias forem 0. 
+Vejamos na Figura \@ref(fig:etnia-dummy) que a categoria deixada de lado foi “S” (ou “sem preferência”). Entretanto, conseguimos identificar um pretendente que não possui preferência por nenhuma etnia quando todas as dummies são iguais a 0. Assim, se A = 0; B = 0; I = 0; N = 0; e P = 0, então teríamos (caso essa categoria existisse) que S = 1. Dizer que S = 1 equivale a dizer que todas as outras categorias são iguais a 0. Justamente por haver essa fungibilidade entre a representação de S = 1 com tudo = 0 que não criamos exatamente $n$ dummies, mas $n-1$. O que deve ficar de lição é que a categoria deixada de lado está presumida pela resposta às demais dummies; ela estará presente sempre que todas as outras categorias forem 0. 
+	
+# Olhando para o conjunto das observações
+
+Acima, estávamos discutindo as observações em si (unidades amostrais) e as informações que as caracterizam (variáveis). O que vamos falar a seguir é, não de uma única observação, mas do conjunto de várias observações. Vamos olhar, então, não para *uma* única linha, mas para um *conjunto* de linhas de uma base. A diferença da explicação anterior para a que se seguirá seria a de dizer, por exemplo (voltando ao exemplo da base de leilões do Observatório de Falências de São Paulo), que um bem específico foi vendido pelo dobro do seu preço de avaliação ou dizer que os *bens*, em média, são vendidos a 80% do seu preço de avaliação. 
+
+Uma primeira pergunta que podemos fazer para dar maior tecnicidade à explicação é o que esses conjuntos de dados representam? Se cada observação representava uma unidade amostral, então agora podemos dizer que o conjunto dessas unidades amostrais é a *amostra* em si. E para tirar informações e afirmar coisas sobre esse conjunto de observações, usamos *estatísticas de resumo*.
+
+Estatísticas de resumo, como o próprio nome diz, resumem informações de grupos. Então, no lugar de olharmos para cada uma das observações individualmente, vamos olhar para uma única informação que irá dizer *algo* sobre as observações tomadas em conjunto. Esse “algo” que podemos falar sobre o conjunto das observações depende do tipo de variável para que estamos olhando. Se estamos olhando para variáveis categóricas (e, neste caso, pouco importa se são variáveis nominais ou ordinais), podemos resumir a sua frequência e proporção; já, se estamos olhando para variáveis contínuas, podemos olhar para as medidas de centro, de variabilidade e de posição do conjunto.
+
+## Medidas de resumo para variáveis categóricas
+
+Não existe um repertório de medidas muito amplo para resumirmos variáveis categóricas. Isso se deve ao fato de que essas variáveis não possuem uma natureza numérica. Então, basicamente, para resumir estas variáveis precisamos transformá-las em números. A forma de fazer isto é uma: a contagem. 
+
+Por meio da *contagem* nós conseguimos *tabular* as respostas das variáveis categóricas, contando a sua frequência e, posteriormente, a proporção e porcentagem de cada categoria. A informação principal que temos é a frequência, pois é a partir dela que podemos pensar nas demais informações. Para além da frequência absoluta, temos também a frequência acumulada, a proporção, a proporção acumulada e a porcentagem.
+
+Como exemplo, podemos olhar para a base de dados da ABJ sobre leilões nas falências em São Paulo, em que encontramos a Tabela \@ref(tab:leiloes-contagens).
+
+```{r leiloes-contagens}
+abjData::leiloes |> 
+  dplyr::count(modalidade) |> 
+  dplyr::mutate(
+    acu = cumsum(n),
+    prop = n/sum(n),
+    prop_acu = cumsum(prop),
+    porc = scales::percent(prop)
+  ) |> 
+  knitr::kable(
+    caption = "Tabela de frequências da modalidade do leilão.",
+    col.names = c(
+      "Modalidade", "Frequência", "Frequência acumulada",
+      "Proporção", "Proporção acumulada", "Porcentagem"
+    )
+  )
+```
+
+A variável que está sendo resumida é a variável “modalidade”, que indica se a falência foi ou não foi decretada. Há três respostas possíveis: “leilão”, “pregão”, ou “proposta fechada”. Ao olharmos para todos os processos, podemos então realizar a contagem de cada uma dessas categorias. A partir da contagem, criamos a coluna de “frequência”. A partir da frequência, nós criamos as próximas colunas, a saber, a frequência acumulada, a proporção, a proporção acumulada e a porcentagem. 
+
+## Medidas de resumo para variáveis quantitativas
+
+No caso das variáveis quantitativas, por elas já terem natureza numérica, há mais medidas de resumo possíveis. Vamos dividir a explicação em dois tipos de medidas: medidas de centro, medidas de variabilidade.
+
+### Medidas de centro
+
+O termo “medidas de centro” pode nos confundir. A nomenclatura pode nos induzir a pensar que essas medidas indicam o “meio” do gráfico, mas isso não é verdade. O “centro” a que se referem essas medidas é o ponto mais “típico” do conjunto em análise. São três medidas que estão nesta categoria: a média, a mediana e a moda. 
+A média é um conceito intuitivo, que designa basicamente a soma das observações dividida pelo total de observações. O símbolo da média é $\bar{x}$ (x-barra). O que queremos ver a seguir é a fórmula da média. Por mais que o conceito seja simples e intuitivo, precisamos formalizar um pouco mais o sentido da média. A fórmula é a que se segue:
+
+$$\bar{x} = \frac{x_1+x_2+\dots+x_n}{n}=\frac{1}{n}\sum_{i=1}^n x_i$$
+
+A fórmula principal é $\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i$, mas precisamos compreender os elementos dessa fórmula. Vamos começar pelo símbolo $\sum$. Esse símbolo é a letra grega *sigma* (maiúscula), que na matemática usamos para representar *somatórios*. O somatório é uma notação que resume uma série de adições em sequência. Assim, dando um exemplo fácil, podemos representar a seguinte soma $4+8+12+16+20$ como $\sum_{k=1}^5 4k$. Vamos entender direito como que essa notação matemática representa a conta de adição. 
+
+O somatório tem três parâmetros: a notação que está embaixo dele (no caso, $k=1$); a notação que está em cima dele (no caso, $5$); e a notação que está na frente do sigma (no caso, $4k$). 
+
+A começar pelo que está na frente do sigma ($4k$), isso indica uma operação, que é $4$ vezes $k$. Essa operação irá se repetir para $5$ valores de $k$, sendo que o primeiro valor é $k = 1$ e o último valor é $k = 5$. De onde tiramos essas últimas informações? Das notações em cima e embaixo do $\sum$. Embaixo do  $\sum$ encontramos o valor inicial de $k$; e em cima encontramos o valor final de $k$. Para cada valor que $k$ assumir, teremos uma expressão para somar. Então a primeira expressão é quando $k = 1$, ou seja, $4 \times 1 = 4$. Na segunda expressão, $k = 2$, ou seja, $4 \times 2 = 8$. A terceira expressão é $4 \times 3 = 12$; a quarta, $4 \times 4 = 16$; e a quinta e última, $4 \times 5 = 20$. Então nós pegamos o resultado das 5 expressões e as somamos, resultando em $4$ (resultado da expressão quando $k = 1$) + $8$ (resultado da expressão quando $k = 2$) + $12$ (resultado da expressão quando $k = 3$) + $16$ (resultado da expressão quando $k = 4$) + $20$ (resultado da expressão quando $k = 5$), ou simplesmente $4+8+12+16+20$. 
+
+Então o $\sum$ (e todos os elementos que o acompanham) indicam a soma de todas as observações. Na fórmula da média, há uma diferença importante: no lugar do $k$, temos o $x_i$. Acontece que o $i$ não é um número exatamente como funcionava com o $k$, ele é apenas um índice. Precisamos, então, verificar o que é $x_i$. 
+
+Voltemos à base de leilões, para pegar a variável *valor de avaliação*. Essa é uma variável quantitativa contínua. Pegando apenas as 10 primeiras observações dessa variável, temos os seguintes dados, resumidos na Tabela \@ref(tab:dados-leiloes-10).
+
+```{r dados-leiloes-10}
+tab <- abjData::leiloes |>
+  dplyr::arrange(desc(descricao)) |>
+  dplyr::select(descricao, valor_avaliacao_inicial) |>
+  head(10) |> 
+  tidyr::replace_na(list(valor_avaliacao_inicial = 0))
+tab |> 
+  knitr::kable(
+    caption = "Dados de Leilões realizados",
+    col.names = c("Descrição", "Valor de avaliação inicial"), 
+    digits = 0
+  )
+```
+
+A partir desse exemplo, podemos compreender o que significa $x_i$. Para cada $i$ diferente temos uma posição de $x$. Assim, por exemplo, $x_1$ será o valor do salário do bem $1$, ou seja, o valor do Volkswagen, de R\$ 4.934,00. Dessa forma, podemos reescrever a tabela da seguinte forma:
+
+```{r dados-leiloes-10-indice}
+tab |> 
+  dplyr::mutate(indice = stringr::str_glue("$x_{1:10}$"), .before = 1) |> 
+  knitr::kable(
+    caption = "Dados de Leilões realizados",
+    col.names = c("Índice", "Descrição", "Valor de avaliação inicial"), 
+    digits = 0
+  )
+```
+
+
+Compreendendo o que significam cada um parâmetros do somatório, bem como com interpretar o índice, podemos voltar para a fórmula da média.
+
+$$\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i$$
+
+Estamos, por enquanto, olhando para este elemento da fórmula $\sum_{i=1}^n x_i$. O que podemos concluir do significado disso? Vamos destrinchar com os elementos que vimos até agora. A somatória de $\sum x_i$ significa que vamos somar todos os elementos $x_i$. Essa soma será feita a partir do primeiro elemento do conjunto, que é $x_1$ (por isso, embaixo do sigma tem $i = 1$), até o último elemento do conjunto, que é $x_n$. No caso, se temos 10 bens, então nosso $n = 10$.
+
+Compreendido o somatório da fórmula, falta apenas o $\frac{1}{n}$. Basicamente, isso indica que devemos dividir o resultado do somatório pelo total de observações. O $n$ que encontramos nessa parte é o mesmo $n$ que está em cima do *sigma*. Então, no caso dos bens, nós somariamos o valor de avaliação dos 10 bens e depois dividiríamos o total resultante dessa soma por $10$. Com isso, a fórmula da média está completa. 
+
+> Apesar de o conceito ser intuitivo, a sua representação matemática é um pouco mais complexa. Mas essa complexidade se mostra como uma ótima oportunidade para explicarmos um pouco sobre notação matemática. Compreender e operar fórmulas matemáticas ajuda a trabalhar com os conceitos matemáticos conforme eles ficam mais complexos.
+
+Outra medida de centro importante é a __mediana__. A mediana é outro conceito intuitivo, mas menos conhecido. Literalmente, a mediana designa exatamente o número que está no meio do conjunto. Para encontrar este número, precisamos ordenar os números do conjunto em ordem crescente. Dada esta ordem, se a quantidade de observações ($n$) for ímpar, o número exatamente ao meio será a mediana; se a quantidade de observações ($n$) for par, pegamos os dois números no centro e fazemos a média entre eles. 
+
+Em conjuntos ímpares, como encontramos o número que está exatamente ao centro? Ou seja, qual é a fórmula genérica para encontrarmos todos os números do meio em todos os conjuntos ímpares? Imaginemos um conjunto de 7 elementos. Intuitivamente conseguimos dizer que o elemento no meio será o 4º elemento, pois há 3 elementos à esquerda do 4º elemento e mais 3 elementos à direita dele. A partir disso, podemos pensar que 4 é a metade de 8; e que 8 é um número acima de 7. Assim, a fórmula que temos é $\frac{n+1}{2}$. Então o índice do elemento central será $x_{\left(\frac{n+1}{2}\right)}$
+
+$$md(\boldsymbol{x}) = x_{\left(\frac{n+1}{2}\right)}, \text{se } n \text{ ímpar}$$
+
+Em conjuntos pares, não existe nenhum número exatamente no centro. Se tivermos, ao invés de 7 observações, 8, não teremos nenhum elemento que, caso seja escolhido, divida o conjunto entre duas partes idênticas. Por exemplo, a metade de 8 é 4; então se pegarmos o 4o elemento, o que acontecerá? Haverá 3 elementos à esquerda deste elemento, e mais 4 elementos à sua direita. O 4º elemento, portanto, não pode ser a mediana. O mesmo problema acontece se escolhermos o 5º elemento, pois teremos 4 números à sua esquerda e mais 3 números à sua direita.
+
+Como fazer então para encontrar a mediana neste caso? Basicamente, vamos, no exemplo, pegar o 4º e 5º elementos e fazer a média aritmética entre eles. Pensando de forma abstrata, o 4º elemento é $\frac{n}{2}$; e o 5º elemento é o próximo número da sequência em relação ao elemento do meio, ou seja, ele é $\frac{n}{2}+1$. Para designar então esses dois elementos temos as seguintes notações: $x_{\left(\frac{n}{2}\right)}$ e $x_{\left(\frac{n}{2}+ 1\right)}$. A média aritmética entre esses dois elementos é simplesmente a soma entre eles dividido por dois. Assim, temos a seguinte fórmula para a mediana em conjuntos pares:
+
+$$md(\boldsymbol{x})=\frac{1}{2}\left(x_{\left(\frac{n}{2}\right)} + x_{\left(\frac{n}{2}+1\right)}\right)$$
+Vale fazermos um esclarecimento importante a respeito da diferença da média para a mediana. A mediana é preferível à média em muitas situações. Isso decorre de uma propriedade da mediana: ela é *robusta*. Robustez é uma palavra que indica a suscetibilidade de um valor aos seus extremos. Vamos dar dois exemplos para deixar isso claro. 
+
+Pensemos em um conjunto abstrato com os seguintes números: 
+
+> 10	11	12	13	14	15	16	17	18	19	20
+
+Este conjunto contém $n = 11$ observações. Assim, a média é $(10+11+12+13+14+15+16+17+18+19+20)/11 = 15$. A mediana é exatamente o número central, pois o conjunto é ímpar, ou seja, a mediana é $15$ também.
+
+Agora olhemos para um segundo conjunto. 
+
+> 10	11	12	13	14	15	16	17	18	19	2000
+
+A única diferença é o último elemento, ou seja, o número $x_{11}=2000$. Temos $11$ observações ainda. Neste caso a média é $(10+11+12+13+14+15+16+17+18+19+2000)/11 = 195$; mas a mediana continua sendo exatamente a mesma, ou seja, $15$, porque $15$ continua sendo o elemento do meio. 
+A partir deste exemplo podemos compreender o que significa dizer que uma medida é mais “robusta” do que outra. A mediana, neste caso, é mais robusta, pois ela se afeta menos com os valores extremos do que a média, ela é mais resistente a valores desviantes. 
+
+Feita essa consideração, podemos falar da última medida de centro, a __moda__. A moda indica simplesmente o valor mais frequente do conjunto. Encontrar a moda pressupõe que saibamos todos os valores que aparecem no conjunto, bem como a sua contagem. O valor cuja contagem é maior será o valor da moda. Se o conjunto tiver apenas um valor com a maior contagem, ele será “unimodal”; se houver dois valores com a mesma contagem, então teremos um conjunto “bimodal”; se houver muitos valores, então será “multimodal”. Se não houver nenhum valor que se destaque, então o conjunto será “uniforme”. Por mais que este capítulo não se dedique a estudar gráficos ainda, neste caso, vale a pena demonstrar como cada tipo de conjunto (unimodal, bimodal, multimodal e uniforme) se comporta em termos gráficos. Vemos isso na Figura \@ref(fig:distribuicoes-modal).
+
+```{r distribuicoes, fig.cap="Distribuições", fig.height=6, fig.width=8, fig.align="center"}
+library(patchwork)
+
+# base de distribuicoes -----------------------------------------------------------
+set.seed(1)
+populacao <- c(0:20)
+normal <- rnorm(10000)
+bimodal <- c(head(normal, 3000) - 3, tail(normal, 7000)+3)
+multimodal <- c(
+  head(normal, 2500) - 8, 
+  tail(head(normal, 5000), 2500) - 3,
+  head(tail(normal, 5000), 2500) + 3,
+  tail(normal, 2500) + 8
+)
+uniforme <- runif(10000)
+
+distribuicoes <- data.frame(normal, bimodal, multimodal, uniforme)
+
+cores_abj <- c("#102C68", "#AFCA0A", "#575756")
+# distribuicao normal -----------------------------------------------------
+p_normal <- ggplot2::ggplot(distribuicoes) +
+  ggplot2::aes(x = normal) +
+  ggplot2::geom_histogram(fill = cores_abj[1], bins = 30) +
+  ggplot2::ggtitle("Distribuição Normal") +
+  ggplot2::theme(
+    axis.title.x = ggplot2::element_blank()
+  )
+p_bimodal <- ggplot2::ggplot(distribuicoes) +
+  ggplot2::aes(x = bimodal) +
+  ggplot2::geom_histogram(fill = cores_abj[1], bins = 30) +
+  ggplot2::ggtitle("Distribuição Bimodal") +
+  ggplot2::theme(
+    axis.title.x = ggplot2::element_blank()
+  )
+p_multimodal <- ggplot2::ggplot(distribuicoes) +
+  ggplot2::aes(x = multimodal) +
+  ggplot2::geom_histogram(fill = cores_abj[1], bins = 30) +
+  ggplot2::ggtitle("Distribuição Multimodal") +
+  ggplot2::theme(
+    axis.title.x = ggplot2::element_blank()
+  )
+
+p_uniforme <- ggplot2::ggplot(distribuicoes) +
+  ggplot2::aes(x = uniforme) +
+  ggplot2::geom_histogram(fill = cores_abj[1], bins = 30) +
+  ggplot2::ggtitle("Distribuição Uniforme") +
+  ggplot2::xlab("x")
+
+
+p_normal + p_bimodal + p_multimodal + p_uniforme
+
+```
+
+
+
+
+
+
+

@@ -1,5 +1,20 @@
 # exemplos leilões
 leiloes <- abjData::leiloes
+
+
+# exemplo medidas resumo categoricas --------------------------------------
+
+abjData::leiloes |>
+  dplyr::count(modalidade) |>
+  dplyr::mutate(
+    acu = cumsum(n),
+    prop = n/sum(n),
+    porc = scales::percent(prop),
+    prop_acu = cumsum(prop),
+  )
+
+
+
 # exemplo calculando os 3 valores de dispersão ----------------------------
 
 # a base que vamos usar
