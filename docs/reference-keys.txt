@@ -20,3 +20,4 @@ amostragem-aleatória-simples
 viés-e-erro-na-amostragem
 tamanho-da-amostra
 livro
+por-que-randomizar
