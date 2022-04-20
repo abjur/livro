@@ -22,7 +22,7 @@ abjData::leiloes
 
 ## Olhando para as observações
 
-O que queremos compreender nesta seção é a natureza das *observações* de uma base de dados. As observações correspondem às unidades amostrais, que podemos definir como “*cada uma das partes disjuntas em que uma população é exaustivamente decomposta, para* [que]*, do conjunto delas se façam extrações a fim de constituir uma amostra, ou estágio de uma amostra*”[^bolfarine]. __Em bases de dados, cada linha deve corresponder a uma unidade amostral; e cada coluna representa uma característica (também chamada de variável) dessa observação__.
+O que queremos compreender nesta seção é a natureza das *observações* de uma base de dados. As observações correspondem às unidades amostrais, que podemos definir como "*cada uma das partes disjuntas em que uma população é exaustivamente decomposta, para* [que]*, do conjunto delas se façam extrações a fim de constituir uma amostra, ou estágio de uma amostra*"[^bolfarine]. __Em bases de dados, cada linha deve corresponder a uma unidade amostral; e cada coluna representa uma característica (também chamada de variável) dessa observação__.
 
 [^bolfarine]: BOLFARINE, Heleno; BUSSAB, Wilton de Oliveira. __Elementos de Amostragem__. São Paulo: Blucher. 2005, p. 263
 
@@ -47,7 +47,7 @@ As variáveis podem pertencer a dois grupos: variáveis qualitativas (ou categó
 
 ### Variáveis qualitativas (categóricas)
 
-Todas as variáveis qualitativas representam algum tipo de categoria (por isso também chamamos essas variáveis de “categóricas”). Há dois tipos de variáveis categóricas, as nominais e as ordinais. As variáveis nominais são categorias de nomes, categorias sem ordenação possível. Já as variáveis ordinais representam categorias com algum tipo de ordenação universal, com algum *ranking* possível. O critério de distinção entre essas duas variáveis é a possibilidade de *ordenação universal* das respostas possíveis.
+Todas as variáveis qualitativas representam algum tipo de categoria (por isso também chamamos essas variáveis de "categóricas"). Há dois tipos de variáveis categóricas, as nominais e as ordinais. As variáveis nominais são categorias de nomes, categorias sem ordenação possível. Já as variáveis ordinais representam categorias com algum tipo de ordenação universal, com algum *ranking* possível. O critério de distinção entre essas duas variáveis é a possibilidade de *ordenação universal* das respostas possíveis.
 
 A seguir, temos alguns exemplos que discutem se determinadas variáveis categóricas são nominais ou ordinais. 
 
@@ -56,11 +56,11 @@ A seguir, temos alguns exemplos que discutem se determinadas variáveis categór
 
 1. __Assunto processual__: Os assuntos processuais são dados pelas Tabelas Processuais Unificadas (TPUs)[^sgt] do CNJ. Por mais haja uma numeração. Os assuntos também não possuem nenhuma ordenação universal. Portanto, esta é uma variável nominal. 
 
-3. __Valor de bens no leilão judicial (categorizado)__: Uma possível variável que pode existir em processos judiciais é uma classificação para o valor dos bens em um leilão. Podemos classificar os valores, por exemplo, como “insignificante”, “baixo”, “médio”, “alto”, “extravagante”. Neste caso, haveria uma ordenação intrínseca das categorias, sendo que “insignificante” é a categoria de menor valor e “extravagante”, a de maior valor. Assim sendo, esta variável é ordinal. 
+3. __Valor de bens no leilão judicial (categorizado)__: Uma possível variável que pode existir em processos judiciais é uma classificação para o valor dos bens em um leilão. Podemos classificar os valores, por exemplo, como "insignificante", "baixo", "médio", "alto", "extravagante". Neste caso, haveria uma ordenação intrínseca das categorias, sendo que "insignificante" é a categoria de menor valor e "extravagante", a de maior valor. Assim sendo, esta variável é ordinal. 
 
 1. __Resultado de uma sentença__: Uma sentença pode ter, de forma simplificada, três resultados possíveis: totalmente procedente, parcialmente procedente e improcedente. É um modelo simplificado, pois, para determinadas pesquisas, pode ser interessante diferenciar sentenças com julgamento de mérito de sentenças sem julgamento de mérito, ou de sentenças homologatórias. Por ora, vamos pensar apenas nessas três categorias. A questão que se põe é se há alguma ordenação universal entre essas três categorias ou não?
 
-    Este caso pode gerar algumas dúvidas, pois poderíamos ordenar a sentença de tal forma que a sentença “totalmente procedente” fosse a mais valiosa, em relação à sentença “improcedente”. Entretanto, esse tipo de raciocínio pressupõe um valor intrínseco das sentenças, como se uma sentença “totalmente procedente” sempre fosse, de alguma forma, melhor do que uma sentença “improcedente”. O problema desse raciocínio é que, a depender do *polo da parte*, o valor da sentença é exatamente o oposto: para o réu, a sentença “improcedente” é a de menor valor, enquanto, para o autor, a sentença “totalmente procedente” é a de maior valor. 
+    Este caso pode gerar algumas dúvidas, pois poderíamos ordenar a sentença de tal forma que a sentença "totalmente procedente" fosse a mais valiosa, em relação à sentença "improcedente". Entretanto, esse tipo de raciocínio pressupõe um valor intrínseco das sentenças, como se uma sentença "totalmente procedente" sempre fosse, de alguma forma, melhor do que uma sentença "improcedente". O problema desse raciocínio é que, a depender do *polo da parte*, o valor da sentença é exatamente o oposto: para o réu, a sentença "improcedente" é a de menor valor, enquanto, para o autor, a sentença "totalmente procedente" é a de maior valor. 
 
 
 [^sgt]: Para saber mais informações, ver Resolução nº 46 do CNJ, bem como o site https://www.cnj.jus.br/sgt/consulta_publica_assuntos.php.
@@ -85,11 +85,13 @@ A seguir, temos alguns exemplos se algumas variáveis são discretas ou contínu
 
 Antes de prosseguir para as medidas desses dados, devemos fazer algumas considerações. 
 
-O primeiro ponto a se destacar é sobre a representação numérica de variáveis categóricas ordinais. Vamos usar o exemplo de uma proposta do Center for *Court Innovation* de Nova Iorque[^newyork]. Uma das iniciativas desse centro foi tornar os tribunais de Nova Iorque mais “amigáveis”. Uma das técnicas propostas para tanto foram os Questionários de Satisfação sobre a prestação jurisdicional. O Quadro \@ref(qua:perguntas-satisfacao) resume algumas das perguntas do questionário elaborado pelo *Centro*. 
+O primeiro ponto a se destacar é sobre a representação numérica de variáveis categóricas ordinais. Vamos usar o exemplo de uma proposta do Center for *Court Innovation* de Nova Iorque[^newyork]. Uma das iniciativas desse centro foi tornar os tribunais de Nova Iorque mais "amigáveis". Uma das técnicas propostas para tanto foram os Questionários de Satisfação sobre a prestação jurisdicional. O Quadro \@ref(def:perguntas-satisfacao) resume algumas das perguntas do questionário elaborado pelo *Centro*. 
 
 [^newyork]: CENTER FOR COURT INNOVATION. __Can Courts Be More User-Friendly? How Satisfaction Surveys Can Promote Trust and Access to Justice__. 2020. Disponível em: https://www.courtinnovation.org/sites/default/files/media/document/2020/CCI_FactSheet_SatisfactionSurveys_04202020.pdf 
 
-```{r perguntas-satisfacao, echo=FALSE}
+(\#def:perguntas-satisfacao): Perguntas selecionadas de um questionário de satisfação
+
+```{r echo=FALSE}
 c1 <- c("Concordo fortemente", "Concordo", "Neutro", "Discordo", "Discordo fortemente")
 c2 <- c("O juiz compreendeu minha demanda",
         "O juiz levou a minha demanda a sério",
@@ -101,9 +103,7 @@ c2 <- c("O juiz compreendeu minha demanda",
 purrr::cross_df(list(`-` = c2, name = c1)) |> 
   dplyr::mutate(value = "") |> 
   tidyr::pivot_wider() |> 
-  knitr::kable(
-    caption = "Perguntas selecionadas de um questionário de satisfação"
-  )
+  knitr::kable()
 
 ```
 
@@ -117,11 +117,11 @@ O que queremos é discutir uma proposta de substituição dessas respostas para 
 - Discordo: 4
 - Discordo fortemente: 5
 
-Essa transformação deve ser feita com cuidado. Por um lado, esse tipo de alteração não altera a ordenação dessas respostas. Entretanto, por outro lado, a representação numérica das categorias ordinais adiciona uma informação aos dados que não é verdadeira: a intensidade. O que estamos dizendo é que os números guardam, não só uma ordenação universal entre si, assim como as variáveis categóricas ordinais, mas eles guardam uma relação de intensidade entre si, algo que as variáveis categóricas ordinais não possuem. Assim, enquanto podemos dizer que o número 2 é o dobro do número 1, não podemos estabelecer essa relação entre as categorias “concordo” e “concordo totalmente”. 
+Essa transformação deve ser feita com cuidado. Por um lado, esse tipo de alteração não altera a ordenação dessas respostas. Entretanto, por outro lado, a representação numérica das categorias ordinais adiciona uma informação aos dados que não é verdadeira: a intensidade. O que estamos dizendo é que os números guardam, não só uma ordenação universal entre si, assim como as variáveis categóricas ordinais, mas eles guardam uma relação de intensidade entre si, algo que as variáveis categóricas ordinais não possuem. Assim, enquanto podemos dizer que o número 2 é o dobro do número 1, não podemos estabelecer essa relação entre as categorias "concordo" e "concordo totalmente". 
 
 A segunda consideração que queremos fazer diz respeito à transformação das categorias nominais em variáveis *dummies*. Vamos tomar outro caso como exemplo para esta discussão. 
 
-No projeto que a ABJ realiza, em parceria com o CNJ, sobre adoção, tentamos auxiliar os pretendentes a escolherem o perfil da criança fornecendo a eles uma informação importante: o tempo que irá demorar adotar uma criança a depender do perfil escolhido para ela. Perfis mais restritivos em geral demoram mais tempo do que perfis mais permissivos. A questão é deixar claro que características importam para a mudança do tempo e o quanto cada característica importa para o tempo. Uma das variáveis é a variável de `tp_etnia`. Essa variável indica qual é a preferência de etnia preferida dos pretendentes em relação às crianças a serem adotadas. Há 6 respostas possíveis: A (de “amarelo”), B (de “branco”), I (de “indígena”), N (de “negro”), P (de “pardo”) ou S (de “sem preferência”). Essas categorias não possuem um critério de ordenação universal, assim sendo, a variável `tp_etnia` é do tipo categórico nominal. Temos um exemplo dessa base na Tabela \@ref(tab:etnia). Os valores usados são fictícios, por questões de sigilo da base. 
+No projeto que a ABJ realiza, em parceria com o CNJ, sobre adoção, tentamos auxiliar os pretendentes a escolherem o perfil da criança fornecendo a eles uma informação importante: o tempo que irá demorar adotar uma criança a depender do perfil escolhido para ela. Perfis mais restritivos em geral demoram mais tempo do que perfis mais permissivos. A questão é deixar claro que características importam para a mudança do tempo e o quanto cada característica importa para o tempo. Uma das variáveis é a variável de `tp_etnia`. Essa variável indica qual é a preferência de etnia preferida dos pretendentes em relação às crianças a serem adotadas. Há 6 respostas possíveis: A (de "amarelo"), B (de "branco"), I (de "indígena"), N (de "negro"), P (de "pardo") ou S (de "sem preferência"). Essas categorias não possuem um critério de ordenação universal, assim sendo, a variável `tp_etnia` é do tipo categórico nominal. Temos um exemplo dessa base na Tabela \@ref(tab:etnia). Os valores usados são fictícios, por questões de sigilo da base. 
 
 ```{r etnia, echo=FALSE}
 id_pretendente <- c(1082L:1092L)
@@ -165,7 +165,7 @@ etnia_wide |>
 
 A questão importante dessa consideração era justamente chamar a atenção para o fato de que a quantidade de *dummies* criadas a partir da categorias é $n-1$. Isso não é uma escolha arbitrária, mas tem uma razão de ser. Mais para frente do livro, veremos que, se criássemos $n$ categorias, ao invés de $n-1$, teríamos um problema chamado *dependência linear*. Entretanto, por hora, de forma simplificada, podemos simplesmente afirmar que a categoria que foi deixada de fora, isto é, a categoria que não se transformou em *dummy* pode ser presumida. 
 
-Vejamos na Tabela \@ref(tab:etnia-dummy) que a categoria deixada de lado foi “S” (ou “sem preferência”). Entretanto, conseguimos identificar um pretendente que não possui preferência por nenhuma etnia quando todas as dummies são iguais a 0. Assim, se A = 0; B = 0; I = 0; N = 0; e P = 0, então teríamos (caso essa categoria existisse) que S = 1. Dizer que S = 1 equivale a dizer que todas as outras categorias são iguais a 0. Justamente por haver essa fungibilidade entre a representação de S = 1 com tudo = 0 que não criamos exatamente $n$ dummies, mas $n-1$. O que deve ficar de lição é que a categoria deixada de lado está presumida pela resposta às demais dummies; ela estará presente sempre que todas as outras categorias forem 0. 
+Vejamos na Tabela \@ref(tab:etnia-dummy) que a categoria deixada de lado foi "S" (ou "sem preferência"). Entretanto, conseguimos identificar um pretendente que não possui preferência por nenhuma etnia quando todas as dummies são iguais a 0. Assim, se A = 0; B = 0; I = 0; N = 0; e P = 0, então teríamos (caso essa categoria existisse) que S = 1. Dizer que S = 1 equivale a dizer que todas as outras categorias são iguais a 0. Justamente por haver essa fungibilidade entre a representação de S = 1 com tudo = 0 que não criamos exatamente $n$ dummies, mas $n-1$. O que deve ficar de lição é que a categoria deixada de lado está presumida pela resposta às demais dummies; ela estará presente sempre que todas as outras categorias forem 0. 
 	
 ## Olhando para o conjunto das observações
 
@@ -173,7 +173,7 @@ Acima, estávamos discutindo as observações em si (unidades amostrais) e as in
 
 Uma primeira pergunta que podemos fazer para dar maior tecnicidade à explicação é o que esses conjuntos de dados representam? Se cada observação representava uma unidade amostral, então agora podemos dizer que o conjunto dessas unidades amostrais é a *amostra* em si. E para tirar informações e afirmar coisas sobre esse conjunto de observações, usamos *estatísticas de resumo*.
 
-Estatísticas de resumo, como o próprio nome diz, resumem informações de grupos. Então, no lugar de olharmos para cada uma das observações individualmente, vamos olhar para uma única informação que irá dizer *algo* sobre as observações tomadas em conjunto. Esse “algo” que podemos falar sobre o conjunto das observações depende do tipo de variável para que estamos olhando. Se estamos olhando para variáveis categóricas (e, neste caso, pouco importa se são variáveis nominais ou ordinais), podemos resumir a sua frequência e proporção; já, se estamos olhando para variáveis contínuas, podemos olhar para as medidas de centro, de variabilidade e de posição do conjunto.
+Estatísticas de resumo, como o próprio nome diz, resumem informações de grupos. Então, no lugar de olharmos para cada uma das observações individualmente, vamos olhar para uma única informação que irá dizer *algo* sobre as observações tomadas em conjunto. Esse "algo" que podemos falar sobre o conjunto das observações depende do tipo de variável para que estamos olhando. Se estamos olhando para variáveis categóricas (e, neste caso, pouco importa se são variáveis nominais ou ordinais), podemos resumir a sua frequência e proporção; já, se estamos olhando para variáveis contínuas, podemos olhar para as medidas de centro, de variabilidade e de posição do conjunto.
 
 ### Medidas de resumo para variáveis categóricas
 
@@ -201,7 +201,7 @@ abjData::leiloes |>
   )
 ```
 
-A variável que está sendo resumida é a variável “modalidade”, que indica se a falência foi ou não foi decretada. Há três respostas possíveis: “leilão”, “pregão”, ou “proposta fechada”. Ao olharmos para todos os processos, podemos então realizar a contagem de cada uma dessas categorias. A partir da contagem, criamos a coluna de “frequência”. A partir da frequência, nós criamos as próximas colunas, a saber, a frequência acumulada, a proporção, a proporção acumulada e a porcentagem. 
+A variável que está sendo resumida é a variável "modalidade", que indica se a falência foi ou não foi decretada. Há três respostas possíveis: "leilão", "pregão", ou "proposta fechada". Ao olharmos para todos os processos, podemos então realizar a contagem de cada uma dessas categorias. A partir da contagem, criamos a coluna de "frequência". A partir da frequência, nós criamos as próximas colunas, a saber, a frequência acumulada, a proporção, a proporção acumulada e a porcentagem. 
 
 ### Medidas de resumo para variáveis quantitativas
 
@@ -209,7 +209,7 @@ No caso das variáveis quantitativas, por elas já terem natureza numérica, há
 
 #### Medidas de centro
 
-O termo “medidas de centro” pode nos confundir. A nomenclatura pode nos induzir a pensar que essas medidas indicam o “meio” do gráfico, mas isso não é verdade. O “centro” a que se referem essas medidas é o ponto mais “típico” do conjunto em análise. São três medidas que estão nesta categoria: a média, a mediana e a moda. 
+O termo "medidas de centro" pode nos confundir. A nomenclatura pode nos induzir a pensar que essas medidas indicam o "meio" do gráfico, mas isso não é verdade. O "centro" a que se referem essas medidas é o ponto mais "típico" do conjunto em análise. São três medidas que estão nesta categoria: a média, a mediana e a moda. 
 
 ##### Média
 
@@ -293,13 +293,13 @@ Agora olhemos para um segundo conjunto.
 
 A única diferença é o último elemento, ou seja, o número $x_{11}=2000$. Temos $11$ observações ainda. Neste caso a média é $(10+11+12+13+14+15+16+17+18+19+2000)/11 = 195$; mas a mediana continua sendo exatamente a mesma, ou seja, $15$, porque $15$ continua sendo o elemento do meio. 
 
-A partir deste exemplo podemos compreender o que significa dizer que uma medida é mais “robusta” do que outra. A mediana, neste caso, é mais robusta, pois ela se afeta menos com os valores extremos do que a média, ela é mais resistente a valores desviantes. 
+A partir deste exemplo podemos compreender o que significa dizer que uma medida é mais "robusta" do que outra. A mediana, neste caso, é mais robusta, pois ela se afeta menos com os valores extremos do que a média, ela é mais resistente a valores desviantes. 
 
 ##### Moda
 
-Feita essa consideração, podemos falar da última medida de centro, a __moda__. A moda indica simplesmente o valor mais frequente do conjunto. Encontrar a moda pressupõe que saibamos todos os valores que aparecem no conjunto, bem como a sua contagem. O valor cuja contagem é maior será o valor da moda. Se o conjunto tiver apenas um valor com a maior contagem, ele será “unimodal”; se houver dois valores com a mesma contagem, então teremos um conjunto “bimodal”; se houver muitos valores, então será “multimodal”. Se não houver nenhum valor que se destaque, então o conjunto será “uniforme”. Por mais que este capítulo não se dedique a estudar gráficos ainda, neste caso, vale a pena demonstrar como cada tipo de conjunto (unimodal, bimodal, multimodal e uniforme) se comporta em termos gráficos. Vemos isso na Figura \@ref(fig:distribuicoes-modal).
+Feita essa consideração, podemos falar da última medida de centro, a __moda__. A moda indica simplesmente o valor mais frequente do conjunto. Encontrar a moda pressupõe que saibamos todos os valores que aparecem no conjunto, bem como a sua contagem. O valor cuja contagem é maior será o valor da moda. Se o conjunto tiver apenas um valor com a maior contagem, ele será "unimodal"; se houver dois valores com a mesma contagem, então teremos um conjunto "bimodal"; se houver muitos valores, então será "multimodal". Se não houver nenhum valor que se destaque, então o conjunto será "uniforme". Por mais que este capítulo não se dedique a estudar gráficos ainda, neste caso, vale a pena demonstrar como cada tipo de conjunto (unimodal, bimodal, multimodal e uniforme) se comporta em termos gráficos. Vemos isso na Figura \@ref(fig:distribuicoes-moda).
 
-```{r distribuicoes, echo=FALSE, fig.align="center", fig.cap="Distribuições", fig.height=6, fig.width=8}
+```{r distribuicoes-moda, echo=FALSE, fig.align="center", fig.cap="Distribuições", fig.height=6, fig.width=8}
 library(patchwork)
 
 # base de distribuicoes -----------------------------------------------------------
@@ -354,7 +354,7 @@ p_normal + p_bimodal + p_multimodal + p_uniforme
 
 #### Medidas de dispersão
 
-Para as variáveis quantitativas, além de falarmos dos valores mais “típicos” (ou “centrais”, como convencionamos chamar), podemos falar também em como esses valores variam, ou como esses valores se dispersam ao longo do conjunto de observações. Com um exemplo simples, percebemos como a informação da medida central isoladamente não é capaz de contar a história inteira dos dados. 
+Para as variáveis quantitativas, além de falarmos dos valores mais "típicos" (ou "centrais", como convencionamos chamar), podemos falar também em como esses valores variam, ou como esses valores se dispersam ao longo do conjunto de observações. Com um exemplo simples, percebemos como a informação da medida central isoladamente não é capaz de contar a história inteira dos dados. 
 
 ```
 Grupo A (variável X):	3	4 5 6 7
@@ -371,6 +371,7 @@ Ao calcularmos a média desses 5 grupos, percebemos que todos possuem uma média
 A __amplitude__ indica, basicamente, o espectro dentro do qual as observações variam. Para calculá-la basta identificar o valor máximo do conjunto, bem como o seu valor mínimo. A diferença entre os dois números é a amplitude. 
 
 $$A(\boldsymbol x)=\max(\boldsymbol x)-\min(\boldsymbol x)$$
+
 Podemos retornar ao exemplo da base de leilões. O menor valor de avaliação que encontramos nesta base é de R$ 0,00 (zero reais). Esse valor é até frequente na base, pois vários bens arrecadados não possuem valor algum. O maior valor da base é R\$ 157.000.000,00, que representa o valor de um imóvel. Assim, a amplitude dessa variável é o valor mínimo subtraído do valor máximo, ou seja, $157.000.000,00 - 0$, ou seja, a amplitude dessa variável é de R\$ 157.000.000,00. A interpretação deste valor é que todas as observações estão dadas dentro de um intervalo de cento e cinquenta e sete milhões de reais. 
 
 A amplitude é uma medida simples de ser calculada, entretanto, ela não consegue indicar a relação da dispersão com as medidas centrais. Em seu lugar, as medidas de dispersão mais frequentemente usadas são o desvio médio e o desvio padrão. Vamos, a seguir, realizar uma explicação sobre as duas medidas, pois elas estão muito próximas.
@@ -396,7 +397,7 @@ cores_abj <- c("#102C68", "#AFCA0A", "#575756")
 # distribuicao normal -----------------------------------------------------
 p_normal1 <- ggplot2::ggplot(distribuicoes) +
   ggplot2::aes(x = normal1) +
-  ggplot2::geom_density(fill = cores_abj[1], bins = 30) +
+  ggplot2::geom_density(fill = cores_abj[1]) +
   ggplot2::ggtitle("Distribuição com baixa variabilidade") +
   ggplot2::theme(
     axis.title.x = ggplot2::element_blank()
@@ -404,7 +405,7 @@ p_normal1 <- ggplot2::ggplot(distribuicoes) +
   ggplot2::lims(x = c(-10,10), y = c(0, .45))
 p_normal2 <- ggplot2::ggplot(distribuicoes) +
   ggplot2::aes(x = normal2) +
-  ggplot2::geom_density(fill = cores_abj[1], bins = 30) +
+  ggplot2::geom_density(fill = cores_abj[1]) +
   ggplot2::ggtitle("Distribuição com alta variabilidade") +
   ggplot2::theme(
     axis.title.x = ggplot2::element_blank()
@@ -443,7 +444,7 @@ dados <- tibble::tibble(
 
 media <- mean(dados$valor)
 
-# dados |> 
+# dados |>
 #   ggplot2::ggplot(ggplot2::aes(x = id, y = valor)) +
 #   ggplot2::geom_point(color = cores_abj[1]) +
 #   ggplot2::geom_line(color = cores_abj[1]) +
@@ -451,18 +452,57 @@ media <- mean(dados$valor)
 #   ggplot2::geom_segment(ggplot2::aes(xend = id, yend = media), linetype = 2)
 
 dados |> 
-  ggplot2::ggplot(ggplot2::aes(x = valor, y = 0, label = indice)) +
+  ggplot2::ggplot(ggplot2::aes(x = factor(valor), y = 0, label = indice)) +
   ggplot2::geom_point(color = cores_abj[1]) +
   ggplot2::geom_line(color = cores_abj[1]) +
-  ggplot2::geom_vline(xintercept = media, color = "red", linetype = 2) +
-  ggplot2::geom_segment(ggplot2::aes(xend = 5, yend = 0), linetype = 2) +
+  ggplot2::geom_vline(xintercept = 3, color = "red", linetype = 2) +
   ggplot2::geom_text(vjust = -.8, hjust = -.2) +
-  ggplot2::scale_y_continuous(limits = c(-.1,.1)) +
-  ggplot2::theme(
+  ggplot2::geom_linerange(ggplot2::aes(xmin = 1, xmax = 5), linetype = 1) +
+  ggplot2::theme( 
     axis.text.y = ggplot2::element_blank(),
     axis.ticks.y = ggplot2::element_blank(),
-    axis.title.y = ggplot2::element_blank()
-  ) 
+    axis.title.y = ggplot2::element_blank(),
+    panel.grid.major.y = ggplot2::element_blank(),
+    panel.grid.minor.y = ggplot2::element_blank(),
+    panel.grid.minor.x = ggplot2::element_blank()
+  ) +
+  ggplot2::scale_y_continuous(limits = c(-1,1)) +
+  ggplot2::annotate(
+    "text", x = 3, y = .8, label = "Média", 
+    hjust = -.1, colour = "red", size = 6
+  ) +
+  ggsignif::geom_signif(
+    annotations = 1,
+    y_position = -.15,
+    xmin = 3, xmax = 4,
+    tip_length = c(-.1, -.1),
+    vjust = 3.5
+  ) +
+  ggsignif::geom_signif(
+    annotations = 1,
+    y_position = -.15,
+    xmin = 2, xmax = 3,
+    tip_length = c(-.1, -.1), 
+    vjust = 3.5
+  ) +
+  ggsignif::geom_signif(
+    annotations = 2,
+    y_position = -.35,
+    xmin = 3.02, xmax = 4.98,
+    tip_length = c(-.3, -.3),
+    color = "blue",
+    vjust = 6
+  ) +
+  ggsignif::geom_signif(
+    annotations = 2,
+    y_position = -.35,
+    xmin = 1.02, xmax = 2.98,
+    tip_length = c(-.3, -.3), 
+    color = "blue",
+    vjust = 6
+  )
+
+
 
 ```
 
@@ -483,14 +523,14 @@ tibble::tibble(
 
 Uma vez que sabemos como cada observação se desvia da média, falta sabermos uma última informação relevante. Lembrando que estamos falando de medidas sobre *conjuntos de informações*, é possível perceber que a informação da diferença é uma informação de *cada observação* e não do conjunto como um todo. Então o que podemos nos perguntar é: como eu trato das diferenças do *conjunto*, e não de cada observação? A essa pergunta a resposta é simples: basta fazer a média dos desvios, ficando $(2+1+0+1+2)/5 = 1,2$.
 
-Dessa forma podemos dizer que o nosso conjunto tem média 5 e que ele tem um desvio médio de 1,2. Essa informação que encontramos (de 1,2 de desvio médio), ainda não explica a variância, mas ela dá uma noção de que tipo de informação a variância nos indica, isso porque a lógica por trás da variância é a mesma por trás do desvio médio. 
+Dessa forma podemos dizer que o nosso conjunto tem média 5 e que ele tem um desvio médio de 1,2. Essa informação que encontramos (de 1,2 de desvio médio), ainda não explica a variância, mas ela dá uma noção de que tipo de informação a variância leva em conta, porque a lógica por trás da variância é a mesma por trás do desvio médio. 
 
 Até aqui vimos apenas uma noção intuitiva do que significam as medidas de "dispersão ao redor da média". Usamos como fio condutor para essa explicação a medida do desvio médio. Vamos, a seguir, formalizar o pensamento intuitivo, bem como desenvolver as duas outras medidas restantes, a variância e o desvio padrão. 
 
-A começar pela formalização matemática do desvio médio, é preciso notar uma operação matemática importante que fizemos ao longo da explicação. Quando comparamos a _distância_ de cada observação em relação à média, usamos a Figura \@ref(fig:distancia) para verificar essas medidas. Com isso, construímos a Tabela \@ref(tab:dados-com-desvio). O procedimento matemática que está por trás dessas etapas que seguimos é o módulo. A notação do módulo de $x$ é dada por:
+A começar pela formalização matemática do desvio médio, é preciso notar uma operação matemática importante que fizemos ao longo da explicação. Quando comparamos a _distância_ de cada observação em relação à média, usamos a Figura \@ref(fig:distancia) para verificar essas medidas. Com isso, construímos a Tabela \@ref(tab:dados-com-desvio). O procedimento matemático que está por trás dessas etapas é o __módulo__. A notação do módulo de $x$ é dada por:
 
 $$
-|x| = \left\{\begin{align}&x, \text{ se }x\geq 0,\\ -&x, \text{ se x < 0}\end{align}\right.
+|x| = \left\{\begin{align}&x, \text{ se }x\geq 0,\\ -&x, \text{ se } x < 0\end{align}\right.
 $$
 
 Então o que fizemos foi, em primeiro lugar, calcular o módulo das diferenças entre o valor e a média, podendo representar como:
@@ -505,7 +545,7 @@ $$
 desvio\:total = \sum_{i=1}^n |x_i-\bar{x}|
 $$
 
-Lembrando da notaçã do somatório, ele significa que para cada valor de $x_i$, em que $i$ pode assumir os valores de $1$ a $n$, iremos fazer o módulo da diferença entre o valor e a média, somando todos os resultados. 
+Lembrando da notação do somatório, ele significa que para cada valor de $x_i$, em que $i$ pode assumir os valores de $1$ a $n$, iremos fazer o módulo da diferença entre o valor e a média, somando todos os resultados. 
 
 Por fim, o procedimento final é calcular a média do desvio, dividindo o desvio total pelo total de observações, ou seja, realizando a seguinte conta:
 
@@ -520,7 +560,7 @@ A resposta para essa pergunta não é trivial. Se a gente calculasse o desvio to
 
 $$\frac{1}{n}\sum_{i=1}^n(x_i-\bar x)=\frac{1}{n}\sum_{i=1}^n x_i - \frac{1}{n}\sum_{i=1}^n \bar x = \bar x - \frac{n}{n}\bar x = \bar x - \bar x = 0$$
 
-Não há necessidade de se compreender toda a demonstração de que a média das diferenças é sempre igual a 0 (mas vale a pena tentar compreender esta demonstração). O que realmente precisamos entender é simplesmente que se calculássemos cada um dos desvios, sem levar em consideração o módulo, teríamos uma série de números negativos na nossa conta e esses números negativos iriam "anular" os números positivos, resultando em zero sempre. Podemos ver o o resultado disso na Tabela \@ref(tab:dados-com-diferencas).
+Não há necessidade de se compreender toda a demonstração de que a média das diferenças é sempre igual a 0 (mas vale a pena tentar!). O que realmente precisamos entender é simplesmente que se calculássemos cada um dos desvios, sem levar em consideração o módulo, teríamos uma série de números negativos na nossa conta e esses números negativos iriam "anular" os números positivos, resultando em zero sempre. Podemos ver o resultado disso na Tabela \@ref(tab:dados-com-diferencas).
 
 ```{r dados-com-diferencas, echo=FALSE}
 tibble::tibble(
@@ -536,12 +576,13 @@ tibble::tibble(
   )
 ```
 
-Então, como estávamos falando, para seguirmos adianta na explicação da variância e do desvio médio, precisávamos entender o problema de não considerar o valor absoluto (ou seja, o valor em módulo) dos números. O problema são os valores negativos. Se, para calcular o desvio médio o problema dos números negativos é resolvido pelo módulo, veremos na variância e no desvio padrão que a forma de resovler este problema é outra. Para calcular a variância, portanto, n lugar do módulo, eleva-se a diferença ao quadrado, de modo que temos a seguinte fórmula:
+Então, como estávamos falando, para seguirmos adiante na explicação da variância e do desvio médio, precisávamos entender o problema de não considerar o valor absoluto (ou seja, o valor em módulo) dos números. O problema são os valores negativos. Se, para calcular o desvio médio o problema dos números negativos é resolvido pelo módulo, veremos na variância e no desvio padrão que a forma de resovler este problema é outra. Para calcular a variância, portanto, no lugar do módulo, eleva-se a diferença ao quadrado, de modo que temos a seguinte fórmula:
 
 $$
-var(\boldsymbol{x}) = \frac{1}{n}\sum_{i=1}^n (x_i-\bar{x})²
+var(\boldsymbol{x}) = \frac{1}{n}\sum_{i=1}^n (x_i-\bar{x})^2
 $$
-Quando elevamos uma diferença ao quadrado, por mais que a diferença em si seja negativa, ela será sempre positiva, de modo que podemos observar na Tabela \@ref(tab:dados-com-diferencas2) que na coluna `Diferença ao quadrado` não há nenhum número negativo. 
+
+Quando elevamos uma diferença ao quadrado, por mais que a diferença seja negativa, o quadrado sempre será positivo, de modo que podemos observar na Tabela \@ref(tab:dados-com-diferencas2) que na coluna *Diferença ao quadrado* não há nenhum número negativo. 
 
 ```{r dados-com-diferencas2, echo=FALSE}
 tibble::tibble(
@@ -557,9 +598,10 @@ tibble::tibble(
     digits = 0
   )
 ```
-A diferença da variância para o desvio médio é simplesmente a forma como eles lidam com o problema dos valores negativos. Dessa forma, a mesma intuição que desenvolvemos para o desvio médio pode ser usada para compreender a variância, com a diferença que a variância apresenta os resultados um pouco "distorcidos" por estarem ao quadrado. Entretanto, o significado da variância ainda representa algo muito similar ao do desvio médio: a variância apresenta a dispersão dos valores ao redor da média. 
 
-Por causa dessa distorção que a variância gera ao elevar os números ao quadrado, pode parecer que o desvio médio é preferível em relação a ela. Acontece que o fato de o desvio médio se valer do módulo para ser calculado gera alguns problemas matemáticos em algumas operações. Assim, no lugar de usarmos o desvio médio, fazemos uma "correção" da variância. Já que a distorção da variância ocorreu por elevar os números ao quadrado, podemos "corrigir" essa distorção simplesmente fazendo a raiz quadrada da variância, afinal de contas, a raiz quadrada é a operação matemática oposta de elevar ao quadrado. Quando realizamos este procedimento final, de tirar a raiz quadrada da variância, obtemos o chamado _desvio padrão_ (e note a sutileza nas palavras, pois estamos falando de desvio *padrão* e não mais de desvio *médio*). A fórmula do desvio padrão é representada da seguinte maneira:
+A diferença da variância para o desvio médio é simplesmente a forma como eles lidam com o problema dos valores negativos. Dessa forma, a mesma intuição que desenvolvemos para o desvio médio pode ser usada para compreender a variância, com a diferença que a variância apresenta os resultados distorcidos por estarem ao quadrado. Entretanto, o significado da variância ainda representa algo muito similar ao do desvio médio: a variância apresenta a dispersão dos valores ao redor da média. 
+
+Por causa dessa distorção que a variância gera ao elevar os números ao quadrado, pode parecer que o desvio médio é preferível em relação a ela. Acontece que o uso do módulo no cálculo do médio gera alguns problemas matemáticos em algumas operações. Assim, no lugar de usarmos o desvio médio, fazemos uma "correção" da variância. Já que a variância altera a unidade de medida para a unidade ao quadrado, podemos voltar à dimensão anterior simplesmente fazendo a raiz quadrada da variância, afinal de contas, a raiz quadrada é a operação matemática inversa de elevar ao quadrado. Quando realizamos este procedimento final, de tirar a raiz quadrada da variância, obtemos o chamado _desvio padrão_ (e note a sutileza nas palavras, pois estamos falando de desvio *padrão* e não mais de desvio *médio*). A fórmula do desvio padrão é representada da seguinte maneira:
 
 
 $$
@@ -568,7 +610,7 @@ $$
 
 Com isso, conseguimos compreender o significado e as fórmulas matemáticas dessas duas medidas: o desvio médio e o desvio padrão, definindo, no meio do caminho, a variância. Os mais utilizados são a variância e o desvio padrão. O desvio padrão é mais popular do que o desvio médio por ser mais sensível a valores atípicos (o que geralmente é desejável aqui) e por ter algumas propriedades matemáticas de interesse na modelagem estatística. Não trataremos dessas propriedades por enquanto.
 
-Vamos antes de finalizar essa explicação das três medidas que indicam a dispersão dos dados em relação à média, dar um exemplo para dar concretude dessas medidas. O exemplo é o mesmo que vem acompanhando a gente nesta seção: o valor de avaliação dos bens alienados em processos de falência. A base usada é a base `leiloes`. Dessa vez, não vamos olhar apenas para 10 observações, mas para 483 observações da base (de um total de 1000 observações). Realizamos uma filtragem dessa base com fins didáticos apenas, para ficar mais fácil de calcular. A base se encontra na Tabela \@ref(tab:leiloes-var).
+Vamos antes de finalizar essa explicação das medidas que indicam a dispersão dos dados em relação à média, dar um exemplo para dar concretude dessas medidas. O exemplo é o mesmo que vem acompanhando a gente nesta seção: o valor de avaliação dos bens alienados em processos de falência. A base usada é a base `leiloes`. Dessa vez, não vamos olhar apenas para 10 observações, mas para 483 observações da base (de um total de 1000 observações). Realizamos uma filtragem dessa base com fins didáticos apenas, para ficar mais fácil de calcular. A base se encontra na Tabela \@ref(tab:leiloes-var).
 
 ```{r leiloes-var, echo=FALSE}
 leiloes <- abjData::leiloes
@@ -607,11 +649,16 @@ da |>
 A partir destes valores, podemos calcular o desvio médio, a variância e o desvio padrão. Tente calcular por sua conta o valor do desvio médio, da variância e do desvio padrão. Os resultados devem ser: 
 
 ```{r medidas-dispersao, echo=FALSE}
-dm <- mad(da$valor_avaliacao_inicial)
-var <- var(da$valor_avaliacao_inicial)
-sd <- sd(da$valor_avaliacao_inicial)
+# dm <- mad(da$valor_avaliacao_inicial)
+# var <- var(da$valor_avaliacao_inicial)
+# sd <- sd(da$valor_avaliacao_inicial)
 
-dados <- tibble::tibble(
+v <- da$valor_avaliacao_inicial
+dm <- mean(abs(v-mean(v)))
+var <- mean((v-mean(v))^2)
+sd <- sqrt(var)
+
+tibble::tibble(
   medidas = c(
     "desvio médio",
     "variância",
@@ -649,7 +696,7 @@ Um __quantil empírico__ é um valor que divide um conjunto de dados em determin
 
 Existe um quantil empírico para cada porcentagem que se queira. Representamos, matematicamente, cada percentil como $q(p)$, em que $p$ é a proporção desejada. Por exemplo, o quantil de 25% é o $q(0,25)$; o quantil de 78% é o $q(0,78)$; o quantil de 1% é o $q(0,01)$, e assim por diante. 
 
-Alguns quantis possuem nomes específicos. Se dividirmos os quantis em 100, cada quantil será um “percentil”. E se dividirmos o conjunto em 10 partes iguais, cada quantil será um “decil”. Ainda, se dividirmos os quantis em 4 partes iguais, cada quantil será um “quartil”. Esta última divisão é uma das divisões mais importantes. Apesar de dividirmos o conjunto em 4 partes iguais, e apesar de o nome desse quantil ser “quartil” (o que, novamente, remete à ideia de 4 partes), há apenas 3 quartis:
+Alguns quantis possuem nomes específicos. Se dividirmos os quantis em 100, cada quantil será um "percentil". E se dividirmos o conjunto em 10 partes iguais, cada quantil será um "decil". Ainda, se dividirmos os quantis em 4 partes iguais, cada quantil será um "quartil". Esta última divisão é uma das divisões mais importantes. Apesar de dividirmos o conjunto em 4 partes iguais, e apesar de o nome desse quantil ser "quartil" (o que, novamente, remete à ideia de 4 partes), há apenas 3 quartis:
 
 - quartil inferior, $q(0,25)$: Divide o conjunto no 25%, ou seja, um quarto dos dados estão abaixo deste quartil. 
 - mediana, $q(0,50)$: Divide o conjunto no 50%. É a mediana. 
@@ -723,3 +770,5 @@ abjData::leiloes |>
 Observamos neste gráfico uma altissima concentração em valores, que, por causa da escala, estão representados em cima do 0. Não é que, de fato, os valores sejam 0, mas é que, dentro de uma escala que vai até 150 milhões, a faixa de valores em que se encontram 50% dos dados é muito pequena (é uma faixa que varia de R\$ 104,00 até R\$ 3.755,00).
 
 
+
+# Modelagem
