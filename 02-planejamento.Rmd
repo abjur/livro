@@ -4,7 +4,7 @@ A primeira tarefa a se realizar em qualquer pesquisa quantitativa é o planejame
 
 No planejamento da pesquisa iremos falar dos métodos e técnicas que serão utilizadas (regressão, estudo de caso, etc), mas não podemos parar nisso. É fundamental que o planejamento de pesquisa deixe muito claro os pressupostos da pesquisa e que discorra sobre os detalhes dela. Não basta dizer, por exemplo, se o método utilizado será de regressão; é preciso dizer qual é a pergunta teórica que se está interessado em responder; e porque a regressão é um modelo adequado para responder a essa pergunta; e que variáveis serão utilizadas para representar os conceitos abstratos (operacionalização). 
 
-Para termos uma dimensão crítica do planejamento de pesquisa, precisamos tratar de alguns temas, a saber (i) qual é o papel da teoria em uma pesquisa empírica (*Teoria e Empiria*); (ii) o que difere uma pergunta jurídica, de uma pergunta jurimétrica (*Uma Pergunta de Pesquisa entre Dois Mundos*); (iii) como delimiltar o escopo da pesquisa (*Escopos do estudo*); (iv) como operacionalizar conceitos abstratos em dados concretos (*Operacionalização de Conceitos*); (v) de onde extrair dados e o que isso implica (*Dados e Tribunais*); (vi) se o estudo será amostral ou populacional e como realizar amostragens, caso seja necessário (*Amostragem e População*).
+Para termos uma dimensão crítica do planejamento de pesquisa, precisamos tratar de alguns temas, a saber (i) qual é o papel da teoria em uma pesquisa empírica (*Teoria e Empiria*); (ii) o que difere uma pergunta jurídica, de uma pergunta jurimétrica (*Uma Pergunta de Pesquisa entre Dois Mundos*); (iii) como delimiltar o escopo da pesquisa (*Escopo do Estudo*); (iv) como operacionalizar conceitos abstratos em dados concretos (*Operacionalização de Conceitos*); (v) de onde extrair dados e o que isso implica (*Dados, Tribunais e Processos de Geração de Dados*); (vi) se o estudo será amostral ou populacional e como realizar amostragens, caso seja necessário (*Amostragem e População*).
 
 ## Teoria e Empiria
 
@@ -71,9 +71,10 @@ Essa indagação epistemológica (que busca relacionar o dever ser com o ser) n�
 
 Não é o espaço deste livro discutir com mais afinco tais questões. Há, inclusive, uma lacuna muito grande no conhecimento para se discutir isso no momento. O importante é ter em mente que: a pessoa que pretender realizar uma pesquisa jurimétrica deve ter consciência de que as perguntas que ela pode responder por meio de métodos quantitativos talvez não respondam às suas indagações normativas. Essa consciência é importante para determinar se o desenho de pesquisa deverá envolver métodos empíricos quantitativos ou não. Para os fins deste livro, iremos trabalhar apenas com questões que necessariamente envolvem tais métodos, mas na prática do dia a dia, é possível que nem todos os questionamentos possam ser respondidos por métodos quantitativos. Essa limitação não é um problema, pois há muito o que pode ser respondido por esses métodos já.  
 
-## Escopo do estudo
+## Escopo do Estudo
 
 Outra etapa do desenho de pesquisa é a delimitação do escopo do estudo. Há duas dimensões a que devemos nos atentar ao delimitar o escopo do estudo: a dimensão temporal e a dimensão geográfica. Temos que fazer essa delimitação porque, caso contrário, a pesquisa pode tornar-se inviável. Há duas dificuldades que podem inviabilizar a realização da pesquisa caso não haja um escopo bem definido. Primeiro, há um problema prático, de que é muito difícil obter dados para escopos muito amplos. E em segundo lugar, escopos muito largos, tanto geográfica, como temporalmente, podem tornar a variabilidade nos dados muito grandes, dificultando o seu controle na pesquisa. 
+
 ### Escopo temporal
 
 Da dimensão temporal, há dois tipos de estudos possíveis. De um lado, temos estudos prospectivos; do outro, temos estudos retrospectivos. Estudo prospectivo é o estudo que acompanha o processo judicial desde a data de distribuição até o fim. O fim pode ser marcado pela data da sentença, acórdão, ou outro evento de interesse. Ou seja, os casos são indexados pela data de nascimento, e acompanhados até a data de sua morte. Em muitos casos, os processos ainda não atingiram o fim no momento da realização do estudo.
@@ -108,7 +109,7 @@ Além da conveniência de se escolher um TJ com familiaridade, é muito importan
 
 Todas essas questões devem ser registradas ao se escolher o escopo geográfico de pesquisa. Apesar de que escolhas de conveniência não sejam as mais recomendadas, na prática, são elas que guiam a delimitação do escopo geográfico. Desde que essa escolha seja fundamentada e reportada, não há problema nisso. Mas sempre que for possível utilizar outro critério para determinar o escopo, melhor não utilizar um critério de conveniência. 
 
-### Operacionalização de Conceitos
+## Operacionalização de Conceitos
 
 Normalmente, as questões teóricas que nos interessam são formuladas em termos abstratos e conceituais, tais como: insegurança jurídica, independência do judiciário, pacificação de conflito social, eficiência, eficácia. A teoria se elabora em cima de conceitos, e conceitos não são visíveis, públicos, confrontáveis, observáveis. Assim, para se analisar empiricamente um conceito, uma grande questão aparece: como *representar* os conceitos de interesse a partir da realidade? 
 

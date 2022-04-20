@@ -14,7 +14,6 @@ abjData::leiloes |>
   )
 
 
-
 # exemplo calculando os 3 valores de dispersão ----------------------------
 
 # a base que vamos usar
@@ -29,7 +28,9 @@ da <- leiloes |>
   ) |>
   dplyr::sample_n(10) |>
   dplyr::select(descricao, valor_avaliacao_inicial) |>
-  dplyr::mutate(desvio = round(valor_avaliacao_inicial - mean(valor_avaliacao_inicial),2))
+  dplyr::mutate(diferenca = round(valor_avaliacao_inicial - mean(valor_avaliacao_inicial),2)) |>
+  dplyr::arrange(valor_avaliacao_inicial) |>
+  dplyr::mutate(descricao = paste("bem", 1:10))
 
 mean(da$valor_avaliacao_inicial)
 mad(da$valor_avaliacao_inicial)
