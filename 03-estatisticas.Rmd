@@ -45,7 +45,7 @@ Uma *observação*, então, como vimos, possui várias características. Todas e
 
 As variáveis podem pertencer a dois grupos: variáveis qualitativas (ou categóricas) ou variáveis quantitativas. As variáveis categóricas se subdividem ainda em nominais e ordinais; já as variáveis quantitativas podem ser do tipo discretas ou contínuas. 
 
-### Variáveis qualitativas (categóricas)
+### Variáveis qualitativas/categóricas
 
 Todas as variáveis qualitativas representam algum tipo de categoria (por isso também chamamos essas variáveis de "categóricas"). Há dois tipos de variáveis categóricas, as nominais e as ordinais. As variáveis nominais são categorias de nomes, categorias sem ordenação possível. Já as variáveis ordinais representam categorias com algum tipo de ordenação universal, com algum *ranking* possível. O critério de distinção entre essas duas variáveis é a possibilidade de *ordenação universal* das respostas possíveis.
 
@@ -85,6 +85,8 @@ A seguir, temos alguns exemplos se algumas variáveis são discretas ou contínu
 
 Antes de prosseguir para as medidas desses dados, devemos fazer algumas considerações. 
 
+#### Consideração 1: Cuidados ao se representar numericamente variáveis categóricas ordinais
+
 O primeiro ponto a se destacar é sobre a representação numérica de variáveis categóricas ordinais. Vamos usar o exemplo de uma proposta do Center for *Court Innovation* de Nova Iorque[^newyork]. Uma das iniciativas desse centro foi tornar os tribunais de Nova Iorque mais "amigáveis". Uma das técnicas propostas para tanto foram os Questionários de Satisfação sobre a prestação jurisdicional. O Quadro \@ref(def:perguntas-satisfacao) resume algumas das perguntas do questionário elaborado pelo *Centro*. 
 
 [^newyork]: CENTER FOR COURT INNOVATION. __Can Courts Be More User-Friendly? How Satisfaction Surveys Can Promote Trust and Access to Justice__. 2020. Disponível em: https://www.courtinnovation.org/sites/default/files/media/document/2020/CCI_FactSheet_SatisfactionSurveys_04202020.pdf 
@@ -118,6 +120,8 @@ O que queremos é discutir uma proposta de substituição dessas respostas para 
 - Discordo fortemente: 5
 
 Essa transformação deve ser feita com cuidado. Por um lado, esse tipo de alteração não altera a ordenação dessas respostas. Entretanto, por outro lado, a representação numérica das categorias ordinais adiciona uma informação aos dados que não é verdadeira: a intensidade. O que estamos dizendo é que os números guardam, não só uma ordenação universal entre si, assim como as variáveis categóricas ordinais, mas eles guardam uma relação de intensidade entre si, algo que as variáveis categóricas ordinais não possuem. Assim, enquanto podemos dizer que o número 2 é o dobro do número 1, não podemos estabelecer essa relação entre as categorias "concordo" e "concordo totalmente". 
+
+#### Consideração 2: As variáveis *dummies*
 
 A segunda consideração que queremos fazer diz respeito à transformação das categorias nominais em variáveis *dummies*. Vamos tomar outro caso como exemplo para esta discussão. 
 
@@ -181,6 +185,8 @@ Não existe um repertório de medidas muito amplo para resumirmos variáveis cat
 
 Por meio da *contagem* nós conseguimos *tabular* as respostas das variáveis categóricas, contando a sua frequência e, posteriormente, a proporção e porcentagem de cada categoria. A informação principal que temos é a frequência, pois é a partir dela que podemos pensar nas demais informações. Para além da frequência absoluta, temos também a frequência acumulada, a proporção, a proporção acumulada e a porcentagem.
 
+A frequência é simplesmente a contagem de cada categoria. A frequência acumulada é a contagem de uma categoria somada com as categorias anteriormente contadas, de modo que a contagem da categoria final seja a soma total de todas as categorias. A proporção é a representação da contagem de uma categoria em relação a todas as observações. A proporção acumulada segue a mesma ideia da frequência acumulada, sendo a proporção de cada categoria, somada à proporção de todas as categorias anteriormente calculadas. Por fim, a porcentagem é simplesmente a proporção vezes 100.
+
 Como exemplo, podemos olhar para a base de dados da ABJ sobre leilões nas falências em São Paulo, em que encontramos a Tabela \@ref(tab:leiloes-contagens).
 
 ```{r leiloes-contagens, echo=FALSE}
@@ -192,6 +198,7 @@ abjData::leiloes |>
     prop_acu = cumsum(prop),
     porc = scales::percent(prop)
   ) |> 
+  dplyr::add_row(modalidade = "total", n = 1000, acu = NA_integer_, prop = 1.00, prop_acu = NA_integer_, porc = "100%") |> 
   knitr::kable(
     caption = "Tabela de frequências da modalidade do leilão.",
     col.names = c(
@@ -201,7 +208,7 @@ abjData::leiloes |>
   )
 ```
 
-A variável que está sendo resumida é a variável "modalidade", que indica se a falência foi ou não foi decretada. Há três respostas possíveis: "leilão", "pregão", ou "proposta fechada". Ao olharmos para todos os processos, podemos então realizar a contagem de cada uma dessas categorias. A partir da contagem, criamos a coluna de "frequência". A partir da frequência, nós criamos as próximas colunas, a saber, a frequência acumulada, a proporção, a proporção acumulada e a porcentagem. 
+A variável que está sendo resumida é a variável "modalidade", que indica se a falência foi ou não foi decretada. Há três respostas possíveis: "leilão", "pregão", ou "proposta fechada". Ao olharmos para todos os processos, podemos então realizar a contagem de cada uma dessas categorias. A partir da contagem, criamos a coluna de "frequência". A partir da frequência, nós criamos as próximas colunas, a saber, a frequência acumulada, a proporção, a proporção acumulada e a porcentagem. Note que as colunas "acumuladas" (isto é, as colunas de frequência acumulada e de proporção acumulada) não possuem um "total", pois o total já está expresso na última categoria.
 
 ### Medidas de resumo para variáveis quantitativas
 
@@ -364,7 +371,7 @@ Grupo D (variável W):	1	5 5 6 8
 Grupo E (variável V):	3	5 5 6 6
 ```
 
-Ao calcularmos a média desses 5 grupos, percebemos que todos possuem uma média 5,0. Entretanto, claramente os conjuntos são diferentes. A diferença que estes conjuntos apresentam não pode ser captada pelas medidas de centro. É por esta razão que utilizamos as medidas de dispersão. Há quatro medidas importantes aqui: amplitude, desvio médio, o desvio padrão e o intervalo inter-quartis, também chamado de IQR.
+Ao calcularmos a média desses 5 grupos, percebemos que todos possuem uma média 5,0. Entretanto, claramente os conjuntos são diferentes. A diferença que estes conjuntos apresentam não pode ser captada pelas medidas de centro. É por esta razão que utilizamos as medidas de dispersão. Há quatro medidas importantes aqui: amplitude, desvio médio, desvio padrão e intervalo inter-quartis, também chamado de IQR.
 
 ##### Amplitude
 
@@ -378,7 +385,7 @@ A amplitude é uma medida simples de ser calculada, entretanto, ela não consegu
 
 ##### Medidas de dispersão ao redor da média: desvio padrão e desvio médio
 
-As duas medidas indicam a dispersão dos valores em torno da média. Ou seja, tomando a média (e não qualquer medida de centro) como referencial, essas duas medidas indicam como os dados variam ao seu redor. As observações estão concentradas ao redor da média? Ou elas estão dispersas e longe umas das outras? A Figura \@ref(fig:normal-sd) mostra dois exemplo de conjuntos de dados com a mesma média, mas com dispersões das observações em torno da média totalmente diferentes. No primeiro gráfico, as observações estão concentradas; no segundo, elas estão dispersas. Observamos, ao compararmos estes dois gráficos, como que as medidas de centro não conseguem explicar as distribuições dos conjuntos muito bem, quando isoladas, mas quando combinadas com as medidas de dispersão, conseguimos descrever muito melhor os conjuntos. 
+As duas medidas que estudaremos a seguir indicam a dispersão dos valores em torno da média. Ou seja, tomando a média (e não qualquer medida de centro) como referencial, essas duas medidas indicam como os dados variam ao redor do centro. Algumas perguntas importantes que essas medidas nos ajudam a compreender são: As observações estão concentradas ao redor da média? Ou elas estão dispersas e longe umas das outras? A Figura \@ref(fig:normal-sd) mostra dois exemplo de conjuntos de dados com a mesma média, mas com dispersões das observações em torno da média totalmente diferentes. No primeiro gráfico, as observações estão concentradas; no segundo, elas estão dispersas. Observamos, ao compararmos estes dois gráficos, como que as medidas de centro não conseguem explicar as distribuições dos conjuntos muito bem, quando isoladas, mas quando combinadas com as medidas de dispersão, conseguimos descrever muito melhor os conjuntos. 
 
 
 ```{r normal-sd, echo=FALSE, warning=FALSE, fig.cap="Duas distribuições com mesma média e variabilidades distintas.", fig.height=3, fig.width=8}
@@ -521,25 +528,28 @@ tibble::tibble(
   )
 ```
 
-Uma vez que sabemos como cada observação se desvia da média, falta sabermos uma última informação relevante. Lembrando que estamos falando de medidas sobre *conjuntos de informações*, é possível perceber que a informação da diferença é uma informação de *cada observação* e não do conjunto como um todo. Então o que podemos nos perguntar é: como eu trato das diferenças do *conjunto*, e não de cada observação? A essa pergunta a resposta é simples: basta fazer a média dos desvios, ficando $(2+1+0+1+2)/5 = 1,2$.
+Uma vez que sabemos como cada observação se desvia da média, falta sabermos uma última informação relevante. Lembrando que estamos falando de medidas sobre *conjuntos de informações*, é possível perceber que a informação da diferença é uma informação de *cada observação* e não do conjunto como um todo. Percebemos isso porque para cada índice ($x_1$, $x_2$, $x_3$, $...$), temos uma única medida de desvio. A partir disso, o que podemos nos perguntar é: como eu trato das diferenças do *conjunto*, e não de cada observação? A essa pergunta a resposta é simples: basta fazer a média dos desvios, ficando $(2+1+0+1+2)/5 = 1,2$.
 
 Dessa forma podemos dizer que o nosso conjunto tem média 5 e que ele tem um desvio médio de 1,2. Essa informação que encontramos (de 1,2 de desvio médio), ainda não explica a variância, mas ela dá uma noção de que tipo de informação a variância leva em conta, porque a lógica por trás da variância é a mesma por trás do desvio médio. 
 
-Até aqui vimos apenas uma noção intuitiva do que significam as medidas de "dispersão ao redor da média". Usamos como fio condutor para essa explicação a medida do desvio médio. Vamos, a seguir, formalizar o pensamento intuitivo, bem como desenvolver as duas outras medidas restantes, a variância e o desvio padrão. 
+Até aqui vimos apenas uma noção intuitiva do que significam as medidas de "dispersão ao redor da média". Usamos como fio condutor para essa explicação a medida do desvio médio. Vamos, a seguir, formalizar o pensamento intuitivo, bem como desenvolver a outra medida restante o desvio padrão (e veremos que para chegar no desvio médio, precisamos explicar a variância antes).
 
 A começar pela formalização matemática do desvio médio, é preciso notar uma operação matemática importante que fizemos ao longo da explicação. Quando comparamos a _distância_ de cada observação em relação à média, usamos a Figura \@ref(fig:distancia) para verificar essas medidas. Com isso, construímos a Tabela \@ref(tab:dados-com-desvio). O procedimento matemático que está por trás dessas etapas é o __módulo__. A notação do módulo de $x$ é dada por:
 
 $$
 |x| = \left\{\begin{align}&x, \text{ se }x\geq 0,\\ -&x, \text{ se } x < 0\end{align}\right.
 $$
+O módulo é usado para calcular distâncias até certos pontos. Essas distâncias nunca podem ser negativas. O que queremos são *valores absolutos*, ou seja, queremos apenas o número que indica a distância, sem considerar o sinal (positivo ou negativo). 
 
-Então o que fizemos foi, em primeiro lugar, calcular o módulo das diferenças entre o valor e a média, podendo representar como:
+Então o que fizemos quando construímos a Figura \@ref(fig:distancia) foi representar graficamente o módulo das diferenças entre o valor e a média. Em seguida, computamos essas distâncias na Tabela \@ref(tab:dados-com-desvio). Em termos matemáticos, fizemos a seguinte operação:
 
 $$
 desvio = |x-\bar{x}|
 $$
 
-Ou seja, a notação do desvio é o módulo da diferença entre a observação $x$ e a média do conjunto $\bar{x}$. Calculamos o desvio para cada uma das observações, e somamos o desvio total. Podemos representar essa segunda etapa (de somar todos os desvio) por meio do somatório:
+A partir dessa operação, podemos formalizar um pouco o pensamento. O que construímos até aqui foi a notação matemática do conceito de desvio. Essa notação representa o módulo da diferença entre a observação $x$ e a média do conjunto $\bar{x}$. 
+
+Devemos notar que calculamos os desvios **para cada** observação. A partir disso, somamos todos os desvios. Essas etapas (de calcular um desvio **para cada** observação, seguido de somar cada um desses desvios em um "desvio total), são representadas matematicamente por meio do somatório:
 
 $$
 desvio\:total = \sum_{i=1}^n |x_i-\bar{x}|
@@ -547,14 +557,14 @@ $$
 
 Lembrando da notação do somatório, ele significa que para cada valor de $x_i$, em que $i$ pode assumir os valores de $1$ a $n$, iremos fazer o módulo da diferença entre o valor e a média, somando todos os resultados. 
 
-Por fim, o procedimento final é calcular a média do desvio, dividindo o desvio total pelo total de observações, ou seja, realizando a seguinte conta:
+Por fim, o procedimento final que realizamos na explicação intuitiva foi calcular a média do desvio total, isto é, pegamos o desvio total e dividimos pelo total de observações. De modo mais formalizado, o que fizemos foi a seguinte conta:
 
 $$
 dm(\boldsymbol{x}) = \frac{1}{n}\sum_{i=1}^n |x_i-\bar{x}|
 $$
 Esta é a fórmula do desvio médio de $x$, ou simplesmente, $dm(x)$. 
 
-Para seguirmos adiante com a explicação da variãncia e do desvio médio, tem uma questão importante que devemos nos fazer: porque devemos somar o módulo das diferenças e não apenas as diferenças, ou seja, porque a conta para o desvio médio não foi simplesmente $\frac{1}{n}\sum_{i=1}^n (x_i-\bar{x})$?
+Para seguirmos adiante com a explicação do desvio médio (e da variância), tem uma questão importante que devemos nos fazer: porque devemos somar o módulo das diferenças e não apenas as diferenças, ou seja, porque a conta para o desvio médio não foi simplesmente $\frac{1}{n}\sum_{i=1}^n (x_i-\bar{x})$?
 
 A resposta para essa pergunta não é trivial. Se a gente calculasse o desvio total pela soma das diferenças (e não pela soma do módulos das diferenças), depois esbarraríamos em um problema ao calcular a média desse desvio. O problema é que a média das diferenças é sempre zero. A prova matemática disso é:
 
@@ -569,6 +579,7 @@ tibble::tibble(
   desvio = (valor - 5)*sign(valor - 5),
   diferenca = valor - 5
 ) |> 
+  dplyr::add_row(indice = "total", valor = NA_integer_, desvio = 6, diferenca = 0) |> 
   knitr::kable(
     caption = "Comparação dos desvios com as diferenças",
     col.names = c("Índice", "Valor", "Desvio", "Diferença"), 
@@ -576,7 +587,7 @@ tibble::tibble(
   )
 ```
 
-Então, como estávamos falando, para seguirmos adiante na explicação da variância e do desvio médio, precisávamos entender o problema de não considerar o valor absoluto (ou seja, o valor em módulo) dos números. O problema são os valores negativos. Se, para calcular o desvio médio o problema dos números negativos é resolvido pelo módulo, veremos na variância e no desvio padrão que a forma de resovler este problema é outra. Para calcular a variância, portanto, no lugar do módulo, eleva-se a diferença ao quadrado, de modo que temos a seguinte fórmula:
+Então, como estávamos falando, para seguirmos adiante na explicação do desvio médio (e da variância), precisávamos entender o problema de não considerar o valor absoluto (ou seja, o valor em módulo) dos números. *O problema são os valores negativos*. Se, para calcular o desvio médio o problema dos números negativos é resolvido pelo módulo, veremos na variância e no desvio padrão que a forma de resovler este problema é outra. No lugar do módulo, calculamos a diferença ao quadrado. Apenas trocando o módulo pelo quadrado do fórmula do desvio médio, encontramos a fórmula da variância, conforme observamos na seguinte equação:
 
 $$
 var(\boldsymbol{x}) = \frac{1}{n}\sum_{i=1}^n (x_i-\bar{x})^2
@@ -601,16 +612,18 @@ tibble::tibble(
 
 A diferença da variância para o desvio médio é simplesmente a forma como eles lidam com o problema dos valores negativos. Dessa forma, a mesma intuição que desenvolvemos para o desvio médio pode ser usada para compreender a variância, com a diferença que a variância apresenta os resultados distorcidos por estarem ao quadrado. Entretanto, o significado da variância ainda representa algo muito similar ao do desvio médio: a variância apresenta a dispersão dos valores ao redor da média. 
 
-Por causa dessa distorção que a variância gera ao elevar os números ao quadrado, pode parecer que o desvio médio é preferível em relação a ela. Acontece que o uso do módulo no cálculo do médio gera alguns problemas matemáticos em algumas operações. Assim, no lugar de usarmos o desvio médio, fazemos uma "correção" da variância. Já que a variância altera a unidade de medida para a unidade ao quadrado, podemos voltar à dimensão anterior simplesmente fazendo a raiz quadrada da variância, afinal de contas, a raiz quadrada é a operação matemática inversa de elevar ao quadrado. Quando realizamos este procedimento final, de tirar a raiz quadrada da variância, obtemos o chamado _desvio padrão_ (e note a sutileza nas palavras, pois estamos falando de desvio *padrão* e não mais de desvio *médio*). A fórmula do desvio padrão é representada da seguinte maneira:
+Por causa dessa distorção que a variância gera ao elevar os números ao quadrado, pode parecer que o desvio médio é preferível em relação a ela. Acontece que o uso do módulo no cálculo da medida gera alguns problemas matemáticos em algumas operações. Assim, não usamos nem o desvio médio (por usar o módulo) e nem a variância (por estar um pouco distorcida pelos números ao quadrado). No lugar dessas medidas, fazemos uma "correção" da variância. Já que a variância altera a unidade de medida para a unidade ao quadrado, podemos voltar à dimensão anterior simplesmente fazendo a raiz quadrada da variância. Afinal de contas, a raiz quadrada é a operação matemática inversa de elevar ao quadrado. Quando realizamos este procedimento final, de tirar a raiz quadrada da variância, obtemos o chamado _desvio padrão_ (e note a sutileza nas palavras, pois estamos falando de desvio *padrão* e não mais de desvio *médio*). A fórmula do desvio padrão é representada da seguinte maneira:
 
 
 $$
 dp(\boldsymbol x) = \sqrt{var(\boldsymbol x)} = \sqrt{\frac{1}{n}\sum_{i=1}^n\left(x-\bar x\right)^2}
 $$
 
-Com isso, conseguimos compreender o significado e as fórmulas matemáticas dessas duas medidas: o desvio médio e o desvio padrão, definindo, no meio do caminho, a variância. Os mais utilizados são a variância e o desvio padrão. O desvio padrão é mais popular do que o desvio médio por ser mais sensível a valores atípicos (o que geralmente é desejável aqui) e por ter algumas propriedades matemáticas de interesse na modelagem estatística. Não trataremos dessas propriedades por enquanto.
+Fica bem claro pela fórmula do desvio padrão que ele é simplesmente a raíz quadrada da variância. Exatamente por guardar essa relação intrínseca com a variância, é que precisávamos explicá-la antes de explicar o desvio padrão. 
 
-Vamos antes de finalizar essa explicação das medidas que indicam a dispersão dos dados em relação à média, dar um exemplo para dar concretude dessas medidas. O exemplo é o mesmo que vem acompanhando a gente nesta seção: o valor de avaliação dos bens alienados em processos de falência. A base usada é a base `leiloes`. Dessa vez, não vamos olhar apenas para 10 observações, mas para 483 observações da base (de um total de 1000 observações). Realizamos uma filtragem dessa base com fins didáticos apenas, para ficar mais fácil de calcular. A base se encontra na Tabela \@ref(tab:leiloes-var).
+Com esta última fórmula, conseguimos compreender o significado e as notações matemáticas das duas medidas de dispersão ao redor da média que nos propusemos a discutir: o desvio médio e o desvio padrão (definindo, no meio do caminho, a variância). Dessas medidas, as mais mais utilizadas são a variância e o desvio padrão. O desvio padrão é mais popular do que o desvio médio por ser mais sensível a valores atípicos (o que geralmente é desejável aqui) e por ter algumas propriedades matemáticas de interesse na modelagem estatística. Não trataremos dessas propriedades por enquanto.
+
+Vamos antes de finalizar essa explicação das medidas que indicam a dispersão dos dados em relação à média, dar um exemplo para dar concretude dessas medidas, pois os conceitos apresentados são difíceis. O exemplo é o mesmo que vem acompanhando a gente nesta seção: o valor de avaliação dos bens alienados em processos de falência. A base usada é a base `leiloes`. Dessa vez, não vamos olhar apenas para 10 observações, mas para 483 observações da base (de um total de 1000 observações). Realizamos uma filtragem dessa base com fins didáticos apenas, para ficar mais fácil de calcular. A base se encontra na Tabela \@ref(tab:leiloes-var).
 
 ```{r leiloes-var, echo=FALSE}
 leiloes <- abjData::leiloes
@@ -768,7 +781,5 @@ abjData::leiloes |>
 ```
 
 Observamos neste gráfico uma altissima concentração em valores, que, por causa da escala, estão representados em cima do 0. Não é que, de fato, os valores sejam 0, mas é que, dentro de uma escala que vai até 150 milhões, a faixa de valores em que se encontram 50% dos dados é muito pequena (é uma faixa que varia de R\$ 104,00 até R\$ 3.755,00).
-
-
 
 # Modelagem
