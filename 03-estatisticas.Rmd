@@ -354,7 +354,6 @@ p_uniforme <- ggplot2::ggplot(distribuicoes) +
   ggplot2::ggtitle("Distribuição Uniforme") +
   ggplot2::xlab("x")
 
-
 p_normal + p_bimodal + p_multimodal + p_uniforme
 
 ```
@@ -442,7 +441,7 @@ knitr::kable(
 
 Uma pergunta que podemos fazer sobre esse conjunto, mas que ainda não fizemos, é: o quão distante da média está cada uma das observações? A partir disso, podemos discutir, por exemplo, que número está mais próximo da média $5$, $x_4=6$ ou $x_5=7$? Para responder a essa pergunta, vamos olhar para a Figura \@ref(fig:distancia):
 
-```{r distancia, echo=FALSE, fig.cap="Distância dos dados em relação à média"}
+```{r distancia, echo=FALSE, fig.cap="Distância, message=FALSE, warning=FALSE}
 dados <- tibble::tibble(
   indice = stringr::str_glue("x{1:5}"),
   id = c(1:5),
@@ -450,13 +449,6 @@ dados <- tibble::tibble(
 ) 
 
 media <- mean(dados$valor)
-
-# dados |>
-#   ggplot2::ggplot(ggplot2::aes(x = id, y = valor)) +
-#   ggplot2::geom_point(color = cores_abj[1]) +
-#   ggplot2::geom_line(color = cores_abj[1]) +
-#   ggplot2::geom_hline(yintercept = media, color = "red", linetype = 2) +
-#   ggplot2::geom_segment(ggplot2::aes(xend = id, yend = media), linetype = 2)
 
 dados |> 
   ggplot2::ggplot(ggplot2::aes(x = factor(valor), y = 0, label = indice)) +
@@ -475,8 +467,8 @@ dados |>
   ) +
   ggplot2::scale_y_continuous(limits = c(-1,1)) +
   ggplot2::annotate(
-    "text", x = 3, y = .8, label = "Média", 
-    hjust = -.1, colour = "red", size = 6
+    "text", x = 3, y = .8, label = "média = 5", 
+    hjust = -.1, colour = "red", size = 4
   ) +
   ggsignif::geom_signif(
     annotations = 1,
@@ -507,7 +499,8 @@ dados |>
     tip_length = c(-.3, -.3), 
     color = "blue",
     vjust = 6
-  )
+  ) +
+  ggplot2::xlab("valor")
 
 
 

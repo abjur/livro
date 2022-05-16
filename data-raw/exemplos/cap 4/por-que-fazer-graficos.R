@@ -34,15 +34,20 @@ da_resumo <- da |>
     `média` = mean(valor),
     `desvio padrão` = sd(valor),
     `mínimo` = min(valor),
-    `quantil inferior` = quantile(valor, 0.25),
+    `quartil inferior` = quantile(valor, 0.25),
     `mediana` = median(valor),
-    `quantil superior` = quantile(valor, 0.75),
+    `quartil superior` = quantile(valor, 0.75),
     `máximo` = max(valor)
+    ) |>
+  dplyr::mutate(dplyr::across(
+    everything(),
+    ~round(.x, 2))
     ) |>
   tibble::rownames_to_column() |>
   dplyr::mutate(rowname = "valores") |>
   tidyr::pivot_longer(!rowname, names_to = "medidas", values_to = "valores") |>
   tidyr::pivot_wider(names_from = "rowname", values_from = "valores")
+  dplyr::mutate(valores = abjutils::reais(valores))
 
 da_resumo |>
   knitr::kable(

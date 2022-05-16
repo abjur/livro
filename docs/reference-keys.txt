@@ -56,3 +56,6 @@ amplitude
 medidas-de-dispersão-ao-redor-da-média-desvio-padrão-e-desvio-médio
 interquartile-range-iqr-e-os-quantis-empíricos
 modelagem
+variáveis-qualitativascategóricas
+consideração-1-cuidados-ao-se-representar-numericamente-variáveis-categóricas-ordinais
+consideração-2-as-variáveis-dummies
