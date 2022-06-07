@@ -774,5 +774,3 @@ abjData::leiloes |>
 ```
 
 Observamos neste gráfico uma altissima concentração em valores, que, por causa da escala, estão representados em cima do 0. Não é que, de fato, os valores sejam 0, mas é que, dentro de uma escala que vai até 150 milhões, a faixa de valores em que se encontram 50% dos dados é muito pequena (é uma faixa que varia de R\$ 104,00 até R\$ 3.755,00).
-
-# Modelagem

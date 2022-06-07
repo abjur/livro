@@ -695,3 +695,5 @@ consumo |>
 ##### Boxplot
 
 (em construção)
+
+# Modelagem

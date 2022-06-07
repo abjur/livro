@@ -75,7 +75,6 @@ medidas-de-dispersão
 amplitude
 medidas-de-dispersão-ao-redor-da-média-desvio-padrão-e-desvio-médio
 interquartile-range-iqr-e-os-quantis-empíricos
-modelagem
 visualizacao
 para-que-servem-visualizações
 detetive-de-dados---análise-exploratória-de-dados
@@ -92,3 +91,4 @@ visualizações-de-variáveis-quantitativas
 gráficos-univariados-1
 histograma
 boxplot
+modelagem
