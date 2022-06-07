@@ -13,7 +13,7 @@ fontsize: '12pt'
 colorlinks: yes 
 toc-title: "Sumário"
 site: bookdown::bookdown_site
-description: "Relatório de pesquisa sobre o Observatório da Insolvência."
+description: "Livro de jurimetria."
 ---
 
 ```{r setup, include = FALSE}

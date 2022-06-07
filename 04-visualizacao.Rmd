@@ -13,7 +13,7 @@ Vamos começar essa discussão com uma citação importante, retirada do livro T
 > Representações gráficas são uma ferramenta excepcional para a análise de dados. A razão disso está bem resumida em uma sentença de uma carta de 1982 escrita pelo senhor W. Edwards Deming a mim: “Os métodos gráficos podem reter a informação nos dados”. Procedimentos numéricos de análise de dados – tais como a média, o desvio padrão, coeficientes de correlação e teste-t – são essencialmente técnicas de redução dos dados. Os métodos gráficos complementam essas técnicas. Os métodos gráficos tendem a mostrar conjuntos de dados como um todo, permitindo-nos resumir o comportamento geral e estudar o detalhe. Isso nos leva a uma análise de dados mais minuciosa. 
 > Uma razão para as representações gráficas conseguirem reter as informações dos dados é que uma grande quantidade de informação quantitativa pode ser exibida e absorvida[^cleveland]
 
-[^clevelant]: Cleveland, 1985, pp. 9-10, tradução livre, grifos no original. 
+[^cleveland]: Cleveland, 1985, pp. 9-10, tradução livre, grifos no original. 
 
 Para dar um exemplo do que significa conseguir exibir e absorver informações quantitativas, e para explicar também o que significa "técnicas de redução de dados", vamos olhar para um exemplo, no qual nós comparamos três formas de apresentar os mesmos dados. Os dados expostos dizem respeito aos valores das causas de ações de consumo. 
 
@@ -59,7 +59,7 @@ da_resumo <- da |>
   tibble::rownames_to_column() |>
   dplyr::mutate(rowname = "valores") |>
   tidyr::pivot_longer(!rowname, names_to = "medidas", values_to = "valores") |>
-  tidyr::pivot_wider(names_from = "rowname", values_from = "valores")
+  tidyr::pivot_wider(names_from = "rowname", values_from = "valores") |> 
   dplyr::mutate(valores = abjutils::reais(valores))
 
 da_resumo |>
@@ -416,9 +416,9 @@ ggplot2::ggplot() +
 
 ```
 
-A segunda nova comparação possível é aquela em que fixamos a variável explicativa, ou seja, a variável de quebra, e a analisamos através de todas as categorias de interesse. Vemos um exemplo disto na Figura \@ref(fig:highlight-bivar), em que olhamos para o tipo de litígio “PF-nPF” para todos os três tipos de desfechos possíveis das decisões de segunda instância. 
+A segunda nova comparação possível é aquela em que fixamos a variável explicativa, ou seja, a variável de quebra, e a analisamos através de todas as categorias de interesse. Vemos um exemplo disto na Figura \@ref(fig:highlight-bivar2), em que olhamos para o tipo de litígio “PF-nPF” para todos os três tipos de desfechos possíveis das decisões de segunda instância. 
 
-```{r highlight-bivar, fig.cap="Contagens de reforma/não reforma e configuração das partes."}
+```{r highlight-bivar2, fig.cap="Contagens de reforma/não reforma e configuração das partes."}
 consumo2 <- consumo |>
   dplyr::count(dec_val, tipo_litigio) |>
   dplyr::transmute(
@@ -622,7 +622,7 @@ A partir desses três histogramas, podemos tirar as seguintes propriedades:
 
 Por fim, podemos nos atentar à última questão com os histogramas: problemas de visualização e a transformação dos dados. O que acontece é que muitas variáveis possuem uma distribuição muito assimétrica, de forma que existem muitos valores concentrados em um pico e pouquíssimos valores dispersos em uma grande amplitude. Isso é extremamente frequente em todos os dados envolvendo valores. Até agora, estávamos usando como exemplo apenas gráficos com tempos, justamente porque as visualizações com valores são muito difíceis. Na Figura \@ref(fig:histograma-valor-2), temos um exemplo do que acontece com os valores na base de dados de consumo. 
 
-```{r histograma-valor-2, fig.lab='Histograma de valores'}
+```{r histograma-valor-2, fig.cap='Histograma de valores'}
 options(scipen = 999)
 consumo |>
   ggplot2::ggplot() +
