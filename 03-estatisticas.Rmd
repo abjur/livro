@@ -441,7 +441,7 @@ knitr::kable(
 
 Uma pergunta que podemos fazer sobre esse conjunto, mas que ainda não fizemos, é: o quão distante da média está cada uma das observações? A partir disso, podemos discutir, por exemplo, que número está mais próximo da média $5$, $x_4=6$ ou $x_5=7$? Para responder a essa pergunta, vamos olhar para a Figura \@ref(fig:distancia):
 
-```{r distancia, echo=FALSE, fig.cap="Distância, message=FALSE, warning=FALSE}
+```{r distancia, echo=FALSE, fig.cap="Distância", message=FALSE, warning=FALSE}
 dados <- tibble::tibble(
   indice = stringr::str_glue("x{1:5}"),
   id = c(1:5),

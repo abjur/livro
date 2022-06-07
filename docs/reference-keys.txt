@@ -41,9 +41,11 @@ viés-e-erro-na-amostragem
 tamanho-da-amostra
 estatisticas
 olhando-para-as-observações
-variáveis-qualitativas-categóricas
+variáveis-qualitativascategóricas
 variáveis-quantitativas
 considerações-sobre-os-tipos-de-dados
+consideração-1-cuidados-ao-se-representar-numericamente-variáveis-categóricas-ordinais
+consideração-2-as-variáveis-dummies
 olhando-para-o-conjunto-das-observações
 medidas-de-resumo-para-variáveis-categóricas
 medidas-de-resumo-para-variáveis-quantitativas
@@ -56,6 +58,3 @@ amplitude
 medidas-de-dispersão-ao-redor-da-média-desvio-padrão-e-desvio-médio
 interquartile-range-iqr-e-os-quantis-empíricos
 modelagem
-variáveis-qualitativascategóricas
-consideração-1-cuidados-ao-se-representar-numericamente-variáveis-categóricas-ordinais
-consideração-2-as-variáveis-dummies
