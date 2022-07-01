@@ -55,10 +55,11 @@ bin_pequeno <- consumo |>
     y = "Quantidade de casos"
   )
 
-gridExtra::grid.arrange(bin_grande, bin_padrao, bin_pequeno,
-                        top=grid::textGrob("O mesmo histograma com intervalos distintos para as barras"),
-                        nrow = 1)
-
+patchwork::wrap_plots(
+  bin_grande, bin_padrao, bin_pequeno,
+  nrow = 3
+) +
+  patchwork::plot_annotation(title = "O mesmo histograma com intervalos distintos para as barras")
 
 # histograma com valor ----------------------------------------------------
 

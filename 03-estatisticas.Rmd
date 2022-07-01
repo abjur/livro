@@ -441,7 +441,7 @@ knitr::kable(
 
 Uma pergunta que podemos fazer sobre esse conjunto, mas que ainda não fizemos, é: o quão distante da média está cada uma das observações? A partir disso, podemos discutir, por exemplo, que número está mais próximo da média $5$, $x_4=6$ ou $x_5=7$? Para responder a essa pergunta, vamos olhar para a Figura \@ref(fig:distancia):
 
-```{r distancia, echo=FALSE, fig.cap="Distância, message=FALSE, warning=FALSE}
+```{r distancia, echo=FALSE, fig.cap="Distância", message=FALSE, warning=FALSE}
 dados <- tibble::tibble(
   indice = stringr::str_glue("x{1:5}"),
   id = c(1:5),
@@ -774,5 +774,3 @@ abjData::leiloes |>
 ```
 
 Observamos neste gráfico uma altissima concentração em valores, que, por causa da escala, estão representados em cima do 0. Não é que, de fato, os valores sejam 0, mas é que, dentro de uma escala que vai até 150 milhões, a faixa de valores em que se encontram 50% dos dados é muito pequena (é uma faixa que varia de R\$ 104,00 até R\$ 3.755,00).
-
-# Modelagem

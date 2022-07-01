@@ -5,20 +5,19 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 3 Estatísticas | Jurimetria</title>
-  <meta name="description" content="Relatório de pesquisa sobre o Observatório da Insolvência." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="description" content="Livro de jurimetria." />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 3 Estatísticas | Jurimetria" />
   <meta property="og:type" content="book" />
   
-  
-  <meta property="og:description" content="Relatório de pesquisa sobre o Observatório da Insolvência." />
+  <meta property="og:description" content="Livro de jurimetria." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Capítulo 3 Estatísticas | Jurimetria" />
   
-  <meta name="twitter:description" content="Relatório de pesquisa sobre o Observatório da Insolvência." />
+  <meta name="twitter:description" content="Livro de jurimetria." />
   
 
 
@@ -30,8 +29,7 @@
   
   
 <link rel="prev" href="planejamento.html"/>
-<link rel="next" href="modelagem.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<link rel="next" href="visualizacao.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -49,74 +47,11 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 
 <link rel="stylesheet" href="assets/css/bookdown.css" type="text/css" />
@@ -180,7 +115,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.2" data-path="estatisticas.html"><a href="estatisticas.html#medidas-de-resumo-para-variáveis-quantitativas"><i class="fa fa-check"></i><b>3.2.2</b> Medidas de resumo para variáveis quantitativas</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="modelagem.html"><a href="modelagem.html"><i class="fa fa-check"></i><b>4</b> Modelagem</a></li>
+<li class="chapter" data-level="4" data-path="visualizacao.html"><a href="visualizacao.html"><i class="fa fa-check"></i><b>4</b> Visualização</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="visualizacao.html"><a href="visualizacao.html#para-que-servem-visualizações"><i class="fa fa-check"></i><b>4.1</b> Para que servem visualizações?</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="visualizacao.html"><a href="visualizacao.html#detetive-de-dados---análise-exploratória-de-dados"><i class="fa fa-check"></i><b>4.1.1</b> Detetive de dados - Análise exploratória de dados</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="visualizacao.html"><a href="visualizacao.html#comunicadora-de-dados---apresentação-de-dados"><i class="fa fa-check"></i><b>4.2</b> Comunicadora de dados - Apresentação de dados</a></li>
+<li class="chapter" data-level="4.3" data-path="visualizacao.html"><a href="visualizacao.html#visualizações-em-espécie"><i class="fa fa-check"></i><b>4.3</b> Visualizações em espécie</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="visualizacao.html"><a href="visualizacao.html#visualizações-de-variáveis-categóricas"><i class="fa fa-check"></i><b>4.3.1</b> Visualizações de variáveis categóricas</a></li>
+<li class="chapter" data-level="4.3.2" data-path="visualizacao.html"><a href="visualizacao.html#visualizações-de-variáveis-quantitativas"><i class="fa fa-check"></i><b>4.3.2</b> Visualizações de variáveis quantitativas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="modelagem.html"><a href="modelagem.html"><i class="fa fa-check"></i><b>5</b> Modelagem</a></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
 
@@ -201,8 +149,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="estatisticas" class="section level1" number="3">
-<h1><span class="header-section-number">Capítulo 3</span> Estatísticas</h1>
+<div id="estatisticas" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Capítulo 3</span> Estatísticas<a href="estatisticas.html#estatisticas" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>No capítulo anterior, vimos algumas questões essenciais por trás do método quantitativo. Neste capítulo vamos olhar para a estrutura dos dados e como resumir as informações a respeito desses dados. Para tanto, o capítulo está dividido em duas seções: (a) descrição das observações; (b) descrição do conjunto de observações.</p>
 <p>Na seção sobre as observações, vamos ver como as bases de dados devem ser estruturadas e os tipos de dados possíveis. Na seção sobre a descrição do conjunto das observações, vamos ver as medidas que podem descrever conjuntos de observações, a saber, as medidas de posição, as medidas de variabilidade e as medidas de associação.</p>
 <p>Os exemplos deste capítulo foram extraídos de duas bases de dados:</p>
@@ -211,14 +159,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Base <code>leiloes</code>: A base leiloes traz dados que foram coletados no âmbito do Observatório da Insolvência - Fase 3 pela ABJ. Neste observatório, a ABJ coletou e analisou dados referentes a processos de falência distribuídos na Comarca de São Paulo, entre janeiro de 2010 e dezembro de 2020.</li>
 </ol>
 <p>Você pode acessar essas bases de dados baixando, no R, o pacote <code>{abjData}</code>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="estatisticas.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A base do boletim é</span></span>
-<span id="cb1-2"><a href="estatisticas.html#cb1-2" aria-hidden="true" tabindex="-1"></a>abjData<span class="sc">::</span>consumo</span>
-<span id="cb1-3"><a href="estatisticas.html#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="estatisticas.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># A base de leilões é</span></span>
-<span id="cb1-5"><a href="estatisticas.html#cb1-5" aria-hidden="true" tabindex="-1"></a>abjData<span class="sc">::</span>leiloes</span></code></pre></div>
-<div id="olhando-para-as-observações" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Olhando para as observações</h2>
-<p>O que queremos compreender nesta seção é a natureza das <em>observações</em> de uma base de dados. As observações correspondem às unidades amostrais, que podemos definir como “<em>cada uma das partes disjuntas em que uma população é exaustivamente decomposta, para</em> [que]<em>, do conjunto delas se façam extrações a fim de constituir uma amostra, ou estágio de uma amostra</em>”<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. <strong>Em bases de dados, cada linha deve corresponder a uma unidade amostral; e cada coluna representa uma característica (também chamada de variável) dessa observação</strong>.</p>
+<div id="olhando-para-as-observações" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Olhando para as observações<a href="estatisticas.html#olhando-para-as-observações" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>O que queremos compreender nesta seção é a natureza das <em>observações</em> de uma base de dados. As observações correspondem às unidades amostrais, que podemos definir como “<em>cada uma das partes disjuntas em que uma população é exaustivamente decomposta, para</em> [que]<em>, do conjunto delas se façam extrações a fim de constituir uma amostra, ou estágio de uma amostra</em>”<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. <strong>Em bases de dados, cada linha deve corresponder a uma unidade amostral; e cada coluna representa uma característica (também chamada de variável) dessa observação</strong>.</p>
 <p>Na Tabela <a href="estatisticas.html#tab:sample-leiloes">3.1</a>, há um exemplo de uma base de dados da ABJ. São algumas linhas e colunas da base de leiloes do Observatório da Insolvência de São Paulo - Fase 2. Basicamente, esta base diz respeito aos bens que são levados a alienações nos processos de falência no Estado de São Paulo. Nessa base, cada linha representa um item levado a alienação de um processo, ou seja, a unidade amostral é um item levado a leilão; e cada coluna representa uma informação a respeito desse bem, a saber, quem é o leiloeiro responsável pela venda do bem, quando o bem foi levado a leilão, qual era o valor de avaliação inicial desse bem; e qual é o valor pelo qual ele foi arrematado (o que fica em branco, quando o bem nunca foi arrematado).</p>
 <table style="width:100%;">
 <caption><span id="tab:sample-leiloes">Tabela 3.1: </span>Exemplo dos dados da base de leilões da ABJ</caption>
@@ -346,37 +289,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p>Uma <em>observação</em>, então, como vimos, possui várias características. Todas essas características constituem variáveis a respeito da unidade amostral. O que precisamos ver, a seguir, são os tipos dessas características e as implicações de cada um dos tipos.</p>
 <p>As variáveis podem pertencer a dois grupos: variáveis qualitativas (ou categóricas) ou variáveis quantitativas. As variáveis categóricas se subdividem ainda em nominais e ordinais; já as variáveis quantitativas podem ser do tipo discretas ou contínuas.</p>
-<div id="variáveis-qualitativascategóricas" class="section level3" number="3.1.1">
-<h3><span class="header-section-number">3.1.1</span> Variáveis qualitativas/categóricas</h3>
+<div id="variáveis-qualitativascategóricas" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Variáveis qualitativas/categóricas<a href="estatisticas.html#variáveis-qualitativascategóricas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Todas as variáveis qualitativas representam algum tipo de categoria (por isso também chamamos essas variáveis de “categóricas”). Há dois tipos de variáveis categóricas, as nominais e as ordinais. As variáveis nominais são categorias de nomes, categorias sem ordenação possível. Já as variáveis ordinais representam categorias com algum tipo de ordenação universal, com algum <em>ranking</em> possível. O critério de distinção entre essas duas variáveis é a possibilidade de <em>ordenação universal</em> das respostas possíveis.</p>
 <p>A seguir, temos alguns exemplos que discutem se determinadas variáveis categóricas são nominais ou ordinais.</p>
 <ol style="list-style-type: decimal">
 <li><p><strong>Unidade Federativa</strong>: No Brasil, há 27 unidades federativas possíveis. É possível ordenar as unidades federativas, por exemplo, por ordem alfabética; ou até, se soubermos outras informações como PIB ou tamanho da população, podemos ordenar as UFs por algum critério outro. Apesar de essa variável ser <em>ordenável</em>, ela não pode ser ordenada a partir de um <em>critério universal</em>, ou seja, um critério intrínseco a ela mesma. Por isso, consideramos que UF é uma variável <em>nominal</em> (e não ordinal).</p></li>
-<li><p><strong>Assunto processual</strong>: Os assuntos processuais são dados pelas Tabelas Processuais Unificadas (TPUs)<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> do CNJ. Por mais haja uma numeração. Os assuntos também não possuem nenhuma ordenação universal. Portanto, esta é uma variável nominal.</p></li>
-<li><p><strong>Valor de bens no leilão judicial (categorizado)</strong>: Uma possível variável que pode existir em processos judiciais é uma classificação para o valor dos bens em um leilão. Podemos classificar os valores, por exemplo, como “insignificante,” “baixo,” “médio,” “alto,” “extravagante.” Neste caso, haveria uma ordenação intrínseca das categorias, sendo que “insignificante” é a categoria de menor valor e “extravagante,” a de maior valor. Assim sendo, esta variável é ordinal.</p></li>
+<li><p><strong>Assunto processual</strong>: Os assuntos processuais são dados pelas Tabelas Processuais Unificadas (TPUs)<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> do CNJ. Por mais haja uma numeração. Os assuntos também não possuem nenhuma ordenação universal. Portanto, esta é uma variável nominal.</p></li>
+<li><p><strong>Valor de bens no leilão judicial (categorizado)</strong>: Uma possível variável que pode existir em processos judiciais é uma classificação para o valor dos bens em um leilão. Podemos classificar os valores, por exemplo, como “insignificante”, “baixo”, “médio”, “alto”, “extravagante”. Neste caso, haveria uma ordenação intrínseca das categorias, sendo que “insignificante” é a categoria de menor valor e “extravagante”, a de maior valor. Assim sendo, esta variável é ordinal.</p></li>
 <li><p><strong>Resultado de uma sentença</strong>: Uma sentença pode ter, de forma simplificada, três resultados possíveis: totalmente procedente, parcialmente procedente e improcedente. É um modelo simplificado, pois, para determinadas pesquisas, pode ser interessante diferenciar sentenças com julgamento de mérito de sentenças sem julgamento de mérito, ou de sentenças homologatórias. Por ora, vamos pensar apenas nessas três categorias. A questão que se põe é se há alguma ordenação universal entre essas três categorias ou não?</p>
-<p>Este caso pode gerar algumas dúvidas, pois poderíamos ordenar a sentença de tal forma que a sentença “totalmente procedente” fosse a mais valiosa, em relação à sentença “improcedente.” Entretanto, esse tipo de raciocínio pressupõe um valor intrínseco das sentenças, como se uma sentença “totalmente procedente” sempre fosse, de alguma forma, melhor do que uma sentença “improcedente.” O problema desse raciocínio é que, a depender do <em>polo da parte</em>, o valor da sentença é exatamente o oposto: para o réu, a sentença “improcedente” é a de menor valor, enquanto, para o autor, a sentença “totalmente procedente” é a de maior valor.</p></li>
+<p>Este caso pode gerar algumas dúvidas, pois poderíamos ordenar a sentença de tal forma que a sentença “totalmente procedente” fosse a mais valiosa, em relação à sentença “improcedente”. Entretanto, esse tipo de raciocínio pressupõe um valor intrínseco das sentenças, como se uma sentença “totalmente procedente” sempre fosse, de alguma forma, melhor do que uma sentença “improcedente”. O problema desse raciocínio é que, a depender do <em>polo da parte</em>, o valor da sentença é exatamente o oposto: para o réu, a sentença “improcedente” é a de menor valor, enquanto, para o autor, a sentença “totalmente procedente” é a de maior valor.</p></li>
 </ol>
-<p>Existem ainda mais ramificações dos tipos de variáveis qualitativas, por exemplo, variáveis intervalares, ou variáveis-razão. Essas demais ramificações não possuem muito uso prático no Direito, então não vamos nos aprofundar nelas. Há somente uma ramificação que ainda nos interessa que são as variáveis binárias, ou como são chamadas também, as variáveis <em>dummies</em>. As variáveis binárias só assumem dois valores possíveis, o valor de sucesso (representado numericamente pelo número <code>1</code>, ou pela condição <code>TRUE</code>) e o valor de fracasso (representado numericamente pelo número <code>0</code>, ou pela condição <code>FALSE</code>). Essas variáveis são importantes pois, como veremos no Capítulo <a href="modelagem.html#modelagem">4</a> é possível representar qualquer variável categórica em um conjunto de variáveis binárias.</p>
+<p>Existem ainda mais ramificações dos tipos de variáveis qualitativas, por exemplo, variáveis intervalares, ou variáveis-razão. Essas demais ramificações não possuem muito uso prático no Direito, então não vamos nos aprofundar nelas. Há somente uma ramificação que ainda nos interessa que são as variáveis binárias, ou como são chamadas também, as variáveis <em>dummies</em>. As variáveis binárias só assumem dois valores possíveis, o valor de sucesso (representado numericamente pelo número <code>1</code>, ou pela condição <code>TRUE</code>) e o valor de fracasso (representado numericamente pelo número <code>0</code>, ou pela condição <code>FALSE</code>). Essas variáveis são importantes pois, como veremos no Capítulo <a href="modelagem.html#modelagem">5</a> é possível representar qualquer variável categórica em um conjunto de variáveis binárias.</p>
 </div>
-<div id="variáveis-quantitativas" class="section level3" number="3.1.2">
-<h3><span class="header-section-number">3.1.2</span> Variáveis quantitativas</h3>
+<div id="variáveis-quantitativas" class="section level3 hasAnchor" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Variáveis quantitativas<a href="estatisticas.html#variáveis-quantitativas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A outra grande categoria de variáveis é a de variáveis quantitativas. Esse grupo se caracteriza por ter variáveis de valores numéricos. Há uma classificação dicotômica importante a respeito desses valores. Existem variáveis quantitativas discretas e contínuas.</p>
 <p>As variáveis discretas são caracterizadas por valores numéricos que formam um conjunto finito ou enumerável de números. Usualmente, as variáveis desse tipo resultam de alguma <em>contagem</em>. Já as variáveis contínuas são valores numéricos que pertencem ao conjunto dos números reais. O critério de distinção entre essas duas categorias é a nossa capacidade de fazer uma correspondência dos números com o conjunto dos números naturais (0, 1, 2, …).</p>
 <p>A seguir, temos alguns exemplos se algumas variáveis são discretas ou contínuas.</p>
 <ul>
 <li><p><strong>Valor da causa</strong>: Em um exemplo anterior (no caso do valor dos bens dos leilões), estávamos tratando de valores também, mas estávamos tratando de valores agrupados formando categorias. Agora vamos falar dos valores brutos, individualizados, e não das categorias a que eles pertencem. O valor da causa pode assumir incontáveis valores, não sendo, portanto, um valor enumerável. Assim sendo, ele é uma variável <em>contínua</em>.</p></li>
-<li><p><strong>Quantidade de partes em cada polo</strong>: No caso de litisconsórcio ativo ou passivo, é possível contar quantas partes existem em cada polo. Essa informação pode ser relevante, por exemplo, ao se estudar direitos difusos e coletivos, pois pode ser importante saber quantas pessoas estão no polo ativo da demanda, para determinar se é uma demanda coletiva ou pseudo-coletiva<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. A variável sobre a quantidade de partes em cada polo será do tipo <em>discreta</em>.</p></li>
+<li><p><strong>Quantidade de partes em cada polo</strong>: No caso de litisconsórcio ativo ou passivo, é possível contar quantas partes existem em cada polo. Essa informação pode ser relevante, por exemplo, ao se estudar direitos difusos e coletivos, pois pode ser importante saber quantas pessoas estão no polo ativo da demanda, para determinar se é uma demanda coletiva ou pseudo-coletiva<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>. A variável sobre a quantidade de partes em cada polo será do tipo <em>discreta</em>.</p></li>
 </ul>
 </div>
-<div id="considerações-sobre-os-tipos-de-dados" class="section level3" number="3.1.3">
-<h3><span class="header-section-number">3.1.3</span> Considerações sobre os tipos de dados</h3>
+<div id="considerações-sobre-os-tipos-de-dados" class="section level3 hasAnchor" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Considerações sobre os tipos de dados<a href="estatisticas.html#considerações-sobre-os-tipos-de-dados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Antes de prosseguir para as medidas desses dados, devemos fazer algumas considerações.</p>
-<div id="consideração-1-cuidados-ao-se-representar-numericamente-variáveis-categóricas-ordinais" class="section level4" number="3.1.3.1">
-<h4><span class="header-section-number">3.1.3.1</span> Consideração 1: Cuidados ao se representar numericamente variáveis categóricas ordinais</h4>
-<p>O primeiro ponto a se destacar é sobre a representação numérica de variáveis categóricas ordinais. Vamos usar o exemplo de uma proposta do Center for <em>Court Innovation</em> de Nova Iorque<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>. Uma das iniciativas desse centro foi tornar os tribunais de Nova Iorque mais “amigáveis.” Uma das técnicas propostas para tanto foram os Questionários de Satisfação sobre a prestação jurisdicional. O Quadro <a href="#def:perguntas-satisfacao">3.1</a> resume algumas das perguntas do questionário elaborado pelo <em>Centro</em>.</p>
+<div id="consideração-1-cuidados-ao-se-representar-numericamente-variáveis-categóricas-ordinais" class="section level4 hasAnchor" number="3.1.3.1">
+<h4><span class="header-section-number">3.1.3.1</span> Consideração 1: Cuidados ao se representar numericamente variáveis categóricas ordinais<a href="estatisticas.html#consideração-1-cuidados-ao-se-representar-numericamente-variáveis-categóricas-ordinais" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>O primeiro ponto a se destacar é sobre a representação numérica de variáveis categóricas ordinais. Vamos usar o exemplo de uma proposta do Center for <em>Court Innovation</em> de Nova Iorque<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>. Uma das iniciativas desse centro foi tornar os tribunais de Nova Iorque mais “amigáveis”. Uma das técnicas propostas para tanto foram os Questionários de Satisfação sobre a prestação jurisdicional. O Quadro <a href="#def:perguntas-satisfacao">3.1</a> resume algumas das perguntas do questionário elaborado pelo <em>Centro</em>.</p>
 <p>Quadro 3.1 : Perguntas selecionadas de um questionário de satisfação</p>
 <table>
+<colgroup>
+<col width="46%" />
+<col width="16%" />
+<col width="7%" />
+<col width="5%" />
+<col width="7%" />
+<col width="16%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">-</th>
@@ -447,10 +398,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Discordo: 4</li>
 <li>Discordo fortemente: 5</li>
 </ul>
-<p>Essa transformação deve ser feita com cuidado. Por um lado, esse tipo de alteração não altera a ordenação dessas respostas. Entretanto, por outro lado, a representação numérica das categorias ordinais adiciona uma informação aos dados que não é verdadeira: a intensidade. O que estamos dizendo é que os números guardam, não só uma ordenação universal entre si, assim como as variáveis categóricas ordinais, mas eles guardam uma relação de intensidade entre si, algo que as variáveis categóricas ordinais não possuem. Assim, enquanto podemos dizer que o número 2 é o dobro do número 1, não podemos estabelecer essa relação entre as categorias “concordo” e “concordo totalmente.”</p>
+<p>Essa transformação deve ser feita com cuidado. Por um lado, esse tipo de alteração não altera a ordenação dessas respostas. Entretanto, por outro lado, a representação numérica das categorias ordinais adiciona uma informação aos dados que não é verdadeira: a intensidade. O que estamos dizendo é que os números guardam, não só uma ordenação universal entre si, assim como as variáveis categóricas ordinais, mas eles guardam uma relação de intensidade entre si, algo que as variáveis categóricas ordinais não possuem. Assim, enquanto podemos dizer que o número 2 é o dobro do número 1, não podemos estabelecer essa relação entre as categorias “concordo” e “concordo totalmente”.</p>
 </div>
-<div id="consideração-2-as-variáveis-dummies" class="section level4" number="3.1.3.2">
-<h4><span class="header-section-number">3.1.3.2</span> Consideração 2: As variáveis <em>dummies</em></h4>
+<div id="consideração-2-as-variáveis-dummies" class="section level4 hasAnchor" number="3.1.3.2">
+<h4><span class="header-section-number">3.1.3.2</span> Consideração 2: As variáveis <em>dummies</em><a href="estatisticas.html#consideração-2-as-variáveis-dummies" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>A segunda consideração que queremos fazer diz respeito à transformação das categorias nominais em variáveis <em>dummies</em>. Vamos tomar outro caso como exemplo para esta discussão.</p>
 <p>No projeto que a ABJ realiza, em parceria com o CNJ, sobre adoção, tentamos auxiliar os pretendentes a escolherem o perfil da criança fornecendo a eles uma informação importante: o tempo que irá demorar adotar uma criança a depender do perfil escolhido para ela. Perfis mais restritivos em geral demoram mais tempo do que perfis mais permissivos. A questão é deixar claro que características importam para a mudança do tempo e o quanto cada característica importa para o tempo. Uma das variáveis é a variável de <code>tp_etnia</code>. Essa variável indica qual é a preferência de etnia preferida dos pretendentes em relação às crianças a serem adotadas. Há 6 respostas possíveis: A (de “amarelo”), B (de “branco”), I (de “indígena”), N (de “negro”), P (de “pardo”) ou S (de “sem preferência”). Essas categorias não possuem um critério de ordenação universal, assim sendo, a variável <code>tp_etnia</code> é do tipo categórico nominal. Temos um exemplo dessa base na Tabela <a href="estatisticas.html#tab:etnia">3.2</a>. Os valores usados são fictícios, por questões de sigilo da base.</p>
 <table>
@@ -629,13 +580,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<div id="olhando-para-o-conjunto-das-observações" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Olhando para o conjunto das observações</h2>
+<div id="olhando-para-o-conjunto-das-observações" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Olhando para o conjunto das observações<a href="estatisticas.html#olhando-para-o-conjunto-das-observações" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Acima, estávamos discutindo as observações em si (unidades amostrais) e as informações que as caracterizam (variáveis). O que vamos falar a seguir é, não de uma única observação, mas do conjunto de várias observações. Vamos olhar, então, não para <em>uma</em> única linha, mas para um <em>conjunto</em> de linhas de uma base. A diferença da explicação anterior para a que se seguirá seria a de dizer, por exemplo (voltando ao exemplo da base de leilões do Observatório de Falências de São Paulo), que um bem específico foi vendido pelo dobro do seu preço de avaliação ou dizer que os <em>bens</em>, em média, são vendidos a 80% do seu preço de avaliação.</p>
 <p>Uma primeira pergunta que podemos fazer para dar maior tecnicidade à explicação é o que esses conjuntos de dados representam? Se cada observação representava uma unidade amostral, então agora podemos dizer que o conjunto dessas unidades amostrais é a <em>amostra</em> em si. E para tirar informações e afirmar coisas sobre esse conjunto de observações, usamos <em>estatísticas de resumo</em>.</p>
 <p>Estatísticas de resumo, como o próprio nome diz, resumem informações de grupos. Então, no lugar de olharmos para cada uma das observações individualmente, vamos olhar para uma única informação que irá dizer <em>algo</em> sobre as observações tomadas em conjunto. Esse “algo” que podemos falar sobre o conjunto das observações depende do tipo de variável para que estamos olhando. Se estamos olhando para variáveis categóricas (e, neste caso, pouco importa se são variáveis nominais ou ordinais), podemos resumir a sua frequência e proporção; já, se estamos olhando para variáveis contínuas, podemos olhar para as medidas de centro, de variabilidade e de posição do conjunto.</p>
-<div id="medidas-de-resumo-para-variáveis-categóricas" class="section level3" number="3.2.1">
-<h3><span class="header-section-number">3.2.1</span> Medidas de resumo para variáveis categóricas</h3>
+<div id="medidas-de-resumo-para-variáveis-categóricas" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Medidas de resumo para variáveis categóricas<a href="estatisticas.html#medidas-de-resumo-para-variáveis-categóricas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Não existe um repertório de medidas muito amplo para resumirmos variáveis categóricas. Isso se deve ao fato de que essas variáveis não possuem uma natureza numérica. Então, basicamente, para resumir estas variáveis precisamos transformá-las em números. A forma de fazer isto é uma: a contagem.</p>
 <p>Por meio da <em>contagem</em> nós conseguimos <em>tabular</em> as respostas das variáveis categóricas, contando a sua frequência e, posteriormente, a proporção e porcentagem de cada categoria. A informação principal que temos é a frequência, pois é a partir dela que podemos pensar nas demais informações. Para além da frequência absoluta, temos também a frequência acumulada, a proporção, a proporção acumulada e a porcentagem.</p>
 <p>A frequência é simplesmente a contagem de cada categoria. A frequência acumulada é a contagem de uma categoria somada com as categorias anteriormente contadas, de modo que a contagem da categoria final seja a soma total de todas as categorias. A proporção é a representação da contagem de uma categoria em relação a todas as observações. A proporção acumulada segue a mesma ideia da frequência acumulada, sendo a proporção de cada categoria, somada à proporção de todas as categorias anteriormente calculadas. Por fim, a porcentagem é simplesmente a proporção vezes 100.</p>
@@ -695,16 +646,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<p>A variável que está sendo resumida é a variável “modalidade,” que indica se a falência foi ou não foi decretada. Há três respostas possíveis: “leilão,” “pregão,” ou “proposta fechada.” Ao olharmos para todos os processos, podemos então realizar a contagem de cada uma dessas categorias. A partir da contagem, criamos a coluna de “frequência.” A partir da frequência, nós criamos as próximas colunas, a saber, a frequência acumulada, a proporção, a proporção acumulada e a porcentagem. Note que as colunas “acumuladas” (isto é, as colunas de frequência acumulada e de proporção acumulada) não possuem um “total,” pois o total já está expresso na última categoria.</p>
+<p>A variável que está sendo resumida é a variável “modalidade”, que indica se a falência foi ou não foi decretada. Há três respostas possíveis: “leilão”, “pregão”, ou “proposta fechada”. Ao olharmos para todos os processos, podemos então realizar a contagem de cada uma dessas categorias. A partir da contagem, criamos a coluna de “frequência”. A partir da frequência, nós criamos as próximas colunas, a saber, a frequência acumulada, a proporção, a proporção acumulada e a porcentagem. Note que as colunas “acumuladas” (isto é, as colunas de frequência acumulada e de proporção acumulada) não possuem um “total”, pois o total já está expresso na última categoria.</p>
 </div>
-<div id="medidas-de-resumo-para-variáveis-quantitativas" class="section level3" number="3.2.2">
-<h3><span class="header-section-number">3.2.2</span> Medidas de resumo para variáveis quantitativas</h3>
+<div id="medidas-de-resumo-para-variáveis-quantitativas" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Medidas de resumo para variáveis quantitativas<a href="estatisticas.html#medidas-de-resumo-para-variáveis-quantitativas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>No caso das variáveis quantitativas, por elas já terem natureza numérica, há mais medidas de resumo possíveis. Vamos dividir a explicação em dois tipos de medidas: medidas de centro, medidas de variabilidade.</p>
-<div id="medidas-de-centro" class="section level4" number="3.2.2.1">
-<h4><span class="header-section-number">3.2.2.1</span> Medidas de centro</h4>
+<div id="medidas-de-centro" class="section level4 hasAnchor" number="3.2.2.1">
+<h4><span class="header-section-number">3.2.2.1</span> Medidas de centro<a href="estatisticas.html#medidas-de-centro" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>O termo “medidas de centro” pode nos confundir. A nomenclatura pode nos induzir a pensar que essas medidas indicam o “meio” do gráfico, mas isso não é verdade. O “centro” a que se referem essas medidas é o ponto mais “típico” do conjunto em análise. São três medidas que estão nesta categoria: a média, a mediana e a moda.</p>
-<div id="média" class="section level5" number="3.2.2.1.1">
-<h5><span class="header-section-number">3.2.2.1.1</span> Média</h5>
+<div id="média" class="section level5 hasAnchor" number="3.2.2.1.1">
+<h5><span class="header-section-number">3.2.2.1.1</span> Média<a href="estatisticas.html#média" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>A média é um conceito intuitivo, que designa basicamente a soma das observações dividida pelo total de observações. O símbolo da média é <span class="math inline">\(\bar{x}\)</span> (x-barra). O que queremos ver a seguir é a fórmula da média. Por mais que o conceito seja simples e intuitivo, precisamos formalizar um pouco mais o sentido da média. A fórmula é a que se segue:</p>
 <p><span class="math display">\[\bar{x} = \frac{x_1+x_2+\dots+x_n}{n}=\frac{1}{n}\sum_{i=1}^n x_i\]</span></p>
 <p>A fórmula principal é <span class="math inline">\(\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i\)</span>, mas precisamos compreender os elementos dessa fórmula. Vamos começar pelo símbolo <span class="math inline">\(\sum\)</span>. Esse símbolo é a letra grega <em>sigma</em> (maiúscula), que na matemática usamos para representar <em>somatórios</em>. O somatório é uma notação que resume uma série de adições em sequência. Assim, dando um exemplo fácil, podemos representar a seguinte soma <span class="math inline">\(4+8+12+16+20\)</span> como <span class="math inline">\(\sum_{k=1}^5 4k\)</span>. Vamos entender direito como que essa notação matemática representa a conta de adição.</p>
@@ -840,8 +791,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Estamos, por enquanto, olhando para este elemento da fórmula <span class="math inline">\(\sum_{i=1}^n x_i\)</span>. O que podemos concluir do significado disso? Vamos destrinchar com os elementos que vimos até agora. A somatória de <span class="math inline">\(\sum x_i\)</span> significa que vamos somar todos os elementos <span class="math inline">\(x_i\)</span>. Essa soma será feita a partir do primeiro elemento do conjunto, que é <span class="math inline">\(x_1\)</span> (por isso, embaixo do sigma tem <span class="math inline">\(i = 1\)</span>), até o último elemento do conjunto, que é <span class="math inline">\(x_n\)</span>. No caso, se temos 10 bens, então nosso <span class="math inline">\(n = 10\)</span>.</p>
 <p>Compreendido o somatório da fórmula, falta apenas o <span class="math inline">\(\frac{1}{n}\)</span>. Basicamente, isso indica que devemos dividir o resultado do somatório pelo total de observações. O <span class="math inline">\(n\)</span> que encontramos nessa parte é o mesmo <span class="math inline">\(n\)</span> que está em cima do <em>sigma</em>. Então, no caso dos bens, nós somariamos o valor de avaliação dos 10 bens e depois dividiríamos o total resultante dessa soma por <span class="math inline">\(10\)</span>. Com isso, a fórmula da média está completa. Apesar de o conceito ser intuitivo, a sua representação matemática é um pouco mais complexa. Mas essa complexidade se mostra como uma ótima oportunidade para explicarmos um pouco sobre notação matemática. Compreender e operar fórmulas matemáticas ajuda a trabalhar com os conceitos matemáticos conforme eles ficam mais complexos.</p>
 </div>
-<div id="mediana" class="section level5" number="3.2.2.1.2">
-<h5><span class="header-section-number">3.2.2.1.2</span> Mediana</h5>
+<div id="mediana" class="section level5 hasAnchor" number="3.2.2.1.2">
+<h5><span class="header-section-number">3.2.2.1.2</span> Mediana<a href="estatisticas.html#mediana" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Outra medida de centro importante é a <strong>mediana</strong>. A mediana é outro conceito intuitivo, mas menos conhecido. Literalmente, a mediana designa exatamente o número que está no meio do conjunto. Para encontrar este número, precisamos ordenar os números do conjunto em ordem crescente. Dada esta ordem, se a quantidade de observações (<span class="math inline">\(n\)</span>) for ímpar, o número exatamente ao meio será a mediana; se a quantidade de observações (<span class="math inline">\(n\)</span>) for par, pegamos os dois números no centro e fazemos a média entre eles.</p>
 <p>Em conjuntos ímpares, como encontramos o número que está exatamente ao centro? Ou seja, qual é a fórmula genérica para encontrarmos todos os números do meio em todos os conjuntos ímpares? Imaginemos um conjunto de 7 elementos. Intuitivamente conseguimos dizer que o elemento no meio será o 4º elemento, pois há 3 elementos à esquerda do 4º elemento e mais 3 elementos à direita dele. A partir disso, podemos pensar que 4 é a metade de 8; e que 8 é um número acima de 7. Assim, a fórmula que temos é <span class="math inline">\(\frac{n+1}{2}\)</span>. Então o índice do elemento central será <span class="math inline">\(x_{\left(\frac{n+1}{2}\right)}\)</span></p>
 <p><span class="math display">\[md(\boldsymbol{x}) = x_{\left(\frac{n+1}{2}\right)}, \text{se } n \text{ ímpar}\]</span></p>
@@ -857,9 +808,9 @@ Vale fazermos um esclarecimento importante a respeito da diferença da média pa
 <p>A única diferença é o último elemento, ou seja, o número <span class="math inline">\(x_{11}=2000\)</span>. Temos <span class="math inline">\(11\)</span> observações ainda. Neste caso a média é <span class="math inline">\((10+11+12+13+14+15+16+17+18+19+2000)/11 = 195\)</span>; mas a mediana continua sendo exatamente a mesma, ou seja, <span class="math inline">\(15\)</span>, porque <span class="math inline">\(15\)</span> continua sendo o elemento do meio.</p>
 <p>A partir deste exemplo podemos compreender o que significa dizer que uma medida é mais “robusta” do que outra. A mediana, neste caso, é mais robusta, pois ela se afeta menos com os valores extremos do que a média, ela é mais resistente a valores desviantes.</p>
 </div>
-<div id="moda" class="section level5" number="3.2.2.1.3">
-<h5><span class="header-section-number">3.2.2.1.3</span> Moda</h5>
-<p>Feita essa consideração, podemos falar da última medida de centro, a <strong>moda</strong>. A moda indica simplesmente o valor mais frequente do conjunto. Encontrar a moda pressupõe que saibamos todos os valores que aparecem no conjunto, bem como a sua contagem. O valor cuja contagem é maior será o valor da moda. Se o conjunto tiver apenas um valor com a maior contagem, ele será “unimodal”; se houver dois valores com a mesma contagem, então teremos um conjunto “bimodal”; se houver muitos valores, então será “multimodal.” Se não houver nenhum valor que se destaque, então o conjunto será “uniforme.” Por mais que este capítulo não se dedique a estudar gráficos ainda, neste caso, vale a pena demonstrar como cada tipo de conjunto (unimodal, bimodal, multimodal e uniforme) se comporta em termos gráficos. Vemos isso na Figura <a href="estatisticas.html#fig:distribuicoes-moda">3.1</a>.</p>
+<div id="moda" class="section level5 hasAnchor" number="3.2.2.1.3">
+<h5><span class="header-section-number">3.2.2.1.3</span> Moda<a href="estatisticas.html#moda" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Feita essa consideração, podemos falar da última medida de centro, a <strong>moda</strong>. A moda indica simplesmente o valor mais frequente do conjunto. Encontrar a moda pressupõe que saibamos todos os valores que aparecem no conjunto, bem como a sua contagem. O valor cuja contagem é maior será o valor da moda. Se o conjunto tiver apenas um valor com a maior contagem, ele será “unimodal”; se houver dois valores com a mesma contagem, então teremos um conjunto “bimodal”; se houver muitos valores, então será “multimodal”. Se não houver nenhum valor que se destaque, então o conjunto será “uniforme”. Por mais que este capítulo não se dedique a estudar gráficos ainda, neste caso, vale a pena demonstrar como cada tipo de conjunto (unimodal, bimodal, multimodal e uniforme) se comporta em termos gráficos. Vemos isso na Figura <a href="estatisticas.html#fig:distribuicoes-moda">3.1</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:distribuicoes-moda"></span>
 <img src="jurimetria_book_files/figure-html/distribuicoes-moda-1.svg" alt="Distribuições" width="768" />
 <p class="caption">
@@ -868,24 +819,24 @@ Figura 3.1: Distribuições
 </div>
 </div>
 </div>
-<div id="medidas-de-dispersão" class="section level4" number="3.2.2.2">
-<h4><span class="header-section-number">3.2.2.2</span> Medidas de dispersão</h4>
-<p>Para as variáveis quantitativas, além de falarmos dos valores mais “típicos” (ou “centrais,” como convencionamos chamar), podemos falar também em como esses valores variam, ou como esses valores se dispersam ao longo do conjunto de observações. Com um exemplo simples, percebemos como a informação da medida central isoladamente não é capaz de contar a história inteira dos dados.</p>
+<div id="medidas-de-dispersão" class="section level4 hasAnchor" number="3.2.2.2">
+<h4><span class="header-section-number">3.2.2.2</span> Medidas de dispersão<a href="estatisticas.html#medidas-de-dispersão" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Para as variáveis quantitativas, além de falarmos dos valores mais “típicos” (ou “centrais”, como convencionamos chamar), podemos falar também em como esses valores variam, ou como esses valores se dispersam ao longo do conjunto de observações. Com um exemplo simples, percebemos como a informação da medida central isoladamente não é capaz de contar a história inteira dos dados.</p>
 <pre><code>Grupo A (variável X):   3   4 5 6 7
 Grupo B (variável Y):   1 2 5 7 9
 Grupo C (variável Z):   5   5 5 5 5
 Grupo D (variável W):   1   5 5 6 8
 Grupo E (variável V):   3   5 5 6 6</code></pre>
 <p>Ao calcularmos a média desses 5 grupos, percebemos que todos possuem uma média 5,0. Entretanto, claramente os conjuntos são diferentes. A diferença que estes conjuntos apresentam não pode ser captada pelas medidas de centro. É por esta razão que utilizamos as medidas de dispersão. Há quatro medidas importantes aqui: amplitude, desvio médio, desvio padrão e intervalo inter-quartis, também chamado de IQR.</p>
-<div id="amplitude" class="section level5" number="3.2.2.2.1">
-<h5><span class="header-section-number">3.2.2.2.1</span> Amplitude</h5>
+<div id="amplitude" class="section level5 hasAnchor" number="3.2.2.2.1">
+<h5><span class="header-section-number">3.2.2.2.1</span> Amplitude<a href="estatisticas.html#amplitude" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>A <strong>amplitude</strong> indica, basicamente, o espectro dentro do qual as observações variam. Para calculá-la basta identificar o valor máximo do conjunto, bem como o seu valor mínimo. A diferença entre os dois números é a amplitude.</p>
 <p><span class="math display">\[A(\boldsymbol x)=\max(\boldsymbol x)-\min(\boldsymbol x)\]</span></p>
 <p>Podemos retornar ao exemplo da base de leilões. O menor valor de avaliação que encontramos nesta base é de R$ 0,00 (zero reais). Esse valor é até frequente na base, pois vários bens arrecadados não possuem valor algum. O maior valor da base é R$ 157.000.000,00, que representa o valor de um imóvel. Assim, a amplitude dessa variável é o valor mínimo subtraído do valor máximo, ou seja, <span class="math inline">\(157.000.000,00 - 0\)</span>, ou seja, a amplitude dessa variável é de R$ 157.000.000,00. A interpretação deste valor é que todas as observações estão dadas dentro de um intervalo de cento e cinquenta e sete milhões de reais.</p>
 <p>A amplitude é uma medida simples de ser calculada, entretanto, ela não consegue indicar a relação da dispersão com as medidas centrais. Em seu lugar, as medidas de dispersão mais frequentemente usadas são o desvio médio e o desvio padrão. Vamos, a seguir, realizar uma explicação sobre as duas medidas, pois elas estão muito próximas.</p>
 </div>
-<div id="medidas-de-dispersão-ao-redor-da-média-desvio-padrão-e-desvio-médio" class="section level5" number="3.2.2.2.2">
-<h5><span class="header-section-number">3.2.2.2.2</span> Medidas de dispersão ao redor da média: desvio padrão e desvio médio</h5>
+<div id="medidas-de-dispersão-ao-redor-da-média-desvio-padrão-e-desvio-médio" class="section level5 hasAnchor" number="3.2.2.2.2">
+<h5><span class="header-section-number">3.2.2.2.2</span> Medidas de dispersão ao redor da média: desvio padrão e desvio médio<a href="estatisticas.html#medidas-de-dispersão-ao-redor-da-média-desvio-padrão-e-desvio-médio" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>As duas medidas que estudaremos a seguir indicam a dispersão dos valores em torno da média. Ou seja, tomando a média (e não qualquer medida de centro) como referencial, essas duas medidas indicam como os dados variam ao redor do centro. Algumas perguntas importantes que essas medidas nos ajudam a compreender são: As observações estão concentradas ao redor da média? Ou elas estão dispersas e longe umas das outras? A Figura <a href="estatisticas.html#fig:normal-sd">3.2</a> mostra dois exemplo de conjuntos de dados com a mesma média, mas com dispersões das observações em torno da média totalmente diferentes. No primeiro gráfico, as observações estão concentradas; no segundo, elas estão dispersas. Observamos, ao compararmos estes dois gráficos, como que as medidas de centro não conseguem explicar as distribuições dos conjuntos muito bem, quando isoladas, mas quando combinadas com as medidas de dispersão, conseguimos descrever muito melhor os conjuntos.</p>
 <div class="figure"><span style="display:block;" id="fig:normal-sd"></span>
 <img src="jurimetria_book_files/figure-html/normal-sd-1.svg" alt="Duas distribuições com mesma média e variabilidades distintas." width="768" />
@@ -927,12 +878,10 @@ Figura 3.2: Duas distribuições com mesma média e variabilidades distintas.
 </tbody>
 </table>
 <p>Uma pergunta que podemos fazer sobre esse conjunto, mas que ainda não fizemos, é: o quão distante da média está cada uma das observações? A partir disso, podemos discutir, por exemplo, que número está mais próximo da média <span class="math inline">\(5\)</span>, <span class="math inline">\(x_4=6\)</span> ou <span class="math inline">\(x_5=7\)</span>? Para responder a essa pergunta, vamos olhar para a Figura <a href="estatisticas.html#fig:distancia">3.3</a>:</p>
-<pre><code>## geom_path: Each group consists of only one observation. Do you need to adjust
-## the group aesthetic?</code></pre>
 <div class="figure"><span style="display:block;" id="fig:distancia"></span>
-<img src="jurimetria_book_files/figure-html/distancia-1.svg" alt="Distância dos dados em relação à média" width="672" />
+<img src="jurimetria_book_files/figure-html/distancia-1.svg" alt="Distância" width="864" />
 <p class="caption">
-Figura 3.3: Distância dos dados em relação à média
+Figura 3.3: Distância
 </p>
 </div>
 <p>Pela figura, fica claro que a distância entre <span class="math inline">\(x_4\)</span> e a média é menor do que a distância entre <span class="math inline">\(x_5\)</span> e a média. São essas distâncias que queremos computar. Se calcularmos esse valor para todas as observações, então teremos uma informação a mais a respeito desse conjunto: teremos o desvio de cada observação em relação à média. Com isso, conseguimos completar o conjunto acima conforme a Tabela <a href="estatisticas.html#tab:dados-com-desvio">3.8</a>.</p>
@@ -975,7 +924,7 @@ Figura 3.3: Distância dos dados em relação à média
 </table>
 <p>Uma vez que sabemos como cada observação se desvia da média, falta sabermos uma última informação relevante. Lembrando que estamos falando de medidas sobre <em>conjuntos de informações</em>, é possível perceber que a informação da diferença é uma informação de <em>cada observação</em> e não do conjunto como um todo. Percebemos isso porque para cada índice (<span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span>, <span class="math inline">\(x_3\)</span>, <span class="math inline">\(...\)</span>), temos uma única medida de desvio. A partir disso, o que podemos nos perguntar é: como eu trato das diferenças do <em>conjunto</em>, e não de cada observação? A essa pergunta a resposta é simples: basta fazer a média dos desvios, ficando <span class="math inline">\((2+1+0+1+2)/5 = 1,2\)</span>.</p>
 <p>Dessa forma podemos dizer que o nosso conjunto tem média 5 e que ele tem um desvio médio de 1,2. Essa informação que encontramos (de 1,2 de desvio médio), ainda não explica a variância, mas ela dá uma noção de que tipo de informação a variância leva em conta, porque a lógica por trás da variância é a mesma por trás do desvio médio.</p>
-<p>Até aqui vimos apenas uma noção intuitiva do que significam as medidas de “dispersão ao redor da média.” Usamos como fio condutor para essa explicação a medida do desvio médio. Vamos, a seguir, formalizar o pensamento intuitivo, bem como desenvolver a outra medida restante o desvio padrão (e veremos que para chegar no desvio médio, precisamos explicar a variância antes).</p>
+<p>Até aqui vimos apenas uma noção intuitiva do que significam as medidas de “dispersão ao redor da média”. Usamos como fio condutor para essa explicação a medida do desvio médio. Vamos, a seguir, formalizar o pensamento intuitivo, bem como desenvolver a outra medida restante o desvio padrão (e veremos que para chegar no desvio médio, precisamos explicar a variância antes).</p>
 <p>A começar pela formalização matemática do desvio médio, é preciso notar uma operação matemática importante que fizemos ao longo da explicação. Quando comparamos a <em>distância</em> de cada observação em relação à média, usamos a Figura <a href="estatisticas.html#fig:distancia">3.3</a> para verificar essas medidas. Com isso, construímos a Tabela <a href="estatisticas.html#tab:dados-com-desvio">3.8</a>. O procedimento matemático que está por trás dessas etapas é o <strong>módulo</strong>. A notação do módulo de <span class="math inline">\(x\)</span> é dada por:</p>
 <p><span class="math display">\[
 |x| = \left\{\begin{align}&amp;x, \text{ se }x\geq 0,\\ -&amp;x, \text{ se } x &lt; 0\end{align}\right.
@@ -1257,12 +1206,12 @@ dp(\boldsymbol x) = \sqrt{var(\boldsymbol x)} = \sqrt{\frac{1}{n}\sum_{i=1}^n\le
 </ul>
 <p>Vale notar que, na interpretação desses resultados, essas medidas sempre indicam dispersão ao redor da média.</p>
 </div>
-<div id="interquartile-range-iqr-e-os-quantis-empíricos" class="section level5" number="3.2.2.2.3">
-<h5><span class="header-section-number">3.2.2.2.3</span> Interquartile range (IQR) e os quantis empíricos</h5>
+<div id="interquartile-range-iqr-e-os-quantis-empíricos" class="section level5 hasAnchor" number="3.2.2.2.3">
+<h5><span class="header-section-number">3.2.2.2.3</span> Interquartile range (IQR) e os quantis empíricos<a href="estatisticas.html#interquartile-range-iqr-e-os-quantis-empíricos" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Há uma última medida de variabilidade que é o <em>interquartile range</em> (IQR). Podemos dizer que os IQRs estão para o desvio padrão assim como a mediana está para a média. Se bem lembrarmos, a média padece de um problema: ela não é robusta, ou seja, ela é influenciável pelos valores extremos. Em seu lugar, podemos usar a mediana para indicar o centro da distribuição, pois essa medida é mais robusta. Da mesma forma, como a variância e o desvio padrão dependem da média para serem calculadas, elas também são medidas pouco robustas. O IQR, então, pode ser visto como uma medida de dispersão robusta. <strong>Mas para compreendermos o IQR, devemos compreender o que são quantis empíricos</strong>.</p>
 <p>Um <strong>quantil empírico</strong> é um valor que divide um conjunto de dados em determinada proporção. Por exemplo, a mediana é o quantil empírico que indica o valor que divide o conjunto de dados em 50%. Existem outros quantis empíricos, como o quantil de 25%, que é um valor que divide o conjunto de observações entre 25-75, ou seja, 25% das observações estão antes deste valor e 75% das observações estão depois deste valor.</p>
 <p>Existe um quantil empírico para cada porcentagem que se queira. Representamos, matematicamente, cada percentil como <span class="math inline">\(q(p)\)</span>, em que <span class="math inline">\(p\)</span> é a proporção desejada. Por exemplo, o quantil de 25% é o <span class="math inline">\(q(0,25)\)</span>; o quantil de 78% é o <span class="math inline">\(q(0,78)\)</span>; o quantil de 1% é o <span class="math inline">\(q(0,01)\)</span>, e assim por diante.</p>
-<p>Alguns quantis possuem nomes específicos. Se dividirmos os quantis em 100, cada quantil será um “percentil.” E se dividirmos o conjunto em 10 partes iguais, cada quantil será um “decil.” Ainda, se dividirmos os quantis em 4 partes iguais, cada quantil será um “quartil.” Esta última divisão é uma das divisões mais importantes. Apesar de dividirmos o conjunto em 4 partes iguais, e apesar de o nome desse quantil ser “quartil” (o que, novamente, remete à ideia de 4 partes), há apenas 3 quartis:</p>
+<p>Alguns quantis possuem nomes específicos. Se dividirmos os quantis em 100, cada quantil será um “percentil”. E se dividirmos o conjunto em 10 partes iguais, cada quantil será um “decil”. Ainda, se dividirmos os quantis em 4 partes iguais, cada quantil será um “quartil”. Esta última divisão é uma das divisões mais importantes. Apesar de dividirmos o conjunto em 4 partes iguais, e apesar de o nome desse quantil ser “quartil” (o que, novamente, remete à ideia de 4 partes), há apenas 3 quartis:</p>
 <ul>
 <li>quartil inferior, <span class="math inline">\(q(0,25)\)</span>: Divide o conjunto no 25%, ou seja, um quarto dos dados estão abaixo deste quartil.</li>
 <li>mediana, <span class="math inline">\(q(0,50)\)</span>: Divide o conjunto no 50%. É a mediana.</li>
@@ -1311,12 +1260,13 @@ dp(\boldsymbol x) = \sqrt{var(\boldsymbol x)} = \sqrt{\frac{1}{n}\sum_{i=1}^n\le
 </table>
 <p>Para calcular o IQR, basta subtrair o quartil inferior do quartil superior, ou seja 3755-104, que resulta em 3651. A interpretação desse resultado é os valores centrais da amostra se distribuem dentro de uma amplitude de R$ 3.651,00. Ou seja, 50% dos valores estão distribuídos dentro de um intervalo de R$ 3.651,00. É interessante comparar o IQR com a amplitude. A amplitude, como vimos, é igual a R$ 157.000.000,00, ou seja, todos os valores da base estão dentro de um intervalo de R$ 157.000.000,00, mas desse intervalo inteiro, 50% dos valores (e não quaisquer 50% dos valores, mas a metade dos valores centrais) estão apenas em um intervalo de amplitude R$ 3.651,00. Isso indica como que a população está muito dispersa, pois há uma concentração de metade dos valores em um pequeno intervalo, e uma outra metade distribuída em um grande intervalo. Por mais que ainda não tenhamos estudado gráficos, é útil neste momento compreender para o que estamos falando de forma visual (Figura <a href="estatisticas.html#fig:grafico-variabilidade">3.4</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:grafico-variabilidade"></span>
-<img src="jurimetria_book_files/figure-html/grafico-variabilidade-1.svg" alt="Dados de valores de avaliação com alta variabilidade" width="672" />
+<img src="jurimetria_book_files/figure-html/grafico-variabilidade-1.svg" alt="Dados de valores de avaliação com alta variabilidade" width="864" />
 <p class="caption">
 Figura 3.4: Dados de valores de avaliação com alta variabilidade
 </p>
 </div>
 <p>Observamos neste gráfico uma altissima concentração em valores, que, por causa da escala, estão representados em cima do 0. Não é que, de fato, os valores sejam 0, mas é que, dentro de uma escala que vai até 150 milhões, a faixa de valores em que se encontram 50% dos dados é muito pequena (é uma faixa que varia de R$ 104,00 até R$ 3.755,00).</p>
+
 </div>
 </div>
 </div>
@@ -1324,11 +1274,11 @@ Figura 3.4: Dados de valores de avaliação com alta variabilidade
 </div>
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p>BOLFARINE, Heleno; BUSSAB, Wilton de Oliveira. <strong>Elementos de Amostragem</strong>. São Paulo: Blucher. 2005, p. 263<a href="estatisticas.html#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>Para saber mais informações, ver Resolução nº 46 do CNJ, bem como o site <a href="https://www.cnj.jus.br/sgt/consulta_publica_assuntos.php" class="uri">https://www.cnj.jus.br/sgt/consulta_publica_assuntos.php</a>.<a href="estatisticas.html#fnref2" class="footnote-back">↩︎</a></p></li>
-<li id="fn3"><p>Usa-se aqui a distinção de GRINOVER, Ada Pellegrini (coord.). <strong>Avaliação da Prestação Jurisdicional Coletiva e Individual a partir da Judicialização da Saúde</strong>. Relatório de pesquisa. São Paulo: CEBEPEJ. 2014.<a href="estatisticas.html#fnref3" class="footnote-back">↩︎</a></p></li>
-<li id="fn4"><p>CENTER FOR COURT INNOVATION. <strong>Can Courts Be More User-Friendly? How Satisfaction Surveys Can Promote Trust and Access to Justice</strong>. 2020. Disponível em: <a href="https://www.courtinnovation.org/sites/default/files/media/document/2020/CCI_FactSheet_SatisfactionSurveys_04202020.pdf" class="uri">https://www.courtinnovation.org/sites/default/files/media/document/2020/CCI_FactSheet_SatisfactionSurveys_04202020.pdf</a><a href="estatisticas.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<ol start="3">
+<li id="fn3"><p>BOLFARINE, Heleno; BUSSAB, Wilton de Oliveira. <strong>Elementos de Amostragem</strong>. São Paulo: Blucher. 2005, p. 263<a href="estatisticas.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>Para saber mais informações, ver Resolução nº 46 do CNJ, bem como o site <a href="https://www.cnj.jus.br/sgt/consulta_publica_assuntos.php" class="uri">https://www.cnj.jus.br/sgt/consulta_publica_assuntos.php</a>.<a href="estatisticas.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>Usa-se aqui a distinção de GRINOVER, Ada Pellegrini (coord.). <strong>Avaliação da Prestação Jurisdicional Coletiva e Individual a partir da Judicialização da Saúde</strong>. Relatório de pesquisa. São Paulo: CEBEPEJ. 2014.<a href="estatisticas.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>CENTER FOR COURT INNOVATION. <strong>Can Courts Be More User-Friendly? How Satisfaction Surveys Can Promote Trust and Access to Justice</strong>. 2020. Disponível em: <a href="https://www.courtinnovation.org/sites/default/files/media/document/2020/CCI_FactSheet_SatisfactionSurveys_04202020.pdf" class="uri">https://www.courtinnovation.org/sites/default/files/media/document/2020/CCI_FactSheet_SatisfactionSurveys_04202020.pdf</a><a href="estatisticas.html#fnref6" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -1337,7 +1287,7 @@ Figura 3.4: Dados de valores de avaliação com alta variabilidade
         </div>
       </div>
 <a href="planejamento.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="modelagem.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="visualizacao.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
