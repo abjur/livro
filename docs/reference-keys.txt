@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 fig:escopo
 fig:peticao-inicial-tjsp
 tab:sample-leiloes
@@ -39,7 +37,6 @@ fig:histograma-valor-2
 fig:hist-valores-filter
 fig:hist-valores-log
 fig:hist-valores-log2
->>>>>>> 0d46966b8b96a4fe26fd35e8afc8827c059d10e9
 introducao
 planejamento
 teoria-e-empiria
@@ -78,8 +75,6 @@ medidas-de-dispersão
 amplitude
 medidas-de-dispersão-ao-redor-da-média-desvio-padrão-e-desvio-médio
 interquartile-range-iqr-e-os-quantis-empíricos
-<<<<<<< HEAD
-=======
 visualizacao
 para-que-servem-visualizações
 detetive-de-dados---análise-exploratória-de-dados
@@ -97,4 +92,3 @@ gráficos-univariados-1
 histograma
 boxplot
 modelagem
->>>>>>> 0d46966b8b96a4fe26fd35e8afc8827c059d10e9

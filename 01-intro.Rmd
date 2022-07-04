@@ -19,4 +19,4 @@ Sobre o segundo problema (o problema geral de métodos quantitativos), é import
 
 Este livro não vai se debruçar sobre essas duas questões mais profundamente, mas são questões que devem ficar na cabeça do leitor sempre que ele for aplicar as técnicas aprendidas aqui. 
 
-Estes eram os pontos iniciais importantes de serem tratados antes que nos iniciássemos no método e nas técnicas quantitativas. O que o livro irá se propor a fazer de agora em diante será descrever as técnicas empregadas para fazer análises quantitativas.
+Estes eram os pontos iniciais importantes de serem tratados antes que nos iniciássemos no método e nas técnicas quantitativas. O que o livro se propõe a fazer de agora em diante é descrever as técnicas empregadas para fazer análises quantitativas.

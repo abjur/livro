@@ -11,9 +11,11 @@ Hoje em dia, nós vemos gráficos em vários contextos da vida cotidiana. Vemos 
 Vamos começar essa discussão com uma citação importante, retirada do livro The *Elements of Graphing Data* [Os Elementos da Representação Gráfica dos Dados] (1985) do William S. Cleveland. Na sessão *the power of graphical display* [o poder da representação gráfica], Cleveland diz:
 
 > Representações gráficas são uma ferramenta excepcional para a análise de dados. A razão disso está bem resumida em uma sentença de uma carta de 1982 escrita pelo senhor W. Edwards Deming a mim: “Os métodos gráficos podem reter a informação nos dados”. Procedimentos numéricos de análise de dados – tais como a média, o desvio padrão, coeficientes de correlação e teste-t – são essencialmente técnicas de redução dos dados. Os métodos gráficos complementam essas técnicas. Os métodos gráficos tendem a mostrar conjuntos de dados como um todo, permitindo-nos resumir o comportamento geral e estudar o detalhe. Isso nos leva a uma análise de dados mais minuciosa. 
-> Uma razão para as representações gráficas conseguirem reter as informações dos dados é que uma grande quantidade de informação quantitativa pode ser exibida e absorvida[^cleveland]
-
-[^cleveland]: Cleveland, 1985, pp. 9-10, tradução livre, grifos no original. 
+Uma razão para as representações gráficas conseguirem reter as informações dos dados é que uma grande quantidade de informação quantitativa pode ser exibida e absorvida[^cleveland].
+  
+[^cleveland]: @Cleveland1985, pp. 9-10, tradução livre, grifos no original
+  No original: “Graphs are exceptionally powerful tools for data analysis. The reason is nicely encapsulated in a sentence from a 1982 letter written to me by W. Edwards Deming: “Graphical methods can retain the information in the data.” Numerical data analytic procedures – such as means, standard deviations, correlation coefficients, and t-tests – are essentially data reduction techniques. Graphical methods complement such numerical techniques. Graphical methods tend to show data sets as a whole, allowing us to summarize the general behavior and to study detail. This leads to much more thorough data analysis.
+  One reason why graphical displays can retain the information in the data is that a large amount of quantitative information can be displayed and absorbed.”
 
 Para dar um exemplo do que significa conseguir exibir e absorver informações quantitativas, e para explicar também o que significa "técnicas de redução de dados", vamos olhar para um exemplo, no qual nós comparamos três formas de apresentar os mesmos dados. Os dados expostos dizem respeito aos valores das causas de ações de consumo. 
 
@@ -93,7 +95,7 @@ Com essas características em mente, então, podemos começar a responder à per
 
 ### Detetive de dados - Análise exploratória de dados
 
-Uma forma de encarar as visualizações gráficas é criar visualizações a fim de se obter evidências e pistas para analisar outros fenômenos. Isso é o que Tukey (1977) chama de “quantitative detective work” [trabalho de detetive quantitativo]. Nesse sentido, a visualização de dados não é um fim em si mesmo, mas é uma etapa para um processo de compreensão maior. Nesse sentido, usamos visualizações gráficas para descobrir como um determinado dado se distribui; e a partir dessa informação, podemos perceber que talvez seja adequado fazer uma transformação de variável. Por exemplo, ao analisar o valor da causa, podemos nos deparar com a seguinte distribuição, conforme a Figura \@ref(fig:hist-causa).
+Uma forma de encarar as visualizações gráficas é criar visualizações a fim de se obter evidências e pistas para analisar outros fenômenos. Isso é o que @Tukey1977 chama de “quantitative detective work” [trabalho de detetive quantitativo]. Nesse sentido, a visualização de dados não é um fim em si mesmo, mas é uma etapa para um processo de compreensão maior. Nesse sentido, usamos visualizações gráficas para descobrir como um determinado dado se distribui; e a partir dessa informação, podemos perceber que talvez seja adequado fazer uma transformação de variável. Por exemplo, ao analisar o valor da causa, podemos nos deparar com a seguinte distribuição, conforme a Figura \@ref(fig:hist-causa).
 
 ```{r hist-causa, fig.cap="Distribuição do valor da causa"}
 cores_abj <- c("#102C68", "#AFCA0A", "#575756")
@@ -121,8 +123,6 @@ p_com_log <- consumo |>
 
 p_com_log
 ```
-
-
 
 A partir da Figura \@ref(fig:hist-causa-log), conseguimos observar uma distribuição totalmente diferente daquela expressa na Figura \@ref(fig:hist-causa). Essa nova figura tem alguns problemas de interpretação, por exemplo, o que significa que o valor da causa ser log 8? A informação não está equivocada, mas ela só está de difícil interpretação. O que queríamos mostrar é que a Figura \@ref(fig:hist-causa) foi usada, não para apresentar os dados que ela continha, mas como um meio para chegarmos à Figura \@ref(fig:hist-causa-log). 
 São usos deste tipo que aqui estamos chamando de uma análise exploratória de dados. Nesse sentido (de exploratório), os gráficos servem de instrumento de investigação de relações. Veremos ao longo do livro várias formas de usar gráficos nesse sentido, tais como testes de normalidade, verificar pressupostos de modelos, descobrir outliers, entre muitos outros. 

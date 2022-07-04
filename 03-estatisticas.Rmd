@@ -22,9 +22,7 @@ abjData::leiloes
 
 ## Olhando para as observações
 
-O que queremos compreender nesta seção é a natureza das *observações* de uma base de dados. As observações correspondem às unidades amostrais, que podemos definir como "*cada uma das partes disjuntas em que uma população é exaustivamente decomposta, para* [que]*, do conjunto delas se façam extrações a fim de constituir uma amostra, ou estágio de uma amostra*"[^bolfarine]. __Em bases de dados, cada linha deve corresponder a uma unidade amostral; e cada coluna representa uma característica (também chamada de variável) dessa observação__.
-
-[^bolfarine]: BOLFARINE, Heleno; BUSSAB, Wilton de Oliveira. __Elementos de Amostragem__. São Paulo: Blucher. 2005, p. 263
+O que queremos compreender nesta seção é a natureza das *observações* de uma base de dados. As observações correspondem às unidades amostrais, que podemos definir como "*cada uma das partes disjuntas em que uma população é exaustivamente decomposta, para* [que]*, do conjunto delas se façam extrações a fim de constituir uma amostra, ou estágio de uma amostra*"^[@Bolfarine&Bussab2005, p. 263]. __Em bases de dados, cada linha deve corresponder a uma unidade amostral; e cada coluna representa uma característica (também chamada de variável) dessa observação__.
 
 Na Tabela \@ref(tab:sample-leiloes), há um exemplo de uma base de dados da ABJ. São algumas linhas e colunas da base de leiloes do Observatório da Insolvência de São Paulo - Fase 2. Basicamente, esta base diz respeito aos bens que são levados a alienações nos processos de falência no Estado de São Paulo. Nessa base, cada linha representa um item levado a alienação de um processo, ou seja, a unidade amostral é um item levado a leilão; e cada coluna representa uma informação a respeito desse bem, a saber, quem é o leiloeiro responsável pela venda do bem, quando o bem foi levado a leilão, qual era o valor de avaliação inicial desse bem; e qual é o valor pelo qual ele foi arrematado (o que fica em branco, quando o bem nunca foi arrematado).
 
@@ -79,7 +77,7 @@ A seguir, temos alguns exemplos se algumas variáveis são discretas ou contínu
 
 - __Quantidade de partes em cada polo__: No caso de litisconsórcio ativo ou passivo, é possível contar quantas partes existem em cada polo. Essa informação pode ser relevante, por exemplo, ao se estudar direitos difusos e coletivos, pois pode ser importante saber quantas pessoas estão no polo ativo da demanda, para determinar se é uma demanda coletiva ou pseudo-coletiva[^pseudocoletiva]. A variável sobre a quantidade de partes em cada polo será do tipo *discreta*. 
 
-[^pseudocoletiva]: Usa-se aqui a distinção de GRINOVER, Ada Pellegrini (coord.). __Avaliação da Prestação Jurisdicional Coletiva e Individual a partir da Judicialização da Saúde__. Relatório de pesquisa. São Paulo: CEBEPEJ. 2014.
+[^pseudocoletiva]: Usa-se aqui a distinção de @Grinover2014
 
 ### Considerações sobre os tipos de dados
 
@@ -87,9 +85,7 @@ Antes de prosseguir para as medidas desses dados, devemos fazer algumas consider
 
 #### Consideração 1: Cuidados ao se representar numericamente variáveis categóricas ordinais
 
-O primeiro ponto a se destacar é sobre a representação numérica de variáveis categóricas ordinais. Vamos usar o exemplo de uma proposta do Center for *Court Innovation* de Nova Iorque[^newyork]. Uma das iniciativas desse centro foi tornar os tribunais de Nova Iorque mais "amigáveis". Uma das técnicas propostas para tanto foram os Questionários de Satisfação sobre a prestação jurisdicional. O Quadro \@ref(def:perguntas-satisfacao) resume algumas das perguntas do questionário elaborado pelo *Centro*. 
-
-[^newyork]: CENTER FOR COURT INNOVATION. __Can Courts Be More User-Friendly? How Satisfaction Surveys Can Promote Trust and Access to Justice__. 2020. Disponível em: https://www.courtinnovation.org/sites/default/files/media/document/2020/CCI_FactSheet_SatisfactionSurveys_04202020.pdf 
+O primeiro ponto a se destacar é sobre a representação numérica de variáveis categóricas ordinais. Vamos usar o exemplo de uma proposta do Center for *Court Innovation* de Nova Iorque^[@CCI2020]. Uma das iniciativas desse centro foi tornar os tribunais de Nova Iorque mais "amigáveis". Uma das técnicas propostas para tanto foram os Questionários de Satisfação sobre a prestação jurisdicional. O Quadro \@ref(def:perguntas-satisfacao) resume algumas das perguntas do questionário elaborado pelo *Centro*. 
 
 (\#def:perguntas-satisfacao): Perguntas selecionadas de um questionário de satisfação
 
@@ -230,7 +226,7 @@ O somatório tem três parâmetros: a notação que está embaixo dele (no caso,
 
 A começar pelo que está na frente do sigma ($4k$), isso indica uma operação, que é $4$ vezes $k$. Essa operação irá se repetir para $5$ valores de $k$, sendo que o primeiro valor é $k = 1$ e o último valor é $k = 5$. De onde tiramos essas últimas informações? Das notações em cima e embaixo do $\sum$. Embaixo do  $\sum$ encontramos o valor inicial de $k$; e em cima encontramos o valor final de $k$. Para cada valor que $k$ assumir, teremos uma expressão para somar. Então a primeira expressão é quando $k = 1$, ou seja, $4 \times 1 = 4$. Na segunda expressão, $k = 2$, ou seja, $4 \times 2 = 8$. A terceira expressão é $4 \times 3 = 12$; a quarta, $4 \times 4 = 16$; e a quinta e última, $4 \times 5 = 20$. Então nós pegamos o resultado das 5 expressões e as somamos, resultando em $4$ (resultado da expressão quando $k = 1$) + $8$ (resultado da expressão quando $k = 2$) + $12$ (resultado da expressão quando $k = 3$) + $16$ (resultado da expressão quando $k = 4$) + $20$ (resultado da expressão quando $k = 5$), ou simplesmente $4+8+12+16+20$. 
 
-Então o $\sum$ (e todos os elementos que o acompanham) indicam a soma de todas as observações. Na fórmula da média, há uma diferença importante: no lugar do $k$, temos o $x_i$. Acontece que o $i$ não é um número exatamente como funcionava com o $k$, ele é apenas um índice. Precisamos, então, verificar o que é $x_i$. 
+Então o $\sum$ (e todos os elementos que o acompanham) indica a soma de todas as observações. Na fórmula da média, há uma diferença importante: no lugar do $k$, temos o $x_i$. Acontece que o $i$ não é um número exatamente como funcionava com o $k$, ele é apenas um índice. Precisamos, então, verificar o que é $x_i$. 
 
 Voltemos à base de leilões, para pegar a variável *valor de avaliação*. Essa é uma variável quantitativa contínua. Pegando apenas as 10 primeiras observações dessa variável, temos os seguintes dados, resumidos na Tabela \@ref(tab:dados-leiloes-10).
 
@@ -248,7 +244,7 @@ tab |>
   )
 ```
 
-A partir desse exemplo, podemos compreender o que significa $x_i$. Para cada $i$ diferente temos uma posição de $x$. Assim, por exemplo, $x_1$ será o valor do salário do bem $1$, ou seja, o valor do Volkswagen, de R\$ 4.934,00. Dessa forma, podemos reescrever a tabela da seguinte forma:
+A partir desse exemplo, podemos compreender o que significa $x_i$. Para cada $i$ diferente temos uma posição de $x$. Assim, por exemplo, $x_1$ será o valor de avaliação inicial do bem $1$, ou seja, o valor do Volkswagen, de R\$ 4.934,00. Dessa forma, podemos reescrever a tabela da seguinte forma:
 
 ```{r dados-leiloes-10-indice, echo=FALSE}
 tab |> 
@@ -267,13 +263,15 @@ $$\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i$$
 
 Estamos, por enquanto, olhando para este elemento da fórmula $\sum_{i=1}^n x_i$. O que podemos concluir do significado disso? Vamos destrinchar com os elementos que vimos até agora. A somatória de $\sum x_i$ significa que vamos somar todos os elementos $x_i$. Essa soma será feita a partir do primeiro elemento do conjunto, que é $x_1$ (por isso, embaixo do sigma tem $i = 1$), até o último elemento do conjunto, que é $x_n$. No caso, se temos 10 bens, então nosso $n = 10$.
 
-Compreendido o somatório da fórmula, falta apenas o $\frac{1}{n}$. Basicamente, isso indica que devemos dividir o resultado do somatório pelo total de observações. O $n$ que encontramos nessa parte é o mesmo $n$ que está em cima do *sigma*. Então, no caso dos bens, nós somariamos o valor de avaliação dos 10 bens e depois dividiríamos o total resultante dessa soma por $10$. Com isso, a fórmula da média está completa. Apesar de o conceito ser intuitivo, a sua representação matemática é um pouco mais complexa. Mas essa complexidade se mostra como uma ótima oportunidade para explicarmos um pouco sobre notação matemática. Compreender e operar fórmulas matemáticas ajuda a trabalhar com os conceitos matemáticos conforme eles ficam mais complexos.
+Compreendido o somatório da fórmula, falta apenas o $\frac{1}{n}$. Basicamente, isso indica que devemos dividir o resultado do somatório pelo total de observações. O $n$ que encontramos nessa parte é o mesmo $n$ que está em cima do *sigma*. Então, no caso dos bens, nós somariamos o valor de avaliação dos 10 bens e depois dividiríamos o total resultante dessa soma por $10$, finalizando assim, o cálculo da média.
+
+Com isso, a fórmula da média está completa. Apesar de o conceito ser intuitivo, a sua representação matemática é um pouco mais complexa. Mas essa complexidade se mostra como uma ótima oportunidade para explicarmos um pouco sobre notação matemática. Compreender e operar fórmulas matemáticas ajuda a trabalhar com os conceitos matemáticos conforme eles ficam mais complexos.
 
 ##### Mediana
 
-Outra medida de centro importante é a __mediana__. A mediana é outro conceito intuitivo, mas menos conhecido. Literalmente, a mediana designa exatamente o número que está no meio do conjunto. Para encontrar este número, precisamos ordenar os números do conjunto em ordem crescente. Dada esta ordem, se a quantidade de observações ($n$) for ímpar, o número exatamente ao meio será a mediana; se a quantidade de observações ($n$) for par, pegamos os dois números no centro e fazemos a média entre eles. 
+Outra medida de centro importante é a __mediana__. A mediana é outro conceito intuitivo, mas menos conhecido. Literalmente, a mediana designa exatamente o número que está no meio do conjunto. Para encontrar este número, precisamos ordenar os números em ordem crescente. Uma vez encontrada esta ordem, há duas situações possíveis que podem acontecer. Se a quantidade de observações ($n$) for ímpar, o número exatamente ao meio será a mediana; se a quantidade de observações ($n$) for par, pegamos os dois números no centro e fazemos a média entre eles. 
 
-Em conjuntos ímpares, como encontramos o número que está exatamente ao centro? Ou seja, qual é a fórmula genérica para encontrarmos todos os números do meio em todos os conjuntos ímpares? Imaginemos um conjunto de 7 elementos. Intuitivamente conseguimos dizer que o elemento no meio será o 4º elemento, pois há 3 elementos à esquerda do 4º elemento e mais 3 elementos à direita dele. A partir disso, podemos pensar que 4 é a metade de 8; e que 8 é um número acima de 7. Assim, a fórmula que temos é $\frac{n+1}{2}$. Então o índice do elemento central será $x_{\left(\frac{n+1}{2}\right)}$
+Em conjuntos ímpares, como encontramos o número que está exatamente ao centro? Ou seja, qual é a fórmula genérica para encontrarmos todos os números do meio em todos os conjuntos ímpares? Imaginemos um conjunto de 7 elementos. Intuitivamente conseguimos dizer que o elemento no meio será o 4º elemento, pois há 3 elementos à esquerda do 4º elemento e mais 3 elementos à direita dele. A partir disso, podemos pensar que 4 (isto é, a posisção do número central) é a metade de 8; e que 8 é um número acima de 7 (o número total de elementos do conjunto). Assim, a fórmula que temos é $\frac{n+1}{2}$. Então o índice do elemento central será $x_{\left(\frac{n+1}{2}\right)}$
 
 $$md(\boldsymbol{x}) = x_{\left(\frac{n+1}{2}\right)}, \text{se } n \text{ ímpar}$$
 
