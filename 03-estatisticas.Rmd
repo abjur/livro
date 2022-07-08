@@ -22,21 +22,28 @@ abjData::leiloes
 
 ## Olhando para as observações
 
-O que queremos compreender nesta seção é a natureza das *observações* de uma base de dados. As observações correspondem às unidades amostrais, que podemos definir como "*cada uma das partes disjuntas em que uma população é exaustivamente decomposta, para* [que]*, do conjunto delas se façam extrações a fim de constituir uma amostra, ou estágio de uma amostra*"^[@Bolfarine&Bussab2005, p. 263]. __Em bases de dados, cada linha deve corresponder a uma unidade amostral; e cada coluna representa uma característica (também chamada de variável) dessa observação__.
+O que queremos compreender nesta seção é a natureza das *observações* de uma base de dados. As observações correspondem às unidades amostrais, que podemos definir como "*cada uma das partes disjuntas em que uma população é exaustivamente decomposta, para* [que]*, do conjunto delas se façam extrações a fim de constituir uma amostra, ou estágio de uma amostra*" [@Bolfarine&Bussab2005, p. 263]. __Em bases de dados, cada linha deve corresponder a uma unidade amostral; e cada coluna representa uma característica (também chamada de variável) dessa observação__.
 
 Na Tabela \@ref(tab:sample-leiloes), há um exemplo de uma base de dados da ABJ. São algumas linhas e colunas da base de leiloes do Observatório da Insolvência de São Paulo - Fase 2. Basicamente, esta base diz respeito aos bens que são levados a alienações nos processos de falência no Estado de São Paulo. Nessa base, cada linha representa um item levado a alienação de um processo, ou seja, a unidade amostral é um item levado a leilão; e cada coluna representa uma informação a respeito desse bem, a saber, quem é o leiloeiro responsável pela venda do bem, quando o bem foi levado a leilão, qual era o valor de avaliação inicial desse bem; e qual é o valor pelo qual ele foi arrematado (o que fica em branco, quando o bem nunca foi arrematado).
 
 ```{r sample-leiloes, echo=FALSE, message=FALSE, warning=FALSE}
-leiloes <- abjData::leiloes
+set.seed(1)
+leiloes <- abjData::leiloes |> 
+  dplyr::slice_sample(n = 10)
 
 leiloes |> 
-  dplyr::select(id_processo, descricao, id_leiloeiro, data_edital, vendeu, valor_avaliacao_inicial, valor_total_arrematado) |> 
-  head(10) |> 
+  dplyr::transmute(
+    id_processo, 
+    descricao = stringr::str_trunc(descricao, 20),
+    id_leiloeiro, 
+    data_edital,
+    vendeu,
+    av_inicial = valor_avaliacao_inicial, 
+    arrematado = valor_total_arrematado
+  ) |> 
   knitr::kable(
     caption = "Exemplo dos dados da base de leilões da ABJ"
   )
-
-# knitr::include_graphics("assets/img/planilha.png")
 ```
 
 Uma *observação*, então, como vimos, possui várias características. Todas essas características constituem variáveis a respeito da unidade amostral. O que precisamos ver, a seguir, são os tipos dessas características e as implicações de cada um dos tipos. 

@@ -1,4 +1,4 @@
-bookdown::gitbook:
+bookdown::bs4_book:
   dev: svglite
   edit: null
   css: ["assets/css/bookdown.css"]
@@ -15,7 +15,8 @@ bookdown::gitbook:
     download: ["pdf"]
 
 pagedown::thesis_paged:
-  toc: true
+  toc: false
+  toc-title: "Sumário"
   lof-title: "Lista de Figuras"
   lot-title: "Lista de Tabelas"
   css: ["thesis", "assets/css/pagedown.css"]

@@ -53,11 +53,3 @@ table {
 .footnote {
   line-height: 120%;
 }
-
-.toc {
-  break-after: always;
-}
-
-#LOA {
-  break-after: never;
-}
