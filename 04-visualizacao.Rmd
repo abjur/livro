@@ -693,6 +693,438 @@ consumo |>
 
 ##### Boxplot
 
-(em construção)
+A próxima visualização importante para variáveis numéricas é o boxplot. O boxplot é um gráfico que apresenta as estatísticas resumo de uma determinada variável, ao invés de apresentar as unidades amostrais, tal como ocorre no histograma. Para explicar o boxplot, vamos falar de 3 pontos: (a) como se forma o boxplot; (b) como interpretar este gráfico; e (c) problemas relacionados a ele.
+
+Para tratar da formação do boxplot, é importante começar visualizando-o, para que possamos compreender as diferentes partes que o compõem. 
 
 
+```{r boxplot1, fig.cap="Exemplos de boxplot, um em pé e outro deitado", fig.width=8, fig.height=4}
+
+p1 <- ggplot2::ggplot(cars) +
+  ggplot2::aes(x = dist, y = "") +
+  ggplot2::geom_boxplot(width = 0.5) +
+  ggplot2::theme_bw() +
+  ggplot2::labs(x = "", y = "")
+  
+
+p2 <- ggplot2::ggplot(cars) +
+  ggplot2::aes(y = dist, x = "") +
+  ggplot2::geom_boxplot(width = .5) +
+  ggplot2::theme_bw() +
+  ggplot2::labs(x = "", y = "")
+
+
+patchwork::wrap_plots(p1, p2)
+
+```
+
+Com a imagem do boxplot em mente, podemos dissecá-lo em três partes, para fins didáticos: o centro, os bigodes e os pontos. 
+
+O centro é o retângulo que fica no meio do boxplot. Esse retângulo é definido por três parâmetros. Para entendê-los, precisamos nos lembrar dos quantis empíricos e, mais especificamente, dos quartis. Essa matéria foi vista no capítulo anterior, mas ela é importante neste contexto porque o centro do boxplot é definido justamente pelos três quartis: o quartil superior, a mediana e o quartil inferior. Basicamente, o perímetro externo do centro do boxplot é delimitado pelos quartis superior e inferior e a linha que corta o retângulo boxplot é a mediana. Não necessariamente a mediana está ao centro do retângulo. Mais para frente veremos o que significa a posição da linha mediana dentro do retângulo. O que importa, neste momento, é saber que o centro do boxplot é definido pelos três quartis empíricos, sendo que a mediana representa a linha que corta o retângulo central.
+
+A seguir, a segunda parte do boxplot são os bigodes. Existem dois bigodes, um para cima e outro para baixo. Ambos se formam da mesma maneira: eles se estendem do perímetro externo do retângulo central até 3/2 do IQR. Vale lembrar que, conforme vimos no capítulo anterior, IQR (Interquartile Range) representa a amplitude dos quartis superior e inferior, ou seja, ele é calculado pela diferença do quartil superior (75%) com o quartil inferior (25%). Dessa forma, o IQR diz qual é a amplitude em que se encontram os 50% centrais dos dados. Lembrando desta informação, podemos voltar aos bigodes. Os bigodes são linhas que se estendem desde a área externa do retângulo central até um ponto que representa 3/2 do IQR. O bigode inferior, se inicia do quartil inferior e vai até -3/2 IQR; enquanto o bigode superior se inicia do quartil superior e vai até 3/2 IQR. 
+
+Por que usamos o valor de 3/2 do IQR? Isso acontece porque, em distribuições normais, 3/2 do IQR representa 99% de todos os dados. Essa afirmação faz pouco sentido agora, entretanto, mais para frente do livro, daremos sentido a ele, definindo melhor o que significa uma distribuição normal e como podemos saber que 3/2 do IQR representa 99% dos dados. Essa última afirmação está relacionada a algumas propriedades da distribuição normal. 
+
+
+É preciso saber também, sobre os bigodes, que nem sempre o bigode, de fato, vai até os 3/2 do IQR. Isso se dá porque, no boxplot, o bigode pode ir até os 3/2 do IQR, entretanto, ele só irá até a última observação antes de esse ponto chegar. Isso significa que mesmo se existirem pontos além dos 3/2 do IQR, se o último ponto antes desse limite estiver, por exemplo, a $\frac 1 2$ do IQR, então o bigode vai andar somente até esse ponto. 
+
+E se existir algum ponto além dos 3/2 do IQR? Então o bigode irá representar as observações **antes** de se passar desse limite; e os valores que passarem deste limite serão representados com pontos. Daí a explicação da terceira parte do boxplot, os pontos. Os pontos, nada mais são do que os dados que estão além dos 3/2 de IQR, seja para cima ou para baixo. Se não houver dados acima desses 3/2 de IQR, então não haverá pontos. Essa é a única parte do gráfico que pode ou não aparecer, todas as demais são partes essenciais do gráfico. 
+
+Antes de prosseguirmos a explicação para outras questões relacionadas ao boxplot, vamos montar parte a parte de um boxplot a partir de um conjunto de dados. O conjunto de dados que utilizaremos é a base consumo. Essa base contém 1000 observações, cuja unidade amostral são processos de consumo. Vamos, para os fins dessa explicação, amostrar somente 30 processos.
+
+O primeiro passo para montar o boxplot é determinar os eixos do boxplot. É preciso ter clareza de que o boxplot que estamos vendo agora é univariado, ou seja, ele possui apenas um eixo. Este eixo é o eixo que contém os valores da variável numérica. No nosso caso, será o eixo de valor da causa. Não importa se esse eixo for o x ou o y, pois o boxplot pode ser apresentado tanto na horizontal como na vertical.
+
+O segundo passo é realizar os cálculos das estatísticas de resumo do nosso conjunto de dados. São 5 informações de que precisamos (máximo, mínimo, mediana, quartil superior e inferior), e outras 7 medidas decorrentes dessas 5 (IQR, o limite superior do bigode, o limite inferior do bigode, o ponto superior, o ponto inferior e os potenciais outliers nos limites inferior e superior). A Tabela \@ref(tab:medidas-boxplot) resume essas informações. 
+
+
+```{r medidas-boxplot}
+sub_set_consumo |>
+  dplyr::summarise(
+    `valor máximo` = max(valor),
+    q3 = quantile(valor, 0.75),
+    `mediana` = quantile(valor, 0.5),
+    q1 = quantile(valor, 0.25),
+    `valor mínimo` = min(valor),
+    iqr = q3-q1,
+    bigode_superior = q3 + (3/2 * iqr),
+    bigode_inferior = q1 - (3/2 * iqr),
+    `último ponto superior` = max(valor[valor < bigode_superior]),
+    `último ponto inferior` = min(valor[valor > bigode_inferior]),
+    pontos_superiores = length(valor[valor > bigode_superior]),
+    pontos_inferiores = length(valor[valor < bigode_inferior])
+  ) |>
+  dplyr::mutate(
+    dplyr::across(
+      .fns = ~round(.x, 2)
+    )
+  ) |>
+  dplyr::rename(
+    `quartil superior` = q3,
+    `quartil inferior` = q1,
+    `IQR` = iqr,
+    `quartil superior + 3/2 IQR` = bigode_superior,
+    `quartil inferior - 3/2 IQR` = bigode_inferior,
+    `quantidade de pontos superiores` = pontos_superiores,
+    `quantidade de pontos inferiores` = pontos_inferiores
+
+  ) |>
+  tibble::rownames_to_column() |>
+  dplyr::mutate(rowname = "valores") |>
+  tidyr::pivot_longer(!rowname, names_to = "medidas", values_to = "valores") |>
+  tidyr::pivot_wider(names_from = "rowname", values_from = "valores") |>
+  dplyr::transmute(
+    medidas,
+    `parte do boxplot` = dplyr::case_when(
+      medidas == "quartil inferior" |
+        medidas == "mediana" |
+        medidas == "quartil superior" ~ "centro",
+
+      medidas == "valor máximo" |
+        medidas == "valor mínimo" |
+        stringr::str_detect(medidas, "último") |
+        stringr::str_detect(medidas, "IQR") ~ "bigodes",
+      TRUE ~ "pontos"
+    ),
+    valores = dplyr::case_when(
+      !stringr::str_detect(medidas, "quantidade de pontos") ~ format_reais(valores),
+      TRUE ~ paste0(valores, " pontos")
+    )
+  ) |>
+  knitr::kable(caption = "Medidas resumo que compõem o boxplot.")
+
+```
+
+A começar pelo centro do boxplot, ele está contido dentro dos limites dos quartis superior e inferior e, portanto, ele começa, no ponto R\$ 10.003,23 e acaba no ponto R\$ 22.370,00. A mediana, que corta o retângulo central, está no ponto R$ 14.066,00. Percebemos já, com isso, que a mediana não está no centro. O retângulo central está representado na Figura X.1.
+
+
+```{r boxplot-desenho1, fig.cap="Boxplot sem bigodes"}
+
+
+
+```
+
+
+A seguir, para construir os bigodes, temos que calcular o IQR. O IQR é simplesmente a diferença do quartil superior com o quartil inferior, dando R\$ 12.366,77. Então 3/2 do IQR representa R\$ 18.550,15 (3/2 * 12.366,77). Com base nisso, podemos calcular os bigodes inferior e superior. 
+
+O bigode superior pode andar 18.550,15 unidades acima do quartil superior, podendo assumir, portanto, no máximo o valor de R\$ 40.920,16. Quanto ao bigode inferior, precisamos subtrair 3/2 do IQR do quartil inferior, resultando em R\$ -8.546,94. Como não é possível que o valor da causa seja negativo, então esse número, na verdade, equivale simplesmente a R\$ 0,00, ou seja, o menor valor que o bigode inferior pode assumir é zero. O zero está contido dentro do limite do bigode inferior, então não haverá nenhum valor além do limite inferior para o bigode e, portanto, não haverá nenhum ponto na região inferior. Os limites dos bigodes estão representados na Figura \@ref(fig:boxplot-desenho2).
+
+```{r boxplot-desenho2, fig.cap="Boxplot com bigodes"}
+
+
+
+```
+
+Mesmo sabendo os pontos máximo que os bigodes poderão assumir, isso ainda não nos diz onde os bigodes irão parar, uma vez que não necessariamente (e via de regra não é assim) o maior valor dentro da região dos bigodes é de fato o maior valor possível. No nosso caso, a observação de maior valor que está dentro do bigode inferior é o valor mínimo, de R\$ 395,26; e a observação de maior valor dentro do limite do bigode superior é o ponto R\$ 40.400,74. Os bigodes estão representados na Figura \@ref(fig:boxplot-desenho3). 
+
+
+```{r boxplot-desenho3, fig.cap="Boxplot com bigodes cortados"}
+
+
+
+```
+
+Por fim, uma vez que os bigodes foram construídos, falta apenas a última parte dos boxplots, que são os pontos. Na parte inferior do gráfico, como vimos, como o limite inferior vai até um número negativo, mas os valores reais podem ir, no máximo, até R$ 0,00, então não há pontos na parte inferior. Na parte superior do gráfico, há três pontos que extrapolam o limite do gráfico. Estes pontos estão representados na Figura \@ref(fig:boxplot-desenho4).
+
+```{r boxplot-desenho4, fig.cap="Boxplot com bigodes cortados e valores atípicos"}
+
+
+
+```
+
+Com a explicação de como construir o boxplot, seguida de um exemplo, podemos prosseguir ao segundo ponto importante a respeito dos boxplots: como interpretar os boxplots? Os boxplots, assim como os histogramas, indicam distribuições. Então, assim como vimos alguns tipos de distribuições nos histogramas, podemos verificar como essas distribuições reverberam na construção dos boxplots. Na Figura X, vemos a relação do boxplot com as diferentes distribuições existentes. 
+
+
+```{r distribuicoes-boxplot, fig.cap="Distribuições e boxplots"}
+
+```
+
+
+O que podemos notar é que a posição da linha da mediana *dentro* do retângulo, indica o tipo de distribuição. Se a linha mediana está bem ao centro do retângulo central, então podemos concluir que a distribuição é simétrica; se a linha mediana está deslocada, então temos distribuições assimétricas. Com isso, percebemos a que elemento do retângulo central temos de nos atentar quando analisamos um boxplot. 
+
+
+A representação das distribuições por meio do boxplot é uma informação que já está presente no histograma e, nesse sentido, o boxplot não acrescenta muito à análise. Entretanto, o boxplot adiciona alguns elementos à visualização que não estão presentes no histograma. Há dois elementos importantes para a análise.
+
+Primeiro, o boxplot consegue destacar os dois quartis centrais (o segundo e o terceiro quartis), que, juntos, representam exatamente o meio dos dados. Esse destaque nos permite inferir conclusões mais *robustas* a respeito do comportamento central do nosso conjunto. Se nos lembrarmos da discussão a respeito das medidas no capítulo anterior, uma medida *robusta* é uma medida menos suscetível aos valores extremos. Em muitos conjuntos de dados, os valores extremos distorcem os valores centrais. Então o boxplot consegue representar muito bem os valores centrais, dando destaque a esses valores. A Figura Y deixa em realce a porção dos dados que estão sendo representadas pelo retângulo central do boxplot. 
+
+```{r boxplot-normal, fig.cap="Boxplot comparado com distribuição normal."}
+
+```
+
+O último ponto que merece destaque da interpretação dos boxplots são os pontos. A interpretação dos pontos é um ponto importante dos boxplots. Esses pontos indicam potenciais *outliers*. Esta é a primeira vez que falamos de outliers neste livro. Outliers são pontos que se diferem drasticamente do resto dos dados. Essa definição é muito genérica, pois ela é uma definição guarda-chuva. Mas ela não é suficiente. O que significa dizer que algum ponto “difere drasticamente” do resto dos dados? Como que eu meço o que são “o resto dos dados” para comparar com os pontos que “diferem drasticamente”?
+
+Essas perguntas são essenciais, porque, na verdade, são justamente elas que dão contornos estatísticos para os outliers. Para cada resposta distinta que damos a essas perguntas, teremos uma definição distinta de outlier e existem muitas definições possíveis. A questão que une todos os outliers é que, em todas as suas acepções, os outliers distorcem os valores dos dados e são pontos cuja incidência na população é muito rara. 
+
+Há duas dificuldades ao lidar com outliers: a identificação e a solução. Sobre a identificação, o problema central é definir o ponto de corte dos dados: a partir de que valores poderemos dizer que existem outliers? A segunda questão é saber o que fazer depois de identificarmos os outliers? Retiramos eles da base? Olharmos separadamente para os outliers e os pontos centrais? Essas perguntas (de identificação e de solução) irão acompanhar o livro em muitos momentos, pois os outliers geram problemas que se manifestam de diversas maneiras na estatística. Voltaremos várias vezes nisso, portanto. 
+
+Neste momento introdutório, em que estamos vendo os outliers pela primeira vez, basta sabermos que eles são pontos discrepantes e que existe uma dificuldade tremenda em se determinar um ponto de corte para bater o martelo e dizer: “qualquer valor que ultrapasse essa fronteira, será considerado um outlier!”. No caso do boxplot, por causa da forma como ele é construído, todos os pontos representados no gráfico estão a 3/2 do IQR, contado a partir dos quartis inferior ou superior. Então, se assumirmos que todos os pontos que aparecem no boxplot são outliers, estaremos definido que “diferir drasticamente” significa “distanciar-se 3/2 do IQR contados a partir do quartil superior ou inferior”. Esse ponto de corte (quartil + 3/2 do IQR) é apenas uma definição dentre muitas possíveis para os outliers. Mas podemos usar critérios de corte mais brandos ou mais severos. Por isso dizemos que os pontos do boxplot indicam apenas “potenciais outliers”.
+
+É importante pontuar aqui que o critério que usaremos para decidir o ponto de corte do outlier não deve ser um critério automático (como o é no caso dos pontos do boxplot). Para cada caso, para cada dado, para cada propósito, teremos um critério distinto para definir outliers. Cada critério resolve problemas distintos, mas gera vieses distintos também. Veremos com mais detalhes as formas de mensurar outliers ao longo do livro. 
+
+Dada toda essa discussão a respeito dos outliers, podemos voltar à interpretação dos boxplots. Em primeiro lugar, vimos que havia uma semelhança dos boxplots com os histogramas: ambos representavam distribuições dos dados, mas de formas distintos. Em seguida, passamos a ver duas características específicas do boxplot, que não estavam presentes no histograma: o foco no conjunto central e os outliers. Sobre este último ponto, vimos que os pontos que aparecem no boxplot representam apenas “potenciais outliers”, justamente porque eles assumem um critério automático de representação. Em alguns contextos, fará sentido assumir que os outliers são esses pontos mesmos; em outros, entretanto, não será assim.
+
+Explicada a interpretação e a formação dos boxplots, resta somente abordar seus principais problemas. Há dois problemas: distribuições assimétricas e dados escassos.
+
+A começar pelo problema das distribuições assimétricas, este é o mesmo problema que acontecia com o histograma, de que a visualização ficava impossibilitada por causa de distribuições muito assimétricas. Basta nos lembrarmos da Figura \@ref(fig:histograma-valor-2). No caso do boxplot, aqueles mesmos dados ficam representados conforme a Figura \@ref(fig:boxplot-consumo).
+
+```{r boxplot-consumo, fig.cap="Boxplot da variável consumo"}
+options(scipen = 999)
+consumo |>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = valor) +
+  ggplot2::geom_boxplot() +
+  ggplot2::theme(
+    axis.title.y = ggplot2::element_blank(),
+    axis.text.y = ggplot2::element_blank(),
+    axis.ticks.y = ggplot2::element_blank()
+  )
+
+```
+
+Vemos que o retângulo central está tão achatado, próximo do 0, que ele se torna uma linha. Perdemos, com isso, toda a noção das medidas centrais. Entretanto, se olharmos para a tabela de medidas para compôr este boxplot, veremos os seguintes valores, conforme a Tabela \@ref(tab:tabela-boxplot-consumo).
+
+```{r tabela-boxplot-consumo}
+consumo |>
+  dplyr::summarise(
+    `valor máximo` = max(valor),
+    q3 = quantile(valor, 0.75),
+    `mediana` = quantile(valor, 0.5),
+    q1 = quantile(valor, 0.25),
+    `valor mínimo` = min(valor),
+    iqr = q3-q1,
+    bigode_superior = q3 + (3/2 * iqr),
+    bigode_inferior = q1 - (3/2 * iqr),
+    `último ponto superior` = max(valor[valor < bigode_superior]),
+    `último ponto inferior` = min(valor[valor > bigode_inferior]),
+    pontos_superiores = length(valor[valor > bigode_superior]),
+    pontos_inferiores = length(valor[valor < bigode_inferior])
+  ) |>
+  dplyr::mutate(
+    dplyr::across(
+      .fns = ~round(.x, 2)
+    )
+  ) |>
+  dplyr::rename(
+    `quartil superior` = q3,
+    `quartil inferior` = q1,
+    `IQR` = iqr,
+    `quartil superior + 3/2 IQR` = bigode_superior,
+    `quartil inferior - 3/2 IQR` = bigode_inferior,
+    `quantidade de pontos superiores` = pontos_superiores,
+    `quantidade de pontos inferiores` = pontos_inferiores
+
+  ) |>
+  tibble::rownames_to_column() |>
+  dplyr::mutate(rowname = "valores") |>
+  tidyr::pivot_longer(!rowname, names_to = "medidas", values_to = "valores") |>
+  tidyr::pivot_wider(names_from = "rowname", values_from = "valores") |>
+  dplyr::transmute(
+    medidas,
+    `parte do boxplot` = dplyr::case_when(
+      medidas == "quartil inferior" |
+        medidas == "mediana" |
+        medidas == "quartil superior" ~ "centro",
+
+      medidas == "valor máximo" |
+        medidas == "valor mínimo" |
+        stringr::str_detect(medidas, "último") |
+        stringr::str_detect(medidas, "IQR") ~ "bigodes",
+      TRUE ~ "pontos"
+    ),
+    valores = dplyr::case_when(
+      !stringr::str_detect(medidas, "quantidade de pontos") ~ format_reais(valores),
+      TRUE ~ paste0(valores, " pontos")
+    )
+  ) |>
+  knitr::kable(
+    caption = "Tabela de estatísticas-resumo para construção do boxplot"
+  )
+
+```
+
+Por esta tabela, vemos que o valor máximo que estará contido nos bigodes é de aproximadamente R\$ 51 mil, entretanto, o valor máximo é de mais de R\$ 53 milhões. Ou seja, o valor máximo que deveríamos visualizar não é nada perto do último ponto que observamos, por isso o centro do boxplot e os seus bigodes ficam achatados, parecendo uma linha no zero.
+
+Quanto aos pontos, vemos que há 99 pontos acima do limite superior do boxplot. Entretanto, o que efetivamente conseguimos observar são apenas 4 pontos. Os demais 95 pontos estão todos concentrados, de forma que eles ficam indiscriminados entre si. 
+
+Então o primeiro problema diz respeito à visualização de dados muito dispersos e assimétricos. Como já vimos, isso pode ser resolvido colocando o gráfico em escala logarítmica. Na Figura \@ref(fig:boxplot-consumo-log), o gráfico está em log de base 10.
+
+```{r boxplot-consumo-log, fig.cap="Boxplot dos valores em log na base 10", fig.width=8, fig.height=2.5}
+options(scipen = 999)
+consumo |>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = valor) +
+  ggplot2::geom_boxplot() +
+  ggplot2::scale_x_log10(breaks=10^c(3,4,5,6,7,8)) +
+  ggplot2::theme(
+    axis.title.y = ggplot2::element_blank(),
+    axis.text.y = ggplot2::element_blank(),
+    axis.ticks.y = ggplot2::element_blank()
+  )
+
+```
+
+
+Talvez o problema dessa transformação de variável seja que os parâmetros do gráfico se alteram. Vemos algo que não víamos nos outros boxplots representando esta mesma variável: pontos abaixo do bigode inferior! Isso acontece porque, com os valores em log, a variabilidade dos dados é muito diferente.
+
+O outro problema dos boxplots são as informações que eles escondem. Como os boxplots apresentam somente as medidas de resumo, então eles escondem o tamanho da amostra. Veremos mais para frente que precisamos de grandes números de dados para realizar algumas inferências. Para um exemplo, ver a discussão do Data to Viz em [The Boxplot and its pitfalls](https://www.data-to-viz.com/caveat/boxplot.html). 
+
+#### Gráficos bivariados (com explicativa categórica)
+
+Se antes estávamos vendo os gráficos univariados para variáveis numéricas, agora vamos ver como esses gráficos podem representar variáveis explicativas. Vamos começar com as variáveis explicativas categóricas, ou seja, gráficos que misturam uma informação numérica com outra categórica. Usualmente, usamos as categorias para explicar o comportamento da distribuição numérica. 
+
+A combinação de uma variável numérica com uma variável categórica não gera nenhum gráfico novo, mas apenas adiciona novas camadas de densidade para os dois gráficos de variáveis numéricas que já vimos: o histograma e o boxplot. Os exemplos serão breves, portanto. 
+
+##### Histograma
+
+Para adicionar uma informação categórica nos histogramas, basta “quebrarmos” os dados em várias categorias, indicando como que cada categoria contribui para a distribuição geral. Na Figura \@ref(fig:hist-com-shade) observamos o mesmo histograma de tempos que já vimos anteriormente, mas dividido pelo resultado final da decisão. Cruzando o tempo de decisão com o resultado da decisão poderíamos, por exemplo, investigar se os recursos protelatórios (cujo resultado é sempre negativo, ou, “Não reformou”).
+
+```{r hist-com-shade, fig.cap="Histograma para cada tipo de decisão"}
+consumo |>
+  dplyr::filter(
+    dec_val == "Não reformou" |
+      dec_val == "Reformou" |
+      dec_val == "Parcial"
+  ) |>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = tempo, fill = dec_val) +
+  ggplot2::geom_histogram() +
+  gghighlight::gghighlight() +
+  ggplot2::facet_wrap(~ dec_val)
+```
+
+##### Boxplot
+
+Para o boxplot, podemos realizar o mesmo tipo de visualização, em que quebramos o boxplot principal em grupos menores. Isso nos permite comparar medianas e IQRs com maior facilidade.
+
+```{r boxplot-com-cat, fig.cap="Histograma para cada tipo de decisão"}
+consumo |>
+  dplyr::filter(
+    dec_val == "Não reformou" |
+      dec_val == "Reformou" |
+      dec_val == "Parcial"
+  ) |>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = tempo, y = dec_val, fill = dec_val) +
+  ggplot2::geom_boxplot(show.legend = FALSE)
+```
+
+#### Gráficos bivariados (com explicativa numérica)
+
+Ao contrário dos gráficos de variável numérica bivariados com uma explicativa categórica, que não formavam nenhum tipo de gráfico novo, quando cruzamos duas informações numéricas, aparece um novo gráfico, muito comum: o gráfico de dispersão (em inglês, scatter plot). Veremos esta visualização em mais detalhes a seguir.
+
+##### Gráficos de dispersão
+
+O gráfico de dispersão, como já dito, é usado para representar duas variáveis numéricas. Esse tipo de representação nos indica como que duas variáveis numéricas se relacionam. Há duas relações possíveis: uma relação positiva (isto é, quanto maior uma variável, maior a outra também), ou uma relação negativa (isto é, quanto mais de uma variável, menos eu tenho da outra). A Figura \@ref(fig:dispersao) traz dois gráficos de dispersão, demonstrando as relações possíveis.
+
+```{r dispersao, eval=FALSE, fig.cap="Gráficos de dispersão sobre litigiosidade"}
+p_positivo <- readr::read_csv("~/Downloads/obsCIEE.csv") |>
+  dplyr::filter(ano == min(ano)) |>
+  dplyr::mutate(
+    congestionamento = baixados / (novos + pendentes),
+    novos_por_100k = novos/pop * 100000
+  ) |>
+  ggplot2::ggplot() +
+  ggplot2::aes(y = novos_por_100k, x = idhm) +
+  ggplot2::geom_point() +
+  ggplot2::geom_smooth(method=lm, se=FALSE, color = cores_abj[1]) +
+  ggplot2::labs(
+    title = "Gráfico de dispersão com relação positiva",
+    y = "Casos novos por 100 mil habitantes",
+    x = "IDH"
+  )
+
+
+p_negativo <- readr::read_csv("~/Downloads/obsCIEE.csv") |>
+  dplyr::filter(ano == min(ano)) |>
+  dplyr::mutate(
+    congestionamento = baixados / (novos + pendentes),
+    novos_por_100k = novos/pop * 100000
+  ) |>
+  ggplot2::ggplot() +
+  ggplot2::aes(y = novos_por_100k, x = t_analf18m) +
+  ggplot2::geom_point() +
+  ggplot2::geom_smooth(method=lm, se=FALSE, color = cores_abj[1]) +
+  ggplot2::labs(
+    title = "Gráfico de dispersão com relação negativa",
+    y = "Casos novos por 100 mil habitantes",
+    x = "Taxa de analfabetismo - 18 anos ou mais"
+  )
+
+patchwork::wrap_plots(p_positivo, p_negativo, ncol = 2)
+
+```
+
+A linha que demonstra a relação não será tratada neste capítulo. Ela foi meramente ilustrativa para indicar o tipo de relação que está sendo representada entre as variáveis. O que importa é que, ao colocar, nos dois eixos, variáveis numéricas, conseguimos observar como essas variáveis se associam entre si.
+
+Por mais que os gráficos de dispersão sejam usualmente utilizados para relacionar duas variáveis contínuas, podemos dar outras funções a eles. Em um caso exemplar, do Observatório da Insolvência da ABJ sobre Recuperações Judiciais no Estado de São Paulo, analisamos a relação entre a dívida da recuperação com a remuneração do administrador judicial. Ao apresentar a associação entre as variáveis, construímos um gráfico de dispersão. Uma forma de se encarar este gráfico é justamente pela indagação de se quanto maior a dívida total, maior a remuneração do administrador judicial. Mas, para além disso, podemos ter um outro olhar para o gráfico de dispersão. O que sabemos é que o art. 24, § 1º da lei 11.101/2005 estabelece como limite à remuneração do AJ que “o total pago ao administrador judicial não excederá 5% (cinco por cento) do valor devido aos credores submetidos à recuperação judicial ou do valor de venda dos bens na falência.” Neste caso, então, ao colocarmos uma linha de 5%  em relação ao total da dívida, conseguimos observar a distância da remuneração dos AJs em relação ao máximo permitido por lei. Quando adicionamos esta camada de interpretação ao gráfico, não estamos olhando para a relação entre as variáveis (remuneração do AJ e total da dívida), mas estamos olhando para a legalidade dessa remuneração. 
+
+```{r obs-insolvencia, fig.cap="Relação entre dívida e remuneração de Administradores Judiciais: Observatório da Insolvência"}
+
+
+
+```
+
+
+#### Gráficos bivariados (no tempo)
+
+Chegamos, então, ao fim dos gráficos bivariados com uma variável numérica como variável de interesse. O último gráfico que nos resta observar é o caso das variáveis explicativas temporais. Esse caso é especial porque as variáveis temporais não possuem uma natureza muito definida. 
+
+Por exemplo, se pegarmos a variável categórica de resultado da decisão de segunda instância, ela pode assumir três valores: reformou, não reformou ou reformou parcialmente. Faria sentido, diante dessas três informações possíveis, que a gente substraísse “reformou” de “não reformou”? Obviamente não, pois não há sentido algum neste cálculo. Entretanto, se tivermos duas datas, a subtração dessas duas informações irá sim fazer sentido: ela irá nos indicar um intervalo de tempo. Com isso, já vemos que as variáveis temporais não se comportam exatamente como variáveis categóricas. 
+
+Agora, pensando nas variáveis numéricas contínuas, normalmente, entre um valor e outro, existem infinitos valores possíveis. Por exemplo, entre 1 e 2, existe o número 1,1 e também o 1,2. Mas entre esses valores existe o 1,11 e o 1,12. Mas entre eles, existe o 1,111 e o 1,112. E assim por diante. Essa propriedade das variáveis numéricas contínuas não está presente nas variáveis temporais. Se a variável temporal representa um ano, por exemplo, não há nada entre os anos de 2016 e 2017. Ou ainda, se a variável temporal representa datas, não há nenhum outro número entre um dia e outro. 
+
+Por fim, então, comparando as variáveis temporais com variáveis numéricas discretas, elas também apresentam diferenças entre si. Uma variável numérica normalmente expressa a contagem de alguma informação, por exemplo, a contagem de juízes por comarca. Esse valor é sempre positivo, inteiro e maior ou igual a zero. Se tentarmos pensar dessa forma com as variáveis temporais, o que seria uma data maior ou igual a zero? A variável igual a zero seria o dia 0/0/0000? Não faz sentido isso. Entretanto, por mais que haja algumas diferenças, a variável numérica discreta é a que mais se aproxima das variáveis temporais. 
+
+Por causa dessa natureza especial das variáveis temporais é que faz sentido pensarmos nos gráficos bivariados no tempo como um caso especial. 
+
+Antes de entrarmos na visualização gráfica dos gráficos bivariados no tempo, é importante diferenciarmos dois tipos de variáveis relacionadas a tempos. Uma coisa é uma variável que pode receber valores como “27/08/2021”; mas existe outra informação relacionada a tempo que diz respeito ao tempo transcorrido entre duas datas, por exemplo, o tempo entre a distribuição de um processo e a sua sentença. No primeiro caso, a natureza da variável é temporal (uma data); no segundo caso, a natureza da variável é uma variável numérica comum. O tipo de variável especial de que vamos tratar nesta sessão diz respeito somente ao primeiro tipo, e não ao segundo, tanto que já fizemos um gráfico com a variável “tempo”. 
+
+##### Séries temporais
+
+O nome do gráfico que representa uma variável numérica em relação ao tempo se chama série temporal. O gráfico de uma série temporal se apresenta sempre com o tempo no eixo x e a variável numérica no eixo y. 
+
+
+Este gráfico é utilizado para “descrever apenas o comportamaneto da série”, o que vai envolver “a verificação da existência de tendências, ciclos e variações sazonais”.[^morettin-series] 
+
+[^morettin-series]: MORETTIN, Pedro A; TOLOI, Clélia M. C. Análise de Séries Temporais, 2a ed. São Paulo: Editora Blucher. 2006, p. 3.
+
+Na Figura \@ref(fig:time-series-litig), vemos um exemplo desse tipo de relação. 
+
+```{r time-series-litig, eval=FALSE, fig.cap="Série de tempo dos dados de litigiosidade."}
+norte <- c("AM", "TO", "AP", "AC", "RR", "RO")
+nordeste <- c("MA", "BA", "PE", "SE", "AL", "RN", "PB", "CE", "PI", "PA")
+centro_oeste <- c("GO", "MT", "MS", "DF")
+sudeste <- c("SP", "MG", "RJ", "ES")
+sul <- c("RS", "PR", "SC")
+
+readr::read_csv("~/Downloads/obsCIEE.csv") |>
+  dplyr::mutate(
+    regiao = dplyr::case_when(
+      tribunal_uf %in% norte ~ "Norte",
+      tribunal_uf %in% nordeste ~ "Nordeste",
+      tribunal_uf %in% centro_oeste ~ "Centro Oeste",
+      tribunal_uf %in% sudeste ~ "Sudeste",
+      tribunal_uf %in% sul ~ "Sul"
+    )
+  ) |>
+  dplyr::group_by(regiao, ano) |>
+  dplyr::summarise(
+    novos = sum(novos),
+    pop = sum(pop)
+  ) |>
+  dplyr::ungroup() |>
+  dplyr::mutate(
+    novos_por_100k = novos/pop * 100000
+  ) |>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = ano, y = novos_por_100k, color = regiao) +
+  ggplot2::geom_point() +
+  ggplot2::geom_line()
+
+```
+
+
+A figura nos mostra uma tendência se aumentar os casos em todas as regiões do Brasil a partir de 2018. Além disso, vemos que, na região Sul, entre 2015 e 2016, houve uma clara queda, no total de casos por 100 mi habitantes, em comparação com outras regiões, que ou demonstraram aumentos, ou demonstraram quedas não tão intensas. 
+
+
+O que vemos é que não estamos fazendo afirmações sobre a relação entre a variável contínua (número de casos novos por 100 mil habitantes) e a variável temporal (ano) do tipo “quanto mais tempo, mais casos”, porque não é esse tipo de relação que séries temporais nos indicam. Esse tipo de visualização está nos apontando para tendências temporais, sejam elas cíclicas, sazonais ou episódios pontuais. 
