@@ -739,7 +739,12 @@ O segundo passo é realizar os cálculos das estatísticas de resumo do nosso co
 
 
 ```{r medidas-boxplot}
-sub_set_consumo |>
+
+set.seed(909)
+sub_set_consumo <- abjData::consumo |>
+  dplyr::sample_n(30)
+
+tab_stats <- sub_set_consumo |>
   dplyr::summarise(
     `valor máximo` = max(valor),
     q3 = quantile(valor, 0.75),
@@ -772,7 +777,9 @@ sub_set_consumo |>
   tibble::rownames_to_column() |>
   dplyr::mutate(rowname = "valores") |>
   tidyr::pivot_longer(!rowname, names_to = "medidas", values_to = "valores") |>
-  tidyr::pivot_wider(names_from = "rowname", values_from = "valores") |>
+  tidyr::pivot_wider(names_from = "rowname", values_from = "valores")
+
+tab_stats |>
   dplyr::transmute(
     medidas,
     `parte do boxplot` = dplyr::case_when(
@@ -790,17 +797,40 @@ sub_set_consumo |>
       !stringr::str_detect(medidas, "quantidade de pontos") ~ format_reais(valores),
       TRUE ~ paste0(valores, " pontos")
     )
-  ) |>
+  ) |> 
   knitr::kable(caption = "Medidas resumo que compõem o boxplot.")
 
 ```
 
-A começar pelo centro do boxplot, ele está contido dentro dos limites dos quartis superior e inferior e, portanto, ele começa, no ponto R\$ 10.003,23 e acaba no ponto R\$ 22.370,00. A mediana, que corta o retângulo central, está no ponto R$ 14.066,00. Percebemos já, com isso, que a mediana não está no centro. O retângulo central está representado na Figura X.1.
+A começar pelo centro do boxplot, ele está contido dentro dos limites dos quartis superior e inferior e, portanto, ele começa, no ponto R\$ 10.003,23 e acaba no ponto R\$ 22.370,00. A mediana, que corta o retângulo central, está no ponto R$ 14.066,00. Percebemos já, com isso, que a mediana não está no centro. O retângulo central está representado na Figura \@ref(fig:boxplot-desenho1).
 
 
-```{r boxplot-desenho1, fig.cap="Boxplot sem bigodes"}
+```{r boxplot-desenho1, fig.cap="Boxplot sem bigodes", fig.height=2.8, fig.width=8}
 
 
+sub_set_consumo |> 
+  ggplot2::ggplot() +
+  ggplot2::aes(x = valor, y = "") +
+  ggplot2::geom_boxplot(
+    outlier.shape = NA
+  ) +
+  ggplot2::stat_boxplot(
+    geom = "errorbar",
+    colour = "white"
+  ) +
+  ggplot2::scale_x_continuous(
+    breaks = tab_stats$valores[c(4,3,2)],
+    labels = format_reais,
+    guide = ggplot2::guide_axis(angle = 45)
+  ) +
+  ggplot2::coord_cartesian(xlim = tab_stats$valores[c(8,7)]+c(-1000,1000)) +
+  ggplot2::theme_minimal(12) +
+  ggplot2::theme(
+    axis.text.y = ggplot2::element_blank(),
+    panel.grid.minor.x = ggplot2::element_blank(),
+    panel.grid.major.y = ggplot2::element_blank(),
+    axis.title = ggplot2::element_blank()
+  )
 
 ```
 
@@ -809,36 +839,220 @@ A seguir, para construir os bigodes, temos que calcular o IQR. O IQR é simplesm
 
 O bigode superior pode andar 18.550,15 unidades acima do quartil superior, podendo assumir, portanto, no máximo o valor de R\$ 40.920,16. Quanto ao bigode inferior, precisamos subtrair 3/2 do IQR do quartil inferior, resultando em R\$ -8.546,94. Como não é possível que o valor da causa seja negativo, então esse número, na verdade, equivale simplesmente a R\$ 0,00, ou seja, o menor valor que o bigode inferior pode assumir é zero. O zero está contido dentro do limite do bigode inferior, então não haverá nenhum valor além do limite inferior para o bigode e, portanto, não haverá nenhum ponto na região inferior. Os limites dos bigodes estão representados na Figura \@ref(fig:boxplot-desenho2).
 
-```{r boxplot-desenho2, fig.cap="Boxplot com bigodes"}
+```{r boxplot-desenho2, fig.cap="Boxplot com bigodes estendidos", fig.height=2.8, fig.width=8}
 
-
+sub_set_consumo |> 
+  ggplot2::ggplot() +
+  ggplot2::aes(x = valor, y = "1") +
+  ggplot2::geom_boxplot(
+    outlier.shape = NA
+  ) +
+  ggplot2::stat_boxplot(
+    geom = "errorbar",
+    colour = "white"
+  ) +
+  ggplot2::annotate(
+    "segment",
+    x = tab_stats$valores[8],
+    xend = tab_stats$valores[4],
+    y = "1",
+    yend = "1",
+    linetype = 2
+  ) +
+  ggplot2::annotate(
+    "segment",
+    x = tab_stats$valores[2],
+    xend = tab_stats$valores[7],
+    y = "1",
+    yend = "1",
+    linetype = 2
+  ) +
+  ggplot2::scale_x_continuous(
+    breaks = tab_stats$valores[c(4,3,2,12,7,8)],
+    labels = format_reais,
+    guide = ggplot2::guide_axis(angle = 45)
+  ) +
+  ggplot2::coord_cartesian(xlim = tab_stats$valores[c(8,7)]+c(-1000,1000)) +
+  ggplot2::theme_minimal(12) +
+  ggplot2::theme(
+    axis.text.y = ggplot2::element_blank(),
+    panel.grid.minor.x = ggplot2::element_blank(),
+    panel.grid.major.y = ggplot2::element_blank(),
+    axis.title = ggplot2::element_blank()
+  )
 
 ```
 
 Mesmo sabendo os pontos máximo que os bigodes poderão assumir, isso ainda não nos diz onde os bigodes irão parar, uma vez que não necessariamente (e via de regra não é assim) o maior valor dentro da região dos bigodes é de fato o maior valor possível. No nosso caso, a observação de maior valor que está dentro do bigode inferior é o valor mínimo, de R\$ 395,26; e a observação de maior valor dentro do limite do bigode superior é o ponto R\$ 40.400,74. Os bigodes estão representados na Figura \@ref(fig:boxplot-desenho3). 
 
 
-```{r boxplot-desenho3, fig.cap="Boxplot com bigodes cortados"}
+```{r boxplot-desenho3, fig.cap="Boxplot com bigodes cortados", fig.height=2.8, fig.width=8}
 
-
+sub_set_consumo |> 
+  ggplot2::ggplot() +
+  ggplot2::aes(x = valor, y = "1") +
+  ggplot2::stat_boxplot(
+    geom = "errorbar",
+    width = .2
+  ) +
+  ggplot2::geom_boxplot(
+    outlier.shape = NA
+  ) +
+  ggplot2::annotate(
+    "segment",
+    x = tab_stats$valores[8],
+    xend = tab_stats$valores[4],
+    y = "1",
+    yend = "1",
+    linetype = 2
+  ) +
+  ggplot2::annotate(
+    "segment",
+    x = tab_stats$valores[2],
+    xend = tab_stats$valores[7],
+    y = "1",
+    yend = "1",
+    linetype = 2
+  ) +
+  ggplot2::scale_x_continuous(
+    breaks = sort(tab_stats$valores[c(4,3,2,7,8,9,10)]),
+    labels = format_reais,
+    guide = ggplot2::guide_axis(n.dodge = 2)
+  ) +
+  ggplot2::coord_cartesian(xlim = tab_stats$valores[c(8,7)]+c(-1000,1000)) +
+  ggplot2::theme_minimal(12) +
+  ggplot2::theme(
+    axis.text.y = ggplot2::element_blank(),
+    panel.grid.minor.x = ggplot2::element_blank(),
+    panel.grid.major.y = ggplot2::element_blank(),
+    axis.title = ggplot2::element_blank()
+  )
 
 ```
 
 Por fim, uma vez que os bigodes foram construídos, falta apenas a última parte dos boxplots, que são os pontos. Na parte inferior do gráfico, como vimos, como o limite inferior vai até um número negativo, mas os valores reais podem ir, no máximo, até R$ 0,00, então não há pontos na parte inferior. Na parte superior do gráfico, há três pontos que extrapolam o limite do gráfico. Estes pontos estão representados na Figura \@ref(fig:boxplot-desenho4).
 
-```{r boxplot-desenho4, fig.cap="Boxplot com bigodes cortados e valores atípicos"}
+```{r boxplot-desenho4, fig.cap="Boxplot com bigodes cortados e valores atípicos", fig.height=2.8, fig.width=8}
 
+
+sub_set_consumo |> 
+  ggplot2::ggplot() +
+  ggplot2::aes(x = valor, y = "1") +
+  ggplot2::stat_boxplot(
+    geom = "errorbar",
+    width = .2
+  ) +
+  ggplot2::geom_boxplot() +
+  ggplot2::annotate(
+    "segment",
+    x = tab_stats$valores[8],
+    xend = tab_stats$valores[4],
+    y = "1",
+    yend = "1",
+    linetype = 2
+  ) +
+  ggplot2::annotate(
+    "segment",
+    x = tab_stats$valores[2],
+    xend = tab_stats$valores[7],
+    y = "1",
+    yend = "1",
+    linetype = 2
+  ) +
+  ggplot2::scale_x_continuous(
+    breaks = sort(tab_stats$valores[c(4,3,2,7,8,9,10)]),
+    labels = format_reais,
+    guide = ggplot2::guide_axis(n.dodge = 2)
+  ) +
+  ggrepel::geom_text_repel(
+    ggplot2::aes(label = format_reais(valor)),
+    data = sub_set_consumo |> 
+      dplyr::filter(valor > tab_stats$valores[7]), 
+    direction = "y",
+    min.segment.length = 100,
+    size = 3
+  ) +
+  # ggplot2::coord_cartesian(xlim = tab_stats$valores[c(8,7)]+c(-1000,1000)) +
+  ggplot2::theme_minimal(12) +
+  ggplot2::theme(
+    axis.text.y = ggplot2::element_blank(),
+    panel.grid.minor.x = ggplot2::element_blank(),
+    panel.grid.major.y = ggplot2::element_blank(),
+    axis.title = ggplot2::element_blank()
+  )
 
 
 ```
 
-Com a explicação de como construir o boxplot, seguida de um exemplo, podemos prosseguir ao segundo ponto importante a respeito dos boxplots: como interpretar os boxplots? Os boxplots, assim como os histogramas, indicam distribuições. Então, assim como vimos alguns tipos de distribuições nos histogramas, podemos verificar como essas distribuições reverberam na construção dos boxplots. Na Figura X, vemos a relação do boxplot com as diferentes distribuições existentes. 
+Com a explicação de como construir o boxplot, seguida de um exemplo, podemos prosseguir ao segundo ponto importante a respeito dos boxplots: como interpretar os boxplots? Os boxplots, assim como os histogramas, indicam distribuições. Então, assim como vimos alguns tipos de distribuições nos histogramas, podemos verificar como essas distribuições reverberam na construção dos boxplots. Na Figura \@ref(fig:distribuicoes-boxplot), vemos a relação do boxplot com as diferentes distribuições existentes. 
 
 
-```{r distribuicoes-boxplot, fig.cap="Distribuições e boxplots"}
+```{r distribuicoes-boxplot, fig.cap="Distribuições e boxplots", fig.width=8, fig.height=3}
+
+set.seed(2)
+dados_sim <- tibble::tibble(
+  simetrica = rbeta(N, 3, 3),
+  direita = rbeta(N, 1.5, 4),
+  esquerda = rbeta(N, 4, 1.5)
+) |> 
+  tidyr::pivot_longer(dplyr::everything()) |> 
+  dplyr::arrange(name) |> 
+  dplyr::mutate(name = forcats::lvls_reorder(name, c(2, 3, 1))) |> 
+  dplyr::arrange(name)
+
+medidas <- dados_sim |> 
+  dplyr::group_by(name) |> 
+  dplyr::summarise(quant = quantile(value, c(.25, .5, .75)), .groups = "drop")
+
+plot_density <- function(da) {
+  medidas <- dplyr::summarise(da, quant = quantile(value, c(.25, .5, .75)))
+  da |> 
+    ggplot2::ggplot() +
+    ggplot2::aes(x = value) +
+    ggplot2::geom_density(fill = "gray80", colour = "transparent") +
+    ggplot2::scale_x_continuous(
+      breaks = medidas$quant,
+      labels = c("Q1", "Q2", "Q3"), 
+      guide = ggplot2::guide_axis(check.overlap = TRUE)
+    ) +
+    ggplot2::geom_vline(
+      ggplot2::aes(xintercept = quant), 
+      data = medidas, linetype = 2
+    ) +
+    ggplot2::theme_minimal() +
+    ggplot2::labs(title = stringr::str_to_title(da$name[1])) +
+    ggplot2::theme(
+      plot.title = ggplot2::element_text(hjust = .5),
+      axis.title = ggplot2::element_blank(),
+      axis.text.y = ggplot2::element_blank(), 
+      panel.grid = ggplot2::element_blank()
+    )
+}
+
+densidades <- dados_sim |> 
+  dplyr::group_split(name) |> 
+  purrr::map(plot_density)
+
+plot_boxplot <- function(da) {
+  da |> 
+    ggplot2::ggplot() +
+    ggplot2::aes(x = value) +
+    ggplot2::geom_boxplot() +
+    ggplot2::theme_minimal() +
+    ggplot2::theme_void()
+}
+
+boxplots <- dados_sim |> 
+  dplyr::group_split(name) |> 
+  purrr::map(plot_boxplot)
+
+
+patchwork::wrap_plots(
+  c(densidades, boxplots), 
+  nrow = 2, heights = c(8,2)
+)
 
 ```
-
 
 O que podemos notar é que a posição da linha da mediana *dentro* do retângulo, indica o tipo de distribuição. Se a linha mediana está bem ao centro do retângulo central, então podemos concluir que a distribuição é simétrica; se a linha mediana está deslocada, então temos distribuições assimétricas. Com isso, percebemos a que elemento do retângulo central temos de nos atentar quando analisamos um boxplot. 
 
@@ -847,7 +1061,92 @@ A representação das distribuições por meio do boxplot é uma informação qu
 
 Primeiro, o boxplot consegue destacar os dois quartis centrais (o segundo e o terceiro quartis), que, juntos, representam exatamente o meio dos dados. Esse destaque nos permite inferir conclusões mais *robustas* a respeito do comportamento central do nosso conjunto. Se nos lembrarmos da discussão a respeito das medidas no capítulo anterior, uma medida *robusta* é uma medida menos suscetível aos valores extremos. Em muitos conjuntos de dados, os valores extremos distorcem os valores centrais. Então o boxplot consegue representar muito bem os valores centrais, dando destaque a esses valores. A Figura Y deixa em realce a porção dos dados que estão sendo representadas pelo retângulo central do boxplot. 
 
-```{r boxplot-normal, fig.cap="Boxplot comparado com distribuição normal."}
+```{r boxplot-normal, fig.cap="Boxplot comparado com distribuição normal.", fig.width=8, fig.height=8}
+set.seed(5)
+dados <- tibble::tibble(
+  x = qnorm(seq(0.001, 0.999, .001))
+)
+
+shade <- function(x, vals) {
+  y <- dnorm(x)
+  y[x < vals[1] | x > vals[2]] <- NA
+  y
+}
+
+
+p2 <- ggplot2::ggplot() +
+  ggplot2::geom_vline(
+    xintercept = c(-2.698, -0.6745, 0.6745, 2.698),
+    colour = "gray"
+  ) +
+  ggplot2::stat_function(
+    fun = dnorm, geom = "area",
+    fill = "gray40",
+    xlim = c(-3.5, 3.5)
+  ) +
+  ggplot2::stat_function(
+    fun = purrr::partial(shade, vals = c(-2.698,2.698)) , 
+    geom = "area", 
+    fill = cores_abj[1],
+    xlim = c(-3.5, 3.5)
+  ) +
+  ggplot2::stat_function(
+    fun = purrr::partial(shade, vals = c(-0.6745,0.6745)) , 
+    geom = "area", 
+    fill = cores_abj[2],
+    xlim = c(-3.5, 3.5)
+  ) +
+  ggplot2::scale_x_continuous(
+    breaks = seq(-3.2,3.2),
+    labels = scales::label_math(.x~sigma)
+  ) +
+  ggplot2::labs(
+    x = "", y = "Densidade"
+  ) +
+  ggplot2::annotate(
+    "text",
+    x = 0, y = .05, label = "50%", size = 5
+  ) +
+  ggplot2::annotate(
+    "text",
+    x = c(-1.3, 1.3), y = .05, label = "24.65%", size = 5, colour = "white"
+  ) +
+  ggplot2::annotate(
+    "text",
+    x = c(-3, 3), y = .05, label = "0.35%", size = 5, colour = "black"
+  ) +
+  ggplot2::theme_minimal(12)
+
+boxplot <-
+  ggplot2::ggplot(dados) +
+  ggplot2::aes(x = x) +
+  ggplot2::geom_vline(
+    xintercept = c(-2.698, -0.6745, 0.6745, 2.698),
+    colour = "gray"
+  ) +
+  ggplot2::stat_boxplot(
+    geom = "errorbar",
+    colour = cores_abj[1],
+    width = .2,
+    size = 1.2
+  ) +
+  ggplot2::geom_boxplot(
+    fill = cores_abj[2], 
+    outlier.colour = "gray40",
+    width = .3
+  ) +
+  ggplot2::scale_x_continuous(
+    breaks = seq(-3,3),
+    labels = scales::label_math(.x~sigma),
+    limits = c(-3.5, 3.5)
+  ) +
+  ggplot2::coord_cartesian(ylim = c(-.3, .3)) +
+  ggplot2::theme_minimal(12) +
+  ggplot2::theme(
+    panel.grid = ggplot2::element_blank()
+  )
+
+patchwork::wrap_plots(boxplot, p2, ncol = 1)
 
 ```
 
@@ -1016,8 +1315,8 @@ Ao contrário dos gráficos de variável numérica bivariados com uma explicativ
 
 O gráfico de dispersão, como já dito, é usado para representar duas variáveis numéricas. Esse tipo de representação nos indica como que duas variáveis numéricas se relacionam. Há duas relações possíveis: uma relação positiva (isto é, quanto maior uma variável, maior a outra também), ou uma relação negativa (isto é, quanto mais de uma variável, menos eu tenho da outra). A Figura \@ref(fig:dispersao) traz dois gráficos de dispersão, demonstrando as relações possíveis.
 
-```{r dispersao, eval=FALSE, fig.cap="Gráficos de dispersão sobre litigiosidade"}
-p_positivo <- readr::read_csv("~/Downloads/obsCIEE.csv") |>
+```{r dispersao, eval=TRUE, fig.cap="Gráficos de dispersão sobre litigiosidade", fig.width=9, fig.height=4}
+p_positivo <- abjData::litigiosidade |>
   dplyr::filter(ano == min(ano)) |>
   dplyr::mutate(
     congestionamento = baixados / (novos + pendentes),
@@ -1034,7 +1333,7 @@ p_positivo <- readr::read_csv("~/Downloads/obsCIEE.csv") |>
   )
 
 
-p_negativo <- readr::read_csv("~/Downloads/obsCIEE.csv") |>
+p_negativo <- abjData::litigiosidade |>
   dplyr::filter(ano == min(ano)) |>
   dplyr::mutate(
     congestionamento = baixados / (novos + pendentes),
@@ -1058,8 +1357,106 @@ A linha que demonstra a relação não será tratada neste capítulo. Ela foi me
 
 Por mais que os gráficos de dispersão sejam usualmente utilizados para relacionar duas variáveis contínuas, podemos dar outras funções a eles. Em um caso exemplar, do Observatório da Insolvência da ABJ sobre Recuperações Judiciais no Estado de São Paulo, analisamos a relação entre a dívida da recuperação com a remuneração do administrador judicial. Ao apresentar a associação entre as variáveis, construímos um gráfico de dispersão. Uma forma de se encarar este gráfico é justamente pela indagação de se quanto maior a dívida total, maior a remuneração do administrador judicial. Mas, para além disso, podemos ter um outro olhar para o gráfico de dispersão. O que sabemos é que o art. 24, § 1º da lei 11.101/2005 estabelece como limite à remuneração do AJ que “o total pago ao administrador judicial não excederá 5% (cinco por cento) do valor devido aos credores submetidos à recuperação judicial ou do valor de venda dos bens na falência.” Neste caso, então, ao colocarmos uma linha de 5%  em relação ao total da dívida, conseguimos observar a distância da remuneração dos AJs em relação ao máximo permitido por lei. Quando adicionamos esta camada de interpretação ao gráfico, não estamos olhando para a relação entre as variáveis (remuneração do AJ e total da dívida), mas estamos olhando para a legalidade dessa remuneração. 
 
-```{r obs-insolvencia, fig.cap="Relação entre dívida e remuneração de Administradores Judiciais: Observatório da Insolvência"}
+```{r obs-insolvencia, fig.cap="Relação entre dívida e remuneração de Administradores Judiciais: Observatório da Insolvência", fig.width=8, fig.height=8}
 
+da_final <- obsFase2::da_relatorio |> 
+  dplyr::select(
+    id_processo = n_processo,
+    epp_ou_me,
+    litisconsorcio,
+    pediu_procedimento_especial,
+    faturamento_total,
+    faixa_faturamento,
+    total_passivo,
+    faixa_passivo,
+    total_ativo,
+    capital,
+    data_dist,
+    deferido,
+    data_decisao_deferimento,
+    emenda,
+    data_emenda,
+    pericia,
+    data_pericia,
+    # AJ
+    aj_apresentou_lista,
+    tipo_remuneracao = tipo_remuneracao_arrumado,
+    divida,
+    remuneracao_liquida = remuneracao_liquida_arrumado,
+    parcelado,
+    # Consolidacao
+    consolidacao_substancial,
+    consolidacao_processual,
+    houve_decisao_plano_uno,
+    # Votacao plano
+    faliu_antes_agc,
+    data_agc1,
+    data_agcn,
+    data_aprovacao,
+    data_concessao,
+    resultado_final,
+    n_agc,
+    cram_down,
+    data_falencia,
+    stay_prorrogado,
+    data_referencia,
+    # plano aprovado
+    leilao,
+    ano_aprovacao,
+    upi,
+    upi_vendeu,
+    renuncia_coobrigados,
+    starts_with("classe"),
+    plano_analisado,
+    # acompanhamento/fiscalizacao
+    tempo_acompanhamento,
+    desfecho_final,
+    data_fim,
+    faliu_cumprindo,
+    acabou
+  )
+
+da_deferido <- da_final |> 
+  dplyr::filter(deferido == "Sim")
+
+si <- function(x) {
+  breaks <- c(0, 10^c(M = 3, MM = 6, B = 9))
+  n_suffix <- cut(abs(x), breaks = c(unname(breaks), Inf), 
+                  labels = c(names(breaks)), right = FALSE)
+  n_suffix[is.na(n_suffix)] <- ""
+  suffix <- n_suffix
+  scale <- 1/breaks[n_suffix]
+  scale[which(scale %in% c(Inf, NA))] <- 1
+  scales::number(x, accuracy = 1, 
+                 scale = unname(scale), 
+                 suffix = suffix)
+}
+
+da_deferido |> 
+  dplyr::filter(!is.na(divida), !is.na(remuneracao_liquida)) |> 
+  dplyr::filter(
+    remuneracao_liquida > 1000
+    # remuneracao_liquida < 2e7
+  ) |> 
+  ggplot2::ggplot(ggplot2::aes(divida, remuneracao_liquida)) +
+  ggplot2::geom_point(size = 2, ggplot2::aes(colour = parcelado, shape = capital)) +
+  ggplot2::scale_x_log10(breaks = c(10^(1:7), 2e8, 1e9), labels = si) +
+  ggplot2::scale_y_log10(breaks = c(10^(1:7)), labels = si) +
+  ggplot2::scale_shape_discrete(
+    name = "Tipo de vara", 
+    labels = c("Comum", "Especializada")
+  ) +
+  ggplot2::geom_abline(slope = 1, intercept = log10(0.05), colour = "black") +
+  ggplot2::geom_hline(yintercept = 1e7, colour = "red", linetype = 2) +
+  ggplot2::scale_colour_viridis_d(begin = 0.2, end = 0.8, direction = -1) +
+  ggplot2::theme_minimal(12) +
+  ggplot2::labs(
+    x = "Dívida total",
+    y = "Remuneração do AJ",
+    colour = "",
+    shape = "Tipo de vara"
+  ) +
+  ggplot2::theme(legend.position = "bottom")
 
 
 ```
@@ -1090,14 +1487,15 @@ Este gráfico é utilizado para “descrever apenas o comportamaneto da série�
 
 Na Figura \@ref(fig:time-series-litig), vemos um exemplo desse tipo de relação. 
 
-```{r time-series-litig, eval=FALSE, fig.cap="Série de tempo dos dados de litigiosidade."}
+```{r time-series-litig, eval=TRUE, fig.cap="Série de tempo dos dados de litigiosidade."}
 norte <- c("AM", "TO", "AP", "AC", "RR", "RO")
 nordeste <- c("MA", "BA", "PE", "SE", "AL", "RN", "PB", "CE", "PI", "PA")
 centro_oeste <- c("GO", "MT", "MS", "DF")
 sudeste <- c("SP", "MG", "RJ", "ES")
 sul <- c("RS", "PR", "SC")
 
-readr::read_csv("~/Downloads/obsCIEE.csv") |>
+# instalar versao dev: remotes::install_github("abjur/abjData")
+abjData::litigiosidade |>
   dplyr::mutate(
     regiao = dplyr::case_when(
       tribunal_uf %in% norte ~ "Norte",
