@@ -1,349 +1,120 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 5 Modelagem | Jurimetria</title>
-  <meta name="description" content="Livro de jurimetria." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Capítulo 5 Modelagem | Jurimetria" />
-  <meta property="og:type" content="book" />
-  
-  
-  <meta property="og:description" content="Livro de jurimetria." />
-  
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 5 Modelagem | Jurimetria" />
-  
-  <meta name="twitter:description" content="Livro de jurimetria." />
-  
-
-
-
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="visualizacao.html"/>
-
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-
-
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 5 Modelagem | Jurimetria</title>
+<meta name="description" content="(em construção)">
+<meta name="generator" content="bookdown 0.27 with bs4_book()">
+<meta property="og:title" content="Capítulo 5 Modelagem | Jurimetria">
+<meta property="og:type" content="book">
+<meta property="og:description" content="(em construção)">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 5 Modelagem | Jurimetria">
+<meta name="twitter:description" content="(em construção)">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
 <style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
-
-<link rel="stylesheet" href="assets/css/bookdown.css" type="text/css" />
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="assets/css/bookdown.css">
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="Um Livro">Jurimetria</a>:
+        <small class="text-muted">Um Livro</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
 
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
 
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">Jurimetria</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Sobre o livro</a></li>
-<li class="chapter" data-level="1" data-path="introducao.html"><a href="introducao.html"><i class="fa fa-check"></i><b>1</b> Introdução</a></li>
-<li class="chapter" data-level="2" data-path="planejamento.html"><a href="planejamento.html"><i class="fa fa-check"></i><b>2</b> Planejamento de Pesquisa</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="planejamento.html"><a href="planejamento.html#teoria-e-empiria"><i class="fa fa-check"></i><b>2.1</b> Teoria e Empiria</a>
-<ul>
-<li class="chapter" data-level="2.1.1" data-path="planejamento.html"><a href="planejamento.html#o-que-a-teoria-pode-nos-dar-em-uma-pesquisa-empírica"><i class="fa fa-check"></i><b>2.1.1</b> O que a teoria pode nos dar em uma pesquisa empírica?</a></li>
-<li class="chapter" data-level="2.1.2" data-path="planejamento.html"><a href="planejamento.html#como-formular-teorias-a-partir-de-dados-empíricos"><i class="fa fa-check"></i><b>2.1.2</b> Como formular teorias a partir de dados empíricos?</a></li>
-</ul></li>
-<li class="chapter" data-level="2.2" data-path="planejamento.html"><a href="planejamento.html#uma-pergunta-de-pesquisa-entre-dois-mundos"><i class="fa fa-check"></i><b>2.2</b> Uma Pergunta de Pesquisa entre Dois Mundos</a></li>
-<li class="chapter" data-level="2.3" data-path="planejamento.html"><a href="planejamento.html#escopo-do-estudo"><i class="fa fa-check"></i><b>2.3</b> Escopo do Estudo</a>
-<ul>
-<li class="chapter" data-level="2.3.1" data-path="planejamento.html"><a href="planejamento.html#escopo-temporal"><i class="fa fa-check"></i><b>2.3.1</b> Escopo temporal</a></li>
-<li class="chapter" data-level="2.3.2" data-path="planejamento.html"><a href="planejamento.html#escopo-geográfico"><i class="fa fa-check"></i><b>2.3.2</b> Escopo geográfico</a></li>
-</ul></li>
-<li class="chapter" data-level="2.4" data-path="planejamento.html"><a href="planejamento.html#operacionalização-de-conceitos"><i class="fa fa-check"></i><b>2.4</b> Operacionalização de Conceitos</a></li>
-<li class="chapter" data-level="2.5" data-path="planejamento.html"><a href="planejamento.html#dados-tribunais-e-processos-de-geração-de-dados"><i class="fa fa-check"></i><b>2.5</b> Dados, Tribunais e Processos de Geração de Dados</a>
-<ul>
-<li class="chapter" data-level="2.5.1" data-path="planejamento.html"><a href="planejamento.html#dados-encontrados"><i class="fa fa-check"></i><b>2.5.1</b> Dados encontrados</a></li>
-<li class="chapter" data-level="2.5.2" data-path="planejamento.html"><a href="planejamento.html#dados-criados"><i class="fa fa-check"></i><b>2.5.2</b> Dados criados</a></li>
-<li class="chapter" data-level="2.5.3" data-path="planejamento.html"><a href="planejamento.html#reporte-os-processos-de-geração-de-dados"><i class="fa fa-check"></i><b>2.5.3</b> Reporte os processos de geração de dados</a></li>
-<li class="chapter" data-level="2.5.4" data-path="planejamento.html"><a href="planejamento.html#uma-nota-sobre-o-processo-de-geração-de-dados-e-a-inteligência-artificial"><i class="fa fa-check"></i><b>2.5.4</b> Uma nota sobre o processo de geração de dados e a inteligência artificial</a></li>
-</ul></li>
-<li class="chapter" data-level="2.6" data-path="planejamento.html"><a href="planejamento.html#amostragem-e-população"><i class="fa fa-check"></i><b>2.6</b> Amostragem e População</a>
-<ul>
-<li class="chapter" data-level="2.6.1" data-path="planejamento.html"><a href="planejamento.html#por-que-randomizar"><i class="fa fa-check"></i><b>2.6.1</b> Por que randomizar?</a></li>
-<li class="chapter" data-level="2.6.2" data-path="planejamento.html"><a href="planejamento.html#amostragem-aleatória-simples"><i class="fa fa-check"></i><b>2.6.2</b> Amostragem aleatória simples</a></li>
-<li class="chapter" data-level="2.6.3" data-path="planejamento.html"><a href="planejamento.html#viés-e-erro-na-amostragem"><i class="fa fa-check"></i><b>2.6.3</b> Viés e erro na amostragem</a></li>
-<li class="chapter" data-level="2.6.4" data-path="planejamento.html"><a href="planejamento.html#tamanho-da-amostra"><i class="fa fa-check"></i><b>2.6.4</b> Tamanho da amostra</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="estatisticas.html"><a href="estatisticas.html"><i class="fa fa-check"></i><b>3</b> Estatísticas</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="estatisticas.html"><a href="estatisticas.html#olhando-para-as-observações"><i class="fa fa-check"></i><b>3.1</b> Olhando para as observações</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="estatisticas.html"><a href="estatisticas.html#variáveis-qualitativascategóricas"><i class="fa fa-check"></i><b>3.1.1</b> Variáveis qualitativas/categóricas</a></li>
-<li class="chapter" data-level="3.1.2" data-path="estatisticas.html"><a href="estatisticas.html#variáveis-quantitativas"><i class="fa fa-check"></i><b>3.1.2</b> Variáveis quantitativas</a></li>
-<li class="chapter" data-level="3.1.3" data-path="estatisticas.html"><a href="estatisticas.html#considerações-sobre-os-tipos-de-dados"><i class="fa fa-check"></i><b>3.1.3</b> Considerações sobre os tipos de dados</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="estatisticas.html"><a href="estatisticas.html#olhando-para-o-conjunto-das-observações"><i class="fa fa-check"></i><b>3.2</b> Olhando para o conjunto das observações</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="estatisticas.html"><a href="estatisticas.html#medidas-de-resumo-para-variáveis-categóricas"><i class="fa fa-check"></i><b>3.2.1</b> Medidas de resumo para variáveis categóricas</a></li>
-<li class="chapter" data-level="3.2.2" data-path="estatisticas.html"><a href="estatisticas.html#medidas-de-resumo-para-variáveis-quantitativas"><i class="fa fa-check"></i><b>3.2.2</b> Medidas de resumo para variáveis quantitativas</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="visualizacao.html"><a href="visualizacao.html"><i class="fa fa-check"></i><b>4</b> Visualização</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="visualizacao.html"><a href="visualizacao.html#para-que-servem-visualizações"><i class="fa fa-check"></i><b>4.1</b> Para que servem visualizações?</a>
-<ul>
-<li class="chapter" data-level="4.1.1" data-path="visualizacao.html"><a href="visualizacao.html#detetive-de-dados---análise-exploratória-de-dados"><i class="fa fa-check"></i><b>4.1.1</b> Detetive de dados - Análise exploratória de dados</a></li>
-</ul></li>
-<li class="chapter" data-level="4.2" data-path="visualizacao.html"><a href="visualizacao.html#comunicadora-de-dados---apresentação-de-dados"><i class="fa fa-check"></i><b>4.2</b> Comunicadora de dados - Apresentação de dados</a></li>
-<li class="chapter" data-level="4.3" data-path="visualizacao.html"><a href="visualizacao.html#visualizações-em-espécie"><i class="fa fa-check"></i><b>4.3</b> Visualizações em espécie</a>
-<ul>
-<li class="chapter" data-level="4.3.1" data-path="visualizacao.html"><a href="visualizacao.html#visualizações-de-variáveis-categóricas"><i class="fa fa-check"></i><b>4.3.1</b> Visualizações de variáveis categóricas</a></li>
-<li class="chapter" data-level="4.3.2" data-path="visualizacao.html"><a href="visualizacao.html#visualizações-de-variáveis-quantitativas"><i class="fa fa-check"></i><b>4.3.2</b> Visualizações de variáveis quantitativas</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="modelagem.html"><a href="modelagem.html"><i class="fa fa-check"></i><b>5</b> Modelagem</a></li>
-<li class="divider"></li>
-<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
-
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Sobre o livro</a></li>
+<li><a class="" href="introducao.html"><span class="header-section-number">1</span> Introdução</a></li>
+<li><a class="" href="planejamento.html"><span class="header-section-number">2</span> Planejamento de Pesquisa</a></li>
+<li><a class="" href="estatisticas.html"><span class="header-section-number">3</span> Estatísticas</a></li>
+<li><a class="" href="visualizacao.html"><span class="header-section-number">4</span> Visualização</a></li>
+<li><a class="active" href="modelagem.html"><span class="header-section-number">5</span> Modelagem</a></li>
+<li><a class="" href="bibliografia.html">Bibliografia</a></li>
 </ul>
 
+        <div class="book-extra">
+          
+        </div>
       </nav>
-    </div>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="modelagem" class="section level1" number="5">
+<h1>
+<span class="header-section-number">Capítulo 5</span> Modelagem<a class="anchor" aria-label="anchor" href="#modelagem"><i class="fas fa-link"></i></a>
+</h1>
+<p>(em construção)</p>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="visualizacao.html"><span class="header-section-number">4</span> Visualização</a></div>
+<div class="next"><a href="bibliografia.html">Bibliografia</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#modelagem"><span class="header-section-number">5</span> Modelagem</a></li></ul>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Jurimetria</a>
-          </h1>
-        </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="modelagem" class="section level1" number="5">
-<h1><span class="header-section-number">Capítulo 5</span> Modelagem</h1>
-
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div class="csl-entry">
-ABJ. 2019. <span>“<span class="nocase">Avalia<span class="nocase">ç</span><span class="nocase">ã</span>o do Impacto de Crit<span class="nocase">é</span>rios Objetivos na Distin<span class="nocase">ç</span><span class="nocase">ã</span>o Entre Posse para Uso e Posse para Tr<span class="nocase">á</span>fico: um estudo jurim<span class="nocase">é</span>trico</span>.”</span> <a href="https://abj.org.br/cases/drogas-stf/ ">https://abj.org.br/cases/drogas-stf/</a>.
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
 </div>
-<div class="csl-entry">
-———. 2020. <span>“<span class="nocase">O problema da cifra oculta nos tribunais brasileiros</span>.”</span> <a href="https://lab.abj.org.br/posts/2020-12-07-cifra-oculta/">https://lab.abj.org.br/posts/2020-12-07-cifra-oculta/</a>.
-</div>
-<div class="csl-entry">
-Bolfarine, Heleno, and Wilton O. Bussab. 2005. <em><span class="nocase">Elementos de Amostragem</span></em>. S<span>ã</span>o Paulo: Blucher.
-</div>
-<div class="csl-entry">
-Bottino, Thiago. 2015. <span>“<span class="nocase">Panaceia universal ou rem<span class="nocase">é</span>dio constitucional? Habeas corpus nos Tribunais Superiores</span>.”</span> Bras<span>í</span>lia: Ipea. <a href="http://pensando.mj.gov.br/wp-content/uploads/2015/06/thiago_55_finalizada_web.pdf">http://pensando.mj.gov.br/wp-content/uploads/2015/06/thiago_55_finalizada_web.pdf</a>.
-</div>
-<div class="csl-entry">
-Breiman, Leo. 2001. <span>“Statistical Modeling: The Two Cultures.”</span> <em>Statistical Science</em> 16 (3): 199–215.
-</div>
-<div class="csl-entry">
-CCI, CENTER FOR COURT INNOVATION. 2020. <span>“Can Courts Be More User-Friendly? How Satisfaction Surveys Can Promote Trust and Access to Justice.”</span> <a href="https://www.courtinnovation.org/sites/default/files/media/document/2020/CCI_FactSheet_SatisfactionSurveys_04202020.pdf">https://www.courtinnovation.org/sites/default/files/media/document/2020/CCI_FactSheet_SatisfactionSurveys_04202020.pdf</a>.
-</div>
-<div class="csl-entry">
-Cleveland, William S. 1985. <em>The Elements of Graphing Data</em>. California: Wadsworth Advanced Book Program.
-</div>
-<div class="csl-entry">
-Epstein, Lee, and Andrew D. Martin. 2014. <em>An Introduction to Empirical Legal Research</em>. United Kingdom: Oxford University Press.
-</div>
-<div class="csl-entry">
-Fulgêncio, Henrique Augusto Figueiredo, and Alexandre Araújo Costa. 2018. <span>“<span class="nocase">As fun<span class="nocase">ç</span><span class="nocase">õ</span>es contempor<span class="nocase">â</span>neas do mandado de injun<span class="nocase">ç</span><span class="nocase">ã</span>o: an<span class="nocase">á</span>lise emp<span class="nocase">í</span>rica sobre o perfil das a<span class="nocase">ç</span><span class="nocase">õ</span>es ajuizadas perante o Supremo Tribunal Federal</span>.”</span> <em>Revista Da Faculdade de Direito Do Sul de Minas</em> 34 (2): 451–88. <a href="https://revista.fdsm.edu.br/index.php/revistafdsm/article/view/202/211">https://revista.fdsm.edu.br/index.php/revistafdsm/article/view/202/211</a>.
-</div>
-<div class="csl-entry">
-Grinover, Ada Pellegrini, ed. 2014. <span>“<span class="nocase">Avalia<span class="nocase">ç</span><span class="nocase">ã</span>o da Presta<span class="nocase">ç</span><span class="nocase">ã</span>o Jurisdicional Coletiva e Individual a partir da Judicializa<span class="nocase">ç</span><span class="nocase">ã</span>o da Sa<span class="nocase">ú</span>de</span>.”</span> CEBEPEJ.
-</div>
-<div class="csl-entry">
-King, Gary, Robert O Keohane, and Sidney Verba. 1994. <em><span class="nocase">Designing Social Inquiry: Scientific Inference in Qualitative Research</span></em>. Princeton: Princeton University Press.
-</div>
-<div class="csl-entry">
-Lopes, José Reinaldo de Lima. 2003. <span>“<span class="nocase">A defini<span class="nocase">ç</span><span class="nocase">ã</span>o de interesse p<span class="nocase">ú</span>blico</span>.”</span> In <em>Processo Civil e Interesse p<span>ú</span>blico: O Processo Como Instrumento de Defesa Social</em>, edited by Carlos Alberto de Salles. S<span>ã</span>o Paulo: Revista dos Tribunais.
-</div>
-<div class="csl-entry">
-Molnar, Christoph. 2022. <em>Interpretable Machine Learning: A Guide for Making Black Box Models Explainable</em>. 2nd ed. <a href="https://christophm.github.io/interpretable-ml-book">https://christophm.github.io/interpretable-ml-book</a>.
-</div>
-<div class="csl-entry">
-Nunes, Marcelo Guedes. 2016. <em>Jurimetria: Como a Estatística Pode Reinventar o Direito</em>. São Paulo: Revista dos Tribunais.
-</div>
-<div class="csl-entry">
-Perez, Marco Augusto. 2018. <span>“<span class="nocase">O Controle Jurisdicional da Discricionariedade Administrativa: m<span class="nocase">é</span>todos para uma jurisdi<span class="nocase">ç</span><span class="nocase">ã</span>o ampla das decis<span class="nocase">õ</span>es administrativas</span>.”</span> Tese de livre doc{\^{e}}ncia, Universidade de S<span>ã</span>o Paulo.
-</div>
-<div class="csl-entry">
-Popper, Karl. 1934. <em>A Lógica Da Pesquisa Científica</em>. São Paulo: Cultrix.
-</div>
-<div class="csl-entry">
-Shadish, William R., Thomas D. Cook, and Donald T. Campbell. n.d. <em>Experimental and Quasi-Experimental Designs for Generalized Causal Inference</em>. Boston: Cengage Learning.
-</div>
-<div class="csl-entry">
-Spinney, Laura. 2022. <span>“Are We Witnessing the Dawn of Post-Theory Science?”</span> The Guardian. 2022. <a href="https://www.theguardian.com/technology/2022/jan/09/are-we-witnessing-the-dawn-of-post-theory-science">https://www.theguardian.com/technology/2022/jan/09/are-we-witnessing-the-dawn-of-post-theory-science</a>.
-</div>
-<div class="csl-entry">
-Stern, Julio Michael, Marcos Antonio Simplicio, Marcos Vinicius M. Silva, and Roberto A. Castellanos Pfeiffer. 2020. <span>“Randomization and Fair Judgment in Law and Science.”</span> arXiv. <a href="https://doi.org/10.48550/ARXIV.2008.06709">https://doi.org/10.48550/ARXIV.2008.06709</a>.
-</div>
-<div class="csl-entry">
-Sundfeld, Carlos Ari, Ester Gammardella Rizzi, Evorah Lusci Costa Cardoso, Flávio Beicker, Francisco Carvalho de Brito Cruz, Gabriele Estábile Bezerra, Gustavo Cesar Mazutti, et al. 2011. <em><span class="nocase">Controle de constitucionalidade e judicializa<span class="nocase">ç</span><span class="nocase">ã</span>o: o STF frente <span class="nocase">à</span> sociedade e aos Poderes</span></em>. Belo Horizonte: Faculdade de Filosofia e Ci<span>ê</span>ncias Humanas; SBPD. <a href="https://sbdp.org.br/wp/wp-content/uploads/2018/01/05-controle_de_constitucionalidade_e_judicializacao.pdf">https://sbdp.org.br/wp/wp-content/uploads/2018/01/05-controle_de_constitucionalidade_e_judicializacao.pdf</a>.
-</div>
-<div class="csl-entry">
-Trecenti, Julio, and Marcelo Guedes Nunes. 2021. <span>“<span class="nocase">Impactos da MPV 1.040/2021 no tempo de abertura de empresas</span>.”</span> <a href="https://lab.abj.org.br/posts/2021-06-11-analise-1040/">https://lab.abj.org.br/posts/2021-06-11-analise-1040/</a>.
-</div>
-<div class="csl-entry">
-Winsihp, Christopher, and Robert D. Mare. 1992. <span>“Models for Sample Selection Bias.”</span> <em>Annual Review of Sociology</em> 18 (1): 327–50.
-</div>
-<div class="csl-entry">
-Xavier, José Roberto Franco. 2015. <span>“Algumas Notas Teóricas Sobre a Pesquisa Empírica Em Direito.”</span> <em>São Paulo Law School of Fundação Getúlio Vargas – FGV DIREITO SP, Research Paper Series – Legal Studies</em>, no. 122.
-</div>
-</div>
+    </nav>
 </div>
 
+</div>
+</div> <!-- .container -->
 
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            </section>
-
-          </div>
-        </div>
-      </div>
-<a href="visualizacao.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
-    </div>
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Jurimetria</strong>: Um Livro" was written by true. It was last built on 08 de agosto de 2022.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": false,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["jurimetria_book.pdf"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "none"
-}
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -355,7 +126,22 @@ gitbook.start({
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
-
 </html>

@@ -1,193 +1,105 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 4 Visualização | Jurimetria</title>
-  <meta name="description" content="Livro de jurimetria." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Capítulo 4 Visualização | Jurimetria" />
-  <meta property="og:type" content="book" />
-  
-  
-  <meta property="og:description" content="Livro de jurimetria." />
-  
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 4 Visualização | Jurimetria" />
-  
-  <meta name="twitter:description" content="Livro de jurimetria." />
-  
-
-
-
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="estatisticas.html"/>
-<link rel="next" href="modelagem.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-
-
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 4 Visualização | Jurimetria</title>
+<meta name="description" content="No capítulo 2, nós vimos questões sobre o método quantitativo, já no capítulo 3, passamos do método às medidas. Nesta ocasião, vimos as medidas de duas formas diferentes: as medidas das...">
+<meta name="generator" content="bookdown 0.27 with bs4_book()">
+<meta property="og:title" content="Capítulo 4 Visualização | Jurimetria">
+<meta property="og:type" content="book">
+<meta property="og:description" content="No capítulo 2, nós vimos questões sobre o método quantitativo, já no capítulo 3, passamos do método às medidas. Nesta ocasião, vimos as medidas de duas formas diferentes: as medidas das...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 4 Visualização | Jurimetria">
+<meta name="twitter:description" content="No capítulo 2, nós vimos questões sobre o método quantitativo, já no capítulo 3, passamos do método às medidas. Nesta ocasião, vimos as medidas de duas formas diferentes: as medidas das...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
 <style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
-
-<link rel="stylesheet" href="assets/css/bookdown.css" type="text/css" />
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="assets/css/bookdown.css">
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">Jurimetria</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Sobre o livro</a></li>
-<li class="chapter" data-level="1" data-path="introducao.html"><a href="introducao.html"><i class="fa fa-check"></i><b>1</b> Introdução</a></li>
-<li class="chapter" data-level="2" data-path="planejamento.html"><a href="planejamento.html"><i class="fa fa-check"></i><b>2</b> Planejamento de Pesquisa</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="planejamento.html"><a href="planejamento.html#teoria-e-empiria"><i class="fa fa-check"></i><b>2.1</b> Teoria e Empiria</a>
-<ul>
-<li class="chapter" data-level="2.1.1" data-path="planejamento.html"><a href="planejamento.html#o-que-a-teoria-pode-nos-dar-em-uma-pesquisa-empírica"><i class="fa fa-check"></i><b>2.1.1</b> O que a teoria pode nos dar em uma pesquisa empírica?</a></li>
-<li class="chapter" data-level="2.1.2" data-path="planejamento.html"><a href="planejamento.html#como-formular-teorias-a-partir-de-dados-empíricos"><i class="fa fa-check"></i><b>2.1.2</b> Como formular teorias a partir de dados empíricos?</a></li>
-</ul></li>
-<li class="chapter" data-level="2.2" data-path="planejamento.html"><a href="planejamento.html#uma-pergunta-de-pesquisa-entre-dois-mundos"><i class="fa fa-check"></i><b>2.2</b> Uma Pergunta de Pesquisa entre Dois Mundos</a></li>
-<li class="chapter" data-level="2.3" data-path="planejamento.html"><a href="planejamento.html#escopo-do-estudo"><i class="fa fa-check"></i><b>2.3</b> Escopo do Estudo</a>
-<ul>
-<li class="chapter" data-level="2.3.1" data-path="planejamento.html"><a href="planejamento.html#escopo-temporal"><i class="fa fa-check"></i><b>2.3.1</b> Escopo temporal</a></li>
-<li class="chapter" data-level="2.3.2" data-path="planejamento.html"><a href="planejamento.html#escopo-geográfico"><i class="fa fa-check"></i><b>2.3.2</b> Escopo geográfico</a></li>
-</ul></li>
-<li class="chapter" data-level="2.4" data-path="planejamento.html"><a href="planejamento.html#operacionalização-de-conceitos"><i class="fa fa-check"></i><b>2.4</b> Operacionalização de Conceitos</a></li>
-<li class="chapter" data-level="2.5" data-path="planejamento.html"><a href="planejamento.html#dados-tribunais-e-processos-de-geração-de-dados"><i class="fa fa-check"></i><b>2.5</b> Dados, Tribunais e Processos de Geração de Dados</a>
-<ul>
-<li class="chapter" data-level="2.5.1" data-path="planejamento.html"><a href="planejamento.html#dados-encontrados"><i class="fa fa-check"></i><b>2.5.1</b> Dados encontrados</a></li>
-<li class="chapter" data-level="2.5.2" data-path="planejamento.html"><a href="planejamento.html#dados-criados"><i class="fa fa-check"></i><b>2.5.2</b> Dados criados</a></li>
-<li class="chapter" data-level="2.5.3" data-path="planejamento.html"><a href="planejamento.html#reporte-os-processos-de-geração-de-dados"><i class="fa fa-check"></i><b>2.5.3</b> Reporte os processos de geração de dados</a></li>
-<li class="chapter" data-level="2.5.4" data-path="planejamento.html"><a href="planejamento.html#uma-nota-sobre-o-processo-de-geração-de-dados-e-a-inteligência-artificial"><i class="fa fa-check"></i><b>2.5.4</b> Uma nota sobre o processo de geração de dados e a inteligência artificial</a></li>
-</ul></li>
-<li class="chapter" data-level="2.6" data-path="planejamento.html"><a href="planejamento.html#amostragem-e-população"><i class="fa fa-check"></i><b>2.6</b> Amostragem e População</a>
-<ul>
-<li class="chapter" data-level="2.6.1" data-path="planejamento.html"><a href="planejamento.html#por-que-randomizar"><i class="fa fa-check"></i><b>2.6.1</b> Por que randomizar?</a></li>
-<li class="chapter" data-level="2.6.2" data-path="planejamento.html"><a href="planejamento.html#amostragem-aleatória-simples"><i class="fa fa-check"></i><b>2.6.2</b> Amostragem aleatória simples</a></li>
-<li class="chapter" data-level="2.6.3" data-path="planejamento.html"><a href="planejamento.html#viés-e-erro-na-amostragem"><i class="fa fa-check"></i><b>2.6.3</b> Viés e erro na amostragem</a></li>
-<li class="chapter" data-level="2.6.4" data-path="planejamento.html"><a href="planejamento.html#tamanho-da-amostra"><i class="fa fa-check"></i><b>2.6.4</b> Tamanho da amostra</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="estatisticas.html"><a href="estatisticas.html"><i class="fa fa-check"></i><b>3</b> Estatísticas</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="estatisticas.html"><a href="estatisticas.html#olhando-para-as-observações"><i class="fa fa-check"></i><b>3.1</b> Olhando para as observações</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="estatisticas.html"><a href="estatisticas.html#variáveis-qualitativascategóricas"><i class="fa fa-check"></i><b>3.1.1</b> Variáveis qualitativas/categóricas</a></li>
-<li class="chapter" data-level="3.1.2" data-path="estatisticas.html"><a href="estatisticas.html#variáveis-quantitativas"><i class="fa fa-check"></i><b>3.1.2</b> Variáveis quantitativas</a></li>
-<li class="chapter" data-level="3.1.3" data-path="estatisticas.html"><a href="estatisticas.html#considerações-sobre-os-tipos-de-dados"><i class="fa fa-check"></i><b>3.1.3</b> Considerações sobre os tipos de dados</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="estatisticas.html"><a href="estatisticas.html#olhando-para-o-conjunto-das-observações"><i class="fa fa-check"></i><b>3.2</b> Olhando para o conjunto das observações</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="estatisticas.html"><a href="estatisticas.html#medidas-de-resumo-para-variáveis-categóricas"><i class="fa fa-check"></i><b>3.2.1</b> Medidas de resumo para variáveis categóricas</a></li>
-<li class="chapter" data-level="3.2.2" data-path="estatisticas.html"><a href="estatisticas.html#medidas-de-resumo-para-variáveis-quantitativas"><i class="fa fa-check"></i><b>3.2.2</b> Medidas de resumo para variáveis quantitativas</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="visualizacao.html"><a href="visualizacao.html"><i class="fa fa-check"></i><b>4</b> Visualização</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="visualizacao.html"><a href="visualizacao.html#para-que-servem-visualizações"><i class="fa fa-check"></i><b>4.1</b> Para que servem visualizações?</a>
-<ul>
-<li class="chapter" data-level="4.1.1" data-path="visualizacao.html"><a href="visualizacao.html#detetive-de-dados---análise-exploratória-de-dados"><i class="fa fa-check"></i><b>4.1.1</b> Detetive de dados - Análise exploratória de dados</a></li>
-</ul></li>
-<li class="chapter" data-level="4.2" data-path="visualizacao.html"><a href="visualizacao.html#comunicadora-de-dados---apresentação-de-dados"><i class="fa fa-check"></i><b>4.2</b> Comunicadora de dados - Apresentação de dados</a></li>
-<li class="chapter" data-level="4.3" data-path="visualizacao.html"><a href="visualizacao.html#visualizações-em-espécie"><i class="fa fa-check"></i><b>4.3</b> Visualizações em espécie</a>
-<ul>
-<li class="chapter" data-level="4.3.1" data-path="visualizacao.html"><a href="visualizacao.html#visualizações-de-variáveis-categóricas"><i class="fa fa-check"></i><b>4.3.1</b> Visualizações de variáveis categóricas</a></li>
-<li class="chapter" data-level="4.3.2" data-path="visualizacao.html"><a href="visualizacao.html#visualizações-de-variáveis-quantitativas"><i class="fa fa-check"></i><b>4.3.2</b> Visualizações de variáveis quantitativas</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="modelagem.html"><a href="modelagem.html"><i class="fa fa-check"></i><b>5</b> Modelagem</a></li>
-<li class="divider"></li>
-<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
-
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="Um Livro">Jurimetria</a>:
+        <small class="text-muted">Um Livro</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Jurimetria</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Sobre o livro</a></li>
+<li><a class="" href="introducao.html"><span class="header-section-number">1</span> Introdução</a></li>
+<li><a class="" href="planejamento.html"><span class="header-section-number">2</span> Planejamento de Pesquisa</a></li>
+<li><a class="" href="estatisticas.html"><span class="header-section-number">3</span> Estatísticas</a></li>
+<li><a class="active" href="visualizacao.html"><span class="header-section-number">4</span> Visualização</a></li>
+<li><a class="" href="modelagem.html"><span class="header-section-number">5</span> Modelagem</a></li>
+<li><a class="" href="bibliografia.html">Bibliografia</a></li>
+</ul>
+
+        <div class="book-extra">
+          
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="visualizacao" class="section level1" number="4">
-<h1><span class="header-section-number">Capítulo 4</span> Visualização</h1>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="visualizacao" class="section level1" number="4">
+<h1>
+<span class="header-section-number">Capítulo 4</span> Visualização<a class="anchor" aria-label="anchor" href="#visualizacao"><i class="fas fa-link"></i></a>
+</h1>
 <p>No capítulo <a href="planejamento.html#planejamento">2</a>, nós vimos questões sobre o método quantitativo, já no capítulo <a href="estatisticas.html#estatisticas">3</a>, passamos do método às medidas. Nesta ocasião, vimos as medidas de duas formas diferentes: as medidas das observações consideradas individualmente e as medidas de resumo do conjunto de observações. Na parte das medidas individuais de cada observação, vimos que as características das observações podem ter duas naturezas distintas, ou elas são categóricas (pois indicam uma categoria de resposta), ou elas são quantitativas (pois indicam uma resposta numérica). Essas duas naturezas possíveis possuem suas subdivisões, mas o mais importante é considerarmos essas duas grandes classes. Em seguida, na parte de medidas resumo do conjunto das observações, tivemos que separar as medidas resumo das variáveis categóricas das medidas resumo das variáveis quantitativas.</p>
 <p>Neste capítulo, ainda vamos nos valer desta distinção – entre variáveis categóricas e numéricas –, mas não vamos falar de medidas de resumo. O foco deste capítulo são as visualizações relacionadas a cada tipo de dado. Inicialmente, precisamos discutir para que servem as visualizações suas vantagens e desvantagens. Em seguida, vamos falar das visualizações específicas de cada tipo de variável (categórica ou quantitativa), começando pelas visualizações das variáveis categóricas para seguir então para as visualizações das variáveis quantitativas. Depois de olhar como representar individualmente as variáveis, vamos olhar para gráficos bivariados.</p>
 <div id="para-que-servem-visualizações" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Para que servem visualizações?</h2>
+<h2>
+<span class="header-section-number">4.1</span> Para que servem visualizações?<a class="anchor" aria-label="anchor" href="#para-que-servem-visualiza%C3%A7%C3%B5es"><i class="fas fa-link"></i></a>
+</h2>
 <p>Hoje em dia, nós vemos gráficos em vários contextos da vida cotidiana. Vemos gráficos em jornais, apresentações, livros, artigos de revista e em um monte de outros lugares. Mas nem sempre foi assim. Tratar de <em>dados</em> por meio de <em>visualizações gráficas</em> é apenas um jeito de contar a história. No capítulo anterior, vimos como contar a história, não por meio de gráficos, mas por meio de medidas de resumo. Se os gráficos nem sempre foram utilizados, cabe nos perguntarmos por que eles ganharam essa relevância nos dias atuais? O que eles trazem que outras formas de comunicar as informações (como em tabelas) não trazem?</p>
 <p>Vamos começar essa discussão com uma citação importante, retirada do livro The <em>Elements of Graphing Data</em> [Os Elementos da Representação Gráfica dos Dados] (1985) do William S. Cleveland. Na sessão <em>the power of graphical display</em> [o poder da representação gráfica], Cleveland diz:</p>
 <blockquote>
-<p>Representações gráficas são uma ferramenta excepcional para a análise de dados. A razão disso está bem resumida em uma sentença de uma carta de 1982 escrita pelo senhor W. Edwards Deming a mim: “Os métodos gráficos podem reter a informação nos dados.” Procedimentos numéricos de análise de dados – tais como a média, o desvio padrão, coeficientes de correlação e teste-t – são essencialmente técnicas de redução dos dados. Os métodos gráficos complementam essas técnicas. Os métodos gráficos tendem a mostrar conjuntos de dados como um todo, permitindo-nos resumir o comportamento geral e estudar o detalhe. Isso nos leva a uma análise de dados mais minuciosa.
-ma razão para as representações gráficas conseguirem reter as informações dos dados é que uma grande quantidade de informação quantitativa pode ser exibida e absorvida<a href="#fn28" class="footnote-ref" id="fnref28"><sup>28</sup></a>.</p>
+<p>Representações gráficas são uma ferramenta excepcional para a análise de dados. A razão disso está bem resumida em uma sentença de uma carta de 1982 escrita pelo senhor W. Edwards Deming a mim: “Os métodos gráficos podem reter a informação nos dados”. Procedimentos numéricos de análise de dados – tais como a média, o desvio padrão, coeficientes de correlação e teste-t – são essencialmente técnicas de redução dos dados. Os métodos gráficos complementam essas técnicas. Os métodos gráficos tendem a mostrar conjuntos de dados como um todo, permitindo-nos resumir o comportamento geral e estudar o detalhe. Isso nos leva a uma análise de dados mais minuciosa.
+Uma razão para as representações gráficas conseguirem reter as informações dos dados é que uma grande quantidade de informação quantitativa pode ser exibida e absorvida<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span class="citation"&gt;Cleveland (&lt;a href="bibliografia.html#ref-Cleveland1985" role="doc-biblioref"&gt;1985&lt;/a&gt;)&lt;/span&gt;, pp. 9-10, tradução livre, grifos no original
+No original: “Graphs are exceptionally powerful tools for data analysis. The reason is nicely encapsulated in a sentence from a 1982 letter written to me by W. Edwards Deming:”Graphical methods can retain the information in the data.” Numerical data analytic procedures – such as means, standard deviations, correlation coefficients, and t-tests – are essentially data reduction techniques. Graphical methods complement such numerical techniques. Graphical methods tend to show data sets as a whole, allowing us to summarize the general behavior and to study detail. This leads to much more thorough data analysis.
+One reason why graphical displays can retain the information in the data is that a large amount of quantitative information can be displayed and absorbed.”&lt;/p&gt;'><sup>27</sup></a>.</p>
 </blockquote>
-<p>Para dar um exemplo do que significa conseguir exibir e absorver informações quantitativas, e para explicar também o que significa “técnicas de redução de dados,” vamos olhar para um exemplo, no qual nós comparamos três formas de apresentar os mesmos dados. Os dados expostos dizem respeito aos valores das causas de ações de consumo.</p>
-<table class="gmisc_table" style="border-collapse: collapse; margin-top: 1em; margin-bottom: 1em;">
-<thead>
-<tr>
+<p>Para dar um exemplo do que significa conseguir exibir e absorver informações quantitativas, e para explicar também o que significa “técnicas de redução de dados”, vamos olhar para um exemplo, no qual nós comparamos três formas de apresentar os mesmos dados. Os dados expostos dizem respeito aos valores das causas de ações de consumo.</p>
+<div class="inline-table"><table class="gmisc_table" style="border-collapse: collapse; margin-top: 1em; margin-bottom: 1em;">
+<thead><tr>
 <th style="font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;">
 </th>
 <th style="font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;">
@@ -199,8 +111,7 @@ valor
 </th>
 <th style="font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;">
 </th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td style="text-align: center;">
@@ -543,15 +454,14 @@ valor
 </td>
 </tr>
 </tbody>
-</table>
-<table>
-<caption><span id="tab:unnamed-chunk-4">Tabela 4.1: </span>Medidas de resumo</caption>
-<thead>
-<tr class="header">
+</table></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:unnamed-chunk-4">Tabela 4.1: </span>Medidas de resumo</caption>
+<thead><tr class="header">
 <th align="left">medidas</th>
 <th align="right">valores</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td align="left">média</td>
@@ -582,10 +492,10 @@ valor
 <td align="right">34311.00</td>
 </tr>
 </tbody>
-</table>
-<div class="figure"><span style="display:block;" id="fig:exemplo-vis"></span>
-<img src="jurimetria_book_files/figure-html/exemplo-vis-1.svg" alt="Exemplo de visualizacao" width="768" />
-<p class="caption">
+</table></div>
+<div class="figure">
+<span style="display:block;" id="fig:exemplo-vis"></span>
+<img src="jurimetria_book_files/figure-html/exemplo-vis-1.svg" alt="Exemplo de visualizacao" width="768"><p class="caption">
 Figura 4.1: Exemplo de visualizacao
 </p>
 </div>
@@ -593,22 +503,24 @@ Figura 4.1: Exemplo de visualizacao
 <p>A primeira apresentação dos dados nos diz muito pouco. Por mais que tenhamos uma visão de <em>todos</em> os dados, não conseguimos tirar conclusão alguma sobre eles. As informações ali estão muito cruas.</p>
 <p>Na segunda forma de apresentar os dados, todo aquele conjunto imenso de dados foi reduzido a algumas poucas estatísticas de resumo. No caso, escolhemos mostrar a média, o desvio padrão e algumas medidas de posição importantes (o mínimo, o máximo, os quartis inferior e superior e a mediana). Nesse caso, perdemos a noção do <em>todo</em> (pois não vemos mais cada uma das observações), para olharmos para tendências gerais. Essas medidas nos permitem olhar para algumas tendências importantes, por exemplo, conseguimos perceber que, como a média está mais à direita do que a mediana, pois R$ 17.654,10 (média) é maior do que R$ 12.421,81 (mediana), que a distribuição não é simétrica, mas que existem pontos à direita que estão “puxando” a média para a direito, enquanto a mediana, que é robusta como vimos, não está recebendo efeito dessas observações à direita. Confirmamos essa mesma tendência pela observação de que o desvio padrão é muito maior do que a média.</p>
 <p>Todas essas conclusões que tiramos a partir das medidas resumo nos levam a perceber que a distribuição dos valores de causa de ações de consumo possui uma distribuição assimétrica para a direita (ou seja, muitos dados concentrados próximo de zero, e poucos dados muito distantes do zero). Acontece que o processo para chegarmos a essa conclusão não foi intuitivo, ele necessitou de algumas análises anteriores.</p>
-<p>É com esse problema em mente que podemos olhar para o gráfico que está apresentando os mesmos dados. Duas características são importantes da representação gráfica pelo histograma: (a) o gráfico não “reduz” os dados a algumas poucas medidas, mas ele exibe todas as observações, aproximando-se, dessa forma, da primeira apresentação dos dados (isto é, a tabela de observações); (b) ao mesmo tempo em que o gráfico mostra <em>todas</em> as observações, ele ainda consegue indicar tendências gerais da distribuição dos dados, nesse sentido, aproximando-se da segunda apresentação dos dados (isto é, a tabela de medidas resumo). Aquela conclusão que tiramos a partir das medidas resumo (de que a distribuição é assimétrica para a direita, pois ela possui muitos dados concentrados próximo de zero e poucos dados distantes do zero) é reforçada no gráfico. A diferença é que conseguimos chegar a essa conclusão de uma forma muito mais intuitiva. É por essa razão que Cleveland diz que “uma grande quantidade de informação quantitativa pode ser exibida e <strong>absorvida</strong>,” com destaque para a palavra “absorvida.”</p>
+<p>É com esse problema em mente que podemos olhar para o gráfico que está apresentando os mesmos dados. Duas características são importantes da representação gráfica pelo histograma: (a) o gráfico não “reduz” os dados a algumas poucas medidas, mas ele exibe todas as observações, aproximando-se, dessa forma, da primeira apresentação dos dados (isto é, a tabela de observações); (b) ao mesmo tempo em que o gráfico mostra <em>todas</em> as observações, ele ainda consegue indicar tendências gerais da distribuição dos dados, nesse sentido, aproximando-se da segunda apresentação dos dados (isto é, a tabela de medidas resumo). Aquela conclusão que tiramos a partir das medidas resumo (de que a distribuição é assimétrica para a direita, pois ela possui muitos dados concentrados próximo de zero e poucos dados distantes do zero) é reforçada no gráfico. A diferença é que conseguimos chegar a essa conclusão de uma forma muito mais intuitiva. É por essa razão que Cleveland diz que “uma grande quantidade de informação quantitativa pode ser exibida e <strong>absorvida</strong>”, com destaque para a palavra “absorvida”.</p>
 <p>A partir desse exemplo, conseguimos compreender algumas características importantes das visualizações gráficas: elas conseguem manter um olhar para <em>cada uma das observações</em> (sem reduzir os dados a algumas poucas medidas), e conseguem apresentar tendências gerais da distribuição do dado de uma forma de fácil absorção e compreensão por aquele que visualiza.</p>
-<p>Com essas características em mente, então, podemos começar a responder à pergunta “para que servem visualizações?” Há duas respostas importantes: as visualizações gráficas servem para investigar os dados, bem como servem para comunicar resultados. Vamos olhar para as duas funções</p>
+<p>Com essas características em mente, então, podemos começar a responder à pergunta “para que servem visualizações?”. Há duas respostas importantes: as visualizações gráficas servem para investigar os dados, bem como servem para comunicar resultados. Vamos olhar para as duas funções</p>
 <div id="detetive-de-dados---análise-exploratória-de-dados" class="section level3" number="4.1.1">
-<h3><span class="header-section-number">4.1.1</span> Detetive de dados - Análise exploratória de dados</h3>
-<p>Uma forma de encarar as visualizações gráficas é criar visualizações a fim de se obter evidências e pistas para analisar outros fenômenos. Isso é o que Tukey (1977) chama de “quantitative detective work” [trabalho de detetive quantitativo]. Nesse sentido, a visualização de dados não é um fim em si mesmo, mas é uma etapa para um processo de compreensão maior. Nesse sentido, usamos visualizações gráficas para descobrir como um determinado dado se distribui; e a partir dessa informação, podemos perceber que talvez seja adequado fazer uma transformação de variável. Por exemplo, ao analisar o valor da causa, podemos nos deparar com a seguinte distribuição, conforme a Figura <a href="visualizacao.html#fig:hist-causa">4.2</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:hist-causa"></span>
-<img src="jurimetria_book_files/figure-html/hist-causa-1.svg" alt="Distribuição do valor da causa" width="864" />
-<p class="caption">
+<h3>
+<span class="header-section-number">4.1.1</span> Detetive de dados - Análise exploratória de dados<a class="anchor" aria-label="anchor" href="#detetive-de-dados---an%C3%A1lise-explorat%C3%B3ria-de-dados"><i class="fas fa-link"></i></a>
+</h3>
+<p>Uma forma de encarar as visualizações gráficas é criar visualizações a fim de se obter evidências e pistas para analisar outros fenômenos. Isso é o que <span class="citation">Tukey (<a href="bibliografia.html#ref-Tukey1977" role="doc-biblioref">1977</a>)</span> chama de “quantitative detective work” [trabalho de detetive quantitativo]. Nesse sentido, a visualização de dados não é um fim em si mesmo, mas é uma etapa para um processo de compreensão maior. Nesse sentido, usamos visualizações gráficas para descobrir como um determinado dado se distribui; e a partir dessa informação, podemos perceber que talvez seja adequado fazer uma transformação de variável. Por exemplo, ao analisar o valor da causa, podemos nos deparar com a seguinte distribuição, conforme a Figura <a href="visualizacao.html#fig:hist-causa">4.2</a>.</p>
+<div class="figure">
+<span style="display:block;" id="fig:hist-causa"></span>
+<img src="jurimetria_book_files/figure-html/hist-causa-1.svg" alt="Distribuição do valor da causa" width="864"><p class="caption">
 Figura 4.2: Distribuição do valor da causa
 </p>
 </div>
 <p>Não queremos colocar um gráfico desses em um relatório, ou em um artigo a ser publicado. Mas esse gráfico é importante para percebemos que o eixo x (valor) precisa passar por um ajuste. O ajuste que vamos fazer é colocar o valor em escala logarítmica. Essa é uma transformação muito comum. Mais para frente veremos por que, quando e como fazer essa transformação, por hora, basta sabermos que o primeiro gráfico foi um indicativo de que precisávamos mudar a escala da variável <code>valor</code>. Esse gráfico conseguiu nos indicar isso pois ele nos revelou a distribuição das observações sobre essa variável. E ao saber a distribuição, conseguimos padronizar melhor os dados. Na Figura <a href="visualizacao.html#fig:hist-causa-log">4.3</a>, vemos as mesmas informações dispostas na Figura <a href="visualizacao.html#fig:hist-causa">4.2</a>, ajustadas com log.</p>
-<div class="figure"><span style="display:block;" id="fig:hist-causa-log"></span>
-<img src="jurimetria_book_files/figure-html/hist-causa-log-1.svg" alt="Distribuição do valor de causa (com log);" width="864" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:hist-causa-log"></span>
+<img src="jurimetria_book_files/figure-html/hist-causa-log-1.svg" alt="Distribuição do valor de causa (com log);" width="864"><p class="caption">
 Figura 4.3: Distribuição do valor de causa (com log);
 </p>
 </div>
@@ -617,7 +529,9 @@ São usos deste tipo que aqui estamos chamando de uma análise exploratória de 
 </div>
 </div>
 <div id="comunicadora-de-dados---apresentação-de-dados" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Comunicadora de dados - Apresentação de dados</h2>
+<h2>
+<span class="header-section-number">4.2</span> Comunicadora de dados - Apresentação de dados<a class="anchor" aria-label="anchor" href="#comunicadora-de-dados---apresenta%C3%A7%C3%A3o-de-dados"><i class="fas fa-link"></i></a>
+</h2>
 <p>Outra função que podemos dar à visualização de dados é a comunicação dos resultados. Bons gráficos devem ser gráficos que consigam ser facilmente compreendidos; são gráficos claros e intuitivos. Existem uma série de estudos sobre como construir gráficos para comunicação, assim como existem muitos exemplos, principalmente no jornalismo, de gráficos que contam boas histórias.</p>
 <p>:::
 Recomendamos aqui a leitura de Cleveland, William S. The Elements of Graphing Design. California: Wadsworth Advanced Book Program. 1985; ou para um resumo e aplicação prática de Cleveland, recomendamos Kozak, Marcin. Basic principles of graphing data. Sci. Agric. (Piracicaba, Braz.), v.67, n.4, p.483-494, July/August 2010. Neste artigo de Kozak, ele resume os princípios elencados por Cleveland em The Elements of Graphing Data, bem como fornece valiosos exemplos de como esses princípios podem melhorar a apresentação gráfica.
@@ -634,7 +548,9 @@ Ver o artigo de Caio Lente no blog da Curso-R, em que ele descreve como os dados
 :::</p>
 </div>
 <div id="visualizações-em-espécie" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Visualizações em espécie</h2>
+<h2>
+<span class="header-section-number">4.3</span> Visualizações em espécie<a class="anchor" aria-label="anchor" href="#visualiza%C3%A7%C3%B5es-em-esp%C3%A9cie"><i class="fas fa-link"></i></a>
+</h2>
 <p>Tendo em mente as características e funções das visualizações, podemos prosseguir ao detalhamento de algumas espécies de visualizações. Existem muitos tipos de gráficos. Você pode ver uma tentativa de documentação completa desses gráficos em <a href="https://www.data-to-viz.com/">From data to Viz</a>. Não vamos falar de todos esses gráficos, mas apenas dos tipos mais frequentes. Da mesma forma como nós dividimos a explicação das medidas de resumo entre as explicações das medidas para variáveis categóricas e as medidas para variáveis numéricas, vamos, novamente, seguir este padrão, de modo que apresentaremos:</p>
 <ol style="list-style-type: decimal">
 <li>Visualizações para variáveis categóricas
@@ -644,8 +560,10 @@ Ver o artigo de Caio Lente no blog da Curso-R, em que ele descreve como os dados
 <ol style="list-style-type: decimal">
 <li>Com explicativa categórica</li>
 <li>Com explicativa numérica (só faz sentido regressão)</li>
-</ol></li>
-</ol></li>
+</ol>
+</li>
+</ol>
+</li>
 <li>Visualizações para variáveis numéricas
 <ol style="list-style-type: decimal">
 <li>Gráficos univariados</li>
@@ -653,8 +571,10 @@ Ver o artigo de Caio Lente no blog da Curso-R, em que ele descreve como os dados
 <ol style="list-style-type: decimal">
 <li>Com explicativa categórica</li>
 <li>Com explicativa numérica</li>
-</ol></li>
-</ol></li>
+</ol>
+</li>
+</ol>
+</li>
 </ol>
 <p>Para cada gráfico, iremos ver (i) como desenhar o gráfico e (ii) como interpretá-lo. A explicação do ponto (i) já diz muito sobre o ponto (ii), mas iremos tentar discriminar cada uma das análises especificamente.</p>
 <p>Algumas explicações que precisamos dar a respeito dessas visualizações. Primeiro, o que significa ser um gráfico univariado ou bivariado?</p>
@@ -662,68 +582,81 @@ Ver o artigo de Caio Lente no blog da Curso-R, em que ele descreve como os dados
 <p>Já o gráfico bivariado representa duas variáveis nele, em que uma variável é a variável resposta e a outra variável é a variável explicativa. A variável resposta é aquela que nós queremos compreender; e a variável explicativa é a variável que queremos explicar a variável resposta.</p>
 <p>Vamos dar um exemplo para compreender o que são as variáveis explicativa e resposta. Se formos analisar a instância recursal, podemos querer ver se a reforma da decisão de primeiro grau é afetada pelo valor da causa. Será que causas de valores maiores tendem a ser menos reformadas? Veja que a relação que queremos avaliar tem uma ordem certa: importa dizer que é o valor da causa que explica a reforma, e não o contrário, de que é a reforma da sentença ou não que explica o valor da causa. Essas duas relações são possíveis de serem analisadas (apesar de que faz pouco sentido teórico explicar o valor da causa pela reforma). O importante é notar que essas duas relações são distintas, e aquilo em que elas se distinguem é justamente o que cada uma delas considera como variável resposta e como variável explicativa. Na pergunta de se a reforma da sentença é afetada pelo valor da causa, a variável “reforma” é a variável resposta (ou seja, a variável que queremos compreender); e a variável “valor da causa” é a variável explicativa (ou seja, a variável que queremos que explique a variável resposta). Em termos matemáticos, a variável resposta é a variável Y e a variável explicativa é a variável X.</p>
 <div id="visualizações-de-variáveis-categóricas" class="section level3" number="4.3.1">
-<h3><span class="header-section-number">4.3.1</span> Visualizações de variáveis categóricas</h3>
+<h3>
+<span class="header-section-number">4.3.1</span> Visualizações de variáveis categóricas<a class="anchor" aria-label="anchor" href="#visualiza%C3%A7%C3%B5es-de-vari%C3%A1veis-categ%C3%B3ricas"><i class="fas fa-link"></i></a>
+</h3>
 <div id="gráficos-univariados" class="section level4" number="4.3.1.1">
-<h4><span class="header-section-number">4.3.1.1</span> Gráficos univariados</h4>
-<p>Os gráficos univariados de variáveis categóricas são marcados por conterem sempre duas informações: as categorias analisadas e a contagem ou proporção dessas categorias. Por mais que os gráficos tenham duas dimensões, eles não contém duas “variáveis.” A única variável são as categorias; a contagem/proporção é simplesmente um atributo dessa variável. Vamos ver duas visualizações mais difundidas desse tipo de variável. Para mais exemplos, ver <a href="https://www.data-to-viz.com/">From data to Viz</a>.</p>
+<h4>
+<span class="header-section-number">4.3.1.1</span> Gráficos univariados<a class="anchor" aria-label="anchor" href="#gr%C3%A1ficos-univariados"><i class="fas fa-link"></i></a>
+</h4>
+<p>Os gráficos univariados de variáveis categóricas são marcados por conterem sempre duas informações: as categorias analisadas e a contagem ou proporção dessas categorias. Por mais que os gráficos tenham duas dimensões, eles não contém duas “variáveis”. A única variável são as categorias; a contagem/proporção é simplesmente um atributo dessa variável. Vamos ver duas visualizações mais difundidas desse tipo de variável. Para mais exemplos, ver <a href="https://www.data-to-viz.com/">From data to Viz</a>.</p>
 <div id="gráfico-de-barras" class="section level5" number="4.3.1.1.1">
-<h5><span class="header-section-number">4.3.1.1.1</span> Gráfico de barras</h5>
+<h5>
+<span class="header-section-number">4.3.1.1.1</span> Gráfico de barras<a class="anchor" aria-label="anchor" href="#gr%C3%A1fico-de-barras"><i class="fas fa-link"></i></a>
+</h5>
 <p>O gráfico de barras é o principal meio de visualizar variáveis categóricas. Ele contém dois eixos: a variável categórica e a contagem/proporção. Não importa o eixo em que cada uma dessas informações está. A variável pode ser apresentada tanto no eixo x (horizontal), como no eixo y (vertical, também chamado de gráfico de colunas), conforme a Figura <a href="visualizacao.html#fig:vis-barras">4.4</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:vis-barras"></span>
-<img src="jurimetria_book_files/figure-html/vis-barras-1.svg" alt="Gráficos de barras" width="864" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:vis-barras"></span>
+<img src="jurimetria_book_files/figure-html/vis-barras-1.svg" alt="Gráficos de barras" width="864"><p class="caption">
 Figura 4.4: Gráficos de barras
 </p>
 </div>
 <p>O gráfico é simples, bem como a sua interpretação. Basta verificar a contagem de cada categoria. Usualmente, tira-se desses gráficos a conclusão de quais grupos são mais relevantes, qual é a tendência de resposta de determinada categoria. No caso em tela, observamos que os processos de consumo, em segunda instância, tendem a não ser reformados.</p>
 </div>
 <div id="gráfico-de-setores-pizza" class="section level5" number="4.3.1.1.2">
-<h5><span class="header-section-number">4.3.1.1.2</span> Gráfico de setores (pizza)</h5>
+<h5>
+<span class="header-section-number">4.3.1.1.2</span> Gráfico de setores (pizza)<a class="anchor" aria-label="anchor" href="#gr%C3%A1fico-de-setores-pizza"><i class="fas fa-link"></i></a>
+</h5>
 <p>O segundo tipo de visualização categórica são os gráficos de setores, ou gráficos de pizza (ou <em>pie charts</em>, em inglês). Esta visualização é uma forma muito frequente de apresentar os dados. A diferença dos gráficos de pizza para os gráficos de barras é que eles apresentam informações dispostas, não lado a lado, mas dentro de um círculo. O círculo inteiro compreende todas as observações possíveis, enquanto as suas ramificações (ou pedaços de pizza) representam a parcela do todo que diz respeito a uma determinada categoria.</p>
 <p>Esse gráfico, apesar de ser amplamente utilizado, ele traz um problema de visualização. Por mais que o gráfico funcione bem para representar duas ou três categorias, com mais categorias do que isso ele passa a não ser muito funcional.</p>
 <p>Aqui vamos replicar o exemplo elaborado pelo Data to Viz em <a href="https://www.data-to-viz.com/caveat/pie.html">The issue with pie chart</a>. O exemplo que eles dão parte da seguinte pergunta: Tente descobrir nos três grupos abaixo qual é o grupo com mais observaçẽs.</p>
-<p><img src="assets/img/pie-datatoviz.png" width="960" /></p>
+<div class="inline-figure"><img src="assets/img/pie-datatoviz.png" width="960"></div>
 <p>A resposta deveria ser, para a primeira pergunta, que no primeiro gráfico, o maior grupo é o E; no segundo, o C; e no terceiro, o A. Acontece que, por causa da forma como os dados estão dispostos, é difícil chegar a essa conclusão, enquanto, se repetíssemos a pergunta para os mesmos dados dispostos em barras, essa pergunta seria trivial.</p>
-<p><img src="assets/img/bar-datatoviz.png" width="960" />
-Então, a questão com os gráficos de pizza é que eles possuem um iminente problema de comunicação e interpretação. A assimilação desses gráficos não é intuitiva, muitas vezes, sequer possível a olho nu. Dessa forma, deve-se preferir, na maioria das vezes, a utilização de gráficos de barras no lugar de gráficos de pizza. Recomenda-se que se utilize gráficos de pizza para representar 2 ou, no máximo, 3 categorias. Mais do que isso, a visualização fica prejudicada.</p>
+<div class="inline-figure">
+<img src="assets/img/bar-datatoviz.png" width="960">
+Então, a questão com os gráficos de pizza é que eles possuem um iminente problema de comunicação e interpretação. A assimilação desses gráficos não é intuitiva, muitas vezes, sequer possível a olho nu. Dessa forma, deve-se preferir, na maioria das vezes, a utilização de gráficos de barras no lugar de gráficos de pizza. Recomenda-se que se utilize gráficos de pizza para representar 2 ou, no máximo, 3 categorias. Mais do que isso, a visualização fica prejudicada.</div>
 </div>
 </div>
 <div id="gráficos-bivariados-com-explicativa-categórica" class="section level4" number="4.3.1.2">
-<h4><span class="header-section-number">4.3.1.2</span> Gráficos bivariados (com explicativa categórica)</h4>
+<h4>
+<span class="header-section-number">4.3.1.2</span> Gráficos bivariados (com explicativa categórica)<a class="anchor" aria-label="anchor" href="#gr%C3%A1ficos-bivariados-com-explicativa-categ%C3%B3rica"><i class="fas fa-link"></i></a>
+</h4>
 <div id="gráfico-de-barras-1" class="section level5" number="4.3.1.2.1">
-<h5><span class="header-section-number">4.3.1.2.1</span> Gráfico de barras</h5>
+<h5>
+<span class="header-section-number">4.3.1.2.1</span> Gráfico de barras<a class="anchor" aria-label="anchor" href="#gr%C3%A1fico-de-barras-1"><i class="fas fa-link"></i></a>
+</h5>
 <p>O mesmo gráfico de barras que pode representar uma única variável, pode ser usado para representar duas variáveis categóricas. Neste caso, não mudamos os eixos. O que fazemos, no lugar, é “quebrar” cada uma das categorias do eixo categórico em algum subgrupo. Por exemplo, na Figura <a href="visualizacao.html#fig:barras-2var">4.5</a>, pegamos as categorias referentes a “decisões de segunda instância” e quebramos pelo tipo de litígio. Há 4 tipos de litígio possíveis: uma pessoa física (PF) no polo ativo contra alguma não-pessoa física (nPF), tal como uma empresa, um espólio ou o Poder Público (PF-nPF); uma pessoa física contra outra pessoa física (PF-PF); uma pessoa não física no polo ativo, contra uma pessoa física (nPF-PF); ou uma disputa entre duas pessoas não físicas (nPF-nPF).</p>
-<div class="figure"><span style="display:block;" id="fig:barras-2var"></span>
-<img src="jurimetria_book_files/figure-html/barras-2var-1.svg" alt="Gráficos de barras com duas variáveis, empilhado." width="1152" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:barras-2var"></span>
+<img src="jurimetria_book_files/figure-html/barras-2var-1.svg" alt="Gráficos de barras com duas variáveis, empilhado." width="1152"><p class="caption">
 Figura 4.5: Gráficos de barras com duas variáveis, empilhado.
 </p>
 </div>
 <p>Essa “quebra” pode ser feita de diversas maneiras. A escolha entre cada uma delas dependerá dos propósitos do gráfico, ou até mesmo do estilo do próprio pesquisador. A Figura <a href="visualizacao.html#fig:barras-2var2">4.6</a> traz outra forma de realizar essa quebra.</p>
-<div class="figure"><span style="display:block;" id="fig:barras-2var2"></span>
-<img src="jurimetria_book_files/figure-html/barras-2var2-1.svg" alt="Gráficos de barras com duas variáveis, lado a lado." width="768" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:barras-2var2"></span>
+<img src="jurimetria_book_files/figure-html/barras-2var2-1.svg" alt="Gráficos de barras com duas variáveis, lado a lado." width="768"><p class="caption">
 Figura 4.6: Gráficos de barras com duas variáveis, lado a lado.
 </p>
 </div>
-<p>O que precisamos compreender é a complexidade que essa segunda variável adiciona à interpretação do gráfico. No gráfico de barras univariado, podíamos comparar apenas o tamanho de cada um dos desfechos da sentença. Na Figura <a href="visualizacao.html#fig:highlight-barras">4.7</a>, damos um exemplo de um tipo de comparação possível a partir do gráfico univariado, em que comparamos os os grupos “Reformou” com “Não reformou.”</p>
-<div class="figure"><span style="display:block;" id="fig:highlight-barras"></span>
-<img src="jurimetria_book_files/figure-html/highlight-barras-1.svg" alt="Gráfico de barras com comparação entre os grupos 'Reformou' e 'Não reformou'" width="864" />
-<p class="caption">
+<p>O que precisamos compreender é a complexidade que essa segunda variável adiciona à interpretação do gráfico. No gráfico de barras univariado, podíamos comparar apenas o tamanho de cada um dos desfechos da sentença. Na Figura <a href="visualizacao.html#fig:highlight-barras">4.7</a>, damos um exemplo de um tipo de comparação possível a partir do gráfico univariado, em que comparamos os os grupos “Reformou” com “Não reformou”.</p>
+<div class="figure">
+<span style="display:block;" id="fig:highlight-barras"></span>
+<img src="jurimetria_book_files/figure-html/highlight-barras-1.svg" alt="Gráfico de barras com comparação entre os grupos 'Reformou' e 'Não reformou'" width="864"><p class="caption">
 Figura 4.7: Gráfico de barras com comparação entre os grupos ‘Reformou’ e ‘Não reformou’
 </p>
 </div>
 <p>Com os gráficos de barras bivariados, outras comparações são possíveis. No caso, podemos realizar 2 novas comparações. A primeira comparação possível é aquela em que fixamos a variável de interesse para compararmos a variável explicativa. No nosso caso, isso significa comparar, dentro de um único desfecho da sentença, alguns tipos de litígio. Vemos um exemplo desta comparação na Figura <a href="visualizacao.html#fig:highlight-bivar">4.8</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:highlight-bivar"></span>
-<img src="jurimetria_book_files/figure-html/highlight-bivar-1.svg" alt="Contagens de não reforma e configuração das partes." width="864" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:highlight-bivar"></span>
+<img src="jurimetria_book_files/figure-html/highlight-bivar-1.svg" alt="Contagens de não reforma e configuração das partes." width="864"><p class="caption">
 Figura 4.8: Contagens de não reforma e configuração das partes.
 </p>
 </div>
 <p>A segunda nova comparação possível é aquela em que fixamos a variável explicativa, ou seja, a variável de quebra, e a analisamos através de todas as categorias de interesse. Vemos um exemplo disto na Figura <a href="visualizacao.html#fig:highlight-bivar2">4.9</a>, em que olhamos para o tipo de litígio “PF-nPF” para todos os três tipos de desfechos possíveis das decisões de segunda instância.</p>
-<div class="figure"><span style="display:block;" id="fig:highlight-bivar2"></span>
-<img src="jurimetria_book_files/figure-html/highlight-bivar2-1.svg" alt="Contagens de reforma/não reforma e configuração das partes." width="864" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:highlight-bivar2"></span>
+<img src="jurimetria_book_files/figure-html/highlight-bivar2-1.svg" alt="Contagens de reforma/não reforma e configuração das partes." width="864"><p class="caption">
 Figura 4.9: Contagens de reforma/não reforma e configuração das partes.
 </p>
 </div>
@@ -731,28 +664,36 @@ Figura 4.9: Contagens de reforma/não reforma e configuração das partes.
 </div>
 </div>
 <div id="gráficos-bivariados-com-explicativa-numérica" class="section level4" number="4.3.1.3">
-<h4><span class="header-section-number">4.3.1.3</span> Gráficos bivariados (com explicativa numérica)</h4>
+<h4>
+<span class="header-section-number">4.3.1.3</span> Gráficos bivariados (com explicativa numérica)<a class="anchor" aria-label="anchor" href="#gr%C3%A1ficos-bivariados-com-explicativa-num%C3%A9rica"><i class="fas fa-link"></i></a>
+</h4>
 <p>Nos gráficos de barras bivariados que mostramos acima, a variável explicativa era categórica (no caso, “Tipo de litígio”). A partir dessa variável explicativa categórica, nós pudemos “quebrar” as barras em categorias menores. Vimos diversas formas de realizar essa quebra, bem como as novas interpretações que isso permitia realizar.</p>
-<p>Poderíamos nos perguntar, então, o que aconteceria se, no lugar de “Tipo de litígio,” colocássemos alguma variável numérica contínua, tal como “valor da ação?” Como o gráfico ficaria?</p>
+<p>Poderíamos nos perguntar, então, o que aconteceria se, no lugar de “Tipo de litígio”, colocássemos alguma variável numérica contínua, tal como “valor da ação”? Como o gráfico ficaria?</p>
 <p>Temos de ter cautela com essa pergunta, pois, por mais intuitivo que seja se fazer uma pergunta dessas, esse tipo de visualização só faz sentido em um contexto bem específico: o de regressão. Veremos regressões apenas mais para frente do livro. Quando chegarmos lá, poderemos completar essa explicação.</p>
 </div>
 </div>
 <div id="visualizações-de-variáveis-quantitativas" class="section level3" number="4.3.2">
-<h3><span class="header-section-number">4.3.2</span> Visualizações de variáveis quantitativas</h3>
+<h3>
+<span class="header-section-number">4.3.2</span> Visualizações de variáveis quantitativas<a class="anchor" aria-label="anchor" href="#visualiza%C3%A7%C3%B5es-de-vari%C3%A1veis-quantitativas"><i class="fas fa-link"></i></a>
+</h3>
 <div id="gráficos-univariados-1" class="section level4" number="4.3.2.1">
-<h4><span class="header-section-number">4.3.2.1</span> Gráficos univariados</h4>
+<h4>
+<span class="header-section-number">4.3.2.1</span> Gráficos univariados<a class="anchor" aria-label="anchor" href="#gr%C3%A1ficos-univariados-1"><i class="fas fa-link"></i></a>
+</h4>
 <p>No caso das variáveis quantitativas, também temos formas de representá-las de forma univariada. São duas as visualizações mais frequentes: o histograma e o boxplot.</p>
 <div id="histograma" class="section level5" number="4.3.2.1.1">
-<h5><span class="header-section-number">4.3.2.1.1</span> Histograma</h5>
+<h5>
+<span class="header-section-number">4.3.2.1.1</span> Histograma<a class="anchor" aria-label="anchor" href="#histograma"><i class="fas fa-link"></i></a>
+</h5>
 <p>O histograma assemelha-se muito ao gráfico de barras. Eles não devem, entretanto, ser confundidos. O histograma representa variáveis quantitativas contínuas, enquanto o gráfico de barras representa categorias. A diferença essencial é que, enquanto no gráfico de barras nos interesse o tamanho de cada barra, no histograma nos interessa mais a distribuição geral dos dados ao longo do eixo. A Figura <a href="visualizacao.html#fig:histograma-tempo">4.10</a> traz um exemplo de um histograma com o valor de tempo de cada processo em dias.</p>
-<div class="figure"><span style="display:block;" id="fig:histograma-tempo"></span>
-<img src="jurimetria_book_files/figure-html/histograma-tempo-1.svg" alt="Histograma simples" width="864" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:histograma-tempo"></span>
+<img src="jurimetria_book_files/figure-html/histograma-tempo-1.svg" alt="Histograma simples" width="864"><p class="caption">
 Figura 4.10: Histograma simples
 </p>
 </div>
 <p>Trabalhando em cima deste exemplo, vamos compreender (a) como se formam as barras do histograma; (b) como interpretar este gráfico; (c) propriedades do histograma; (d) problemas de visualização e transformação dos dados.</p>
-<p>A começar pela formação das barras do histograma, precisamos voltar um pouco na natureza das variáveis quantitativas. Existem dois tipos de variáveis quantitativas: as discretas e as contínuas. As discretas representam apenas a contagem de certo número, por exemplo, quando se deseja saber a quantidade de juízes que determinado tribunal possui. Essa quantidade, que expressa apenas uma contagem, será uma variável discreta. As características dessa variável são que ela não pode assumir nem valores negativos, nem valores fracionados, mas apenas valores inteiros. As variáveis contínuas, por outro lado, seriam variáveis que expressam números reais, podendo por natureza envolver números negativos ou fracionados. Acontecem alguns casos em que os números negativos não fazem sentido no mundo real, por exemplo, quando temos uma variável contínua sobre tempos. Por exemplo, se tivermos uma variável sobre o tempo que demora para um processo morrer, não faz sentido que essa variável indique “-100 dias.”</p>
+<p>A começar pela formação das barras do histograma, precisamos voltar um pouco na natureza das variáveis quantitativas. Existem dois tipos de variáveis quantitativas: as discretas e as contínuas. As discretas representam apenas a contagem de certo número, por exemplo, quando se deseja saber a quantidade de juízes que determinado tribunal possui. Essa quantidade, que expressa apenas uma contagem, será uma variável discreta. As características dessa variável são que ela não pode assumir nem valores negativos, nem valores fracionados, mas apenas valores inteiros. As variáveis contínuas, por outro lado, seriam variáveis que expressam números reais, podendo por natureza envolver números negativos ou fracionados. Acontecem alguns casos em que os números negativos não fazem sentido no mundo real, por exemplo, quando temos uma variável contínua sobre tempos. Por exemplo, se tivermos uma variável sobre o tempo que demora para um processo morrer, não faz sentido que essa variável indique “-100 dias”.</p>
 <p>Essa recapitulação dos tipos de variáveis quantitativas é importante porque os histogramas representam apenas variáveis quantitativas <em>contínuas</em>, e isso traz um problema para a representação gráfica. O problema é, se eu for fazer uma barra para cada valor possível, tratando eles como categorias próprias, eu teria, teoricamente, infinitas barras. Por exemplo, eu poderia ter, em uma variável de valor, uma barra para todos os processos cujo valor da ação é de R$ 1,00; e depois outra barra para os valores de R$ 1,10. Mas entre uma barra eu poderia ter R$ 1,05; ou ainda 1,025, etc.</p>
 <p>A fim de eliminar esse problemas das barras infinitas, cada barra do histograma acaba representando um intervalo, de modo que nenhuma barra represente um único valor, mas sim um intervalo de valores. Assim, no lugar de uma barra para o valor de R$ 1,00, temos uma barra para os valores de R$ 1,00 a R$ 2,00, por exemplo. O tamanho desse intervalo é variável, não é fixo; ele não está predeterminado. O que precisamos saber deste intervalo é que ele é fechado no início e aberto no final, ou seja, se tivermos o intervalo de R$ 1,00 a R$ 2,00 e outro intervalo de R$ 2,00 a R$ 3,00, isso significa que um processo cujo valor da causa seja R$ 2,00, ele estará dentro do segundo intervalo e não do primeiro, mas o valor da causa for de R$ 1,99, ele estará dentro do primeiro intervalo mesmo.</p>
 <p>A representação dos intervalos segue uma notação específica: para os intervalos fechados, representamos um colchete voltado para o número; para os intervalos abertos, um colchete “de costas” para o número. A seguir, damos alguns exemplos para compreender melhor essa notação.</p>
@@ -764,25 +705,25 @@ Figura 4.10: Histograma simples
 </ul>
 <p>A partir da criação dos intervalos, cada uma das observações da base será colocada dentro de uma das categorias especificadas. Assim, cada um dos intervalos terá uma contagem (igual ao caso do gráfico de barras). Todas as categorias devem ter exatamente o mesmo tamanho. Assim, se foi criada uma categoria que vai do 1 ao 10, então a próxima categoria <em>tem que ser</em> do 10 ao 19, pois elas devem ter exatamente o mesmo tamanho.</p>
 <p>Mexer no tamanho das categorias pode gerar histogramas diferentes. Veja o mesmo histograma do exemplo acima com três variações do tamanho dos intervalos de cada barra na Figura <a href="visualizacao.html#fig:varios-histogramas">4.11</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:varios-histogramas"></span>
-<img src="jurimetria_book_files/figure-html/varios-histogramas-1.svg" alt="O mesmo histograma com intervalos distintos para as barras" width="768" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:varios-histogramas"></span>
+<img src="jurimetria_book_files/figure-html/varios-histogramas-1.svg" alt="O mesmo histograma com intervalos distintos para as barras" width="768"><p class="caption">
 Figura 4.11: O mesmo histograma com intervalos distintos para as barras
 </p>
 </div>
 <p>Uma vez que descobrimos como que as barras do histograma são criadas, podemos passar para o tópico seguinte: como interpretar? No caso do histograma, não nos interessa muito saber a contagem exata de cada “categoria” (até porque as barras não representam categorias, mas apenas intervalos arbitrários). A contagem específica de cada categoria era uma informação importante quando olhávamos para o gráfico de barras, mas no histograma, não é essa informação por que estamos buscando. O essencial do histograma é ver a <em>distribuição</em> dos dados como um todo, e não cada barra.</p>
 <p>Voltando ao nosso exemplo, conseguimos ver que existe uma barra cuja contagem de casos está acima dos 300 casos. Não nos importa saber a contagem exata desta barra. Ao que devemos nos atentar é que a distribuição do tempo dos processos se dá de forma concentrada na esquerda. Esse tipo de distribuição chamamos de distribuição assimétrica para a direita. A indicação da assimetria diz respeito à localização da “cauda” do gráfico. No nosso caso, temos uma série de valores concentrados no início, em tempos mais baixos, e alguns poucos casos esparramados no fim, em tempos mais longos. Então, quando dizemos que a distribuição é assimétrica “para a direita” estamos nos referindo à assimetria que estes casos da cauda do gráfico criaram.</p>
 <p>Como estamos falando, o mais importante dos histogramas é verificar a distribuição dos dados, e não a contagem específica de cada barra. O que precisamos falar ainda é: quais são as distribuições possíveis? Existem muitas distribuições, mas destacamos 3 principais: a distribuição simétrica, a distribuição assimétrica para a direita e a distribuição assimétrica para a esquerda. Essas distribuições estão resumidas na Figura <a href="visualizacao.html#fig:distribuicoes-sim">4.12</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:distribuicoes-sim"></span>
-<img src="jurimetria_book_files/figure-html/distribuicoes-sim-1.svg" alt="Distribuições" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:distribuicoes-sim"></span>
+<img src="jurimetria_book_files/figure-html/distribuicoes-sim-1.svg" alt="Distribuições" width="672"><p class="caption">
 Figura 4.12: Distribuições
 </p>
 </div>
 <p>A propriedade importante do histograma diz respeito à posição relativa entre média e mediana. Queremos sempre determinar onde os dados estão concentrados. Para tanto, as medidas de resumo que indicam tendência central são excelentes. Lembrando, temos três medidas: a média, a mediana e a moda. A média e a mediana se diferenciam porque a mediana é considerada robusta (isto é, ela não era influenciada pelos valores extremos), enquanto a média é considerada uma medida não robusta. Assim, quando estamos diante de distribuições assimétricas – sejam elas para a esquerda ou para a direita –, a média será afetada pelos valores que estão na cauda, enquanto a mediana não. Essa diferença entre as duas medidas cria um importante atributo para interpretarmos o histograma. O que acontece é que, em distribuições simétricas, a média e a medina irão se sobrepor, assumindo o mesmo valor, ou valores muito próximos, enquanto, no caso das distribuições assimétricas, os valores da média e da mediana irão ficar descompassados. Assim, podemos visualizar, a partir do histograma, como que a média e a mediana se comportam, conforme a Figura <a href="visualizacao.html#fig:distribuicoes-sim-lab">4.13</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:distribuicoes-sim-lab"></span>
-<img src="jurimetria_book_files/figure-html/distribuicoes-sim-lab-1.svg" alt="Distribuições" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:distribuicoes-sim-lab"></span>
+<img src="jurimetria_book_files/figure-html/distribuicoes-sim-lab-1.svg" alt="Distribuições" width="672"><p class="caption">
 Figura 4.13: Distribuições
 </p>
 </div>
@@ -793,121 +734,404 @@ Figura 4.13: Distribuições
 <li>Distribuição assimétrica para direita: Média &gt; Mediana</li>
 </ul>
 <p>Por fim, podemos nos atentar à última questão com os histogramas: problemas de visualização e a transformação dos dados. O que acontece é que muitas variáveis possuem uma distribuição muito assimétrica, de forma que existem muitos valores concentrados em um pico e pouquíssimos valores dispersos em uma grande amplitude. Isso é extremamente frequente em todos os dados envolvendo valores. Até agora, estávamos usando como exemplo apenas gráficos com tempos, justamente porque as visualizações com valores são muito difíceis. Na Figura <a href="visualizacao.html#fig:histograma-valor-2">4.14</a>, temos um exemplo do que acontece com os valores na base de dados de consumo.</p>
-<div class="figure"><span style="display:block;" id="fig:histograma-valor-2"></span>
-<img src="jurimetria_book_files/figure-html/histograma-valor-2-1.svg" alt="Histograma de valores" width="864" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:histograma-valor-2"></span>
+<img src="jurimetria_book_files/figure-html/histograma-valor-2-1.svg" alt="Histograma de valores" width="864"><p class="caption">
 Figura 4.14: Histograma de valores
 </p>
 </div>
 <p>O que acontece é que existem pouquíssimos valores <em>muito altos</em> (maiores do que R$ 40 milhões) e uma massa de casos com valores <em>muito baixos</em>. Uma assimetria deste tamanho faz parecer que todos os casos possuem um valor de causa igual a zero. Entretanto, isso não é verdade. Se, simplesmente retirarmos da base 10% dos processos, envolvendo os maiores valores, obtemos o histograma da Figura <a href="visualizacao.html#fig:hist-valores-filter">4.15</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:hist-valores-filter"></span>
-<img src="jurimetria_book_files/figure-html/hist-valores-filter-1.svg" alt="Histograma de valores (filtrando os 10% maiores processos)" width="864" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:hist-valores-filter"></span>
+<img src="jurimetria_book_files/figure-html/hist-valores-filter-1.svg" alt="Histograma de valores (filtrando os 10% maiores processos)" width="864"><p class="caption">
 Figura 4.15: Histograma de valores (filtrando os 10% maiores processos)
 </p>
 </div>
 <p>A partir dessa figura conseguimos perceber que são somente os processos acima do quantil(0.9) que estão prejudicando a visualização do histograma. Diante desse problema, o que devemos fazer?</p>
 <p>Uma solução já foi dada, que foi justamente excluir da base os processos que estão atravancando a análise e depois analisá-los separadamente. Temos um bom exemplo disto na seguinte reportagem do Nexo Jornal <a href="https://www.nexojornal.com.br/grafico/2015/11/11/O-saldo-do-cinema-brasileiro">O saldo do cinema brasileiro</a>. Essa solução pode servir para alguns casos, principalmente quando estamos falando da função comunicativa das visualizações. Entretanto, para a função exploratória, essa função nem sempre é adequada, pois, como ela fragmenta a base, ela perde de vista a distribuição do todo.</p>
 <p>Uma solução muito frequente para este problema, então, é ao invés de excluir os dados, transformá-los. A transformação mais comum é a transformação em log10. No nosso exemplo, iríamos então transformar os valores exatos de cada causa, para os valores em log de base 10. Assim, aquele histograma da Figura <a href="visualizacao.html#fig:hist-valores-filter">4.15</a> ficaria com esta aparência depois da transformação em log, conforme a Figura <a href="visualizacao.html#fig:hist-valores-log">4.16</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:hist-valores-log"></span>
-<img src="jurimetria_book_files/figure-html/hist-valores-log-1.svg" alt="Histograma de valores (com transformação em log de base 10)" width="864" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:hist-valores-log"></span>
+<img src="jurimetria_book_files/figure-html/hist-valores-log-1.svg" alt="Histograma de valores (com transformação em log de base 10)" width="864"><p class="caption">
 Figura 4.16: Histograma de valores (com transformação em log de base 10)
 </p>
 </div>
 <p>Por mais que a visualização das barras fique melhorada, a interpretação deste gráfico fica prejudicada, pois agora temos que interpretar o valor em log. O que significa que existe uma concentração de processos com valor em log igual a 4? Isso significa que existe uma concentração de processos em torno de <span class="math inline">\(10^4=10.000\)</span>, ou seja, em torno de R$ 10.000,00. Por mais que a interpretação fique dificultada, a visualização decerto fica melhor.</p>
 <p>A melhor alternativa para se apresentar um histograma em escala logarítmica, talvez seja a de substituir os valores em log pelos valores reais. A única atenção que temos de ter neste caso é para não se deixar confundir com a escala do gráfico (Figura <a href="visualizacao.html#fig:hist-valores-log2">4.17</a>: a escala continua sendo logarítmica, apesar de as marcações não indicarem isso.</p>
-<div class="figure"><span style="display:block;" id="fig:hist-valores-log2"></span>
-<img src="jurimetria_book_files/figure-html/hist-valores-log2-1.svg" alt="Histograma de valores (com transformação em log de base 10)" width="864" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:hist-valores-log2"></span>
+<img src="jurimetria_book_files/figure-html/hist-valores-log2-1.svg" alt="Histograma de valores (com transformação em log de base 10)" width="864"><p class="caption">
 Figura 4.17: Histograma de valores (com transformação em log de base 10)
 </p>
 </div>
 </div>
 <div id="boxplot" class="section level5" number="4.3.2.1.2">
-<h5><span class="header-section-number">4.3.2.1.2</span> Boxplot</h5>
-<p>(em construção)</p>
+<h5>
+<span class="header-section-number">4.3.2.1.2</span> Boxplot<a class="anchor" aria-label="anchor" href="#boxplot"><i class="fas fa-link"></i></a>
+</h5>
+<p>A próxima visualização importante para variáveis numéricas é o boxplot. O boxplot é um gráfico que apresenta as estatísticas resumo de uma determinada variável, ao invés de apresentar as unidades amostrais, tal como ocorre no histograma. Para explicar o boxplot, vamos falar de 3 pontos: (a) como se forma o boxplot; (b) como interpretar este gráfico; e (c) problemas relacionados a ele.</p>
+<p>Para tratar da formação do boxplot, é importante começar visualizando-o, para que possamos compreender as diferentes partes que o compõem.</p>
+<div class="figure">
+<span style="display:block;" id="fig:boxplot1"></span>
+<img src="jurimetria_book_files/figure-html/boxplot1-1.svg" alt="Exemplos de boxplot, um em pé e outro deitado" width="768"><p class="caption">
+Figura 4.18: Exemplos de boxplot, um em pé e outro deitado
+</p>
+</div>
+<p>Com a imagem do boxplot em mente, podemos dissecá-lo em três partes, para fins didáticos: o centro, os bigodes e os pontos.</p>
+<p>O centro é o retângulo que fica no meio do boxplot. Esse retângulo é definido por três parâmetros. Para entendê-los, precisamos nos lembrar dos quantis empíricos e, mais especificamente, dos quartis. Essa matéria foi vista no capítulo anterior, mas ela é importante neste contexto porque o centro do boxplot é definido justamente pelos três quartis: o quartil superior, a mediana e o quartil inferior. Basicamente, o perímetro externo do centro do boxplot é delimitado pelos quartis superior e inferior e a linha que corta o retângulo boxplot é a mediana. Não necessariamente a mediana está ao centro do retângulo. Mais para frente veremos o que significa a posição da linha mediana dentro do retângulo. O que importa, neste momento, é saber que o centro do boxplot é definido pelos três quartis empíricos, sendo que a mediana representa a linha que corta o retângulo central.</p>
+<p>A seguir, a segunda parte do boxplot são os bigodes. Existem dois bigodes, um para cima e outro para baixo. Ambos se formam da mesma maneira: eles se estendem do perímetro externo do retângulo central até 3/2 do IQR. Vale lembrar que, conforme vimos no capítulo anterior, IQR (Interquartile Range) representa a amplitude dos quartis superior e inferior, ou seja, ele é calculado pela diferença do quartil superior (75%) com o quartil inferior (25%). Dessa forma, o IQR diz qual é a amplitude em que se encontram os 50% centrais dos dados. Lembrando desta informação, podemos voltar aos bigodes. Os bigodes são linhas que se estendem desde a área externa do retângulo central até um ponto que representa 3/2 do IQR. O bigode inferior, se inicia do quartil inferior e vai até -3/2 IQR; enquanto o bigode superior se inicia do quartil superior e vai até 3/2 IQR.</p>
+<p>Por que usamos o valor de 3/2 do IQR? Isso acontece porque, em distribuições normais, 3/2 do IQR representa 99% de todos os dados. Essa afirmação faz pouco sentido agora, entretanto, mais para frente do livro, daremos sentido a ele, definindo melhor o que significa uma distribuição normal e como podemos saber que 3/2 do IQR representa 99% dos dados. Essa última afirmação está relacionada a algumas propriedades da distribuição normal.</p>
+<p>É preciso saber também, sobre os bigodes, que nem sempre o bigode, de fato, vai até os 3/2 do IQR. Isso se dá porque, no boxplot, o bigode pode ir até os 3/2 do IQR, entretanto, ele só irá até a última observação antes de esse ponto chegar. Isso significa que mesmo se existirem pontos além dos 3/2 do IQR, se o último ponto antes desse limite estiver, por exemplo, a <span class="math inline">\(\frac 1 2\)</span> do IQR, então o bigode vai andar somente até esse ponto.</p>
+<p>E se existir algum ponto além dos 3/2 do IQR? Então o bigode irá representar as observações <strong>antes</strong> de se passar desse limite; e os valores que passarem deste limite serão representados com pontos. Daí a explicação da terceira parte do boxplot, os pontos. Os pontos, nada mais são do que os dados que estão além dos 3/2 de IQR, seja para cima ou para baixo. Se não houver dados acima desses 3/2 de IQR, então não haverá pontos. Essa é a única parte do gráfico que pode ou não aparecer, todas as demais são partes essenciais do gráfico.</p>
+<p>Antes de prosseguirmos a explicação para outras questões relacionadas ao boxplot, vamos montar parte a parte de um boxplot a partir de um conjunto de dados. O conjunto de dados que utilizaremos é a base consumo. Essa base contém 1000 observações, cuja unidade amostral são processos de consumo. Vamos, para os fins dessa explicação, amostrar somente 30 processos.</p>
+<p>O primeiro passo para montar o boxplot é determinar os eixos do boxplot. É preciso ter clareza de que o boxplot que estamos vendo agora é univariado, ou seja, ele possui apenas um eixo. Este eixo é o eixo que contém os valores da variável numérica. No nosso caso, será o eixo de valor da causa. Não importa se esse eixo for o x ou o y, pois o boxplot pode ser apresentado tanto na horizontal como na vertical.</p>
+<p>O segundo passo é realizar os cálculos das estatísticas de resumo do nosso conjunto de dados. São 5 informações de que precisamos (máximo, mínimo, mediana, quartil superior e inferior), e outras 7 medidas decorrentes dessas 5 (IQR, o limite superior do bigode, o limite inferior do bigode, o ponto superior, o ponto inferior e os potenciais outliers nos limites inferior e superior). A Tabela <a href="visualizacao.html#tab:medidas-boxplot">4.2</a> resume essas informações.</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:medidas-boxplot">Tabela 4.2: </span>Medidas resumo que compõem o boxplot.</caption>
+<thead><tr class="header">
+<th align="left">medidas</th>
+<th align="left">parte do boxplot</th>
+<th align="left">valores</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">valor máximo</td>
+<td align="left">bigodes</td>
+<td align="left">R$ 82.279,86</td>
+</tr>
+<tr class="even">
+<td align="left">quartil superior</td>
+<td align="left">centro</td>
+<td align="left">R$ 22.370,00</td>
+</tr>
+<tr class="odd">
+<td align="left">mediana</td>
+<td align="left">centro</td>
+<td align="left">R$ 14.066,00</td>
+</tr>
+<tr class="even">
+<td align="left">quartil inferior</td>
+<td align="left">centro</td>
+<td align="left">R$ 10.003,23</td>
+</tr>
+<tr class="odd">
+<td align="left">valor mínimo</td>
+<td align="left">bigodes</td>
+<td align="left">R$ 395,26</td>
+</tr>
+<tr class="even">
+<td align="left">IQR</td>
+<td align="left">bigodes</td>
+<td align="left">R$ 12.366,77</td>
+</tr>
+<tr class="odd">
+<td align="left">quartil superior + 3/2 IQR</td>
+<td align="left">bigodes</td>
+<td align="left">R$ 40.920,16</td>
+</tr>
+<tr class="even">
+<td align="left">quartil inferior - 3/2 IQR</td>
+<td align="left">bigodes</td>
+<td align="left">R$ -8.546,94</td>
+</tr>
+<tr class="odd">
+<td align="left">último ponto superior</td>
+<td align="left">bigodes</td>
+<td align="left">R$ 40.400,74</td>
+</tr>
+<tr class="even">
+<td align="left">último ponto inferior</td>
+<td align="left">bigodes</td>
+<td align="left">R$ 395,26</td>
+</tr>
+<tr class="odd">
+<td align="left">quantidade de pontos superiores</td>
+<td align="left">pontos</td>
+<td align="left">3 pontos</td>
+</tr>
+<tr class="even">
+<td align="left">quantidade de pontos inferiores</td>
+<td align="left">pontos</td>
+<td align="left">0 pontos</td>
+</tr>
+</tbody>
+</table></div>
+<p>A começar pelo centro do boxplot, ele está contido dentro dos limites dos quartis superior e inferior e, portanto, ele começa, no ponto R$ 10.003,23 e acaba no ponto R$ 22.370,00. A mediana, que corta o retângulo central, está no ponto R$ 14.066,00. Percebemos já, com isso, que a mediana não está no centro. O retângulo central está representado na Figura <a href="visualizacao.html#fig:boxplot-desenho1">4.19</a>.</p>
+<div class="figure">
+<span style="display:block;" id="fig:boxplot-desenho1"></span>
+<img src="jurimetria_book_files/figure-html/boxplot-desenho1-1.svg" alt="Boxplot sem bigodes" width="768"><p class="caption">
+Figura 4.19: Boxplot sem bigodes
+</p>
+</div>
+<p>A seguir, para construir os bigodes, temos que calcular o IQR. O IQR é simplesmente a diferença do quartil superior com o quartil inferior, dando R$ 12.366,77. Então 3/2 do IQR representa R$ 18.550,15 (3/2 * 12.366,77). Com base nisso, podemos calcular os bigodes inferior e superior.</p>
+<p>O bigode superior pode andar 18.550,15 unidades acima do quartil superior, podendo assumir, portanto, no máximo o valor de R$ 40.920,16. Quanto ao bigode inferior, precisamos subtrair 3/2 do IQR do quartil inferior, resultando em R$ -8.546,94. Como não é possível que o valor da causa seja negativo, então esse número, na verdade, equivale simplesmente a R$ 0,00, ou seja, o menor valor que o bigode inferior pode assumir é zero. O zero está contido dentro do limite do bigode inferior, então não haverá nenhum valor além do limite inferior para o bigode e, portanto, não haverá nenhum ponto na região inferior. Os limites dos bigodes estão representados na Figura <a href="visualizacao.html#fig:boxplot-desenho2">4.20</a>.</p>
+<div class="figure">
+<span style="display:block;" id="fig:boxplot-desenho2"></span>
+<img src="jurimetria_book_files/figure-html/boxplot-desenho2-1.svg" alt="Boxplot com bigodes estendidos" width="768"><p class="caption">
+Figura 4.20: Boxplot com bigodes estendidos
+</p>
+</div>
+<p>Mesmo sabendo os pontos máximo que os bigodes poderão assumir, isso ainda não nos diz onde os bigodes irão parar, uma vez que não necessariamente (e via de regra não é assim) o maior valor dentro da região dos bigodes é de fato o maior valor possível. No nosso caso, a observação de maior valor que está dentro do bigode inferior é o valor mínimo, de R$ 395,26; e a observação de maior valor dentro do limite do bigode superior é o ponto R$ 40.400,74. Os bigodes estão representados na Figura <a href="visualizacao.html#fig:boxplot-desenho3">4.21</a>.</p>
+<div class="figure">
+<span style="display:block;" id="fig:boxplot-desenho3"></span>
+<img src="jurimetria_book_files/figure-html/boxplot-desenho3-1.svg" alt="Boxplot com bigodes cortados" width="768"><p class="caption">
+Figura 4.21: Boxplot com bigodes cortados
+</p>
+</div>
+<p>Por fim, uma vez que os bigodes foram construídos, falta apenas a última parte dos boxplots, que são os pontos. Na parte inferior do gráfico, como vimos, como o limite inferior vai até um número negativo, mas os valores reais podem ir, no máximo, até R$ 0,00, então não há pontos na parte inferior. Na parte superior do gráfico, há três pontos que extrapolam o limite do gráfico. Estes pontos estão representados na Figura <a href="visualizacao.html#fig:boxplot-desenho4">4.22</a>.</p>
+<div class="figure">
+<span style="display:block;" id="fig:boxplot-desenho4"></span>
+<img src="jurimetria_book_files/figure-html/boxplot-desenho4-1.svg" alt="Boxplot com bigodes cortados e valores atípicos" width="768"><p class="caption">
+Figura 4.22: Boxplot com bigodes cortados e valores atípicos
+</p>
+</div>
+<p>Com a explicação de como construir o boxplot, seguida de um exemplo, podemos prosseguir ao segundo ponto importante a respeito dos boxplots: como interpretar os boxplots? Os boxplots, assim como os histogramas, indicam distribuições. Então, assim como vimos alguns tipos de distribuições nos histogramas, podemos verificar como essas distribuições reverberam na construção dos boxplots. Na Figura <a href="visualizacao.html#fig:distribuicoes-boxplot">4.23</a>, vemos a relação do boxplot com as diferentes distribuições existentes.</p>
+<div class="figure">
+<span style="display:block;" id="fig:distribuicoes-boxplot"></span>
+<img src="jurimetria_book_files/figure-html/distribuicoes-boxplot-1.svg" alt="Distribuições e boxplots" width="768"><p class="caption">
+Figura 4.23: Distribuições e boxplots
+</p>
+</div>
+<p>O que podemos notar é que a posição da linha da mediana <em>dentro</em> do retângulo, indica o tipo de distribuição. Se a linha mediana está bem ao centro do retângulo central, então podemos concluir que a distribuição é simétrica; se a linha mediana está deslocada, então temos distribuições assimétricas. Com isso, percebemos a que elemento do retângulo central temos de nos atentar quando analisamos um boxplot.</p>
+<p>A representação das distribuições por meio do boxplot é uma informação que já está presente no histograma e, nesse sentido, o boxplot não acrescenta muito à análise. Entretanto, o boxplot adiciona alguns elementos à visualização que não estão presentes no histograma. Há dois elementos importantes para a análise.</p>
+<p>Primeiro, o boxplot consegue destacar os dois quartis centrais (o segundo e o terceiro quartis), que, juntos, representam exatamente o meio dos dados. Esse destaque nos permite inferir conclusões mais <em>robustas</em> a respeito do comportamento central do nosso conjunto. Se nos lembrarmos da discussão a respeito das medidas no capítulo anterior, uma medida <em>robusta</em> é uma medida menos suscetível aos valores extremos. Em muitos conjuntos de dados, os valores extremos distorcem os valores centrais. Então o boxplot consegue representar muito bem os valores centrais, dando destaque a esses valores. A Figura Y deixa em realce a porção dos dados que estão sendo representadas pelo retângulo central do boxplot.</p>
+<div class="figure">
+<span style="display:block;" id="fig:boxplot-normal"></span>
+<img src="jurimetria_book_files/figure-html/boxplot-normal-1.svg" alt="Boxplot comparado com distribuição normal." width="768"><p class="caption">
+Figura 4.24: Boxplot comparado com distribuição normal.
+</p>
+</div>
+<p>O último ponto que merece destaque da interpretação dos boxplots são os pontos. A interpretação dos pontos é um ponto importante dos boxplots. Esses pontos indicam potenciais <em>outliers</em>. Esta é a primeira vez que falamos de outliers neste livro. Outliers são pontos que se diferem drasticamente do resto dos dados. Essa definição é muito genérica, pois ela é uma definição guarda-chuva. Mas ela não é suficiente. O que significa dizer que algum ponto “difere drasticamente” do resto dos dados? Como que eu meço o que são “o resto dos dados” para comparar com os pontos que “diferem drasticamente”?</p>
+<p>Essas perguntas são essenciais, porque, na verdade, são justamente elas que dão contornos estatísticos para os outliers. Para cada resposta distinta que damos a essas perguntas, teremos uma definição distinta de outlier e existem muitas definições possíveis. A questão que une todos os outliers é que, em todas as suas acepções, os outliers distorcem os valores dos dados e são pontos cuja incidência na população é muito rara.</p>
+<p>Há duas dificuldades ao lidar com outliers: a identificação e a solução. Sobre a identificação, o problema central é definir o ponto de corte dos dados: a partir de que valores poderemos dizer que existem outliers? A segunda questão é saber o que fazer depois de identificarmos os outliers? Retiramos eles da base? Olharmos separadamente para os outliers e os pontos centrais? Essas perguntas (de identificação e de solução) irão acompanhar o livro em muitos momentos, pois os outliers geram problemas que se manifestam de diversas maneiras na estatística. Voltaremos várias vezes nisso, portanto.</p>
+<p>Neste momento introdutório, em que estamos vendo os outliers pela primeira vez, basta sabermos que eles são pontos discrepantes e que existe uma dificuldade tremenda em se determinar um ponto de corte para bater o martelo e dizer: “qualquer valor que ultrapasse essa fronteira, será considerado um outlier!”. No caso do boxplot, por causa da forma como ele é construído, todos os pontos representados no gráfico estão a 3/2 do IQR, contado a partir dos quartis inferior ou superior. Então, se assumirmos que todos os pontos que aparecem no boxplot são outliers, estaremos definido que “diferir drasticamente” significa “distanciar-se 3/2 do IQR contados a partir do quartil superior ou inferior”. Esse ponto de corte (quartil + 3/2 do IQR) é apenas uma definição dentre muitas possíveis para os outliers. Mas podemos usar critérios de corte mais brandos ou mais severos. Por isso dizemos que os pontos do boxplot indicam apenas “potenciais outliers”.</p>
+<p>É importante pontuar aqui que o critério que usaremos para decidir o ponto de corte do outlier não deve ser um critério automático (como o é no caso dos pontos do boxplot). Para cada caso, para cada dado, para cada propósito, teremos um critério distinto para definir outliers. Cada critério resolve problemas distintos, mas gera vieses distintos também. Veremos com mais detalhes as formas de mensurar outliers ao longo do livro.</p>
+<p>Dada toda essa discussão a respeito dos outliers, podemos voltar à interpretação dos boxplots. Em primeiro lugar, vimos que havia uma semelhança dos boxplots com os histogramas: ambos representavam distribuições dos dados, mas de formas distintos. Em seguida, passamos a ver duas características específicas do boxplot, que não estavam presentes no histograma: o foco no conjunto central e os outliers. Sobre este último ponto, vimos que os pontos que aparecem no boxplot representam apenas “potenciais outliers”, justamente porque eles assumem um critério automático de representação. Em alguns contextos, fará sentido assumir que os outliers são esses pontos mesmos; em outros, entretanto, não será assim.</p>
+<p>Explicada a interpretação e a formação dos boxplots, resta somente abordar seus principais problemas. Há dois problemas: distribuições assimétricas e dados escassos.</p>
+<p>A começar pelo problema das distribuições assimétricas, este é o mesmo problema que acontecia com o histograma, de que a visualização ficava impossibilitada por causa de distribuições muito assimétricas. Basta nos lembrarmos da Figura <a href="visualizacao.html#fig:histograma-valor-2">4.14</a>. No caso do boxplot, aqueles mesmos dados ficam representados conforme a Figura <a href="visualizacao.html#fig:boxplot-consumo">4.25</a>.</p>
+<div class="figure">
+<span style="display:block;" id="fig:boxplot-consumo"></span>
+<img src="jurimetria_book_files/figure-html/boxplot-consumo-1.svg" alt="Boxplot da variável consumo" width="864"><p class="caption">
+Figura 4.25: Boxplot da variável consumo
+</p>
+</div>
+<p>Vemos que o retângulo central está tão achatado, próximo do 0, que ele se torna uma linha. Perdemos, com isso, toda a noção das medidas centrais. Entretanto, se olharmos para a tabela de medidas para compôr este boxplot, veremos os seguintes valores, conforme a Tabela <a href="visualizacao.html#tab:tabela-boxplot-consumo">4.3</a>.</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:tabela-boxplot-consumo">Tabela 4.3: </span>Tabela de estatísticas-resumo para construção do boxplot</caption>
+<thead><tr class="header">
+<th align="left">medidas</th>
+<th align="left">parte do boxplot</th>
+<th align="left">valores</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">valor máximo</td>
+<td align="left">bigodes</td>
+<td align="left">R$ 3.608.780,16</td>
+</tr>
+<tr class="even">
+<td align="left">quartil superior</td>
+<td align="left">centro</td>
+<td align="left">R$ 24.799,48</td>
+</tr>
+<tr class="odd">
+<td align="left">mediana</td>
+<td align="left">centro</td>
+<td align="left">R$ 13.590,47</td>
+</tr>
+<tr class="even">
+<td align="left">quartil inferior</td>
+<td align="left">centro</td>
+<td align="left">R$ 6.854,77</td>
+</tr>
+<tr class="odd">
+<td align="left">valor mínimo</td>
+<td align="left">bigodes</td>
+<td align="left">R$ 181,84</td>
+</tr>
+<tr class="even">
+<td align="left">IQR</td>
+<td align="left">bigodes</td>
+<td align="left">R$ 17.944,71</td>
+</tr>
+<tr class="odd">
+<td align="left">quartil superior + 3/2 IQR</td>
+<td align="left">bigodes</td>
+<td align="left">R$ 51.716,54</td>
+</tr>
+<tr class="even">
+<td align="left">quartil inferior - 3/2 IQR</td>
+<td align="left">bigodes</td>
+<td align="left">R$ -20.062,29</td>
+</tr>
+<tr class="odd">
+<td align="left">último ponto superior</td>
+<td align="left">bigodes</td>
+<td align="left">R$ 51.587,91</td>
+</tr>
+<tr class="even">
+<td align="left">último ponto inferior</td>
+<td align="left">bigodes</td>
+<td align="left">R$ 181,84</td>
+</tr>
+<tr class="odd">
+<td align="left">quantidade de pontos superiores</td>
+<td align="left">pontos</td>
+<td align="left">87 pontos</td>
+</tr>
+<tr class="even">
+<td align="left">quantidade de pontos inferiores</td>
+<td align="left">pontos</td>
+<td align="left">0 pontos</td>
+</tr>
+</tbody>
+</table></div>
+<p>Por esta tabela, vemos que o valor máximo que estará contido nos bigodes é de aproximadamente R$ 51 mil, entretanto, o valor máximo é de mais de R$ 53 milhões. Ou seja, o valor máximo que deveríamos visualizar não é nada perto do último ponto que observamos, por isso o centro do boxplot e os seus bigodes ficam achatados, parecendo uma linha no zero.</p>
+<p>Quanto aos pontos, vemos que há 99 pontos acima do limite superior do boxplot. Entretanto, o que efetivamente conseguimos observar são apenas 4 pontos. Os demais 95 pontos estão todos concentrados, de forma que eles ficam indiscriminados entre si.</p>
+<p>Então o primeiro problema diz respeito à visualização de dados muito dispersos e assimétricos. Como já vimos, isso pode ser resolvido colocando o gráfico em escala logarítmica. Na Figura <a href="visualizacao.html#fig:boxplot-consumo-log">4.26</a>, o gráfico está em log de base 10.</p>
+<div class="figure">
+<span style="display:block;" id="fig:boxplot-consumo-log"></span>
+<img src="jurimetria_book_files/figure-html/boxplot-consumo-log-1.svg" alt="Boxplot dos valores em log na base 10" width="768"><p class="caption">
+Figura 4.26: Boxplot dos valores em log na base 10
+</p>
+</div>
+<p>Talvez o problema dessa transformação de variável seja que os parâmetros do gráfico se alteram. Vemos algo que não víamos nos outros boxplots representando esta mesma variável: pontos abaixo do bigode inferior! Isso acontece porque, com os valores em log, a variabilidade dos dados é muito diferente.</p>
+<p>O outro problema dos boxplots são as informações que eles escondem. Como os boxplots apresentam somente as medidas de resumo, então eles escondem o tamanho da amostra. Veremos mais para frente que precisamos de grandes números de dados para realizar algumas inferências. Para um exemplo, ver a discussão do Data to Viz em <a href="https://www.data-to-viz.com/caveat/boxplot.html">The Boxplot and its pitfalls</a>.</p>
+</div>
+</div>
+<div id="gráficos-bivariados-com-explicativa-categórica-1" class="section level4" number="4.3.2.2">
+<h4>
+<span class="header-section-number">4.3.2.2</span> Gráficos bivariados (com explicativa categórica)<a class="anchor" aria-label="anchor" href="#gr%C3%A1ficos-bivariados-com-explicativa-categ%C3%B3rica-1"><i class="fas fa-link"></i></a>
+</h4>
+<p>Se antes estávamos vendo os gráficos univariados para variáveis numéricas, agora vamos ver como esses gráficos podem representar variáveis explicativas. Vamos começar com as variáveis explicativas categóricas, ou seja, gráficos que misturam uma informação numérica com outra categórica. Usualmente, usamos as categorias para explicar o comportamento da distribuição numérica.</p>
+<p>A combinação de uma variável numérica com uma variável categórica não gera nenhum gráfico novo, mas apenas adiciona novas camadas de densidade para os dois gráficos de variáveis numéricas que já vimos: o histograma e o boxplot. Os exemplos serão breves, portanto.</p>
+<div id="histograma-1" class="section level5" number="4.3.2.2.1">
+<h5>
+<span class="header-section-number">4.3.2.2.1</span> Histograma<a class="anchor" aria-label="anchor" href="#histograma-1"><i class="fas fa-link"></i></a>
+</h5>
+<p>Para adicionar uma informação categórica nos histogramas, basta “quebrarmos” os dados em várias categorias, indicando como que cada categoria contribui para a distribuição geral. Na Figura <a href="visualizacao.html#fig:hist-com-shade">4.27</a> observamos o mesmo histograma de tempos que já vimos anteriormente, mas dividido pelo resultado final da decisão. Cruzando o tempo de decisão com o resultado da decisão poderíamos, por exemplo, investigar se os recursos protelatórios (cujo resultado é sempre negativo, ou, “Não reformou”).</p>
+<div class="figure">
+<span style="display:block;" id="fig:hist-com-shade"></span>
+<img src="jurimetria_book_files/figure-html/hist-com-shade-1.svg" alt="Histograma para cada tipo de decisão" width="864"><p class="caption">
+Figura 4.27: Histograma para cada tipo de decisão
+</p>
+</div>
+</div>
+<div id="boxplot-1" class="section level5" number="4.3.2.2.2">
+<h5>
+<span class="header-section-number">4.3.2.2.2</span> Boxplot<a class="anchor" aria-label="anchor" href="#boxplot-1"><i class="fas fa-link"></i></a>
+</h5>
+<p>Para o boxplot, podemos realizar o mesmo tipo de visualização, em que quebramos o boxplot principal em grupos menores. Isso nos permite comparar medianas e IQRs com maior facilidade.</p>
+<div class="figure">
+<span style="display:block;" id="fig:boxplot-com-cat"></span>
+<img src="jurimetria_book_files/figure-html/boxplot-com-cat-1.svg" alt="Histograma para cada tipo de decisão" width="864"><p class="caption">
+Figura 4.28: Histograma para cada tipo de decisão
+</p>
 </div>
 </div>
 </div>
+<div id="gráficos-bivariados-com-explicativa-numérica-1" class="section level4" number="4.3.2.3">
+<h4>
+<span class="header-section-number">4.3.2.3</span> Gráficos bivariados (com explicativa numérica)<a class="anchor" aria-label="anchor" href="#gr%C3%A1ficos-bivariados-com-explicativa-num%C3%A9rica-1"><i class="fas fa-link"></i></a>
+</h4>
+<p>Ao contrário dos gráficos de variável numérica bivariados com uma explicativa categórica, que não formavam nenhum tipo de gráfico novo, quando cruzamos duas informações numéricas, aparece um novo gráfico, muito comum: o gráfico de dispersão (em inglês, scatter plot). Veremos esta visualização em mais detalhes a seguir.</p>
+<div id="gráficos-de-dispersão" class="section level5" number="4.3.2.3.1">
+<h5>
+<span class="header-section-number">4.3.2.3.1</span> Gráficos de dispersão<a class="anchor" aria-label="anchor" href="#gr%C3%A1ficos-de-dispers%C3%A3o"><i class="fas fa-link"></i></a>
+</h5>
+<p>O gráfico de dispersão, como já dito, é usado para representar duas variáveis numéricas. Esse tipo de representação nos indica como que duas variáveis numéricas se relacionam. Há duas relações possíveis: uma relação positiva (isto é, quanto maior uma variável, maior a outra também), ou uma relação negativa (isto é, quanto mais de uma variável, menos eu tenho da outra). A Figura <a href="visualizacao.html#fig:dispersao">4.29</a> traz dois gráficos de dispersão, demonstrando as relações possíveis.</p>
+<div class="figure">
+<span style="display:block;" id="fig:dispersao"></span>
+<img src="jurimetria_book_files/figure-html/dispersao-1.svg" alt="Gráficos de dispersão sobre litigiosidade" width="864"><p class="caption">
+Figura 4.29: Gráficos de dispersão sobre litigiosidade
+</p>
+</div>
+<p>A linha que demonstra a relação não será tratada neste capítulo. Ela foi meramente ilustrativa para indicar o tipo de relação que está sendo representada entre as variáveis. O que importa é que, ao colocar, nos dois eixos, variáveis numéricas, conseguimos observar como essas variáveis se associam entre si.</p>
+<p>Por mais que os gráficos de dispersão sejam usualmente utilizados para relacionar duas variáveis contínuas, podemos dar outras funções a eles. Em um caso exemplar, do Observatório da Insolvência da ABJ sobre Recuperações Judiciais no Estado de São Paulo, analisamos a relação entre a dívida da recuperação com a remuneração do administrador judicial. Ao apresentar a associação entre as variáveis, construímos um gráfico de dispersão. Uma forma de se encarar este gráfico é justamente pela indagação de se quanto maior a dívida total, maior a remuneração do administrador judicial. Mas, para além disso, podemos ter um outro olhar para o gráfico de dispersão. O que sabemos é que o art. 24, § 1º da lei 11.101/2005 estabelece como limite à remuneração do AJ que “o total pago ao administrador judicial não excederá 5% (cinco por cento) do valor devido aos credores submetidos à recuperação judicial ou do valor de venda dos bens na falência.” Neste caso, então, ao colocarmos uma linha de 5% em relação ao total da dívida, conseguimos observar a distância da remuneração dos AJs em relação ao máximo permitido por lei. Quando adicionamos esta camada de interpretação ao gráfico, não estamos olhando para a relação entre as variáveis (remuneração do AJ e total da dívida), mas estamos olhando para a legalidade dessa remuneração.</p>
+<div class="figure">
+<span style="display:block;" id="fig:obs-insolvencia"></span>
+<img src="jurimetria_book_files/figure-html/obs-insolvencia-1.svg" alt="Relação entre dívida e remuneração de Administradores Judiciais: Observatório da Insolvência" width="768"><p class="caption">
+Figura 4.30: Relação entre dívida e remuneração de Administradores Judiciais: Observatório da Insolvência
+</p>
 </div>
 </div>
-<h3> Modelagem</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-Cleveland1985" class="csl-entry">
-Cleveland, William S. 1985. <em>The Elements of Graphing Data</em>. California: Wadsworth Advanced Book Program.
 </div>
+<div id="gráficos-bivariados-no-tempo" class="section level4" number="4.3.2.4">
+<h4>
+<span class="header-section-number">4.3.2.4</span> Gráficos bivariados (no tempo)<a class="anchor" aria-label="anchor" href="#gr%C3%A1ficos-bivariados-no-tempo"><i class="fas fa-link"></i></a>
+</h4>
+<p>Chegamos, então, ao fim dos gráficos bivariados com uma variável numérica como variável de interesse. O último gráfico que nos resta observar é o caso das variáveis explicativas temporais. Esse caso é especial porque as variáveis temporais não possuem uma natureza muito definida.</p>
+<p>Por exemplo, se pegarmos a variável categórica de resultado da decisão de segunda instância, ela pode assumir três valores: reformou, não reformou ou reformou parcialmente. Faria sentido, diante dessas três informações possíveis, que a gente substraísse “reformou” de “não reformou”? Obviamente não, pois não há sentido algum neste cálculo. Entretanto, se tivermos duas datas, a subtração dessas duas informações irá sim fazer sentido: ela irá nos indicar um intervalo de tempo. Com isso, já vemos que as variáveis temporais não se comportam exatamente como variáveis categóricas.</p>
+<p>Agora, pensando nas variáveis numéricas contínuas, normalmente, entre um valor e outro, existem infinitos valores possíveis. Por exemplo, entre 1 e 2, existe o número 1,1 e também o 1,2. Mas entre esses valores existe o 1,11 e o 1,12. Mas entre eles, existe o 1,111 e o 1,112. E assim por diante. Essa propriedade das variáveis numéricas contínuas não está presente nas variáveis temporais. Se a variável temporal representa um ano, por exemplo, não há nada entre os anos de 2016 e 2017. Ou ainda, se a variável temporal representa datas, não há nenhum outro número entre um dia e outro.</p>
+<p>Por fim, então, comparando as variáveis temporais com variáveis numéricas discretas, elas também apresentam diferenças entre si. Uma variável numérica normalmente expressa a contagem de alguma informação, por exemplo, a contagem de juízes por comarca. Esse valor é sempre positivo, inteiro e maior ou igual a zero. Se tentarmos pensar dessa forma com as variáveis temporais, o que seria uma data maior ou igual a zero? A variável igual a zero seria o dia 0/0/0000? Não faz sentido isso. Entretanto, por mais que haja algumas diferenças, a variável numérica discreta é a que mais se aproxima das variáveis temporais.</p>
+<p>Por causa dessa natureza especial das variáveis temporais é que faz sentido pensarmos nos gráficos bivariados no tempo como um caso especial.</p>
+<p>Antes de entrarmos na visualização gráfica dos gráficos bivariados no tempo, é importante diferenciarmos dois tipos de variáveis relacionadas a tempos. Uma coisa é uma variável que pode receber valores como “27/08/2021”; mas existe outra informação relacionada a tempo que diz respeito ao tempo transcorrido entre duas datas, por exemplo, o tempo entre a distribuição de um processo e a sua sentença. No primeiro caso, a natureza da variável é temporal (uma data); no segundo caso, a natureza da variável é uma variável numérica comum. O tipo de variável especial de que vamos tratar nesta sessão diz respeito somente ao primeiro tipo, e não ao segundo, tanto que já fizemos um gráfico com a variável “tempo”.</p>
+<div id="séries-temporais" class="section level5" number="4.3.2.4.1">
+<h5>
+<span class="header-section-number">4.3.2.4.1</span> Séries temporais<a class="anchor" aria-label="anchor" href="#s%C3%A9ries-temporais"><i class="fas fa-link"></i></a>
+</h5>
+<p>O nome do gráfico que representa uma variável numérica em relação ao tempo se chama série temporal. O gráfico de uma série temporal se apresenta sempre com o tempo no eixo x e a variável numérica no eixo y.</p>
+<p>Este gráfico é utilizado para “descrever apenas o comportamaneto da série”, o que vai envolver “a verificação da existência de tendências, ciclos e variações sazonais”.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;MORETTIN, Pedro A; TOLOI, Clélia M. C. Análise de Séries Temporais, 2a ed. São Paulo: Editora Blucher. 2006, p. 3.&lt;/p&gt;"><sup>28</sup></a></p>
+<p>Na Figura <a href="visualizacao.html#fig:time-series-litig">4.31</a>, vemos um exemplo desse tipo de relação.</p>
+<div class="figure">
+<span style="display:block;" id="fig:time-series-litig"></span>
+<img src="jurimetria_book_files/figure-html/time-series-litig-1.svg" alt="Série de tempo dos dados de litigiosidade." width="864"><p class="caption">
+Figura 4.31: Série de tempo dos dados de litigiosidade.
+</p>
 </div>
-<div class="footnotes">
-<hr />
-<ol start="28">
-<li id="fn28"><p><span class="citation"><a href="#ref-Cleveland1985" role="doc-biblioref">Cleveland</a> (<a href="#ref-Cleveland1985" role="doc-biblioref">1985</a>)</span>, pp. 9-10, tradução livre, grifos no original
-No original: “Graphs are exceptionally powerful tools for data analysis. The reason is nicely encapsulated in a sentence from a 1982 letter written to me by W. Edwards Deming: “Graphical methods can retain the information in the data.” Numerical data analytic procedures – such as means, standard deviations, correlation coefficients, and t-tests – are essentially data reduction techniques. Graphical methods complement such numerical techniques. Graphical methods tend to show data sets as a whole, allowing us to summarize the general behavior and to study detail. This leads to much more thorough data analysis.
-ne reason why graphical displays can retain the information in the data is that a large amount of quantitative information can be displayed and absorbed.”<a href="visualizacao.html#fnref28" class="footnote-back">↩︎</a></p></li>
-</ol>
-</div>
-            </section>
+<p>A figura nos mostra uma tendência se aumentar os casos em todas as regiões do Brasil a partir de 2018. Além disso, vemos que, na região Sul, entre 2015 e 2016, houve uma clara queda, no total de casos por 100 mi habitantes, em comparação com outras regiões, que ou demonstraram aumentos, ou demonstraram quedas não tão intensas.</p>
+<p>O que vemos é que não estamos fazendo afirmações sobre a relação entre a variável contínua (número de casos novos por 100 mil habitantes) e a variável temporal (ano) do tipo “quanto mais tempo, mais casos”, porque não é esse tipo de relação que séries temporais nos indicam. Esse tipo de visualização está nos apontando para tendências temporais, sejam elas cíclicas, sazonais ou episódios pontuais.</p>
 
-          </div>
-        </div>
-      </div>
-<a href="estatisticas.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="modelagem.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+  <div class="chapter-nav">
+<div class="prev"><a href="estatisticas.html"><span class="header-section-number">3</span> Estatísticas</a></div>
+<div class="next"><a href="modelagem.html"><span class="header-section-number">5</span> Modelagem</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#visualizacao"><span class="header-section-number">4</span> Visualização</a></li>
+<li>
+<a class="nav-link" href="#para-que-servem-visualiza%C3%A7%C3%B5es"><span class="header-section-number">4.1</span> Para que servem visualizações?</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#detetive-de-dados---an%C3%A1lise-explorat%C3%B3ria-de-dados"><span class="header-section-number">4.1.1</span> Detetive de dados - Análise exploratória de dados</a></li></ul>
+</li>
+<li><a class="nav-link" href="#comunicadora-de-dados---apresenta%C3%A7%C3%A3o-de-dados"><span class="header-section-number">4.2</span> Comunicadora de dados - Apresentação de dados</a></li>
+<li>
+<a class="nav-link" href="#visualiza%C3%A7%C3%B5es-em-esp%C3%A9cie"><span class="header-section-number">4.3</span> Visualizações em espécie</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#visualiza%C3%A7%C3%B5es-de-vari%C3%A1veis-categ%C3%B3ricas"><span class="header-section-number">4.3.1</span> Visualizações de variáveis categóricas</a></li>
+<li><a class="nav-link" href="#visualiza%C3%A7%C3%B5es-de-vari%C3%A1veis-quantitativas"><span class="header-section-number">4.3.2</span> Visualizações de variáveis quantitativas</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Jurimetria</strong>: Um Livro" was written by true. It was last built on 08 de agosto de 2022.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": false,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["jurimetria_book.pdf"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "none"
-}
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -919,7 +1143,22 @@ gitbook.start({
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
-
 </html>
