@@ -17,7 +17,7 @@ Uma razão para as representações gráficas conseguirem reter as informações
   No original: "Graphs are exceptionally powerful tools for data analysis. The reason is nicely encapsulated in a sentence from a 1982 letter written to me by W. Edwards Deming: "Graphical methods can retain the information in the data." Numerical data analytic procedures – such as means, standard deviations, correlation coefficients, and t-tests – are essentially data reduction techniques. Graphical methods complement such numerical techniques. Graphical methods tend to show data sets as a whole, allowing us to summarize the general behavior and to study detail. This leads to much more thorough data analysis.
   One reason why graphical displays can retain the information in the data is that a large amount of quantitative information can be displayed and absorbed."
 
-Para dar um exemplo do que significa conseguir exibir e absorver informações quantitativas, e para explicar também o que significa "técnicas de redução de dados", vamos olhar para um exemplo, no qual nós comparamos três formas de apresentar os mesmos dados. Os dados expostos dizem respeito aos valores das causas de ações de consumo. 
+Para dar um exemplo do que significa conseguir "exibir e absorver" informações quantitativas, e para explicar também o que significa "técnicas de redução de dados", vamos olhar para um exemplo, no qual nós comparamos três formas de apresentar os mesmos dados. Os dados expostos dizem respeito aos valores das causas de ações de consumo. 
 
 ```{r}
 
@@ -68,6 +68,9 @@ da_resumo |>
   knitr::kable(
     caption = "Medidas de resumo"
   )
+
+media <- da_resumo$valores[da_resumo$medidas == "média"]
+mediana <- da_resumo$valores[da_resumo$medidas == "mediana"]
 ```
 
 ```{r exemplo-vis, fig.width=8, fig.height=2.5, fig.cap="Exemplo de visualizacao"}
@@ -80,18 +83,17 @@ da |>
 
 As três apresentações de dados que fizemos foram, respectivamente, uma tabela de observações, apresentando 100 valores de causa em ações de consumo; seguido das medidas resumo dessas observações; finalizando com um histograma dessas observações. O que queremos discutir é *o que a apresentação gráfica nos mostra que as demais formas não nos mostram*?
 
-A primeira apresentação dos dados nos diz muito pouco. Por mais que tenhamos uma visão de *todos* os dados, não conseguimos tirar conclusão alguma sobre eles. As informações ali estão muito cruas. 
+A primeira apresentação dos dados nos diz muito pouco. Por mais que tenhamos uma visão de *todos* os dados, não conseguimos tirar conclusão alguma sobre eles. As informações ali estão muito cruas. É difícil de ordenar as informações e de observar tendências gerais. 
 
-
-Na segunda forma de apresentar os dados, todo aquele conjunto imenso de dados foi reduzido a algumas poucas estatísticas de resumo. No caso, escolhemos mostrar a média, o desvio padrão e algumas medidas de posição importantes (o mínimo, o máximo, os quartis inferior e superior e a mediana). Nesse caso, perdemos a noção do *todo* (pois não vemos mais cada uma das observações), para olharmos para tendências gerais. Essas medidas nos permitem olhar para algumas tendências importantes, por exemplo, conseguimos perceber que, como a média está mais à direita do que a mediana, pois R\$ 17.654,10 (média) é maior do que R\$ 12.421,81 (mediana), que a distribuição não é simétrica, mas que existem pontos à direita que estão "puxando" a média para a direito, enquanto a mediana, que é robusta como vimos, não está recebendo efeito dessas observações à direita. Confirmamos essa mesma tendência pela observação de que o desvio padrão é muito maior do que a média. 
+Na segunda forma de apresentar os dados, todo aquele conjunto imenso de dados foi reduzido a algumas poucas estatísticas de resumo. No caso, escolhemos mostrar a média, o desvio padrão e algumas medidas de posição importantes (o mínimo, o máximo, os quartis inferior e superior e a mediana). Nesse caso, perdemos a noção do *todo* (pois não vemos mais cada uma das observações), para olharmos para tendências gerais. Essas medidas nos permitem olhar para algumas tendências importantes, por exemplo, conseguimos perceber que, como a média está mais à direita do que a mediana, pois R\$ `r media` (média) é maior do que R\$ `r mediana` (mediana), que a distribuição não é simétrica, mas que existem pontos à direita que estão "puxando" a média para a direito, enquanto a mediana, que é robusta como vimos, não está recebendo efeito dessas observações à direita. Confirmamos essa mesma tendência pela observação de que o desvio padrão é muito maior do que a média. 
 
 Todas essas conclusões que tiramos a partir das medidas resumo nos levam a perceber que a distribuição dos valores de causa de ações de consumo possui uma distribuição assimétrica para a direita (ou seja, muitos dados concentrados próximo de zero, e poucos dados muito distantes do zero). Acontece que o processo para chegarmos a essa conclusão não foi intuitivo, ele necessitou de algumas análises anteriores.
 
 É com esse problema em mente que podemos olhar para o gráfico que está apresentando os mesmos dados. Duas características são importantes da representação gráfica pelo histograma: (a) o gráfico não "reduz" os dados a algumas poucas medidas, mas ele exibe todas as observações, aproximando-se, dessa forma, da primeira apresentação dos dados (isto é, a tabela de observações); (b) ao mesmo tempo em que o gráfico mostra *todas* as observações, ele ainda consegue indicar tendências gerais da distribuição dos dados, nesse sentido, aproximando-se da segunda apresentação dos dados (isto é, a tabela de medidas resumo). Aquela conclusão que tiramos a partir das medidas resumo (de que a distribuição é assimétrica para a direita, pois ela possui muitos dados concentrados próximo de zero e poucos dados distantes do zero) é reforçada no gráfico. A diferença é que conseguimos chegar a essa conclusão de uma forma muito mais intuitiva. É por essa razão que Cleveland diz que "uma grande quantidade de informação quantitativa pode ser exibida e **absorvida**", com destaque para a palavra "absorvida". 
 
-A partir desse exemplo, conseguimos compreender algumas características importantes das visualizações gráficas: elas conseguem manter um olhar para *cada uma das observações* (sem reduzir os dados a algumas poucas medidas), e conseguem apresentar tendências gerais da distribuição do dado de uma forma de fácil absorção e compreensão por aquele que visualiza.
+A partir desse exemplo, conseguimos compreender algumas características importantes das visualizações gráficas: elas conseguem manter um olhar para *cada uma das observações* (sem reduzir os dados a algumas poucas medidas), e, ao mesmo tempo, conseguem apresentar tendências gerais da distribuição dos dados de uma forma de fácil absorção e compreensão por aquele que visualiza.
 
-Com essas características em mente, então, podemos começar a responder à pergunta "para que servem visualizações?". Há duas respostas importantes: as visualizações gráficas servem para investigar os dados, bem como servem para comunicar resultados. Vamos olhar para as duas funções
+Com essas características em mente, então, podemos prosseguir à próxima pergunta: para que servem visualizações?. Há duas respostas importantes: as visualizações gráficas servem para investigar os dados, bem como servem para comunicar resultados. Vamos olhar para as duas funções
 
 ### Detetive de dados - Análise exploratória de dados
 
@@ -129,7 +131,7 @@ São usos deste tipo que aqui estamos chamando de uma análise exploratória de 
 
 ## Comunicadora de dados - Apresentação de dados
 
-Outra função que podemos dar à visualização de dados é a comunicação dos resultados. Bons gráficos devem ser gráficos que consigam ser facilmente compreendidos; são gráficos claros e intuitivos. Existem uma série de estudos sobre como construir gráficos para comunicação, assim como existem muitos exemplos, principalmente no jornalismo, de gráficos que contam boas histórias. 
+Outra função que podemos dar à visualização de dados é a comunicação dos resultados. Bons gráficos devem ser gráficos que consigam ser facilmente compreendidos; são gráficos claros e intuitivos. Existe uma série de estudos sobre como construir gráficos para comunicação, assim como existem muitos exemplos, principalmente no jornalismo, de gráficos que contam boas histórias. 
 
 :::
 Recomendamos aqui a leitura de Cleveland, William S. The Elements of Graphing Design. California: Wadsworth Advanced Book Program. 1985; ou para um resumo e aplicação prática de Cleveland, recomendamos Kozak, Marcin. Basic principles of graphing data. Sci. Agric. (Piracicaba, Braz.), v.67, n.4, p.483-494, July/August 2010. Neste artigo de Kozak, ele resume os princípios elencados por Cleveland em The Elements of Graphing Data, bem como fornece valiosos exemplos de como esses princípios podem melhorar a apresentação gráfica.
@@ -138,7 +140,6 @@ Recomendamos aqui a leitura de Cleveland, William S. The Elements of Graphing De
 :::
 Aqui recomendamos os gráficos do Nexo Jornal, disponíveis em: https://www.nexojornal.com.br/grafico/; a sessão Igualdades da Revista Piaui, disponível em: https://piaui.folha.uol.com.br/tag/igualdades/; os gráficos do New York Times, disponíveis em: https://www.nytimes.com/spotlight/graphics; as reportagens do Núcleo de Jornalismo https://www.nucleo.jor.br/; e, por fim, esta reportagem do Estadão sobre adoção de crianças https://arte.estadao.com.br/brasil/adocao/criancas/. Todos os sites foram acessados em 28/04/2022.
 :::
-
 
 Temos que ter alguns cuidados nessa parte de comunicação dos resultados. A comunicação é uma etapa que, se feita de forma equivocada, pode não conseguir passar a interpretação correta dos resultados, ou ainda, se for feita de forma maliciosa, pode passar informações falsas.
 
@@ -168,13 +169,13 @@ Tendo em mente as características e funções das visualizações, podemos pros
 
 Para cada gráfico, iremos ver (i) como desenhar o gráfico e (ii) como interpretá-lo. A explicação do ponto (i) já diz muito sobre o ponto (ii), mas iremos tentar discriminar cada uma das análises especificamente. 
 
-Algumas explicações que precisamos dar a respeito dessas visualizações. Primeiro, o que significa ser um gráfico univariado ou bivariado? 
+Antes de continuar as explicações, precisamos explicar o que significa ser um gráfico univariado ou bivariado?.
 
 Um gráfico univariado representa apenas uma única variável nele. Isso **não significa que** o gráfico tenha apenas um eixo. Na verdade, os gráficos univariados normalmente têm dois eixos. Então a quantidade de variáveis não diz exatamente respeito à quantidade de eixos.
 
-Já o gráfico bivariado representa duas variáveis nele, em que uma variável é a variável resposta e a outra variável é a variável explicativa. A variável resposta é aquela que  nós queremos compreender; e a variável explicativa é a variável que queremos explicar a variável resposta. 
+Já o gráfico bivariado representa duas variáveis nele, em que uma variável é a variável resposta e a outra variável é a variável explicativa. A variável resposta é aquela que nós queremos compreender; e a variável explicativa é a variável que queremos usar para explicar a variável resposta. 
 
-Vamos dar um exemplo para compreender o que são as variáveis explicativa e resposta. Se formos analisar a instância recursal, podemos querer ver se a reforma da decisão de primeiro grau é afetada pelo valor da causa. Será que causas de valores maiores tendem a ser menos reformadas? Veja que a relação que queremos avaliar tem uma ordem certa: importa dizer que é o valor da causa que explica a reforma, e não o contrário, de que é a reforma da sentença ou não que explica o valor da causa. Essas duas relações são possíveis de serem analisadas (apesar de que faz pouco sentido teórico explicar o valor da causa pela reforma). O importante é notar que essas duas relações são distintas, e aquilo em que elas se distinguem é justamente o que cada uma delas considera como variável resposta e como variável explicativa. Na pergunta de se a reforma da sentença é afetada pelo valor da causa, a variável "reforma" é a variável resposta (ou seja, a variável que queremos compreender); e a variável "valor da causa" é a variável explicativa (ou seja, a variável que queremos que explique a variável resposta). Em termos matemáticos, a variável resposta é a variável Y e a variável explicativa é a variável X.
+Vamos dar um exemplo para compreender o que são as variáveis explicativa e resposta. Ao analisar instância recursal, podemos nos interssar por ver se a reforma da decisão de primeiro grau é afetada pelo valor da causa. Então surge a seguinte pergunta de psquisa: será que causas de valores maiores tendem a ser menos reformadas? Veja que a relação que queremos avaliar tem uma ordem certa: importa dizer que é o valor da causa que explica a reforma, e não o contrário, de que é a reforma da sentença que explica o valor da causa. Essas duas relações são possíveis de serem analisadas (apesar de que faz pouco sentido teórico explicar o valor da causa pela reforma). O importante é notar que essas duas relações são distintas, e aquilo em que elas se distinguem é justamente o que cada uma delas considera como variável resposta e como variável explicativa. Na pergunta de se a reforma da sentença é afetada pelo valor da causa, a variável "reforma" é a variável resposta (ou seja, a variável que queremos compreender); e a variável "valor da causa" é a variável explicativa (ou seja, a variável que queremos que explique a variável resposta). Em termos matemáticos, a variável resposta é a variável Y e a variável explicativa é a variável X.
 
 ### Visualizações de variáveis categóricas
 
