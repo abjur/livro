@@ -1,0 +1,4 @@
+# Boas vindas! {.unnumbered}
+
+Este livro foi produzido em *Quarto*. Todos os gráficos produzidos pela ABJ são reprodutíveis, ou seja, qualquer pessoa interessada em refazer qualquer gráfico ou revisar os códigos utilizados pode fazê-lo. O livro foi gerado com o software de publicação científica Quarto na versão 1.2. Os gráficos e análises foram gerados com o software estatístico R na versão 4.2.1.
+
