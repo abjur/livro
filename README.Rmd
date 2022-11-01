@@ -11,9 +11,39 @@ knitr::opts_chunk$set(
 )
 ```
 
-# livro
+# livro: Introdução à Metodologia de Pesquisa Jurimétrica
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-Livro de jurimetria!
+Este repositório contém os textos e códigos de um livro "Introdução à Metodologia de Pesquisa Jurimétrica". É possível acessar o *website* do livro [aqui]() e o PDF do livro [aqui]().
+
+## Descrição
+
+Trata-se de um livro em construção. Por enquanto, estão completos os capítulos 1 (introdução), 2 (planejamento), 3 (estatísticas) e 4 (visualização). Os outros capítulos serão construídos quando os cursos forem desenvolvidos.
+
+A ideia do livro é ser uma mistura de "estatística para pessoas do direito" e "por que fazer jurimetria?". Começamos discutindo aspectos de operacionalização e organização de pesquisas, mais abstrata, antes de entrar na parte mais técnica. 
+
+Os conceitos estatísticos são apresentados de forma simplificada. Quando necessário, apresentamos fórmulas matemáticas, mas sempre de forma amigável e apresentando todo o passo-a-passo.
+
+## Contribuindo
+
+Se quiser contribuir com correções e sugestões, adicione uma [*issue*](https://github.com/abjur/livro/issues)! Se não souber como as *issues* funcionam ou não se sentir confortável com o GitHub, você também pode postar no [fórum da ABJ](https://forum.abj.org.br).
+
+## Citação
+
+Para citar o livro, você pode usar a citação abaixo:
+
+```
+
+```
+
+Ou então, no formato bibtex:
+
+```
+
+```
+
+## Licença
+
+O livro foi escrito pensando na licença MIT. Isso significa que você pode utilizar este livro quando e onde quiser (em aulas, apresentações etc). Pedimos apenas que cite que o livro é da Associação Brasileira de Jurimetria (ABJ) e coloque um link para este repositório.
