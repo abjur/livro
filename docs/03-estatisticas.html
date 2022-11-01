@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.245">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Metodologia de Pesquisa Jurimétrica - 3&nbsp; Estatísticas</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./04-visualizacao.html" rel="next">
+<link href="./02-planejamento.html" rel="prev">
+<link href="./assets/img/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar"
+  }
+}</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+</head>
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./assets/img/logo.png" alt="" class="navbar-logo"></a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/abjurimetria"><i class="bi bi-twitter" role="img" aria-label="Twitter">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/abjur/livro"><i class="bi bi-github" role="img" aria-label="Source Code">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="./livro_jurimetria.pdf"><i class="bi bi-file-pdf" role="img" aria-label="Download PDF">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item dropdown  compact">
+    <a class="nav-link dropdown-toggle" href="#" id="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-share" role="img" aria-label="Share">
+</i> 
+ <span class="menu-text"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="">
+<li>
+    <a class="dropdown-item" href="https://twitter.com/intent/tweet?url=%7Curl%7C"><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="dropdown-text">Twitter</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=%7Curl%7C"><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="dropdown-text">LinkedIn</span></a>
+  </li>  
+    </ul>
+</li>
+</ul>
+<div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav><nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }"><div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estatísticas</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto"><div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Boas vindas!</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-planejamento.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Planejamento de Pesquisa</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-estatisticas.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estatísticas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-visualizacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Visualização</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-modelagem.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modelagem</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-refs.html" class="sidebar-item-text sidebar-link">Bibliografia</a>
+  </div>
+</li>
+    </ul>
+</div>
+</nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Índice</h2>
+   
+  <ul>
+<li>
+<a href="#olhando-para-as-observa%C3%A7%C3%B5es" id="toc-olhando-para-as-observações" class="nav-link active" data-scroll-target="#olhando-para-as-observa%C3%A7%C3%B5es"><span class="toc-section-number">3.1</span>  Olhando para as observações</a>
+  <ul class="collapse">
+<li><a href="#vari%C3%A1veis-qualitativascateg%C3%B3ricas" id="toc-variáveis-qualitativascategóricas" class="nav-link" data-scroll-target="#vari%C3%A1veis-qualitativascateg%C3%B3ricas"><span class="toc-section-number">3.1.1</span>  Variáveis qualitativas/categóricas</a></li>
+  <li><a href="#vari%C3%A1veis-quantitativas" id="toc-variáveis-quantitativas" class="nav-link" data-scroll-target="#vari%C3%A1veis-quantitativas"><span class="toc-section-number">3.1.2</span>  Variáveis quantitativas</a></li>
+  <li><a href="#considera%C3%A7%C3%B5es-sobre-os-tipos-de-dados" id="toc-considerações-sobre-os-tipos-de-dados" class="nav-link" data-scroll-target="#considera%C3%A7%C3%B5es-sobre-os-tipos-de-dados"><span class="toc-section-number">3.1.3</span>  Considerações sobre os tipos de dados</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#olhando-para-o-conjunto-das-observa%C3%A7%C3%B5es" id="toc-olhando-para-o-conjunto-das-observações" class="nav-link" data-scroll-target="#olhando-para-o-conjunto-das-observa%C3%A7%C3%B5es"><span class="toc-section-number">3.2</span>  Olhando para o conjunto das observações</a>
+  <ul class="collapse">
+<li><a href="#medidas-de-resumo-para-vari%C3%A1veis-categ%C3%B3ricas" id="toc-medidas-de-resumo-para-variáveis-categóricas" class="nav-link" data-scroll-target="#medidas-de-resumo-para-vari%C3%A1veis-categ%C3%B3ricas"><span class="toc-section-number">3.2.1</span>  Medidas de resumo para variáveis categóricas</a></li>
+  <li><a href="#medidas-de-resumo-para-vari%C3%A1veis-quantitativas" id="toc-medidas-de-resumo-para-variáveis-quantitativas" class="nav-link" data-scroll-target="#medidas-de-resumo-para-vari%C3%A1veis-quantitativas"><span class="toc-section-number">3.2.2</span>  Medidas de resumo para variáveis quantitativas</a></li>
+  </ul>
+</li>
+  </ul><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/abjur/livro/edit/main/03-estatisticas.qmd" class="toc-action">Editar essa página</a></p><p><a href="https://github.com/abjur/livro/issues/new" class="toc-action">Criar uma issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title"><span id="sec-estatistica" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estatísticas</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header><p>No capítulo anterior, vimos algumas questões essenciais por trás do método quantitativo. Neste capítulo vamos olhar para a estrutura dos dados e como resumir as informações a respeito desses dados. Para tanto, o capítulo está dividido em duas seções: (a) descrição das observações; (b) descrição do conjunto de observações.</p>
+<p>Na seção sobre as observações, vamos ver como as bases de dados devem ser estruturadas e os tipos de dados possíveis. Na seção sobre a descrição do conjunto das observações, vamos ver as medidas que podem descrever conjuntos de observações, a saber, as medidas de posição, as medidas de variabilidade e as medidas de associação.</p>
+<p>Os exemplos deste capítulo foram extraídos de duas bases de dados:</p>
+<ol type="1">
+<li>Base <code>consumo</code>: A base traz dados extraídos da jurisprudência do segundo grau no TJSP.</li>
+<li>Base <code>leiloes</code>: A base leiloes traz dados que foram coletados no âmbito do Observatório da Insolvência - Fase 3 pela ABJ. Neste observatório, a ABJ coletou e analisou dados referentes a processos de falência distribuídos na Comarca de São Paulo, entre janeiro de 2010 e dezembro de 2020.</li>
+</ol>
+<p>Você pode acessar essas bases de dados baixando, no R, o pacote <a href="https://abjur.github.io/abjData/">abjData</a>.</p>
+<div class="cell">
+
+</div>
+<section id="olhando-para-as-observações" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="olhando-para-as-observações">
+<span class="header-section-number">3.1</span> Olhando para as observações</h2>
+<p>O que queremos compreender nesta seção é a natureza das <em>observações</em> de uma base de dados. As observações correspondem às unidades amostrais, que podemos definir como “<em>cada uma das partes disjuntas em que uma população é exaustivamente decomposta, para</em> [que]<em>, do conjunto delas se façam extrações a fim de constituir uma amostra, ou estágio de uma amostra</em>” <span class="citation" data-cites="Bolfarine&amp;Bussab2005">(<a href="06-refs.html#ref-Bolfarine&amp;Bussab2005" role="doc-biblioref">Bolfarine e Bussab 2005, 263</a>)</span>. <strong>Em bases de dados, cada linha deve corresponder a uma unidade amostral; e cada coluna representa uma característica (também chamada de variável) dessa observação</strong>.</p>
+<p>Na <a href="#tbl-sample-leiloes">Tabela&nbsp;<span>3.1</span></a>, há um exemplo de uma base de dados da ABJ. São algumas linhas e colunas da base de leiloes do Observatório da Insolvência de São Paulo - Fase 2. Basicamente, esta base diz respeito aos bens que são levados a alienações nos processos de falência no Estado de São Paulo. Nessa base, cada linha representa um item levado a alienação de um processo, ou seja, a unidade amostral é um item levado a leilão; e cada coluna representa uma informação a respeito desse bem, a saber, quem é o leiloeiro responsável pela venda do bem, quando o bem foi levado a leilão, qual era o valor de avaliação inicial desse bem; e qual é o valor pelo qual ele foi arrematado (o que fica em branco, quando o bem nunca foi arrematado).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-sample-leiloes" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Tabela&nbsp;3.1: Exemplo dos dados da base de leilões da ABJ</caption>
+<colgroup>
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 13%">
+<col style="width: 12%">
+<col style="width: 7%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">id_processo</th>
+<th style="text-align: left;">descricao</th>
+<th style="text-align: left;">id_leiloeiro</th>
+<th style="text-align: left;">data_edital</th>
+<th style="text-align: left;">vendeu</th>
+<th style="text-align: right;">av_inicial</th>
+<th style="text-align: right;">arrematado</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">00268835820128260100</td>
+<td style="text-align: left;">Lote 1C: Máquina …</td>
+<td style="text-align: left;">5406</td>
+<td style="text-align: left;">2015-10-05</td>
+<td style="text-align: left;">nao</td>
+<td style="text-align: right;">62000.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10033914920148260100</td>
+<td style="text-align: left;">Monitores Dell</td>
+<td style="text-align: left;">466</td>
+<td style="text-align: left;">2015-03-06</td>
+<td style="text-align: left;">nao</td>
+<td style="text-align: right;">400.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">10018294820168260451</td>
+<td style="text-align: left;">Prensa Hidraucila…</td>
+<td style="text-align: left;">29062</td>
+<td style="text-align: left;">2020-01-24</td>
+<td style="text-align: left;">nao</td>
+<td style="text-align: right;">540.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">00468773820138260100</td>
+<td style="text-align: left;">Lote 143: Televis…</td>
+<td style="text-align: left;">7633</td>
+<td style="text-align: left;">2016-08-17</td>
+<td style="text-align: left;">sim</td>
+<td style="text-align: right;">300.0</td>
+<td style="text-align: right;">178.31</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">10012206520188260299</td>
+<td style="text-align: left;">BOMBA CENTRÍFUGA …</td>
+<td style="text-align: left;">1748</td>
+<td style="text-align: left;">2020-03-10</td>
+<td style="text-align: left;">nao</td>
+<td style="text-align: right;">4804.8</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">00410345520108260114</td>
+<td style="text-align: left;">bancada de trabalho</td>
+<td style="text-align: left;">776</td>
+<td style="text-align: left;">2014-02-24</td>
+<td style="text-align: left;">nao</td>
+<td style="text-align: right;">300.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">10012206520188260299</td>
+<td style="text-align: left;">GUINCHO TIPO GIRA…</td>
+<td style="text-align: left;">1748</td>
+<td style="text-align: left;">2020-03-10</td>
+<td style="text-align: left;">nao</td>
+<td style="text-align: right;">3225.6</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">00268835820128260100</td>
+<td style="text-align: left;">Lote 159: Compres…</td>
+<td style="text-align: left;">5406</td>
+<td style="text-align: left;">2015-10-05</td>
+<td style="text-align: left;">nao</td>
+<td style="text-align: right;">64800.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">10488694620158260100</td>
+<td style="text-align: left;">Diversos itens de…</td>
+<td style="text-align: left;">5406</td>
+<td style="text-align: left;">2018-04-03</td>
+<td style="text-align: left;">sim</td>
+<td style="text-align: right;">20.0</td>
+<td style="text-align: right;">20.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">00268835820128260100</td>
+<td style="text-align: left;">Lote 1B: Geladeir…</td>
+<td style="text-align: left;">5406</td>
+<td style="text-align: left;">2015-10-05</td>
+<td style="text-align: left;">nao</td>
+<td style="text-align: right;">11070.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Uma <em>observação</em>, então, como vimos, possui várias características. Todas essas características constituem variáveis a respeito da unidade amostral. O que precisamos ver, a seguir, são os tipos dessas características e as implicações de cada um dos tipos.</p>
+<p>As variáveis podem pertencer a dois grupos: variáveis qualitativas (ou categóricas) ou variáveis quantitativas. As variáveis categóricas se subdividem ainda em nominais e ordinais; já as variáveis quantitativas podem ser do tipo discretas ou contínuas.</p>
+<section id="variáveis-qualitativascategóricas" class="level3" data-number="3.1.1"><h3 data-number="3.1.1" class="anchored" data-anchor-id="variáveis-qualitativascategóricas">
+<span class="header-section-number">3.1.1</span> Variáveis qualitativas/categóricas</h3>
+<p>Todas as variáveis qualitativas representam algum tipo de categoria (por isso também chamamos essas variáveis de “categóricas”). Há dois tipos de variáveis categóricas, as nominais e as ordinais. As variáveis nominais são categorias de nomes, categorias sem ordenação possível. Já as variáveis ordinais representam categorias com algum tipo de ordenação universal, com algum <em>ranking</em> possível. O critério de distinção entre essas duas variáveis é a possibilidade de <em>ordenação universal</em> das respostas possíveis.</p>
+<p>A seguir, temos alguns exemplos que discutem se determinadas variáveis categóricas são nominais ou ordinais.</p>
+<ol type="1">
+<li><p><strong>Unidade Federativa</strong>: No Brasil, há 27 unidades federativas possíveis. É possível ordenar as unidades federativas, por exemplo, por ordem alfabética; ou até, se soubermos outras informações como PIB ou tamanho da população, podemos ordenar as UFs por algum critério outro. Apesar de essa variável ser <em>ordenável</em>, ela não pode ser ordenada a partir de um <em>critério universal</em>, ou seja, um critério intrínseco a ela mesma. Por isso, consideramos que UF é uma variável <em>nominal</em> (e não ordinal).</p></li>
+<li><p><strong>Assunto processual</strong>: Os assuntos processuais são dados pelas Tabelas Processuais Unificadas (TPUs)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> do CNJ. Por mais haja uma numeração. Os assuntos também não possuem nenhuma ordenação universal. Portanto, esta é uma variável nominal.</p></li>
+<li><p><strong>Valor de bens no leilão judicial (categorizado)</strong>: Uma possível variável que pode existir em processos judiciais é uma classificação para o valor dos bens em um leilão. Podemos classificar os valores, por exemplo, como “insignificante”, “baixo”, “médio”, “alto”, “extravagante”. Neste caso, haveria uma ordenação intrínseca das categorias, sendo que “insignificante” é a categoria de menor valor e “extravagante”, a de maior valor. Assim sendo, esta variável é ordinal.</p></li>
+<li><p><strong>Resultado de uma sentença</strong>: Uma sentença pode ter, de forma simplificada, três resultados possíveis: totalmente procedente, parcialmente procedente e improcedente. É um modelo simplificado, pois, para determinadas pesquisas, pode ser interessante diferenciar sentenças com julgamento de mérito de sentenças sem julgamento de mérito, ou de sentenças homologatórias. Por ora, vamos pensar apenas nessas três categorias. A questão que se põe é se há alguma ordenação universal entre essas três categorias ou não?</p></li>
+</ol>
+<p>Este caso pode gerar algumas dúvidas, pois poderíamos ordenar a sentença de tal forma que a sentença “totalmente procedente” fosse a mais valiosa, em relação à sentença “improcedente”. Entretanto, esse tipo de raciocínio pressupõe um valor intrínseco das sentenças, como se uma sentença “totalmente procedente” sempre fosse, de alguma forma, melhor do que uma sentença “improcedente”. O problema desse raciocínio é que, a depender do <em>polo da parte</em>, o valor da sentença é exatamente o oposto: para o réu, a sentença “improcedente” é a de menor valor, enquanto, para o autor, a sentença “totalmente procedente” é a de maior valor.</p>
+<p>Existem ainda mais ramificações dos tipos de variáveis qualitativas, por exemplo, variáveis intervalares, ou variáveis-razão. Essas demais ramificações não possuem muito uso prático no Direito, então não vamos nos aprofundar nelas. Há somente uma ramificação que ainda nos interessa que são as variáveis binárias, ou como são chamadas também, as variáveis <em>dummies</em>. As variáveis binárias só assumem dois valores possíveis, o valor de sucesso (representado numericamente pelo número <code>1</code>, ou pela condição <code>TRUE</code>) e o valor de fracasso (representado numericamente pelo número <code>0</code>, ou pela condição <code>FALSE</code>). Essas variáveis são importantes pois, como veremos no <a href="05-modelagem.html">Capítulo&nbsp;<span>5</span></a> é possível representar qualquer variável categórica em um conjunto de variáveis binárias.</p>
+</section><section id="variáveis-quantitativas" class="level3" data-number="3.1.2"><h3 data-number="3.1.2" class="anchored" data-anchor-id="variáveis-quantitativas">
+<span class="header-section-number">3.1.2</span> Variáveis quantitativas</h3>
+<p>A outra grande categoria de variáveis é a de variáveis quantitativas. Esse grupo se caracteriza por ter variáveis de valores numéricos. Há uma classificação dicotômica importante a respeito desses valores. Existem variáveis quantitativas discretas e contínuas.</p>
+<p>As variáveis discretas são caracterizadas por valores numéricos que formam um conjunto finito ou enumerável de números. Usualmente, as variáveis desse tipo resultam de alguma <em>contagem</em>. Já as variáveis contínuas são valores numéricos que pertencem ao conjunto dos números reais. O critério de distinção entre essas duas categorias é a nossa capacidade de fazer uma correspondência dos números com o conjunto dos números naturais (0, 1, 2, …).</p>
+<p>A seguir, temos alguns exemplos se algumas variáveis são discretas ou contínuas.</p>
+<ul>
+<li><p><strong>Valor da causa</strong>: Em um exemplo anterior (no caso do valor dos bens dos leilões), estávamos tratando de valores também, mas estávamos tratando de valores agrupados formando categorias. Agora vamos falar dos valores brutos, individualizados, e não das categorias a que eles pertencem. O valor da causa pode assumir incontáveis valores, não sendo, portanto, um valor enumerável. Assim sendo, ele é uma variável <em>contínua</em>.</p></li>
+<li><p><strong>Quantidade de partes em cada polo</strong>: No caso de litisconsórcio ativo ou passivo, é possível contar quantas partes existem em cada polo. Essa informação pode ser relevante, por exemplo, ao se estudar direitos difusos e coletivos, pois pode ser importante saber quantas pessoas estão no polo ativo da demanda, para determinar se é uma demanda coletiva ou pseudo-coletiva<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. A variável sobre a quantidade de partes em cada polo será do tipo <em>discreta</em>.</p></li>
+</ul></section><section id="considerações-sobre-os-tipos-de-dados" class="level3" data-number="3.1.3"><h3 data-number="3.1.3" class="anchored" data-anchor-id="considerações-sobre-os-tipos-de-dados">
+<span class="header-section-number">3.1.3</span> Considerações sobre os tipos de dados</h3>
+<p>Antes de prosseguir para as medidas desses dados, devemos fazer algumas considerações.</p>
+<section id="consideração-1-cuidados-ao-se-representar-numericamente-variáveis-categóricas-ordinais" class="level4" data-number="3.1.3.1"><h4 data-number="3.1.3.1" class="anchored" data-anchor-id="consideração-1-cuidados-ao-se-representar-numericamente-variáveis-categóricas-ordinais">
+<span class="header-section-number">3.1.3.1</span> Consideração 1: Cuidados ao se representar numericamente variáveis categóricas ordinais</h4>
+<p>O primeiro ponto a se destacar é sobre a representação numérica de variáveis categóricas ordinais. Vamos usar o exemplo de uma proposta do Center for <em>Court Innovation</em> de Nova Iorque<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. Uma das iniciativas desse centro foi tornar os tribunais de Nova Iorque mais “amigáveis”. Uma das técnicas propostas para tanto foram os Questionários de Satisfação sobre a prestação jurisdicional. A <a href="#tbl-perguntas-satisfacao">Tabela&nbsp;<span>3.2</span></a> resume algumas das perguntas do questionário elaborado pelo <em>Centro</em>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-perguntas-satisfacao" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Tabela&nbsp;3.2: Perguntas selecionadas de um questionário de satisfação</caption>
+<colgroup>
+<col style="width: 46%">
+<col style="width: 16%">
+<col style="width: 7%">
+<col style="width: 5%">
+<col style="width: 7%">
+<col style="width: 16%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">-</th>
+<th style="text-align: left;">Concordo fortemente</th>
+<th style="text-align: left;">Concordo</th>
+<th style="text-align: left;">Neutro</th>
+<th style="text-align: left;">Discordo</th>
+<th style="text-align: left;">Discordo fortemente</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">O juiz compreendeu minha demanda</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">O juiz levou a minha demanda a sério</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">De forma geral, obtive o resultado esperado no tribunal</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fui tratado com respeito pelo tribunal</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fui tratado de forma justa pelo tribunal</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Eu pediria a ajuda ao tribunal no futuro, se necessário</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Ao aplicar um questionário desses, estamos produzindo <em>dados</em>. A aplicação de vários questionários sucessivamente levaria à produção de uma base de dados em que cada linha (unidade amostral) seria um respondente, e cada coluna seria uma das perguntas. Todas essas perguntas recebem como resposta o nível de satisfação (concordo fortemente, concordo, neutro, discordo e discordo fortemente), sendo, portanto, variáveis de natureza <em>categórica ordinal</em>, pois há claramente uma ordem entre essas respostas.</p>
+<p>O que queremos é discutir uma proposta de substituição dessas respostas para uma forma <em>numérica</em>. Como há uma ordem entre essas respostas, será que poderíamos olhar para elas de forma numérica? A transformação seria a seguinte:</p>
+<ul>
+<li>Concordo fortemente: 1</li>
+<li>Concordo: 2</li>
+<li>Neutro: 3</li>
+<li>Discordo: 4</li>
+<li>Discordo fortemente: 5</li>
+</ul>
+<p>Essa transformação deve ser feita com cuidado. Por um lado, esse tipo de alteração não altera a ordenação dessas respostas. Entretanto, por outro lado, a representação numérica das categorias ordinais adiciona uma informação aos dados que não é verdadeira: a intensidade. O que estamos dizendo é que os números guardam, não só uma ordenação universal entre si, assim como as variáveis categóricas ordinais, mas eles guardam uma relação de intensidade entre si, algo que as variáveis categóricas ordinais não possuem. Assim, enquanto podemos dizer que o número 2 é o dobro do número 1, não podemos estabelecer essa relação entre as categorias “concordo” e “concordo totalmente”.</p>
+</section><section id="consideração-2-as-variáveis-dummies" class="level4" data-number="3.1.3.2"><h4 data-number="3.1.3.2" class="anchored" data-anchor-id="consideração-2-as-variáveis-dummies">
+<span class="header-section-number">3.1.3.2</span> Consideração 2: As variáveis <em>dummies</em>
+</h4>
+<p>A segunda consideração que queremos fazer diz respeito à transformação das categorias nominais em variáveis <em>dummies</em>. Vamos tomar outro caso como exemplo para esta discussão.</p>
+<p>No projeto que a ABJ realiza, em parceria com o CNJ, sobre adoção, tentamos auxiliar os pretendentes a escolherem o perfil da criança fornecendo a eles uma informação importante: o tempo que irá demorar adotar uma criança a depender do perfil escolhido para ela. Perfis mais restritivos em geral demoram mais tempo do que perfis mais permissivos. A questão é deixar claro que características importam para a mudança do tempo e o quanto cada característica importa para o tempo. Uma das variáveis é a variável de <code>tp_etnia</code>. Essa variável indica qual é a preferência de etnia preferida dos pretendentes em relação às crianças a serem adotadas. Há 6 respostas possíveis: A (de “amarelo”), B (de “branco”), I (de “indígena”), N (de “negro”), P (de “pardo”) ou S (de “sem preferência”). Essas categorias não possuem um critério de ordenação universal, assim sendo, a variável <code>tp_etnia</code> é do tipo categórico nominal. Temos um exemplo dessa base na <a href="#tbl-etnia">Tabela&nbsp;<span>3.3</span></a>. Os valores usados são fictícios, por questões de sigilo da base.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-etnia" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Tabela&nbsp;3.3: Variável categórica de etnia</caption>
+<thead><tr class="header">
+<th style="text-align: right;">id_pretendente</th>
+<th style="text-align: left;">tp_etnia</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1082</td>
+<td style="text-align: left;">I</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1083</td>
+<td style="text-align: left;">P</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1084</td>
+<td style="text-align: left;">B</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1085</td>
+<td style="text-align: left;">P</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1086</td>
+<td style="text-align: left;">S</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1087</td>
+<td style="text-align: left;">S</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1088</td>
+<td style="text-align: left;">N</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1089</td>
+<td style="text-align: left;">P</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1090</td>
+<td style="text-align: left;">N</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1091</td>
+<td style="text-align: left;">I</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1092</td>
+<td style="text-align: left;">A</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>A questão de que queremos tratar é como transformar a <code>tp_etnia</code> em um formato dummy? Para realizar essa transformação, nós transformamos cada uma das etnias em uma variável que recebe apenas as respostas 0 ou 1. Mas temos que tomar um cuidado muito importante: <strong>a quantidade de variáveis que criamos</strong> é sempre o número de categorias (<span class="math inline">\(n\)</span>) menos 1, ficando <span class="math inline">\(n-1\)</span>. No caso, como são 6 categorias possíveis, criamos n-1 variáveis, isto é, 5 variáveis. A base resultante está na <a href="#tbl-etnia-dummy">Tabela&nbsp;<span>3.4</span></a>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-etnia-dummy" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Tabela&nbsp;3.4: Transformação da variável categórica de etnia em dummy</caption>
+<thead><tr class="header">
+<th style="text-align: right;">id_pretendente</th>
+<th style="text-align: left;">tp_etnia</th>
+<th style="text-align: right;">A</th>
+<th style="text-align: right;">B</th>
+<th style="text-align: right;">I</th>
+<th style="text-align: right;">N</th>
+<th style="text-align: right;">P</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1082</td>
+<td style="text-align: left;">I</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1083</td>
+<td style="text-align: left;">P</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1084</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1085</td>
+<td style="text-align: left;">P</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1086</td>
+<td style="text-align: left;">S</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1087</td>
+<td style="text-align: left;">S</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1088</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1089</td>
+<td style="text-align: left;">P</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1090</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1091</td>
+<td style="text-align: left;">I</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1092</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>A questão importante dessa consideração era justamente chamar a atenção para o fato de que a quantidade de <em>dummies</em> criadas a partir da categorias é <span class="math inline">\(n-1\)</span>. Isso não é uma escolha arbitrária, mas tem uma razão de ser. Mais para frente do livro, veremos que, se criássemos <span class="math inline">\(n\)</span> categorias, ao invés de <span class="math inline">\(n-1\)</span>, teríamos um problema chamado <em>dependência linear</em>. Entretanto, por hora, de forma simplificada, podemos simplesmente afirmar que a categoria que foi deixada de fora, isto é, a categoria que não se transformou em <em>dummy</em> pode ser presumida.</p>
+<p>Vejamos na <a href="#tbl-etnia-dummy">Tabela&nbsp;<span>3.4</span></a> que a categoria deixada de lado foi “S” (ou “sem preferência”). Entretanto, conseguimos identificar um pretendente que não possui preferência por nenhuma etnia quando todas as dummies são iguais a 0. Assim, se A = 0; B = 0; I = 0; N = 0; e P = 0, então teríamos (caso essa categoria existisse) que S = 1. Dizer que S = 1 equivale a dizer que todas as outras categorias são iguais a 0. Justamente por haver essa fungibilidade entre a representação de S = 1 com tudo = 0 que não criamos exatamente <span class="math inline">\(n\)</span> dummies, mas <span class="math inline">\(n-1\)</span>. O que deve ficar de lição é que a categoria deixada de lado está presumida pela resposta às demais dummies; ela estará presente sempre que todas as outras categorias forem 0.</p>
+</section></section></section><section id="olhando-para-o-conjunto-das-observações" class="level2" data-number="3.2"><h2 data-number="3.2" class="anchored" data-anchor-id="olhando-para-o-conjunto-das-observações">
+<span class="header-section-number">3.2</span> Olhando para o conjunto das observações</h2>
+<p>Acima, estávamos discutindo as observações em si (unidades amostrais) e as informações que as caracterizam (variáveis). O que vamos falar a seguir é, não de uma única observação, mas do conjunto de várias observações. Vamos olhar, então, não para <em>uma</em> única linha, mas para um <em>conjunto</em> de linhas de uma base. A diferença da explicação anterior para a que se seguirá seria a de dizer, por exemplo (voltando ao exemplo da base de leilões do Observatório de Falências de São Paulo), que um bem específico foi vendido pelo dobro do seu preço de avaliação ou dizer que os <em>bens</em>, em média, são vendidos a 80% do seu preço de avaliação.</p>
+<p>Uma primeira pergunta que podemos fazer para dar maior tecnicidade à explicação é o que esses conjuntos de dados representam? Se cada observação representava uma unidade amostral, então agora podemos dizer que o conjunto dessas unidades amostrais é a <em>amostra</em> em si. E para tirar informações e afirmar coisas sobre esse conjunto de observações, usamos <em>estatísticas de resumo</em>.</p>
+<p>Estatísticas de resumo, como o próprio nome diz, resumem informações de grupos. Então, no lugar de olharmos para cada uma das observações individualmente, vamos olhar para uma única informação que irá dizer <em>algo</em> sobre as observações tomadas em conjunto. Esse “algo” que podemos falar sobre o conjunto das observações depende do tipo de variável para que estamos olhando. Se estamos olhando para variáveis categóricas (e, neste caso, pouco importa se são variáveis nominais ou ordinais), podemos resumir a sua frequência e proporção; já, se estamos olhando para variáveis contínuas, podemos olhar para as medidas de centro, de variabilidade e de posição do conjunto.</p>
+<section id="medidas-de-resumo-para-variáveis-categóricas" class="level3" data-number="3.2.1"><h3 data-number="3.2.1" class="anchored" data-anchor-id="medidas-de-resumo-para-variáveis-categóricas">
+<span class="header-section-number">3.2.1</span> Medidas de resumo para variáveis categóricas</h3>
+<p>Não existe um repertório de medidas muito amplo para resumirmos variáveis categóricas. Isso se deve ao fato de que essas variáveis não possuem uma natureza numérica. Então, basicamente, para resumir estas variáveis precisamos transformá-las em números. A forma de fazer isto é uma: a contagem.</p>
+<p>Por meio da <em>contagem</em> nós conseguimos <em>tabular</em> as respostas das variáveis categóricas, contando a sua frequência e, posteriormente, a proporção e porcentagem de cada categoria. A informação principal que temos é a frequência, pois é a partir dela que podemos pensar nas demais informações. Para além da frequência absoluta, temos também a frequência acumulada, a proporção, a proporção acumulada e a porcentagem.</p>
+<p>A frequência é simplesmente a contagem de cada categoria. A frequência acumulada é a contagem de uma categoria somada com as categorias anteriormente contadas, de modo que a contagem da categoria final seja a soma total de todas as categorias. A proporção é a representação da contagem de uma categoria em relação a todas as observações. A proporção acumulada segue a mesma ideia da frequência acumulada, sendo a proporção de cada categoria, somada à proporção de todas as categorias anteriormente calculadas. Por fim, a porcentagem é simplesmente a proporção vezes 100.</p>
+<p>Como exemplo, podemos olhar para a base de dados da ABJ sobre leilões nas falências em São Paulo, em que encontramos a <a href="#tbl-leiloes-contagens">Tabela&nbsp;<span>3.5</span></a>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-leiloes-contagens" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Tabela&nbsp;3.5: Tabela de frequências da modalidade do leilão.</caption>
+<colgroup>
+<col style="width: 18%">
+<col style="width: 12%">
+<col style="width: 23%">
+<col style="width: 10%">
+<col style="width: 21%">
+<col style="width: 13%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">Modalidade</th>
+<th style="text-align: right;">Frequência</th>
+<th style="text-align: right;">Frequência acumulada</th>
+<th style="text-align: right;">Proporção</th>
+<th style="text-align: right;">Proporção acumulada</th>
+<th style="text-align: left;">Porcentagem</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">leilao</td>
+<td style="text-align: right;">965</td>
+<td style="text-align: right;">965</td>
+<td style="text-align: right;">0.965</td>
+<td style="text-align: right;">0.965</td>
+<td style="text-align: left;">96.5%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">pregao</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">998</td>
+<td style="text-align: right;">0.033</td>
+<td style="text-align: right;">0.998</td>
+<td style="text-align: left;">3.3%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">proposta fechada</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1000</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">1.000</td>
+<td style="text-align: left;">0.2%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">total</td>
+<td style="text-align: right;">1000</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">1.000</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">100%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>A variável que está sendo resumida é a variável “modalidade”, que indica se a falência foi ou não foi decretada. Há três respostas possíveis: “leilão”, “pregão”, ou “proposta fechada”. Ao olharmos para todos os processos, podemos então realizar a contagem de cada uma dessas categorias. A partir da contagem, criamos a coluna de “frequência”. A partir da frequência, nós criamos as próximas colunas, a saber, a frequência acumulada, a proporção, a proporção acumulada e a porcentagem. Note que as colunas “acumuladas” (isto é, as colunas de frequência acumulada e de proporção acumulada) não possuem um “total”, pois o total já está expresso na última categoria.</p>
+</section><section id="medidas-de-resumo-para-variáveis-quantitativas" class="level3" data-number="3.2.2"><h3 data-number="3.2.2" class="anchored" data-anchor-id="medidas-de-resumo-para-variáveis-quantitativas">
+<span class="header-section-number">3.2.2</span> Medidas de resumo para variáveis quantitativas</h3>
+<p>No caso das variáveis quantitativas, por elas já terem natureza numérica, há mais medidas de resumo possíveis. Vamos dividir a explicação em dois tipos de medidas: medidas de centro, medidas de variabilidade.</p>
+<section id="medidas-de-centro" class="level4" data-number="3.2.2.1"><h4 data-number="3.2.2.1" class="anchored" data-anchor-id="medidas-de-centro">
+<span class="header-section-number">3.2.2.1</span> Medidas de centro</h4>
+<p>O termo “medidas de centro” pode nos confundir. A nomenclatura pode nos induzir a pensar que essas medidas indicam o “meio” do gráfico, mas isso não é verdade. O “centro” a que se referem essas medidas é o ponto mais “típico” do conjunto em análise. São três medidas que estão nesta categoria: a média, a mediana e a moda.</p>
+<section id="média" class="level5" data-number="3.2.2.1.1"><h5 data-number="3.2.2.1.1" class="anchored" data-anchor-id="média">
+<span class="header-section-number">3.2.2.1.1</span> Média</h5>
+<p>A média é um conceito intuitivo, que designa basicamente a soma das observações dividida pelo total de observações. O símbolo da média é <span class="math inline">\(\bar{x}\)</span> (x-barra). O que queremos ver a seguir é a fórmula da média. Por mais que o conceito seja simples e intuitivo, precisamos formalizar um pouco mais o sentido da média. A fórmula é a que se segue:</p>
+<p><span class="math display">\[\bar{x} = \frac{x_1+x_2+\dots+x_n}{n}=\frac{1}{n}\sum_{i=1}^n x_i\]</span></p>
+<p>A fórmula principal é <span class="math inline">\(\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i\)</span>, mas precisamos compreender os elementos dessa fórmula. Vamos começar pelo símbolo <span class="math inline">\(\sum\)</span>. Esse símbolo é a letra grega <em>sigma</em> (maiúscula), que na matemática usamos para representar <em>somatórios</em>. O somatório é uma notação que resume uma série de adições em sequência. Assim, dando um exemplo fácil, podemos representar a seguinte soma <span class="math inline">\(4+8+12+16+20\)</span> como <span class="math inline">\(\sum_{k=1}^5 4k\)</span>. Vamos entender direito como que essa notação matemática representa a conta de adição.</p>
+<p>O somatório tem três parâmetros: a notação que está embaixo dele (no caso, <span class="math inline">\(k=1\)</span>); a notação que está em cima dele (no caso, <span class="math inline">\(5\)</span>); e a notação que está na frente do sigma (no caso, <span class="math inline">\(4k\)</span>).</p>
+<p>A começar pelo que está na frente do sigma (<span class="math inline">\(4k\)</span>), isso indica uma operação, que é <span class="math inline">\(4\)</span> vezes <span class="math inline">\(k\)</span>. Essa operação irá se repetir para <span class="math inline">\(5\)</span> valores de <span class="math inline">\(k\)</span>, sendo que o primeiro valor é <span class="math inline">\(k = 1\)</span> e o último valor é <span class="math inline">\(k = 5\)</span>. De onde tiramos essas últimas informações? Das notações em cima e embaixo do <span class="math inline">\(\sum\)</span>. Embaixo do <span class="math inline">\(\sum\)</span> encontramos o valor inicial de <span class="math inline">\(k\)</span>; e em cima encontramos o valor final de <span class="math inline">\(k\)</span>. Para cada valor que <span class="math inline">\(k\)</span> assumir, teremos uma expressão para somar. Então a primeira expressão é quando <span class="math inline">\(k = 1\)</span>, ou seja, <span class="math inline">\(4 \times 1 = 4\)</span>. Na segunda expressão, <span class="math inline">\(k = 2\)</span>, ou seja, <span class="math inline">\(4 \times 2 = 8\)</span>. A terceira expressão é <span class="math inline">\(4 \times 3 = 12\)</span>; a quarta, <span class="math inline">\(4 \times 4 = 16\)</span>; e a quinta e última, <span class="math inline">\(4 \times 5 = 20\)</span>. Então nós pegamos o resultado das 5 expressões e as somamos, resultando em <span class="math inline">\(4\)</span> (resultado da expressão quando <span class="math inline">\(k = 1\)</span>) + <span class="math inline">\(8\)</span> (resultado da expressão quando <span class="math inline">\(k = 2\)</span>) + <span class="math inline">\(12\)</span> (resultado da expressão quando <span class="math inline">\(k = 3\)</span>) + <span class="math inline">\(16\)</span> (resultado da expressão quando <span class="math inline">\(k = 4\)</span>) + <span class="math inline">\(20\)</span> (resultado da expressão quando <span class="math inline">\(k = 5\)</span>), ou simplesmente <span class="math inline">\(4+8+12+16+20\)</span>.</p>
+<p>Então o <span class="math inline">\(\sum\)</span> (e todos os elementos que o acompanham) indica a soma de todas as observações. Na fórmula da média, há uma diferença importante: no lugar do <span class="math inline">\(k\)</span>, temos o <span class="math inline">\(x_i\)</span>. Acontece que o <span class="math inline">\(i\)</span> não é um número exatamente como funcionava com o <span class="math inline">\(k\)</span>, ele é apenas um índice. Precisamos, então, verificar o que é <span class="math inline">\(x_i\)</span>.</p>
+<p>Voltemos à base de leilões, para pegar a variável <em>valor de avaliação</em>. Essa é uma variável quantitativa contínua. Pegando apenas as 10 primeiras observações dessa variável, temos os seguintes dados, resumidos na <a href="#tbl-dados-leiloes-10">Tabela&nbsp;<span>3.6</span></a>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-dados-leiloes-10" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Tabela&nbsp;3.6: Dados de leilões realizados</caption>
+<colgroup>
+<col style="width: 73%">
+<col style="width: 26%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">Descrição</th>
+<th style="text-align: right;">Valor de avaliação inicial</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Volkswagem, modelo Santana, placa BPF-3434, cor azul renanavam 420.289.666</td>
+<td style="text-align: right;">4934</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Vigas de Ferro para estruturas do barracão</td>
+<td style="text-align: right;">81000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">VIGA I DIM. 180 X 6.000 MM COM TALHA PNEUMÁTICA CAP. 1 TON</td>
+<td style="text-align: right;">1921</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">VIBRADOR “QUIMIS” PARA PENEIRAS</td>
+<td style="text-align: right;">235</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ventilador de parede Delta Diâmetro 70 CM</td>
+<td style="text-align: right;">70</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ventilador de parede</td>
+<td style="text-align: right;">234</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Veiculo ford Carrier</td>
+<td style="text-align: right;">2000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">vazo</td>
+<td style="text-align: right;">30</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Vasos - peso estimado de 90 a 130 kg</td>
+<td style="text-align: right;">7500</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">vários fios eletricos</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>A partir desse exemplo, podemos compreender o que significa <span class="math inline">\(x_i\)</span>. Para cada <span class="math inline">\(i\)</span> diferente temos uma posição de <span class="math inline">\(x\)</span>. Assim, por exemplo, <span class="math inline">\(x_1\)</span> será o valor de avaliação inicial do bem <span class="math inline">\(1\)</span>, ou seja, o valor do Volkswagen, de R$ 4.934,00. Podemos reescrever a tabela da seguinte forma:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-dados-leiloes-10-indice" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Tabela&nbsp;3.7: Dados de leilões realizados</caption>
+<colgroup>
+<col style="width: 6%">
+<col style="width: 68%">
+<col style="width: 24%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">Índice</th>
+<th style="text-align: left;">Descrição</th>
+<th style="text-align: right;">Valor de avaliação inicial</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(x_1\)</span></td>
+<td style="text-align: left;">Volkswagem, modelo Santana, placa BPF-3434, cor azul renanavam 420.289.666</td>
+<td style="text-align: right;">4934</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(x_2\)</span></td>
+<td style="text-align: left;">Vigas de Ferro para estruturas do barracão</td>
+<td style="text-align: right;">81000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(x_3\)</span></td>
+<td style="text-align: left;">VIGA I DIM. 180 X 6.000 MM COM TALHA PNEUMÁTICA CAP. 1 TON</td>
+<td style="text-align: right;">1921</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(x_4\)</span></td>
+<td style="text-align: left;">VIBRADOR “QUIMIS” PARA PENEIRAS</td>
+<td style="text-align: right;">235</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(x_5\)</span></td>
+<td style="text-align: left;">ventilador de parede Delta Diâmetro 70 CM</td>
+<td style="text-align: right;">70</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(x_6\)</span></td>
+<td style="text-align: left;">Ventilador de parede</td>
+<td style="text-align: right;">234</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(x_7\)</span></td>
+<td style="text-align: left;">Veiculo ford Carrier</td>
+<td style="text-align: right;">2000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(x_8\)</span></td>
+<td style="text-align: left;">vazo</td>
+<td style="text-align: right;">30</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(x_9\)</span></td>
+<td style="text-align: left;">Vasos - peso estimado de 90 a 130 kg</td>
+<td style="text-align: right;">7500</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(x_10\)</span></td>
+<td style="text-align: left;">vários fios eletricos</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Compreendendo o que significam cada um parâmetros do somatório, bem como com interpretar o índice, podemos voltar para a fórmula da média.</p>
+<p><span class="math display">\[\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i\]</span></p>
+<p>Estamos, por enquanto, olhando para este elemento da fórmula <span class="math inline">\(\sum_{i=1}^n x_i\)</span>. O que podemos concluir do significado disso? Vamos destrinchar com os elementos que vimos até agora. A somatória de <span class="math inline">\(\sum x_i\)</span> significa que vamos somar todos os elementos <span class="math inline">\(x_i\)</span>. Essa soma será feita a partir do primeiro elemento do conjunto, que é <span class="math inline">\(x_1\)</span> (por isso, embaixo do sigma tem <span class="math inline">\(i = 1\)</span>), até o último elemento do conjunto, que é <span class="math inline">\(x_n\)</span>. No caso, se temos 10 bens, então nosso <span class="math inline">\(n = 10\)</span>.</p>
+<p>Compreendido o somatório da fórmula, falta apenas o <span class="math inline">\(\frac{1}{n}\)</span>. Basicamente, isso indica que devemos dividir o resultado do somatório pelo total de observações. O <span class="math inline">\(n\)</span> que encontramos nessa parte é o mesmo <span class="math inline">\(n\)</span> que está em cima do <em>sigma</em>. Então, no caso dos bens, nós somariamos o valor de avaliação dos 10 bens e depois dividiríamos o total resultante dessa soma por <span class="math inline">\(10\)</span>, finalizando assim, o cálculo da média.</p>
+<p>Com isso, a fórmula da média está completa. Apesar de o conceito ser intuitivo, a sua representação matemática é um pouco mais complexa. Mas essa complexidade se mostra como uma ótima oportunidade para explicarmos um pouco sobre notação matemática. Compreender e operar fórmulas matemáticas ajuda a trabalhar com os conceitos matemáticos conforme eles ficam mais complexos.</p>
+</section><section id="mediana" class="level5" data-number="3.2.2.1.2"><h5 data-number="3.2.2.1.2" class="anchored" data-anchor-id="mediana">
+<span class="header-section-number">3.2.2.1.2</span> Mediana</h5>
+<p>Outra medida de centro importante é a <strong>mediana</strong>. A mediana é outro conceito intuitivo, mas menos conhecido. Literalmente, a mediana designa exatamente o número que está no meio do conjunto. Para encontrar este número, precisamos ordenar os números em ordem crescente. Uma vez encontrada esta ordem, há duas situações possíveis que podem acontecer. Se a quantidade de observações (<span class="math inline">\(n\)</span>) for ímpar, o número exatamente ao meio será a mediana; se a quantidade de observações (<span class="math inline">\(n\)</span>) for par, pegamos os dois números no centro e fazemos a média entre eles.</p>
+<p>Em conjuntos ímpares, como encontramos o número que está exatamente ao centro? Ou seja, qual é a fórmula genérica para encontrarmos todos os números do meio em todos os conjuntos ímpares? Imaginemos um conjunto de 7 elementos. Intuitivamente conseguimos dizer que o elemento no meio será o 4º elemento, pois há 3 elementos à esquerda do 4º elemento e mais 3 elementos à direita dele. A partir disso, podemos pensar que 4 (isto é, a posisção do número central) é a metade de 8; e que 8 é um número acima de 7 (o número total de elementos do conjunto). Assim, a fórmula que temos é <span class="math inline">\(\frac{n+1}{2}\)</span>. Então o índice do elemento central será <span class="math inline">\(x_{\left(\frac{n+1}{2}\right)}\)</span></p>
+<p><span class="math display">\[\text{md}(\boldsymbol{x}) = x_{\left(\frac{n+1}{2}\right)}, \text{se } n \text{ ímpar}\]</span></p>
+<p>Em conjuntos pares, não existe nenhum número exatamente no centro. Se tivermos, ao invés de 7 observações, 8, não teremos nenhum elemento que, caso seja escolhido, divida o conjunto entre duas partes idênticas. Por exemplo, a metade de 8 é 4; então se pegarmos o 4o elemento, o que acontecerá? Haverá 3 elementos à esquerda deste elemento, e mais 4 elementos à sua direita. O 4º elemento, portanto, não pode ser a mediana. O mesmo problema acontece se escolhermos o 5º elemento, pois teremos 4 números à sua esquerda e mais 3 números à sua direita.</p>
+<p>Como fazer então para encontrar a mediana neste caso? Basicamente, vamos, no exemplo, pegar o 4º e 5º elementos e fazer a média aritmética entre eles. Pensando de forma abstrata, o 4º elemento é <span class="math inline">\(\frac{n}{2}\)</span>; e o 5º elemento é o próximo número da sequência em relação ao elemento do meio, ou seja, ele é <span class="math inline">\(\frac{n}{2}+1\)</span>. Para designar então esses dois elementos temos as seguintes notações: <span class="math inline">\(x_{\left(\frac{n}{2}\right)}\)</span> e <span class="math inline">\(x_{\left(\frac{n}{2}+ 1\right)}\)</span>. A média aritmética entre esses dois elementos é simplesmente a soma entre eles dividido por dois. Assim, temos a seguinte fórmula para a mediana em conjuntos pares:</p>
+<p><span class="math display">\[\text{md}(\boldsymbol{x})=\frac{1}{2}\left(x_{\left(\frac{n}{2}\right)} + x_{\left(\frac{n}{2}+1\right)}\right)\]</span> Vale fazermos um esclarecimento importante a respeito da diferença da média para a mediana. A mediana é preferível à média em muitas situações. Isso decorre de uma propriedade da mediana: ela é <em>robusta</em>. Robustez é uma palavra que indica a suscetibilidade de um valor aos seus extremos. Vamos dar dois exemplos para deixar isso claro.</p>
+<p>Pensemos em um conjunto abstrato com os seguintes números:</p>
+<pre><code>10  11  12  13  14  15  16  17  18  19  20</code></pre>
+<p>Este conjunto contém <span class="math inline">\(n = 11\)</span> observações. Assim, a média é <span class="math inline">\((10+11+12+13+14+15+16+17+18+19+20)/11 = 15\)</span>. A mediana é exatamente o número central, pois o conjunto é ímpar, ou seja, a mediana é <span class="math inline">\(15\)</span> também.</p>
+<p>Agora olhemos para um segundo conjunto.</p>
+<pre><code>10  11  12  13  14  15  16  17  18  19  2000</code></pre>
+<p>A única diferença é o último elemento, ou seja, o número <span class="math inline">\(x_{11}=2000\)</span>. Temos <span class="math inline">\(11\)</span> observações ainda. Neste caso a média é <span class="math inline">\((10+11+12+13+14+15+16+17+18+19+2000)/11 = 195\)</span>; mas a mediana continua sendo exatamente a mesma, ou seja, <span class="math inline">\(15\)</span>, porque <span class="math inline">\(15\)</span> continua sendo o elemento do meio.</p>
+<p>A partir deste exemplo podemos compreender o que significa dizer que uma medida é mais “robusta” do que outra. A mediana, neste caso, é mais robusta, pois ela se afeta menos com os valores extremos do que a média, ela é mais resistente a valores desviantes.</p>
+</section><section id="moda" class="level5" data-number="3.2.2.1.3"><h5 data-number="3.2.2.1.3" class="anchored" data-anchor-id="moda">
+<span class="header-section-number">3.2.2.1.3</span> Moda</h5>
+<p>Feita essa consideração, podemos falar da última medida de centro, a <strong>moda</strong>. A moda indica simplesmente o valor mais frequente do conjunto. Encontrar a moda pressupõe que saibamos todos os valores que aparecem no conjunto, bem como a sua contagem. O valor cuja contagem é maior será o valor da moda. Se o conjunto tiver apenas um valor com a maior contagem, ele será “unimodal”; se houver dois valores com a mesma contagem, então teremos um conjunto “bimodal”; se houver muitos valores, então será “multimodal”. Se não houver nenhum valor que se destaque, então o conjunto será “uniforme”. Por mais que este capítulo não se dedique a estudar gráficos ainda, neste caso, vale a pena demonstrar como cada tipo de conjunto (unimodal, bimodal, multimodal e uniforme) se comporta em termos gráficos. Vemos isso na <a href="#fig-distribuicoes-moda">Figura&nbsp;<span>3.1</span></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-distribuicoes-moda" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="03-estatisticas_files/figure-html/fig-distribuicoes-moda-1.png" class="img-fluid figure-img" width="2400"></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;3.1: Distribuições</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section></section><section id="medidas-de-dispersão" class="level4" data-number="3.2.2.2"><h4 data-number="3.2.2.2" class="anchored" data-anchor-id="medidas-de-dispersão">
+<span class="header-section-number">3.2.2.2</span> Medidas de dispersão</h4>
+<p>Para as variáveis quantitativas, além de falarmos dos valores mais “típicos” (ou “centrais”, como convencionamos chamar), podemos falar também em como esses valores variam, ou como esses valores se dispersam ao longo do conjunto de observações. Com um exemplo simples, percebemos como a informação da medida central isoladamente não é capaz de contar a história inteira dos dados.</p>
+<pre><code>Grupo A (variável X):   3   4 5 6 7
+Grupo B (variável Y):   1 2 5 7 9
+Grupo C (variável Z):   5   5 5 5 5
+Grupo D (variável W):   1   5 5 6 8
+Grupo E (variável V):   3   5 5 6 6</code></pre>
+<p>Ao calcularmos a média desses 5 grupos, percebemos que todos possuem uma média 5,0. Entretanto, claramente os conjuntos são diferentes. A diferença que estes conjuntos apresentam não pode ser captada pelas medidas de centro. É por esta razão que utilizamos as medidas de dispersão. Há quatro medidas importantes aqui: amplitude, desvio médio, desvio padrão e intervalo inter-quartis, também chamado de IQR.</p>
+<section id="amplitude" class="level5" data-number="3.2.2.2.1"><h5 data-number="3.2.2.2.1" class="anchored" data-anchor-id="amplitude">
+<span class="header-section-number">3.2.2.2.1</span> Amplitude</h5>
+<p>A <strong>amplitude</strong> indica, basicamente, o espectro dentro do qual as observações variam. Para calculá-la basta identificar o valor máximo do conjunto, bem como o seu valor mínimo. A diferença entre os dois números é a amplitude.</p>
+<p><span class="math display">\[A(\boldsymbol x)=\max(\boldsymbol x)-\min(\boldsymbol x)\]</span></p>
+<p>Podemos retornar ao exemplo da base de leilões. O menor valor de avaliação que encontramos nesta base é de R$ 0,00 (zero reais). Esse valor é até frequente na base, pois vários bens arrecadados não possuem valor algum. O maior valor da base é R$ 157.000.000,00, que representa o valor de um imóvel. Assim, a amplitude dessa variável é o valor mínimo subtraído do valor máximo, ou seja, <span class="math inline">\(157.000.000,00 - 0\)</span>, ou seja, a amplitude dessa variável é de R$ 157.000.000,00. A interpretação deste valor é que todas as observações estão dadas dentro de um intervalo de cento e cinquenta e sete milhões de reais.</p>
+<p>A amplitude é uma medida simples de ser calculada, entretanto, ela não consegue indicar a relação da dispersão com as medidas centrais. Em seu lugar, as medidas de dispersão mais frequentemente usadas são o desvio médio e o desvio padrão. Vamos, a seguir, realizar uma explicação sobre as duas medidas, pois elas estão muito próximas.</p>
+</section><section id="medidas-de-dispersão-ao-redor-da-média-desvio-padrão-e-desvio-médio" class="level5" data-number="3.2.2.2.2"><h5 data-number="3.2.2.2.2" class="anchored" data-anchor-id="medidas-de-dispersão-ao-redor-da-média-desvio-padrão-e-desvio-médio">
+<span class="header-section-number">3.2.2.2.2</span> Medidas de dispersão ao redor da média: desvio padrão e desvio médio</h5>
+<p>As duas medidas que estudaremos a seguir indicam a dispersão dos valores em torno da média. Ou seja, tomando a média (e não qualquer medida de centro) como referencial, essas duas medidas indicam como os dados variam ao redor do centro. Algumas perguntas importantes que essas medidas nos ajudam a compreender são: As observações estão concentradas ao redor da média? Ou elas estão dispersas e longe umas das outras? A <a href="#fig-normal-sd">Figura&nbsp;<span>3.2</span></a> mostra dois exemplo de conjuntos de dados com a mesma média, mas com dispersões das observações em torno da média totalmente diferentes. No primeiro gráfico, as observações estão concentradas; no segundo, elas estão dispersas. Observamos, ao compararmos estes dois gráficos, como que as medidas de centro não conseguem explicar as distribuições dos conjuntos muito bem, quando isoladas, mas quando combinadas com as medidas de dispersão, conseguimos descrever muito melhor os conjuntos.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-normal-sd" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="03-estatisticas_files/figure-html/fig-normal-sd-1.png" class="img-fluid figure-img" width="2400"></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;3.2: Duas distribuições com mesma média e variabilidades distintas.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Antes de entrarmos nas notações matemáticas, vamos pensar, intuitivamente como essas medidas de dispersão que se referem à média funcionam. Já deve ter ficado claro que a primeira informação essencial que temos de ter em mãos é a média. Sem o valor da média, não conseguimos calcular o desvio médio nem o desvio padrão. Uma vez que temos o valor médio, qual é o próximo passo?</p>
+<p>Para responder a isso, imaginemos o seguinte conjunto de dados, cuja média é 5, conforme a <a href="#tbl-dados-sem-desvio">Tabela&nbsp;<span>3.8</span></a>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-dados-sem-desvio" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Tabela&nbsp;3.8: Dados para calcular desvios</caption>
+<thead><tr class="header">
+<th style="text-align: left;">Índice</th>
+<th style="text-align: right;">Valor</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(x_1\)</span></td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(x_2\)</span></td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(x_3\)</span></td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(x_4\)</span></td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(x_5\)</span></td>
+<td style="text-align: right;">7</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Uma pergunta que podemos fazer sobre esse conjunto, mas que ainda não fizemos, é: o quão distante da média está cada uma das observações? A partir disso, podemos discutir, por exemplo, que número está mais próximo da média <span class="math inline">\(5\)</span>, <span class="math inline">\(x_4=6\)</span> ou <span class="math inline">\(x_5=7\)</span>? Para responder a essa pergunta, vamos olhar para a <a href="#fig-distancia">Figura&nbsp;<span>3.3</span></a>:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-distancia" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="03-estatisticas_files/figure-html/fig-distancia-1.png" class="img-fluid figure-img" width="2700"></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;3.3: Distância</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Pela figura, fica claro que a distância entre <span class="math inline">\(x_4\)</span> e a média é menor do que a distância entre <span class="math inline">\(x_5\)</span> e a média. São essas distâncias que queremos computar. Se calcularmos esse valor para todas as observações, então teremos uma informação a mais a respeito desse conjunto: teremos o desvio de cada observação em relação à média. Com isso, conseguimos completar o conjunto acima conforme a <a href="#tbl-dados-com-desvio">Tabela&nbsp;<span>3.9</span></a>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-dados-com-desvio" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Tabela&nbsp;3.9: Dados para calcular desvios</caption>
+<thead><tr class="header">
+<th style="text-align: left;">Índice</th>
+<th style="text-align: right;">Valor</th>
+<th style="text-align: right;">Desvio</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(x_1\)</span></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(x_2\)</span></td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(x_3\)</span></td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(x_4\)</span></td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(x_5\)</span></td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Uma vez que sabemos como cada observação se desvia da média, falta sabermos uma última informação relevante. Lembrando que estamos falando de medidas sobre <em>conjuntos de informações</em>, é possível perceber que a informação da diferença é uma informação de <em>cada observação</em> e não do conjunto como um todo. Percebemos isso porque para cada índice (<span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span>, <span class="math inline">\(x_3\)</span>, <span class="math inline">\(...\)</span>), temos uma única medida de desvio. A partir disso, o que podemos nos perguntar é: como eu trato das diferenças do <em>conjunto</em>, e não de cada observação? A essa pergunta a resposta é simples: basta fazer a média dos desvios, ficando <span class="math inline">\((2+1+0+1+2)/5 = 1,2\)</span>.</p>
+<p>Dessa forma podemos dizer que o nosso conjunto tem média 5 e que ele tem um desvio médio de 1,2. Essa informação que encontramos (de 1,2 de desvio médio), ainda não explica a variância, mas ela dá uma noção de que tipo de informação a variância leva em conta, porque a lógica por trás da variância é a mesma por trás do desvio médio.</p>
+<p>Até aqui vimos apenas uma noção intuitiva do que significam as medidas de “dispersão ao redor da média”. Usamos como fio condutor para essa explicação a medida do desvio médio. Vamos, a seguir, formalizar o pensamento intuitivo, bem como desenvolver a outra medida restante o desvio padrão (e veremos que para chegar no desvio médio, precisamos explicar a variância antes).</p>
+<p>A começar pela formalização matemática do desvio médio, é preciso notar uma operação matemática importante que fizemos ao longo da explicação. Quando comparamos a <em>distância</em> de cada observação em relação à média, usamos a <a href="#fig-distancia">Figura&nbsp;<span>3.3</span></a> para verificar essas medidas. Com isso, construímos a <a href="#tbl-dados-com-desvio">Tabela&nbsp;<span>3.9</span></a>. O procedimento matemático que está por trás dessas etapas é o <strong>módulo</strong>. A notação do módulo de <span class="math inline">\(x\)</span> é dada por:</p>
+<p><span class="math display">\[
+|x| = \left\{\begin{array}{rl}x,&amp;\text{ se }x\geq 0,\\ -x,&amp;\text{ se } x &lt; 0\end{array}\right.
+\]</span></p>
+<p>O módulo é usado para calcular distâncias até certos pontos. Essas distâncias nunca podem ser negativas. O que queremos são <em>valores absolutos</em>, ou seja, queremos apenas o número que indica a distância, sem considerar o sinal (positivo ou negativo).</p>
+<p>Então o que fizemos quando construímos a <a href="#fig-distancia">Figura&nbsp;<span>3.3</span></a> foi representar graficamente o módulo das diferenças entre o valor e a média. Em seguida, computamos essas distâncias na <a href="#tbl-dados-com-desvio">Tabela&nbsp;<span>3.9</span></a>. Em termos matemáticos, fizemos a seguinte operação:</p>
+<p><span class="math display">\[
+desvio = |x-\bar{x}|
+\]</span></p>
+<p>A partir dessa operação, podemos formalizar um pouco o pensamento. O que construímos até aqui foi a notação matemática do conceito de desvio. Essa notação representa o módulo da diferença entre a observação <span class="math inline">\(x\)</span> e a média do conjunto <span class="math inline">\(\bar{x}\)</span>.</p>
+<p>Devemos notar que calculamos os desvios <strong>para cada</strong> observação. A partir disso, somamos todos os desvios. Essas etapas (de calcular um desvio <strong>para cada</strong> observação, seguido de somar cada um desses desvios em um “desvio total), são representadas matematicamente por meio do somatório:</p>
+<p><span class="math display">\[
+desvio\:total = \sum_{i=1}^n |x_i-\bar{x}|
+\]</span></p>
+<p>Lembrando da notação do somatório, ele significa que para cada valor de <span class="math inline">\(x_i\)</span>, em que <span class="math inline">\(i\)</span> pode assumir os valores de <span class="math inline">\(1\)</span> a <span class="math inline">\(n\)</span>, iremos fazer o módulo da diferença entre o valor e a média, somando todos os resultados.</p>
+<p>Por fim, o procedimento final que realizamos na explicação intuitiva foi calcular a média do desvio total, isto é, pegamos o desvio total e dividimos pelo total de observações. De modo mais formalizado, o que fizemos foi a seguinte conta:</p>
+<p><span class="math display">\[
+dm(\boldsymbol{x}) = \frac{1}{n}\sum_{i=1}^n |x_i-\bar{x}|
+\]</span> Esta é a fórmula do desvio médio de <span class="math inline">\(x\)</span>, ou simplesmente, <span class="math inline">\(dm(x)\)</span>.</p>
+<p>Para seguirmos adiante com a explicação do desvio médio (e da variância), tem uma questão importante que devemos nos fazer: porque devemos somar o módulo das diferenças e não apenas as diferenças, ou seja, porque a conta para o desvio médio não foi simplesmente <span class="math inline">\(\frac{1}{n}\sum_{i=1}^n (x_i-\bar{x})\)</span>?</p>
+<p>A resposta para essa pergunta não é trivial. Se a gente calculasse o desvio total pela soma das diferenças (e não pela soma do módulos das diferenças), depois esbarraríamos em um problema ao calcular a média desse desvio. O problema é que a média das diferenças é sempre zero. A prova matemática disso é:</p>
+<p><span class="math display">\[\frac{1}{n}\sum_{i=1}^n(x_i-\bar x)=\frac{1}{n}\sum_{i=1}^n x_i - \frac{1}{n}\sum_{i=1}^n \bar x = \bar x - \frac{n}{n}\bar x = \bar x - \bar x = 0\]</span></p>
+<p>Não há necessidade de se compreender toda a demonstração de que a média das diferenças é sempre igual a 0 (mas vale a pena tentar!). O que realmente precisamos entender é simplesmente que se calculássemos cada um dos desvios, sem levar em consideração o módulo, teríamos uma série de números negativos na nossa conta e esses números negativos iriam “anular” os números positivos, resultando em zero sempre. Podemos ver o resultado disso na <a href="#tbl-dados-com-diferencas">Tabela&nbsp;<span>3.10</span></a>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-dados-com-diferencas" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Tabela&nbsp;3.10: Comparação dos desvios com as diferenças</caption>
+<thead><tr class="header">
+<th style="text-align: left;">Índice</th>
+<th style="text-align: right;">Valor</th>
+<th style="text-align: right;">Desvio</th>
+<th style="text-align: right;">Diferença</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(x_1\)</span></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">-2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(x_2\)</span></td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">-1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(x_3\)</span></td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(x_4\)</span></td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(x_5\)</span></td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">total</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Então, como estávamos falando, para seguirmos adiante na explicação do desvio médio (e da variância), precisávamos entender o problema de não considerar o valor absoluto (ou seja, o valor em módulo) dos números. <em>O problema são os valores negativos</em>. Se, para calcular o desvio médio o problema dos números negativos é resolvido pelo módulo, veremos na variância e no desvio padrão que a forma de resovler este problema é outra. No lugar do módulo, calculamos a diferença ao quadrado. Apenas trocando o módulo pelo quadrado do fórmula do desvio médio, encontramos a fórmula da variância, conforme observamos na seguinte equação:</p>
+<p><span class="math display">\[
+var(\boldsymbol{x}) = \frac{1}{n}\sum_{i=1}^n (x_i-\bar{x})^2
+\]</span></p>
+<p>Quando elevamos uma diferença ao quadrado, por mais que a diferença seja negativa, o quadrado sempre será positivo, de modo que podemos observar na <a href="#tbl-dados-com-diferencas2">Tabela&nbsp;<span>3.11</span></a> que na coluna <em>Diferença ao quadrado</em> não há nenhum número negativo.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-dados-com-diferencas2" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Tabela&nbsp;3.11: Comparação dos desvios com as diferenças e com as diferenças ao quadrado</caption>
+<thead><tr class="header">
+<th style="text-align: left;">Índice</th>
+<th style="text-align: right;">Valor</th>
+<th style="text-align: right;">Desvio</th>
+<th style="text-align: right;">Diferença</th>
+<th style="text-align: right;">Diferença ao quadrado</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(x_1\)</span></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">-2</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(x_2\)</span></td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(x_3\)</span></td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(x_4\)</span></td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(x_5\)</span></td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>A diferença da variância para o desvio médio é simplesmente a forma como eles lidam com o problema dos valores negativos. Dessa forma, a mesma intuição que desenvolvemos para o desvio médio pode ser usada para compreender a variância, com a diferença que a variância apresenta os resultados distorcidos por estarem ao quadrado. Entretanto, o significado da variância ainda representa algo muito similar ao do desvio médio: a variância apresenta a dispersão dos valores ao redor da média.</p>
+<p>Por causa dessa distorção que a variância gera ao elevar os números ao quadrado, pode parecer que o desvio médio é preferível em relação a ela. Acontece que o uso do módulo no cálculo da medida gera alguns problemas matemáticos em algumas operações. Assim, não usamos nem o desvio médio (por usar o módulo) e nem a variância (por estar um pouco distorcida pelos números ao quadrado). No lugar dessas medidas, fazemos uma “correção” da variância. Já que a variância altera a unidade de medida para a unidade ao quadrado, podemos voltar à dimensão anterior simplesmente fazendo a raiz quadrada da variância. Afinal de contas, a raiz quadrada é a operação matemática inversa de elevar ao quadrado. Quando realizamos este procedimento final, de tirar a raiz quadrada da variância, obtemos o chamado <em>desvio padrão</em> (e note a sutileza nas palavras, pois estamos falando de desvio <em>padrão</em> e não mais de desvio <em>médio</em>). A fórmula do desvio padrão é representada da seguinte maneira:</p>
+<p><span class="math display">\[
+dp(\boldsymbol x) = \sqrt{var(\boldsymbol x)} = \sqrt{\frac{1}{n}\sum_{i=1}^n\left(x-\bar x\right)^2}
+\]</span></p>
+<p>Fica bem claro pela fórmula do desvio padrão que ele é simplesmente a raíz quadrada da variância. Exatamente por guardar essa relação intrínseca com a variância, é que precisávamos explicá-la antes de explicar o desvio padrão.</p>
+<p>Com esta última fórmula, conseguimos compreender o significado e as notações matemáticas das duas medidas de dispersão ao redor da média que nos propusemos a discutir: o desvio médio e o desvio padrão (definindo, no meio do caminho, a variância). Dessas medidas, as mais mais utilizadas são a variância e o desvio padrão. O desvio padrão é mais popular do que o desvio médio por ser mais sensível a valores atípicos (o que geralmente é desejável aqui) e por ter algumas propriedades matemáticas de interesse na modelagem estatística. Não trataremos dessas propriedades por enquanto.</p>
+<p>Vamos antes de finalizar essa explicação das medidas que indicam a dispersão dos dados em relação à média, dar um exemplo para dar concretude dessas medidas, pois os conceitos apresentados são difíceis. O exemplo é o mesmo que vem acompanhando a gente nesta seção: o valor de avaliação dos bens alienados em processos de falência. A base usada é a base <code>leiloes</code>. Dessa vez, não vamos olhar apenas para 10 observações, mas para 483 observações da base (de um total de 1000 observações). Realizamos uma filtragem dessa base com fins didáticos apenas, para ficar mais fácil de calcular. A base se encontra na <a href="#tbl-leiloes-var">Tabela&nbsp;<span>3.12</span></a>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-leiloes-var" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Tabela&nbsp;3.12: Amostra de 10 bens aleatórios da base</caption>
+<thead><tr class="header">
+<th style="text-align: left;">descricao</th>
+<th style="text-align: right;">valor_avaliacao_inicial</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">bem 1</td>
+<td style="text-align: right;">126</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">bem 2</td>
+<td style="text-align: right;">286</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">bem 3</td>
+<td style="text-align: right;">420</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">bem 4</td>
+<td style="text-align: right;">432</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">bem 5</td>
+<td style="text-align: right;">750</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">bem 6</td>
+<td style="text-align: right;">1660</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">bem 7</td>
+<td style="text-align: right;">1900</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">bem 8</td>
+<td style="text-align: right;">1949</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">bem 9</td>
+<td style="text-align: right;">2500</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">bem 10</td>
+<td style="text-align: right;">3700</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Recomendamos fortemente que você tente calcular as duas medidas de dispersão desse conjunto. A média do valor de avaliação é R$ 1.372,30. Em primeiro lugar, tente calcular as diferenças de cada um desses bens em relação à média. O resultado esperado está resumido na <a href="#tbl-leiloes-var-dif">Tabela&nbsp;<span>3.13</span></a></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-leiloes-var-dif" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Tabela&nbsp;3.13: Amostra de 10 bens aleatórios da base com o valor das diferenças</caption>
+<thead><tr class="header">
+<th style="text-align: left;">descricao</th>
+<th style="text-align: right;">valor_avaliacao_inicial</th>
+<th style="text-align: right;">diferenca</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">bem 1</td>
+<td style="text-align: right;">126</td>
+<td style="text-align: right;">-1246.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">bem 2</td>
+<td style="text-align: right;">286</td>
+<td style="text-align: right;">-1086.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">bem 3</td>
+<td style="text-align: right;">420</td>
+<td style="text-align: right;">-952.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">bem 4</td>
+<td style="text-align: right;">432</td>
+<td style="text-align: right;">-940.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">bem 5</td>
+<td style="text-align: right;">750</td>
+<td style="text-align: right;">-622.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">bem 6</td>
+<td style="text-align: right;">1660</td>
+<td style="text-align: right;">287.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">bem 7</td>
+<td style="text-align: right;">1900</td>
+<td style="text-align: right;">527.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">bem 8</td>
+<td style="text-align: right;">1949</td>
+<td style="text-align: right;">576.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">bem 9</td>
+<td style="text-align: right;">2500</td>
+<td style="text-align: right;">1127.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">bem 10</td>
+<td style="text-align: right;">3700</td>
+<td style="text-align: right;">2327.7</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>A partir destes valores, podemos calcular o desvio médio, a variância e o desvio padrão. Tente calcular por sua conta o valor do desvio médio, da variância e do desvio padrão. Os resultados devem ser:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-medidas-dispersao" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Tabela&nbsp;3.14: Resumo das medidas de dispersão ao redor da média do exemplo de leilões</caption>
+<thead><tr class="header">
+<th style="text-align: left;">Medida de dispersão</th>
+<th style="text-align: right;">Valor</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">desvio médio</td>
+<td style="text-align: right;">969.50</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">variância</td>
+<td style="text-align: right;">1229532.41</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">desvio padrão</td>
+<td style="text-align: right;">1108.84</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Como interpretamos esses resultados? Primeiro, devemos nos lembrar de que a média de avaliação de cada bem é R$ 1.372,30, pois essas três medidas dizem respeito à distribuição dos resultados ao redor da média. Uma vez que temos a média, então podemos dizer que:</p>
+<ul>
+<li><p>Pelo desvio médio, podemos dizer que os valores variam em média R$ 969,50 ao redor da média. Isso significa que os valores estão pouco concentrados e muito dispersos. Percebemos isso porque o valor do desvio médio é muito próximo ao valor da média.</p></li>
+<li><p>Pela variância, podemos dizer que os valores ao quadrado variam em média 1.229.532,41 reais ao quadrado ao redor da média. Essa interpretação é difícil de ser feita, por isso olhamos para o desvio padrão.</p></li>
+<li><p>Pelo desvio padrão, podemos dizer que os valores variam em média R$ 1.108,84 ao redor da média. Vemos também como o desvio padrão acaba se assemelhando ao valor do desvio médio. Como comentado anteriormente, o desvio padrão tende a considerar mais os valores atípicos e por isso é um pouco maior que o desvio médio, mas os valores são próximos. Aqui, novamente, percebemos que os valores estão dispersos, jáq ue o desvio padrão e a média são próximos.</p></li>
+</ul>
+<p>Vale notar que, na interpretação desses resultados, essas medidas sempre indicam dispersão ao redor da média.</p>
+</section><section id="interquartile-range-iqr-e-os-quantis-empíricos" class="level5" data-number="3.2.2.2.3"><h5 data-number="3.2.2.2.3" class="anchored" data-anchor-id="interquartile-range-iqr-e-os-quantis-empíricos">
+<span class="header-section-number">3.2.2.2.3</span> Interquartile range (IQR) e os quantis empíricos</h5>
+<p>Há uma última medida de variabilidade que é o <em>interquartile range</em> (IQR). Podemos dizer que os IQRs estão para o desvio padrão assim como a mediana está para a média. Se bem lembrarmos, a média padece de um problema: ela não é robusta, ou seja, ela é influenciável pelos valores extremos. Em seu lugar, podemos usar a mediana para indicar o centro da distribuição, pois essa medida é mais robusta. Da mesma forma, como a variância e o desvio padrão dependem da média para serem calculadas, elas também são medidas pouco robustas. O IQR, então, pode ser visto como uma medida de dispersão robusta. <strong>Mas para compreendermos o IQR, devemos compreender o que são quantis empíricos</strong>.</p>
+<p>Um <strong>quantil empírico</strong> é um valor que divide um conjunto de dados em determinada proporção. Por exemplo, a mediana é o quantil empírico que indica o valor que divide o conjunto de dados em 50%. Existem outros quantis empíricos, como o quantil de 25%, que é um valor que divide o conjunto de observações entre 25-75, ou seja, 25% das observações estão antes deste valor e 75% das observações estão depois deste valor.</p>
+<p>Existe um quantil empírico para cada porcentagem que se queira. Representamos, matematicamente, cada percentil como <span class="math inline">\(q(p)\)</span>, em que <span class="math inline">\(p\)</span> é a proporção desejada. Por exemplo, o quantil de 25% é o <span class="math inline">\(q(0,25)\)</span>; o quantil de 78% é o <span class="math inline">\(q(0,78)\)</span>; o quantil de 1% é o <span class="math inline">\(q(0,01)\)</span>, e assim por diante.</p>
+<p>Alguns quantis possuem nomes específicos. Se dividirmos os quantis em 100, cada quantil será um “percentil”. E se dividirmos o conjunto em 10 partes iguais, cada quantil será um “decil”. Ainda, se dividirmos os quantis em 4 partes iguais, cada quantil será um “quartil”. Esta última divisão é uma das divisões mais importantes. Apesar de dividirmos o conjunto em 4 partes iguais, e apesar de o nome desse quantil ser “quartil” (o que, novamente, remete à ideia de 4 partes), há apenas 3 quartis:</p>
+<ul>
+<li>quartil inferior, <span class="math inline">\(q(0,25)\)</span>: Divide o conjunto no 25%, ou seja, um quarto dos dados estão abaixo deste quartil.</li>
+<li>mediana, <span class="math inline">\(q(0,50)\)</span>: Divide o conjunto no 50%. É a mediana.</li>
+<li>quartil superior, <span class="math inline">\(q(0,75)\)</span>: Divide o conjunto no 75%, ou seja, apenas um quarto dos dados estão acima deste quartil.</li>
+</ul>
+<p>Chamamos essas três medidas de quartis, não porque são 4 valores, mas porque conseguimos dividir o conjunto dos dados em 4 partes iguais a partir destes valores. A primeira é calculado como a amplitude entre o ponto mínimo, <span class="math inline">\(q(0,00)\)</span>, e o primeiro quartil, <span class="math inline">\(q(0,25)\)</span>; a segunda, entre o segundo quartil, <span class="math inline">\(q(0,25)\)</span> e a mediana, <span class="math inline">\(q(0,50)\)</span>; a terceira, entre a mediana, <span class="math inline">\(q(0,50)\)</span> e o terceiro quartil, <span class="math inline">\(q(0,75)\)</span>; e a quarta, entre o terceiro quartil, <span class="math inline">\(q(0,75)\)</span> e o valor máximo, <span class="math inline">\(q(1,00)\)</span>. Assim temos:</p>
+<ul>
+<li>Conjunto 1: <span class="math inline">\(q(0,25) - q(0,00)\)</span>
+</li>
+<li>Conjunto 2: <span class="math inline">\(q(0,50) - q(0,25)\)</span>
+</li>
+<li>Conjunto 3: <span class="math inline">\(q(0,75) - q(0,50)\)</span>
+</li>
+<li>Conjunto 4: <span class="math inline">\(q(1,00) - q(0,75)\)</span>
+</li>
+</ul>
+<p>A partir dos quartis (isto é, os quantis que dividem o conjunto em 4 partes iguais), podemos construir a medida do IQR. Enquanto os quartis indicam pontos no conjunto de observações, o IQR indica uma amplitude. Entretanto, ao contrário da amplitude geral que vimos acima, que é construída a partir do valor mínimo, <span class="math inline">\(q(0,00)\)</span>, e do valor máximo, <span class="math inline">\(q(1,00)\)</span>, o IQR é construído pela amplitude entre o quartil inferior, <span class="math inline">\(q(0,25)\)</span>, e o quartil superior, <span class="math inline">\(q(0,75)\)</span>.</p>
+<p>Justamente por excluir os valores extremos (que estão no conjunto 1 e no conjunto 4, ou seja, entre o valor mínimo e o quartil inferior e entre o quartil superior e o valor máximo), dizemos que o IQR é uma medida mais robusta do que o desvio padrão para indicar a dispersão do conjunto.</p>
+<p>Como exemplo final, podemos voltar à base de leilões. Dessa vez, vamos olhar para a base completa (as 1000 observações), ao invés de alguma amostra dela. Temos os seguintes quantis empíricos da variável sobre o valor de avaliação</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-quantis" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Tabela&nbsp;3.15: Resumo dos quantis empíricos do valor de avaliação</caption>
+<thead><tr class="header">
+<th style="text-align: left;">Quantil</th>
+<th style="text-align: right;">Valor</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">min(0%)</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">quartil inferior (25%)</td>
+<td style="text-align: right;">104</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">mediana (50%)</td>
+<td style="text-align: right;">500</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">quartil superior (75%)</td>
+<td style="text-align: right;">3755</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">máximo (100%)</td>
+<td style="text-align: right;">157000000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Para calcular o IQR, basta subtrair o quartil inferior do quartil superior, ou seja 3755-104, que resulta em 3651. A interpretação desse resultado é os valores centrais da amostra se distribuem dentro de uma amplitude de R$ 3.651,00. Ou seja, 50% dos valores estão distribuídos dentro de um intervalo de R$ 3.651,00. É interessante comparar o IQR com a amplitude. A amplitude, como vimos, é igual a R$ 157.000.000,00, ou seja, todos os valores da base estão dentro de um intervalo de R$ 157.000.000,00, mas desse intervalo inteiro, 50% dos valores (e não quaisquer 50% dos valores, mas a metade dos valores centrais) estão apenas em um intervalo de amplitude R$ 3.651,00. Isso indica como que a população está muito dispersa, pois há uma concentração de metade dos valores em um pequeno intervalo, e uma outra metade distribuída em um grande intervalo. Por mais que ainda não tenhamos estudado gráficos, é útil neste momento compreender para o que estamos falando de forma visual (<a href="#fig-grafico-variabilidade">Figura&nbsp;<span>3.4</span></a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-grafico-variabilidade" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="03-estatisticas_files/figure-html/fig-grafico-variabilidade-1.png" class="img-fluid figure-img" width="2700"></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;3.4: Dados de valores de avaliação com alta variabilidade</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Observamos neste gráfico uma altíssima concentração em valores, que, por causa da escala, estão representados no 0. Não é que, de fato, os valores sejam 0, mas é que, dentro de uma escala que vai até 150 milhões, a faixa de valores em que se concentram os dados é muito pequena (50% estão na faixa entre R$ 104,00 e R$ 3.755,00).</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-ABJ2019" class="csl-entry" role="doc-biblioentry">
+ABJ. 2019. <span>"<span>Avalia<span>ç</span><span>ã</span>o do Impacto de Crit<span>é</span>rios Objetivos na Distin<span>ç</span><span>ã</span>o Entre Posse para Uso e Posse para Tr<span>á</span>fico: um estudo jurim<span>é</span>trico</span>"</span>. <a href="https://abj.org.br/cases/drogas-stf/%20">https://abj.org.br/cases/drogas-stf/ </a>.
+</div>
+<div id="ref-ABJ2020" class="csl-entry" role="doc-biblioentry">
+———. 2020. <span>"<span>O problema da cifra oculta nos tribunais brasileiros</span>"</span>. <a href="https://lab.abj.org.br/posts/2020-12-07-cifra-oculta/">https://lab.abj.org.br/posts/2020-12-07-cifra-oculta/</a>.
+</div>
+<div id="ref-Agresti2009" class="csl-entry" role="doc-biblioentry">
+Agresti, Alan, e Barbara Finlay. 2009. <em><span>Statistical Methods for the Social Sciences</span></em>. 4.ª ed. London: Pearson.
+</div>
+<div id="ref-Bolfarine&amp;Bussab2005" class="csl-entry" role="doc-biblioentry">
+Bolfarine, Heleno, e Wilton O. Bussab. 2005. <em><span>Elementos de Amostragem</span></em>. S<span>ã</span>o Paulo: Blucher.
+</div>
+<div id="ref-Bottino2015" class="csl-entry" role="doc-biblioentry">
+Bottino, Thiago. 2015. <span>"<span>Panaceia universal ou rem<span>é</span>dio constitucional? Habeas corpus nos Tribunais Superiores</span>"</span>. Bras<span>í</span>lia: Ipea. <a href="http://pensando.mj.gov.br/wp-content/uploads/2015/06/thiago_55_finalizada_web.pdf">http://pensando.mj.gov.br/wp-content/uploads/2015/06/thiago_55_finalizada_web.pdf</a>.
+</div>
+<div id="ref-Breiman2001" class="csl-entry" role="doc-biblioentry">
+Breiman, Leo. 2001. <span>"Statistical Modeling: The Two Cultures"</span>. <em>Statistical Science</em> 16 (3): 199–215.
+</div>
+<div id="ref-Bussab2017" class="csl-entry" role="doc-biblioentry">
+Bussab, Wilton O., e Pedro A. Morettin. 2017. <em><span>Estat<span>í</span>stica B<span>á</span>sica</span></em>. 9.ª ed. S<span>ã</span>o Paulo: Saraiva.
+</div>
+<div id="ref-Camargo2015" class="csl-entry" role="doc-biblioentry">
+Camargo, Solano de. 2015. <span>"Forum shopping: modo l<span>í</span>cito de escolha de jurisdição?"</span> Dissertação de mestrado, Universidade de São Paulo. <a href="https://doi.org/10.11606/D.2.2016.tde-21122015-193317">https://doi.org/10.11606/D.2.2016.tde-21122015-193317</a>.
+</div>
+<div id="ref-CCI2020" class="csl-entry" role="doc-biblioentry">
+CCI, CENTER FOR COURT INNOVATION. 2020. <span>"Can Courts Be More User-Friendly? How Satisfaction Surveys Can Promote Trust and Access to Justice"</span>. <a href="https://www.courtinnovation.org/sites/default/files/media/document/2020/CCI_FactSheet_SatisfactionSurveys_04202020.pdf">https://www.courtinnovation.org/sites/default/files/media/document/2020/CCI_FactSheet_SatisfactionSurveys_04202020.pdf</a>.
+</div>
+<div id="ref-Cleveland1985" class="csl-entry" role="doc-biblioentry">
+Cleveland, William S. 1985. <em>The Elements of Graphing Data</em>. California: Wadsworth Advanced Book Program.
+</div>
+<div id="ref-Epstein2014" class="csl-entry" role="doc-biblioentry">
+Epstein, Lee, e Andrew D. Martin. 2014b. <em><span>An Introduction to Empirical Legal Research</span></em>. United Kingdom: Oxford University Press.
+</div>
+<div id="ref-Epstein&amp;Martin2014" class="csl-entry" role="doc-biblioentry">
+———. 2014a. <em>An Introduction to Empirical Legal Research</em>. United Kingdom: Oxford University Press.
+</div>
+<div id="ref-Fulgencio2018" class="csl-entry" role="doc-biblioentry">
+Fulgêncio, Henrique Augusto Figueiredo, e Alexandre Araújo Costa. 2018. <span>"<span>As fun<span>ç</span><span>õ</span>es contempor<span>â</span>neas do mandado de injun<span>ç</span><span>ã</span>o: an<span>á</span>lise emp<span>í</span>rica sobre o perfil das a<span>ç</span><span>õ</span>es ajuizadas perante o Supremo Tribunal Federal</span>"</span>. <em>Revista da Faculdade de Direito do Sul de Minas</em> 34 (2): 451–88. <a href="https://revista.fdsm.edu.br/index.php/revistafdsm/article/view/202/211">https://revista.fdsm.edu.br/index.php/revistafdsm/article/view/202/211</a>.
+</div>
+<div id="ref-Grinover2014" class="csl-entry" role="doc-biblioentry">
+Grinover, Ada Pellegrini, ed. 2014. <span>"<span>Avalia<span>ç</span><span>ã</span>o da Presta<span>ç</span><span>ã</span>o Jurisdicional Coletiva e Individual a partir da Judicializa<span>ç</span><span>ã</span>o da Sa<span>ú</span>de</span>"</span>. CEBEPEJ.
+</div>
+<div id="ref-KingEtAl1994" class="csl-entry" role="doc-biblioentry">
+King, Gary, Robert O Keohane, e Sidney Verba. 1994. <em><span>Designing Social Inquiry: Scientific Inference in Qualitative Research</span></em>. Princeton: Princeton University Press.
+</div>
+<div id="ref-Kozak2010" class="csl-entry" role="doc-biblioentry">
+Kozak, Marcin. 2010. <span>"Basic principles of graphing data"</span>. <em>Sci. Agric.</em> 67 (4): 483–94.
+</div>
+<div id="ref-lambert2007modeling" class="csl-entry" role="doc-biblioentry">
+Lambert, Paul C. 2007. <span>"Modeling of the cure fraction in survival studies"</span>. <em>The Stata Journal</em> 7 (3): 351–75.
+</div>
+<div id="ref-Lopes2003" class="csl-entry" role="doc-biblioentry">
+Lopes, José Reinaldo de Lima. 2003. <span>"<span>A defini<span>ç</span><span>ã</span>o de interesse p<span>ú</span>blico</span>"</span>. Em <em>Processo Civil e Interesse P<span>ú</span>blico: o processo como instrumento de defesa social</em>, editado por Carlos Alberto de Salles. S<span>ã</span>o Paulo: Revista dos Tribunais.
+</div>
+<div id="ref-Molnar2022" class="csl-entry" role="doc-biblioentry">
+Molnar, Christoph. 2022. <em>Interpretable Machine Learning: A Guide for Making Black Box Models Explainable</em>. 2.ª ed. <a href="https://christophm.github.io/interpretable-ml-book">https://christophm.github.io/interpretable-ml-book</a>.
+</div>
+<div id="ref-Nunes2016" class="csl-entry" role="doc-biblioentry">
+Nunes, Marcelo Guedes. 2016. <em>Jurimetria: Como a Estatística Pode Reinventar o Direito</em>. São Paulo: Revista dos Tribunais.
+</div>
+<div id="ref-Perez2018" class="csl-entry" role="doc-biblioentry">
+Perez, Marco Augusto. 2018. <span>"<span>O Controle Jurisdicional da Discricionariedade Administrativa: m<span>é</span>todos para uma jurisdi<span>ç</span><span>ã</span>o ampla das decis<span>õ</span>es administrativas</span>"</span>. Tese de livre docência, Universidade de S<span>ã</span>o Paulo.
+</div>
+<div id="ref-Popper1934" class="csl-entry" role="doc-biblioentry">
+Popper, Karl. 1934. <em>A Lógica da Pesquisa Científica</em>. São Paulo: Cultrix.
+</div>
+<div id="ref-priest1984selection" class="csl-entry" role="doc-biblioentry">
+Priest, George L, e Benjamin Klein. 1984. <span>"The selection of disputes for litigation"</span>. <em>The Journal of Legal Studies</em> 13 (1): 1–55.
+</div>
+<div id="ref-StadishEtAl2002" class="csl-entry" role="doc-biblioentry">
+Shadish, William R., Thomas D. Cook, e Donald T. Campbell. s.d. <em>Experimental and quasi-experimental designs for generalized causal inference</em>. Boston: Cengage Learning.
+</div>
+<div id="ref-Spinney2022" class="csl-entry" role="doc-biblioentry">
+Spinney, Laura. 2022. <span>"Are we witnessing the dawn of post-theory science?"</span> The Guardian. 2022. <a href="https://www.theguardian.com/technology/2022/jan/09/are-we-witnessing-the-dawn-of-post-theory-science">https://www.theguardian.com/technology/2022/jan/09/are-we-witnessing-the-dawn-of-post-theory-science</a>.
+</div>
+<div id="ref-SternEtAl2020" class="csl-entry" role="doc-biblioentry">
+Stern, Julio Michael, Marcos Antonio Simplicio, Marcos Vinicius M. Silva, e Roberto A. Castellanos Pfeiffer. 2020. <span>"Randomization and Fair Judgment in Law and Science"</span>. arXiv. <a href="https://doi.org/10.48550/ARXIV.2008.06709">https://doi.org/10.48550/ARXIV.2008.06709</a>.
+</div>
+<div id="ref-Sundfeld2011" class="csl-entry" role="doc-biblioentry">
+Sundfeld, Carlos Ari, Ester Gammardella Rizzi, Evorah Lusci Costa Cardoso, Flávio Beicker, Francisco Carvalho de Brito Cruz, Gabriele Estábile Bezerra, Gustavo Cesar Mazutti, et al. 2011. <em><span>Controle de constitucionalidade e judicializa<span>ç</span><span>ã</span>o: o STF frente <span>à</span> sociedade e aos Poderes</span></em>. Belo Horizonte: Faculdade de Filosofia e Ci<span>ê</span>ncias Humanas; SBPD. <a href="https://sbdp.org.br/wp/wp-content/uploads/2018/01/05-controle_de_constitucionalidade_e_judicializacao.pdf">https://sbdp.org.br/wp/wp-content/uploads/2018/01/05-controle_de_constitucionalidade_e_judicializacao.pdf</a>.
+</div>
+<div id="ref-Trecenti&amp;Nunes2021" class="csl-entry" role="doc-biblioentry">
+Trecenti, Julio, e Marcelo Guedes Nunes. 2021. <span>"<span>Impactos da MPV 1.040/2021 no tempo de abertura de empresas</span>"</span>. <a href="https://lab.abj.org.br/posts/2021-06-11-analise-1040/">https://lab.abj.org.br/posts/2021-06-11-analise-1040/</a>.
+</div>
+<div id="ref-Tukey1977" class="csl-entry" role="doc-biblioentry">
+Tukey, John W. 1977. <em>Exploratory Data Analysis</em>. Addison-Wesleyl Publishing Company.
+</div>
+<div id="ref-Whitten2015" class="csl-entry" role="doc-biblioentry">
+Whitten, Paul M. Kellstedt Guy D. 2015. <em><span>Fundamentos da pesquisa em ci<span>ê</span>ncia pol<span>í</span>tica</span></em>. Sao Paulo: Blucher.
+</div>
+<div id="ref-Winship&amp;Mare1992" class="csl-entry" role="doc-biblioentry">
+Winsihp, Christopher, e Robert D. Mare. 1992. <span>"Models for sample selection bias"</span>. <em>Annual review of sociology</em> 18 (1): 327–50.
+</div>
+<div id="ref-Xavier2015" class="csl-entry" role="doc-biblioentry">
+Xavier, José Roberto Franco. 2015. <span>"Algumas notas teóricas sobre a pesquisa empírica em direito"</span>. <em>São Paulo Law School of Fundação Getúlio Vargas – FGV DIREITO SP, Research Paper Series – Legal Studies</em>, n. 122.
+</div>
+<div id="ref-xie2015" class="csl-entry" role="doc-biblioentry">
+Xie, Yihui. 2015. <em>Dynamic Documents with <span>R</span> and knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/">http://yihui.name/knitr/</a>.
+</div>
+</div>
+</section></section></section></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
+<ol>
+<li id="fn1"><p>Para saber mais informações, ver Resolução nº 46 do CNJ, bem como o site <a href="https://www.cnj.jus.br/sgt/consulta_publica_assuntos.php">dos assuntos do CNJ</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Usa-se aqui a distinção de <span class="citation" data-cites="Grinover2014">Grinover (<a href="06-refs.html#ref-Grinover2014" role="doc-biblioref">2014</a>)</span>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><span class="citation" data-cites="CCI2020">CCI (<a href="06-refs.html#ref-CCI2020" role="doc-biblioref">2020</a>)</span><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiada");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiada");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./02-planejamento.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Planejamento de Pesquisa</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./04-visualizacao.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Visualização</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">Introdução à metodologia de pesquisa jurimétrica foi escrito por Ricardo Feliz Okamoto e Julio Trecenti, com apoio da <a href="https://abj.org.br">Associação Brasileira de Jurimetria (ABJ).</a></div>   
+    <div class="nav-footer-right">O livro foi construído usando <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+</body></html>
