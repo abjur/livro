@@ -1,4 +1,4 @@
-# Estatísticas {#estatisticas}
+# Estatísticas {#sec-estatistica}
 
 No capítulo anterior, vimos algumas questões essenciais por trás do método quantitativo. Neste capítulo vamos olhar para a estrutura dos dados e como resumir as informações a respeito desses dados. Para tanto, o capítulo está dividido em duas seções: (a) descrição das observações; (b) descrição do conjunto de observações.
 
@@ -11,11 +11,11 @@ Os exemplos deste capítulo foram extraídos de duas bases de dados:
 
 Você pode acessar essas bases de dados baixando, no R, o pacote `{abjData}`.
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 
 # A base do boletim é
 abjData::consumo
-
 # A base de leilões é
 abjData::leiloes
 ```
@@ -24,10 +24,15 @@ abjData::leiloes
 
 O que queremos compreender nesta seção é a natureza das *observações* de uma base de dados. As observações correspondem às unidades amostrais, que podemos definir como "*cada uma das partes disjuntas em que uma população é exaustivamente decomposta, para* [que]*, do conjunto delas se façam extrações a fim de constituir uma amostra, ou estágio de uma amostra*" [@Bolfarine&Bussab2005, p. 263]. __Em bases de dados, cada linha deve corresponder a uma unidade amostral; e cada coluna representa uma característica (também chamada de variável) dessa observação__.
 
-Na Tabela \@ref(tab:sample-leiloes), há um exemplo de uma base de dados da ABJ. São algumas linhas e colunas da base de leiloes do Observatório da Insolvência de São Paulo - Fase 2. Basicamente, esta base diz respeito aos bens que são levados a alienações nos processos de falência no Estado de São Paulo. Nessa base, cada linha representa um item levado a alienação de um processo, ou seja, a unidade amostral é um item levado a leilão; e cada coluna representa uma informação a respeito desse bem, a saber, quem é o leiloeiro responsável pela venda do bem, quando o bem foi levado a leilão, qual era o valor de avaliação inicial desse bem; e qual é o valor pelo qual ele foi arrematado (o que fica em branco, quando o bem nunca foi arrematado).
+Na @tbl-sample-leiloes, há um exemplo de uma base de dados da ABJ. São algumas linhas e colunas da base de leiloes do Observatório da Insolvência de São Paulo - Fase 2. Basicamente, esta base diz respeito aos bens que são levados a alienações nos processos de falência no Estado de São Paulo. Nessa base, cada linha representa um item levado a alienação de um processo, ou seja, a unidade amostral é um item levado a leilão; e cada coluna representa uma informação a respeito desse bem, a saber, quem é o leiloeiro responsável pela venda do bem, quando o bem foi levado a leilão, qual era o valor de avaliação inicial desse bem; e qual é o valor pelo qual ele foi arrematado (o que fica em branco, quando o bem nunca foi arrematado).
 
-```{r sample-leiloes, echo=FALSE, message=FALSE, warning=FALSE}
+```{r}
+#| label: tbl-sample-leiloes
+#| tbl-cap: "Exemplo dos dados da base de leilões da ABJ"
+#| echo: false
+
 set.seed(1)
+
 leiloes <- abjData::leiloes |> 
   dplyr::slice_sample(n = 10)
 
@@ -41,9 +46,7 @@ leiloes |>
     av_inicial = valor_avaliacao_inicial, 
     arrematado = valor_total_arrematado
   ) |> 
-  knitr::kable(
-    caption = "Exemplo dos dados da base de leilões da ABJ"
-  )
+  knitr::kable()
 ```
 
 Uma *observação*, então, como vimos, possui várias características. Todas essas características constituem variáveis a respeito da unidade amostral. O que precisamos ver, a seguir, são os tipos dessas características e as implicações de cada um dos tipos. 
@@ -56,7 +59,6 @@ Todas as variáveis qualitativas representam algum tipo de categoria (por isso t
 
 A seguir, temos alguns exemplos que discutem se determinadas variáveis categóricas são nominais ou ordinais. 
 
-
 1. __Unidade Federativa__: No Brasil, há 27 unidades federativas possíveis. É possível ordenar as unidades federativas, por exemplo, por ordem alfabética; ou até, se soubermos outras informações como PIB ou tamanho da população, podemos ordenar as UFs por algum critério outro. Apesar de essa variável ser *ordenável*, ela não pode ser ordenada a partir de um *critério universal*, ou seja, um critério intrínseco a ela mesma. Por isso, consideramos que UF é uma variável *nominal* (e não ordinal). 
 
 1. __Assunto processual__: Os assuntos processuais são dados pelas Tabelas Processuais Unificadas (TPUs)[^sgt] do CNJ. Por mais haja uma numeração. Os assuntos também não possuem nenhuma ordenação universal. Portanto, esta é uma variável nominal. 
@@ -65,12 +67,11 @@ A seguir, temos alguns exemplos que discutem se determinadas variáveis categór
 
 1. __Resultado de uma sentença__: Uma sentença pode ter, de forma simplificada, três resultados possíveis: totalmente procedente, parcialmente procedente e improcedente. É um modelo simplificado, pois, para determinadas pesquisas, pode ser interessante diferenciar sentenças com julgamento de mérito de sentenças sem julgamento de mérito, ou de sentenças homologatórias. Por ora, vamos pensar apenas nessas três categorias. A questão que se põe é se há alguma ordenação universal entre essas três categorias ou não?
 
-    Este caso pode gerar algumas dúvidas, pois poderíamos ordenar a sentença de tal forma que a sentença "totalmente procedente" fosse a mais valiosa, em relação à sentença "improcedente". Entretanto, esse tipo de raciocínio pressupõe um valor intrínseco das sentenças, como se uma sentença "totalmente procedente" sempre fosse, de alguma forma, melhor do que uma sentença "improcedente". O problema desse raciocínio é que, a depender do *polo da parte*, o valor da sentença é exatamente o oposto: para o réu, a sentença "improcedente" é a de menor valor, enquanto, para o autor, a sentença "totalmente procedente" é a de maior valor. 
+Este caso pode gerar algumas dúvidas, pois poderíamos ordenar a sentença de tal forma que a sentença "totalmente procedente" fosse a mais valiosa, em relação à sentença "improcedente". Entretanto, esse tipo de raciocínio pressupõe um valor intrínseco das sentenças, como se uma sentença "totalmente procedente" sempre fosse, de alguma forma, melhor do que uma sentença "improcedente". O problema desse raciocínio é que, a depender do *polo da parte*, o valor da sentença é exatamente o oposto: para o réu, a sentença "improcedente" é a de menor valor, enquanto, para o autor, a sentença "totalmente procedente" é a de maior valor. 
 
+[^sgt]: Para saber mais informações, ver Resolução nº 46 do CNJ, bem como o site [dos assuntos do CNJ](https://www.cnj.jus.br/sgt/consulta_publica_assuntos.php).
 
-[^sgt]: Para saber mais informações, ver Resolução nº 46 do CNJ, bem como o site https://www.cnj.jus.br/sgt/consulta_publica_assuntos.php.
-
-Existem ainda mais ramificações dos tipos de variáveis qualitativas, por exemplo, variáveis intervalares, ou variáveis-razão. Essas demais ramificações não possuem muito uso prático no Direito, então não vamos nos aprofundar nelas. Há somente uma ramificação que ainda nos interessa que são as variáveis binárias, ou como são chamadas também, as variáveis *dummies*. As variáveis binárias só assumem dois valores possíveis, o valor de sucesso (representado numericamente pelo número `1`, ou pela condição `TRUE`) e o valor de fracasso (representado numericamente pelo número `0`, ou pela condição `FALSE`). Essas variáveis são importantes pois, como veremos no Capítulo \@ref(modelagem) é possível representar qualquer variável categórica em um conjunto de variáveis binárias. 
+Existem ainda mais ramificações dos tipos de variáveis qualitativas, por exemplo, variáveis intervalares, ou variáveis-razão. Essas demais ramificações não possuem muito uso prático no Direito, então não vamos nos aprofundar nelas. Há somente uma ramificação que ainda nos interessa que são as variáveis binárias, ou como são chamadas também, as variáveis *dummies*. As variáveis binárias só assumem dois valores possíveis, o valor de sucesso (representado numericamente pelo número `1`, ou pela condição `TRUE`) e o valor de fracasso (representado numericamente pelo número `0`, ou pela condição `FALSE`). Essas variáveis são importantes pois, como veremos no [Capítulo -@sec-modelagem] é possível representar qualquer variável categórica em um conjunto de variáveis binárias. 
 
 ### Variáveis quantitativas
 
@@ -84,7 +85,7 @@ A seguir, temos alguns exemplos se algumas variáveis são discretas ou contínu
 
 - __Quantidade de partes em cada polo__: No caso de litisconsórcio ativo ou passivo, é possível contar quantas partes existem em cada polo. Essa informação pode ser relevante, por exemplo, ao se estudar direitos difusos e coletivos, pois pode ser importante saber quantas pessoas estão no polo ativo da demanda, para determinar se é uma demanda coletiva ou pseudo-coletiva[^pseudocoletiva]. A variável sobre a quantidade de partes em cada polo será do tipo *discreta*. 
 
-[^pseudocoletiva]: Usa-se aqui a distinção de @Grinover2014
+[^pseudocoletiva]: Usa-se aqui a distinção de @Grinover2014.
 
 ### Considerações sobre os tipos de dados
 
@@ -92,11 +93,12 @@ Antes de prosseguir para as medidas desses dados, devemos fazer algumas consider
 
 #### Consideração 1: Cuidados ao se representar numericamente variáveis categóricas ordinais
 
-O primeiro ponto a se destacar é sobre a representação numérica de variáveis categóricas ordinais. Vamos usar o exemplo de uma proposta do Center for *Court Innovation* de Nova Iorque^[@CCI2020]. Uma das iniciativas desse centro foi tornar os tribunais de Nova Iorque mais "amigáveis". Uma das técnicas propostas para tanto foram os Questionários de Satisfação sobre a prestação jurisdicional. O Quadro \@ref(def:perguntas-satisfacao) resume algumas das perguntas do questionário elaborado pelo *Centro*. 
+O primeiro ponto a se destacar é sobre a representação numérica de variáveis categóricas ordinais. Vamos usar o exemplo de uma proposta do Center for *Court Innovation* de Nova Iorque^[@CCI2020]. Uma das iniciativas desse centro foi tornar os tribunais de Nova Iorque mais "amigáveis". Uma das técnicas propostas para tanto foram os Questionários de Satisfação sobre a prestação jurisdicional. A @tbl-perguntas-satisfacao resume algumas das perguntas do questionário elaborado pelo *Centro*. 
 
-(\#def:perguntas-satisfacao): Perguntas selecionadas de um questionário de satisfação
+```{r}
+#| label: tbl-perguntas-satisfacao
+#| tbl-cap: "Perguntas selecionadas de um questionário de satisfação"
 
-```{r echo=FALSE}
 c1 <- c("Concordo fortemente", "Concordo", "Neutro", "Discordo", "Discordo fortemente")
 c2 <- c("O juiz compreendeu minha demanda",
         "O juiz levou a minha demanda a sério",
@@ -109,7 +111,6 @@ purrr::cross_df(list(`-` = c2, name = c1)) |>
   dplyr::mutate(value = "") |> 
   tidyr::pivot_wider() |> 
   knitr::kable()
-
 ```
 
 Ao aplicar um questionário desses, estamos produzindo *dados*. A aplicação de vários questionários sucessivamente levaria à produção de uma base de dados em que cada linha (unidade amostral) seria um respondente, e cada coluna seria uma das perguntas. Todas essas perguntas recebem como resposta o nível de satisfação (concordo fortemente, concordo, neutro, discordo e discordo fortemente), sendo, portanto, variáveis de natureza *categórica ordinal*, pois há claramente uma ordem entre essas respostas.
@@ -128,9 +129,12 @@ Essa transformação deve ser feita com cuidado. Por um lado, esse tipo de alter
 
 A segunda consideração que queremos fazer diz respeito à transformação das categorias nominais em variáveis *dummies*. Vamos tomar outro caso como exemplo para esta discussão. 
 
-No projeto que a ABJ realiza, em parceria com o CNJ, sobre adoção, tentamos auxiliar os pretendentes a escolherem o perfil da criança fornecendo a eles uma informação importante: o tempo que irá demorar adotar uma criança a depender do perfil escolhido para ela. Perfis mais restritivos em geral demoram mais tempo do que perfis mais permissivos. A questão é deixar claro que características importam para a mudança do tempo e o quanto cada característica importa para o tempo. Uma das variáveis é a variável de `tp_etnia`. Essa variável indica qual é a preferência de etnia preferida dos pretendentes em relação às crianças a serem adotadas. Há 6 respostas possíveis: A (de "amarelo"), B (de "branco"), I (de "indígena"), N (de "negro"), P (de "pardo") ou S (de "sem preferência"). Essas categorias não possuem um critério de ordenação universal, assim sendo, a variável `tp_etnia` é do tipo categórico nominal. Temos um exemplo dessa base na Tabela \@ref(tab:etnia). Os valores usados são fictícios, por questões de sigilo da base. 
+No projeto que a ABJ realiza, em parceria com o CNJ, sobre adoção, tentamos auxiliar os pretendentes a escolherem o perfil da criança fornecendo a eles uma informação importante: o tempo que irá demorar adotar uma criança a depender do perfil escolhido para ela. Perfis mais restritivos em geral demoram mais tempo do que perfis mais permissivos. A questão é deixar claro que características importam para a mudança do tempo e o quanto cada característica importa para o tempo. Uma das variáveis é a variável de `tp_etnia`. Essa variável indica qual é a preferência de etnia preferida dos pretendentes em relação às crianças a serem adotadas. Há 6 respostas possíveis: A (de "amarelo"), B (de "branco"), I (de "indígena"), N (de "negro"), P (de "pardo") ou S (de "sem preferência"). Essas categorias não possuem um critério de ordenação universal, assim sendo, a variável `tp_etnia` é do tipo categórico nominal. Temos um exemplo dessa base na @tbl-etnia. Os valores usados são fictícios, por questões de sigilo da base. 
 
-```{r etnia, echo=FALSE}
+```{r}
+#| label: tbl-etnia
+#| tbl-cap: "Variável categórica de etnia"
+
 id_pretendente <- c(1082L:1092L)
 etnias <- c("A", "B", "I", "N", "P", "S")
 set.seed(13)
@@ -139,16 +143,14 @@ tp_etnia <- sample(x = etnias, size = 11, replace = TRUE)
 etnia_long <- data.frame(id_pretendente, tp_etnia)
 
 etnia_long |> 
-  knitr::kable(
-    caption = "Variável categórica de etnia"
-  )
-
-#knitr::kable("assets/img/etnia.png")
+  knitr::kable()
 ```
 
-A questão de que queremos tratar é como transformar a `tp_etnia` em um formato dummy? Para realizar essa transformação, nós transformamos cada uma das etnias em uma variável que recebe apenas as respostas 0 ou 1. Mas temos que tomar um cuidado muito importante: __a quantidade de variáveis que criamos__ é sempre o número de categorias ($n$) menos 1, ficando $n-1$. No caso, como são 6 categorias possíveis, criamos n-1 variáveis, isto é, 5 variáveis. A base resultante está na Tabela \@ref(tab:etnia-dummy).
+A questão de que queremos tratar é como transformar a `tp_etnia` em um formato dummy? Para realizar essa transformação, nós transformamos cada uma das etnias em uma variável que recebe apenas as respostas 0 ou 1. Mas temos que tomar um cuidado muito importante: __a quantidade de variáveis que criamos__ é sempre o número de categorias ($n$) menos 1, ficando $n-1$. No caso, como são 6 categorias possíveis, criamos n-1 variáveis, isto é, 5 variáveis. A base resultante está na @tbl-etnia-dummy.
 
-```{r etnia-dummy, echo=FALSE}
+```{r}
+#| label: tbl-etnia-dummy
+#| tbl-cap: "Transformação da variável categórica de etnia em dummy"
 etnia_wide <- etnia_long |>
   tidyr::pivot_wider(
     names_from = tp_etnia,
@@ -164,15 +166,13 @@ etnia_wide <- etnia_long |>
   )
 
 etnia_wide |> 
-  knitr::kable(
-    caption = "Transformação da variável categórica de etnia em dummy"
-  )
+  knitr::kable()
 #knitr::kable("assets/img/etnia_dummy.png")
 ```
 
 A questão importante dessa consideração era justamente chamar a atenção para o fato de que a quantidade de *dummies* criadas a partir da categorias é $n-1$. Isso não é uma escolha arbitrária, mas tem uma razão de ser. Mais para frente do livro, veremos que, se criássemos $n$ categorias, ao invés de $n-1$, teríamos um problema chamado *dependência linear*. Entretanto, por hora, de forma simplificada, podemos simplesmente afirmar que a categoria que foi deixada de fora, isto é, a categoria que não se transformou em *dummy* pode ser presumida. 
 
-Vejamos na Tabela \@ref(tab:etnia-dummy) que a categoria deixada de lado foi "S" (ou "sem preferência"). Entretanto, conseguimos identificar um pretendente que não possui preferência por nenhuma etnia quando todas as dummies são iguais a 0. Assim, se A = 0; B = 0; I = 0; N = 0; e P = 0, então teríamos (caso essa categoria existisse) que S = 1. Dizer que S = 1 equivale a dizer que todas as outras categorias são iguais a 0. Justamente por haver essa fungibilidade entre a representação de S = 1 com tudo = 0 que não criamos exatamente $n$ dummies, mas $n-1$. O que deve ficar de lição é que a categoria deixada de lado está presumida pela resposta às demais dummies; ela estará presente sempre que todas as outras categorias forem 0. 
+Vejamos na @tbl-etnia-dummy que a categoria deixada de lado foi "S" (ou "sem preferência"). Entretanto, conseguimos identificar um pretendente que não possui preferência por nenhuma etnia quando todas as dummies são iguais a 0. Assim, se A = 0; B = 0; I = 0; N = 0; e P = 0, então teríamos (caso essa categoria existisse) que S = 1. Dizer que S = 1 equivale a dizer que todas as outras categorias são iguais a 0. Justamente por haver essa fungibilidade entre a representação de S = 1 com tudo = 0 que não criamos exatamente $n$ dummies, mas $n-1$. O que deve ficar de lição é que a categoria deixada de lado está presumida pela resposta às demais dummies; ela estará presente sempre que todas as outras categorias forem 0. 
 	
 ## Olhando para o conjunto das observações
 
@@ -190,9 +190,11 @@ Por meio da *contagem* nós conseguimos *tabular* as respostas das variáveis ca
 
 A frequência é simplesmente a contagem de cada categoria. A frequência acumulada é a contagem de uma categoria somada com as categorias anteriormente contadas, de modo que a contagem da categoria final seja a soma total de todas as categorias. A proporção é a representação da contagem de uma categoria em relação a todas as observações. A proporção acumulada segue a mesma ideia da frequência acumulada, sendo a proporção de cada categoria, somada à proporção de todas as categorias anteriormente calculadas. Por fim, a porcentagem é simplesmente a proporção vezes 100.
 
-Como exemplo, podemos olhar para a base de dados da ABJ sobre leilões nas falências em São Paulo, em que encontramos a Tabela \@ref(tab:leiloes-contagens).
+Como exemplo, podemos olhar para a base de dados da ABJ sobre leilões nas falências em São Paulo, em que encontramos a @tbl-leiloes-contagens.
 
-```{r leiloes-contagens, echo=FALSE}
+```{r}
+#| label: tbl-leiloes-contagens
+#| tbl-cap: "Tabela de frequências da modalidade do leilão."
 abjData::leiloes |> 
   dplyr::count(modalidade) |> 
   dplyr::mutate(
@@ -203,7 +205,6 @@ abjData::leiloes |>
   ) |> 
   dplyr::add_row(modalidade = "total", n = 1000, acu = NA_integer_, prop = 1.00, prop_acu = NA_integer_, porc = "100%") |> 
   knitr::kable(
-    caption = "Tabela de frequências da modalidade do leilão.",
     col.names = c(
       "Modalidade", "Frequência", "Frequência acumulada",
       "Proporção", "Proporção acumulada", "Porcentagem"
@@ -235,9 +236,11 @@ A começar pelo que está na frente do sigma ($4k$), isso indica uma operação,
 
 Então o $\sum$ (e todos os elementos que o acompanham) indica a soma de todas as observações. Na fórmula da média, há uma diferença importante: no lugar do $k$, temos o $x_i$. Acontece que o $i$ não é um número exatamente como funcionava com o $k$, ele é apenas um índice. Precisamos, então, verificar o que é $x_i$. 
 
-Voltemos à base de leilões, para pegar a variável *valor de avaliação*. Essa é uma variável quantitativa contínua. Pegando apenas as 10 primeiras observações dessa variável, temos os seguintes dados, resumidos na Tabela \@ref(tab:dados-leiloes-10).
+Voltemos à base de leilões, para pegar a variável *valor de avaliação*. Essa é uma variável quantitativa contínua. Pegando apenas as 10 primeiras observações dessa variável, temos os seguintes dados, resumidos na @tbl-dados-leiloes-10.
 
-```{r dados-leiloes-10, echo=FALSE}
+```{r}
+#| label: tbl-dados-leiloes-10
+#| tbl-cap: "Dados de leilões realizados"
 tab <- abjData::leiloes |>
   dplyr::arrange(desc(descricao)) |>
   dplyr::select(descricao, valor_avaliacao_inicial) |>
@@ -245,19 +248,20 @@ tab <- abjData::leiloes |>
   tidyr::replace_na(list(valor_avaliacao_inicial = 0))
 tab |> 
   knitr::kable(
-    caption = "Dados de leilões realizados",
     col.names = c("Descrição", "Valor de avaliação inicial"), 
     digits = 0
   )
 ```
 
-A partir desse exemplo, podemos compreender o que significa $x_i$. Para cada $i$ diferente temos uma posição de $x$. Assim, por exemplo, $x_1$ será o valor de avaliação inicial do bem $1$, ou seja, o valor do Volkswagen, de R\$ 4.934,00. Dessa forma, podemos reescrever a tabela da seguinte forma:
+A partir desse exemplo, podemos compreender o que significa $x_i$. Para cada $i$ diferente temos uma posição de $x$. Assim, por exemplo, $x_1$ será o valor de avaliação inicial do bem $1$, ou seja, o valor do Volkswagen, de R\$ 4.934,00. Podemos reescrever a tabela da seguinte forma:
 
-```{r dados-leiloes-10-indice, echo=FALSE}
+```{r}
+#| echo: false
+#| label: tbl-dados-leiloes-10-indice
+#| tbl-cap: "Dados de leilões realizados"
 tab |> 
   dplyr::mutate(indice = stringr::str_glue("$x_{1:10}$"), .before = 1) |> 
   knitr::kable(
-    caption = "Dados de leilões realizados",
     col.names = c("Índice", "Descrição", "Valor de avaliação inicial"), 
     digits = 0
   )
@@ -280,13 +284,13 @@ Outra medida de centro importante é a __mediana__. A mediana é outro conceito 
 
 Em conjuntos ímpares, como encontramos o número que está exatamente ao centro? Ou seja, qual é a fórmula genérica para encontrarmos todos os números do meio em todos os conjuntos ímpares? Imaginemos um conjunto de 7 elementos. Intuitivamente conseguimos dizer que o elemento no meio será o 4º elemento, pois há 3 elementos à esquerda do 4º elemento e mais 3 elementos à direita dele. A partir disso, podemos pensar que 4 (isto é, a posisção do número central) é a metade de 8; e que 8 é um número acima de 7 (o número total de elementos do conjunto). Assim, a fórmula que temos é $\frac{n+1}{2}$. Então o índice do elemento central será $x_{\left(\frac{n+1}{2}\right)}$
 
-$$md(\boldsymbol{x}) = x_{\left(\frac{n+1}{2}\right)}, \text{se } n \text{ ímpar}$$
+$$\text{md}(\boldsymbol{x}) = x_{\left(\frac{n+1}{2}\right)}, \text{se } n \text{ ímpar}$$
 
 Em conjuntos pares, não existe nenhum número exatamente no centro. Se tivermos, ao invés de 7 observações, 8, não teremos nenhum elemento que, caso seja escolhido, divida o conjunto entre duas partes idênticas. Por exemplo, a metade de 8 é 4; então se pegarmos o 4o elemento, o que acontecerá? Haverá 3 elementos à esquerda deste elemento, e mais 4 elementos à sua direita. O 4º elemento, portanto, não pode ser a mediana. O mesmo problema acontece se escolhermos o 5º elemento, pois teremos 4 números à sua esquerda e mais 3 números à sua direita.
 
 Como fazer então para encontrar a mediana neste caso? Basicamente, vamos, no exemplo, pegar o 4º e 5º elementos e fazer a média aritmética entre eles. Pensando de forma abstrata, o 4º elemento é $\frac{n}{2}$; e o 5º elemento é o próximo número da sequência em relação ao elemento do meio, ou seja, ele é $\frac{n}{2}+1$. Para designar então esses dois elementos temos as seguintes notações: $x_{\left(\frac{n}{2}\right)}$ e $x_{\left(\frac{n}{2}+ 1\right)}$. A média aritmética entre esses dois elementos é simplesmente a soma entre eles dividido por dois. Assim, temos a seguinte fórmula para a mediana em conjuntos pares:
 
-$$md(\boldsymbol{x})=\frac{1}{2}\left(x_{\left(\frac{n}{2}\right)} + x_{\left(\frac{n}{2}+1\right)}\right)$$
+$$\text{md}(\boldsymbol{x})=\frac{1}{2}\left(x_{\left(\frac{n}{2}\right)} + x_{\left(\frac{n}{2}+1\right)}\right)$$
 Vale fazermos um esclarecimento importante a respeito da diferença da média para a mediana. A mediana é preferível à média em muitas situações. Isso decorre de uma propriedade da mediana: ela é *robusta*. Robustez é uma palavra que indica a suscetibilidade de um valor aos seus extremos. Vamos dar dois exemplos para deixar isso claro. 
 
 Pensemos em um conjunto abstrato com os seguintes números: 
@@ -307,11 +311,19 @@ A única diferença é o último elemento, ou seja, o número $x_{11}=2000$. Tem
 
 A partir deste exemplo podemos compreender o que significa dizer que uma medida é mais "robusta" do que outra. A mediana, neste caso, é mais robusta, pois ela se afeta menos com os valores extremos do que a média, ela é mais resistente a valores desviantes. 
 
+
 ##### Moda
 
-Feita essa consideração, podemos falar da última medida de centro, a __moda__. A moda indica simplesmente o valor mais frequente do conjunto. Encontrar a moda pressupõe que saibamos todos os valores que aparecem no conjunto, bem como a sua contagem. O valor cuja contagem é maior será o valor da moda. Se o conjunto tiver apenas um valor com a maior contagem, ele será "unimodal"; se houver dois valores com a mesma contagem, então teremos um conjunto "bimodal"; se houver muitos valores, então será "multimodal". Se não houver nenhum valor que se destaque, então o conjunto será "uniforme". Por mais que este capítulo não se dedique a estudar gráficos ainda, neste caso, vale a pena demonstrar como cada tipo de conjunto (unimodal, bimodal, multimodal e uniforme) se comporta em termos gráficos. Vemos isso na Figura \@ref(fig:distribuicoes-moda).
+Feita essa consideração, podemos falar da última medida de centro, a __moda__. A moda indica simplesmente o valor mais frequente do conjunto. Encontrar a moda pressupõe que saibamos todos os valores que aparecem no conjunto, bem como a sua contagem. O valor cuja contagem é maior será o valor da moda. Se o conjunto tiver apenas um valor com a maior contagem, ele será "unimodal"; se houver dois valores com a mesma contagem, então teremos um conjunto "bimodal"; se houver muitos valores, então será "multimodal". Se não houver nenhum valor que se destaque, então o conjunto será "uniforme". Por mais que este capítulo não se dedique a estudar gráficos ainda, neste caso, vale a pena demonstrar como cada tipo de conjunto (unimodal, bimodal, multimodal e uniforme) se comporta em termos gráficos. Vemos isso na @fig-distribuicoes-moda.
 
-```{r distribuicoes-moda, echo=FALSE, fig.align="center", fig.cap="Distribuições", fig.height=6, fig.width=8}
+```{r}
+#| label: fig-distribuicoes-moda
+#| echo: false
+#| fig-align: center
+#| fig-cap: Distribuições
+#| fig-height: 6
+#| fig-width: 8
+
 library(patchwork)
 
 # base de distribuicoes -----------------------------------------------------------
@@ -331,33 +343,31 @@ distribuicoes <- data.frame(normal, bimodal, multimodal, uniforme)
 
 cores_abj <- c("#102C68", "#AFCA0A", "#575756")
 # distribuicao normal -----------------------------------------------------
+
 p_normal <- ggplot2::ggplot(distribuicoes) +
   ggplot2::aes(x = normal) +
   ggplot2::geom_histogram(fill = cores_abj[1], bins = 30) +
   ggplot2::ggtitle("Distribuição Normal") +
-  ggplot2::theme(
-    axis.title.x = ggplot2::element_blank()
-  )
+  ggplot2::labs(x = "", y = "") +
+  ggplot2::theme_minimal()
 p_bimodal <- ggplot2::ggplot(distribuicoes) +
   ggplot2::aes(x = bimodal) +
   ggplot2::geom_histogram(fill = cores_abj[1], bins = 30) +
   ggplot2::ggtitle("Distribuição Bimodal") +
-  ggplot2::theme(
-    axis.title.x = ggplot2::element_blank()
-  )
+  ggplot2::labs(x = "", y = "") +
+  ggplot2::theme_minimal()
 p_multimodal <- ggplot2::ggplot(distribuicoes) +
   ggplot2::aes(x = multimodal) +
   ggplot2::geom_histogram(fill = cores_abj[1], bins = 30) +
   ggplot2::ggtitle("Distribuição Multimodal") +
-  ggplot2::theme(
-    axis.title.x = ggplot2::element_blank()
-  )
-
+  ggplot2::labs(x = "", y = "") +
+  ggplot2::theme_minimal()
 p_uniforme <- ggplot2::ggplot(distribuicoes) +
   ggplot2::aes(x = uniforme) +
   ggplot2::geom_histogram(fill = cores_abj[1], bins = 30) +
   ggplot2::ggtitle("Distribuição Uniforme") +
-  ggplot2::xlab("x")
+  ggplot2::labs(x = "", y = "") +
+  ggplot2::theme_minimal()
 
 p_normal + p_bimodal + p_multimodal + p_uniforme
 
@@ -389,10 +399,16 @@ A amplitude é uma medida simples de ser calculada, entretanto, ela não consegu
 
 ##### Medidas de dispersão ao redor da média: desvio padrão e desvio médio
 
-As duas medidas que estudaremos a seguir indicam a dispersão dos valores em torno da média. Ou seja, tomando a média (e não qualquer medida de centro) como referencial, essas duas medidas indicam como os dados variam ao redor do centro. Algumas perguntas importantes que essas medidas nos ajudam a compreender são: As observações estão concentradas ao redor da média? Ou elas estão dispersas e longe umas das outras? A Figura \@ref(fig:normal-sd) mostra dois exemplo de conjuntos de dados com a mesma média, mas com dispersões das observações em torno da média totalmente diferentes. No primeiro gráfico, as observações estão concentradas; no segundo, elas estão dispersas. Observamos, ao compararmos estes dois gráficos, como que as medidas de centro não conseguem explicar as distribuições dos conjuntos muito bem, quando isoladas, mas quando combinadas com as medidas de dispersão, conseguimos descrever muito melhor os conjuntos. 
+As duas medidas que estudaremos a seguir indicam a dispersão dos valores em torno da média. Ou seja, tomando a média (e não qualquer medida de centro) como referencial, essas duas medidas indicam como os dados variam ao redor do centro. Algumas perguntas importantes que essas medidas nos ajudam a compreender são: As observações estão concentradas ao redor da média? Ou elas estão dispersas e longe umas das outras? A @fig-normal-sd mostra dois exemplo de conjuntos de dados com a mesma média, mas com dispersões das observações em torno da média totalmente diferentes. No primeiro gráfico, as observações estão concentradas; no segundo, elas estão dispersas. Observamos, ao compararmos estes dois gráficos, como que as medidas de centro não conseguem explicar as distribuições dos conjuntos muito bem, quando isoladas, mas quando combinadas com as medidas de dispersão, conseguimos descrever muito melhor os conjuntos. 
 
 
-```{r normal-sd, echo=FALSE, warning=FALSE, fig.cap="Duas distribuições com mesma média e variabilidades distintas.", fig.height=3, fig.width=8}
+```{r}
+#| label: fig-normal-sd
+#| echo: false
+#| warning: false
+#| fig-cap: Duas distribuições com mesma média e variabilidades distintas.
+#| fig-height: 3.0
+#| fig-width: 8.0
 
 set.seed(1)
 normal1 <- rnorm(10000)
@@ -410,18 +426,22 @@ p_normal1 <- ggplot2::ggplot(distribuicoes) +
   ggplot2::aes(x = normal1) +
   ggplot2::geom_density(fill = cores_abj[1]) +
   ggplot2::ggtitle("Distribuição com baixa variabilidade") +
+  ggplot2::theme_minimal() +
   ggplot2::theme(
     axis.title.x = ggplot2::element_blank()
   ) +
-  ggplot2::lims(x = c(-10,10), y = c(0, .45))
+  ggplot2::lims(x = c(-10,10), y = c(0, .45)) +
+  ggplot2::labs(y = "Densidade")
 p_normal2 <- ggplot2::ggplot(distribuicoes) +
   ggplot2::aes(x = normal2) +
   ggplot2::geom_density(fill = cores_abj[1]) +
   ggplot2::ggtitle("Distribuição com alta variabilidade") +
+  ggplot2::theme_minimal() +
   ggplot2::theme(
     axis.title.x = ggplot2::element_blank()
   ) +
-  ggplot2::lims(x = c(-10,10), y = c(0, .45))
+  ggplot2::lims(x = c(-10,10), y = c(0, .45)) +
+  ggplot2::labs(y = "Densidade")
 
 p_normal1 + p_normal2
 
@@ -429,24 +449,32 @@ p_normal1 + p_normal2
 
 Antes de entrarmos nas notações matemáticas, vamos pensar, intuitivamente como essas medidas de dispersão que se referem à média funcionam. Já deve ter ficado claro que a primeira informação essencial que temos de ter em mãos é a média. Sem o valor da média, não conseguimos calcular o desvio médio nem o desvio padrão. Uma vez que temos o valor médio, qual é o próximo passo? 
 
-Para responder a isso, imaginemos o seguinte conjunto de dados, cuja média é 5, conforme a Tabela \@ref(tab:dados-sem-desvio).
+Para responder a isso, imaginemos o seguinte conjunto de dados, cuja média é 5, conforme a @tbl-dados-sem-desvio.
 
-```{r dados-sem-desvio, echo=FALSE}
+```{r}
+#| label: tbl-dados-sem-desvio
+#| tbl-cap: "Dados para calcular desvios"
+#| echo: false
 dados <- tibble::tibble(
   indice = stringr::str_glue("$x_{1:5}$"),
   valor = c(3:7)
 ) 
 knitr::kable(
   dados,
-  caption = "Dados para calcular desvios",
   col.names = c("Índice", "Valor"), 
   digits = 0
 )
 ```
 
-Uma pergunta que podemos fazer sobre esse conjunto, mas que ainda não fizemos, é: o quão distante da média está cada uma das observações? A partir disso, podemos discutir, por exemplo, que número está mais próximo da média $5$, $x_4=6$ ou $x_5=7$? Para responder a essa pergunta, vamos olhar para a Figura \@ref(fig:distancia):
+Uma pergunta que podemos fazer sobre esse conjunto, mas que ainda não fizemos, é: o quão distante da média está cada uma das observações? A partir disso, podemos discutir, por exemplo, que número está mais próximo da média $5$, $x_4=6$ ou $x_5=7$? Para responder a essa pergunta, vamos olhar para a @fig-distancia:
 
-```{r distancia, echo=FALSE, fig.cap="Distância", message=FALSE, warning=FALSE}
+```{r}
+#| label: fig-distancia
+#| echo: false
+#| fig-cap: Distância
+#| message: false
+#| warning: false
+#| fig-height: 3
 dados <- tibble::tibble(
   indice = stringr::str_glue("x{1:5}"),
   id = c(1:5),
@@ -462,6 +490,9 @@ dados |>
   ggplot2::geom_vline(xintercept = 3, color = "red", linetype = 2) +
   ggplot2::geom_text(vjust = -.8, hjust = -.2) +
   ggplot2::geom_linerange(ggplot2::aes(xmin = 1, xmax = 5), linetype = 1) +
+  ggplot2::xlab("valor") +
+  ggthemes::theme_hc() +
+  ggplot2::ylab("") +
   ggplot2::theme( 
     axis.text.y = ggplot2::element_blank(),
     axis.ticks.y = ggplot2::element_blank(),
@@ -504,23 +535,22 @@ dados |>
     tip_length = c(-.3, -.3), 
     color = "blue",
     vjust = 6
-  ) +
-  ggplot2::xlab("valor")
-
-
+  )
 
 ```
 
-Pela figura, fica claro que a distância entre $x_4$ e a média é menor do que a distância entre $x_5$ e a média. São essas distâncias que queremos computar. Se calcularmos esse valor para todas as observações, então teremos uma informação a mais a respeito desse conjunto: teremos o desvio de cada observação em relação à média. Com isso, conseguimos completar o conjunto acima conforme a Tabela \@ref(tab:dados-com-desvio).
+Pela figura, fica claro que a distância entre $x_4$ e a média é menor do que a distância entre $x_5$ e a média. São essas distâncias que queremos computar. Se calcularmos esse valor para todas as observações, então teremos uma informação a mais a respeito desse conjunto: teremos o desvio de cada observação em relação à média. Com isso, conseguimos completar o conjunto acima conforme a @tbl-dados-com-desvio.
 
-```{r dados-com-desvio, echo=FALSE}
+```{r}
+#| label: tbl-dados-com-desvio
+#| echo: false
+#| tbl-cap: "Dados para calcular desvios"
 tibble::tibble(
   indice = stringr::str_glue("$x_{1:5}$"),
   valor = c(3:7),
   desvio = (valor - 5)*sign(valor - 5)
 ) |> 
   knitr::kable(
-    caption = "Dados para calcular desvios",
     col.names = c("Índice", "Valor", "Desvio"), 
     digits = 0
   )
@@ -532,14 +562,15 @@ Dessa forma podemos dizer que o nosso conjunto tem média 5 e que ele tem um des
 
 Até aqui vimos apenas uma noção intuitiva do que significam as medidas de "dispersão ao redor da média". Usamos como fio condutor para essa explicação a medida do desvio médio. Vamos, a seguir, formalizar o pensamento intuitivo, bem como desenvolver a outra medida restante o desvio padrão (e veremos que para chegar no desvio médio, precisamos explicar a variância antes).
 
-A começar pela formalização matemática do desvio médio, é preciso notar uma operação matemática importante que fizemos ao longo da explicação. Quando comparamos a _distância_ de cada observação em relação à média, usamos a Figura \@ref(fig:distancia) para verificar essas medidas. Com isso, construímos a Tabela \@ref(tab:dados-com-desvio). O procedimento matemático que está por trás dessas etapas é o __módulo__. A notação do módulo de $x$ é dada por:
+A começar pela formalização matemática do desvio médio, é preciso notar uma operação matemática importante que fizemos ao longo da explicação. Quando comparamos a _distância_ de cada observação em relação à média, usamos a @fig-distancia para verificar essas medidas. Com isso, construímos a @tbl-dados-com-desvio. O procedimento matemático que está por trás dessas etapas é o __módulo__. A notação do módulo de $x$ é dada por:
 
 $$
-|x| = \left\{\begin{align}&x, \text{ se }x\geq 0,\\ -&x, \text{ se } x < 0\end{align}\right.
+|x| = \left\{\begin{array}{rl}x,&\text{ se }x\geq 0,\\ -x,&\text{ se } x < 0\end{array}\right.
 $$
+
 O módulo é usado para calcular distâncias até certos pontos. Essas distâncias nunca podem ser negativas. O que queremos são *valores absolutos*, ou seja, queremos apenas o número que indica a distância, sem considerar o sinal (positivo ou negativo). 
 
-Então o que fizemos quando construímos a Figura \@ref(fig:distancia) foi representar graficamente o módulo das diferenças entre o valor e a média. Em seguida, computamos essas distâncias na Tabela \@ref(tab:dados-com-desvio). Em termos matemáticos, fizemos a seguinte operação:
+Então o que fizemos quando construímos a @fig-distancia foi representar graficamente o módulo das diferenças entre o valor e a média. Em seguida, computamos essas distâncias na @tbl-dados-com-desvio. Em termos matemáticos, fizemos a seguinte operação:
 
 $$
 desvio = |x-\bar{x}|
@@ -568,9 +599,12 @@ A resposta para essa pergunta não é trivial. Se a gente calculasse o desvio to
 
 $$\frac{1}{n}\sum_{i=1}^n(x_i-\bar x)=\frac{1}{n}\sum_{i=1}^n x_i - \frac{1}{n}\sum_{i=1}^n \bar x = \bar x - \frac{n}{n}\bar x = \bar x - \bar x = 0$$
 
-Não há necessidade de se compreender toda a demonstração de que a média das diferenças é sempre igual a 0 (mas vale a pena tentar!). O que realmente precisamos entender é simplesmente que se calculássemos cada um dos desvios, sem levar em consideração o módulo, teríamos uma série de números negativos na nossa conta e esses números negativos iriam "anular" os números positivos, resultando em zero sempre. Podemos ver o resultado disso na Tabela \@ref(tab:dados-com-diferencas).
+Não há necessidade de se compreender toda a demonstração de que a média das diferenças é sempre igual a 0 (mas vale a pena tentar!). O que realmente precisamos entender é simplesmente que se calculássemos cada um dos desvios, sem levar em consideração o módulo, teríamos uma série de números negativos na nossa conta e esses números negativos iriam "anular" os números positivos, resultando em zero sempre. Podemos ver o resultado disso na @tbl-dados-com-diferencas.
 
-```{r dados-com-diferencas, echo=FALSE}
+```{r}
+#| label: tbl-dados-com-diferencas
+#| echo: false
+#| tbl-cap: "Comparação dos desvios com as diferenças"
 tibble::tibble(
   indice = stringr::str_glue("$x_{1:5}$"),
   valor = c(3:7),
@@ -579,7 +613,6 @@ tibble::tibble(
 ) |> 
   dplyr::add_row(indice = "total", valor = NA_integer_, desvio = 6, diferenca = 0) |> 
   knitr::kable(
-    caption = "Comparação dos desvios com as diferenças",
     col.names = c("Índice", "Valor", "Desvio", "Diferença"), 
     digits = 0
   )
@@ -591,9 +624,12 @@ $$
 var(\boldsymbol{x}) = \frac{1}{n}\sum_{i=1}^n (x_i-\bar{x})^2
 $$
 
-Quando elevamos uma diferença ao quadrado, por mais que a diferença seja negativa, o quadrado sempre será positivo, de modo que podemos observar na Tabela \@ref(tab:dados-com-diferencas2) que na coluna *Diferença ao quadrado* não há nenhum número negativo. 
+Quando elevamos uma diferença ao quadrado, por mais que a diferença seja negativa, o quadrado sempre será positivo, de modo que podemos observar na @tbl-dados-com-diferencas2 que na coluna *Diferença ao quadrado* não há nenhum número negativo. 
 
-```{r dados-com-diferencas2, echo=FALSE}
+```{r}
+#| label: tbl-dados-com-diferencas2
+#| echo: false
+#| tbl-cap: "Comparação dos desvios com as diferenças e com as diferenças ao quadrado"
 tibble::tibble(
   indice = stringr::str_glue("$x_{1:5}$"),
   valor = c(3:7),
@@ -602,7 +638,6 @@ tibble::tibble(
   diferenca2 = (valor - 5)^2
 ) |> 
   knitr::kable(
-    caption = "Comparação dos desvios com as diferenças e com as diferenças ao quadrado",
     col.names = c("Índice", "Valor", "Desvio", "Diferença", "Diferença ao quadrado"), 
     digits = 0
   )
@@ -621,9 +656,12 @@ Fica bem claro pela fórmula do desvio padrão que ele é simplesmente a raíz q
 
 Com esta última fórmula, conseguimos compreender o significado e as notações matemáticas das duas medidas de dispersão ao redor da média que nos propusemos a discutir: o desvio médio e o desvio padrão (definindo, no meio do caminho, a variância). Dessas medidas, as mais mais utilizadas são a variância e o desvio padrão. O desvio padrão é mais popular do que o desvio médio por ser mais sensível a valores atípicos (o que geralmente é desejável aqui) e por ter algumas propriedades matemáticas de interesse na modelagem estatística. Não trataremos dessas propriedades por enquanto.
 
-Vamos antes de finalizar essa explicação das medidas que indicam a dispersão dos dados em relação à média, dar um exemplo para dar concretude dessas medidas, pois os conceitos apresentados são difíceis. O exemplo é o mesmo que vem acompanhando a gente nesta seção: o valor de avaliação dos bens alienados em processos de falência. A base usada é a base `leiloes`. Dessa vez, não vamos olhar apenas para 10 observações, mas para 483 observações da base (de um total de 1000 observações). Realizamos uma filtragem dessa base com fins didáticos apenas, para ficar mais fácil de calcular. A base se encontra na Tabela \@ref(tab:leiloes-var).
+Vamos antes de finalizar essa explicação das medidas que indicam a dispersão dos dados em relação à média, dar um exemplo para dar concretude dessas medidas, pois os conceitos apresentados são difíceis. O exemplo é o mesmo que vem acompanhando a gente nesta seção: o valor de avaliação dos bens alienados em processos de falência. A base usada é a base `leiloes`. Dessa vez, não vamos olhar apenas para 10 observações, mas para 483 observações da base (de um total de 1000 observações). Realizamos uma filtragem dessa base com fins didáticos apenas, para ficar mais fácil de calcular. A base se encontra na @tbl-leiloes-var.
 
-```{r leiloes-var, echo=FALSE}
+```{r}
+#| label: tbl-leiloes-var
+#| echo: false
+#| tbl-cap: "Amostra de 10 bens aleatórios da base"
 leiloes <- abjData::leiloes
 
 q1 <- quantile(leiloes$valor_avaliacao_inicial, 0.25, na.rm=TRUE)
@@ -643,23 +681,25 @@ da <- leiloes |>
 
 da |> 
   dplyr::select(-diferenca) |> 
-  knitr::kable(
-    caption = "Amostra de 10 bens aleatórios da base"
-  )
+  knitr::kable()
 ```
 
-Recomendamos fortemente que você tente calcular as duas medidas de dispersão desse conjunto. A média do valor de avaliação é R\$ 1.372,30. Em primeiro lugar, tente calcular as diferenças de cada um desses bens em relação à média. O resultado esperado está resumido na Tabela \@ref(tab:leiloes-var-dif)
+Recomendamos fortemente que você tente calcular as duas medidas de dispersão desse conjunto. A média do valor de avaliação é R\$ 1.372,30. Em primeiro lugar, tente calcular as diferenças de cada um desses bens em relação à média. O resultado esperado está resumido na @tbl-leiloes-var-dif
 
-```{r leiloes-var-dif, echo=FALSE}
+```{r}
+#| label: tbl-leiloes-var-dif
+#| echo: false
+#| tbl-cap: "Amostra de 10 bens aleatórios da base com o valor das diferenças"
 da |> 
-  knitr::kable(
-    caption = "Amostra de 10 bens aleatórios da base com o valor das diferenças"
-  )
+  knitr::kable()
 ```
 
 A partir destes valores, podemos calcular o desvio médio, a variância e o desvio padrão. Tente calcular por sua conta o valor do desvio médio, da variância e do desvio padrão. Os resultados devem ser: 
 
-```{r medidas-dispersao, echo=FALSE}
+```{r}
+#| label: tbl-medidas-dispersao
+#| echo: false
+#| tbl-cap: "Resumo das medidas de dispersão ao redor da média do exemplo de leilões"
 # dm <- mad(da$valor_avaliacao_inicial)
 # var <- var(da$valor_avaliacao_inicial)
 # sd <- sd(da$valor_avaliacao_inicial)
@@ -682,7 +722,6 @@ tibble::tibble(
   )
 ) |> 
   knitr::kable(
-    caption = "Resumo das medidas de dispersão ao redor da média do exemplo de leilões",
     col.names = c("Medida de dispersão", "Valor"), 
     digits = 2
   )
@@ -726,7 +765,10 @@ Justamente por excluir os valores extremos (que estão no conjunto 1 e no conjun
 
 Como exemplo final, podemos voltar à base de leilões. Dessa vez, vamos olhar para a base completa (as 1000 observações), ao invés de alguma amostra dela. Temos os seguintes quantis empíricos da variável sobre o valor de avaliação
 
-```{r quantis, echo=FALSE}
+```{r}
+#| label: tbl-quantis
+#| echo: false
+#| tbl-cap: "Resumo dos quantis empíricos do valor de avaliação"
 nums <- c(0, 104, 500, 3755, 157000000)
 dados <- tibble::tibble(
   stat = c(
@@ -740,13 +782,16 @@ dados <- tibble::tibble(
 )
 knitr::kable(
   dados,
-  caption = "Resumo dos quantis empíricos do valor de avaliação",
   col.names = c("Quantil", "Valor")
 )
 ```
-Para calcular o IQR, basta subtrair o quartil inferior do quartil superior, ou seja 3755-104, que resulta em 3651. A interpretação desse resultado é os valores centrais da amostra se distribuem dentro de uma amplitude de R$ 3.651,00. Ou seja, 50% dos valores estão distribuídos dentro de um intervalo de R$ 3.651,00. É interessante comparar o IQR com a amplitude. A amplitude, como vimos, é igual a R$ 157.000.000,00, ou seja, todos os valores da base estão dentro de um intervalo de R$ 157.000.000,00, mas desse intervalo inteiro, 50% dos valores (e não quaisquer 50% dos valores, mas a metade dos valores centrais) estão apenas em um intervalo de amplitude R$ 3.651,00. Isso indica como que a população está muito dispersa, pois há uma concentração de metade dos valores em um pequeno intervalo, e uma outra metade distribuída em um grande intervalo. Por mais que ainda não tenhamos estudado gráficos, é útil neste momento compreender para o que estamos falando de forma visual (Figura \@ref(fig:grafico-variabilidade)).
+Para calcular o IQR, basta subtrair o quartil inferior do quartil superior, ou seja 3755-104, que resulta em 3651. A interpretação desse resultado é os valores centrais da amostra se distribuem dentro de uma amplitude de R$ 3.651,00. Ou seja, 50% dos valores estão distribuídos dentro de um intervalo de R$ 3.651,00. É interessante comparar o IQR com a amplitude. A amplitude, como vimos, é igual a R$ 157.000.000,00, ou seja, todos os valores da base estão dentro de um intervalo de R$ 157.000.000,00, mas desse intervalo inteiro, 50% dos valores (e não quaisquer 50% dos valores, mas a metade dos valores centrais) estão apenas em um intervalo de amplitude R$ 3.651,00. Isso indica como que a população está muito dispersa, pois há uma concentração de metade dos valores em um pequeno intervalo, e uma outra metade distribuída em um grande intervalo. Por mais que ainda não tenhamos estudado gráficos, é útil neste momento compreender para o que estamos falando de forma visual (@fig-grafico-variabilidade).
 
-```{r grafico-variabilidade, echo=FALSE, warning=FALSE, fig.cap="Dados de valores de avaliação com alta variabilidade"}
+```{r}
+#| label: fig-grafico-variabilidade
+#| echo: false
+#| warning: false
+#| fig-cap: Dados de valores de avaliação com alta variabilidade
 # a base que vamos usar
 q1 <- quantile(leiloes$valor_avaliacao_inicial, 0.25, na.rm=TRUE)
 q3 <- quantile(leiloes$valor_avaliacao_inicial, 0.75, na.rm=TRUE)
@@ -770,12 +815,17 @@ abjData::leiloes |>
   dplyr::filter(!is.na(valor_avaliacao_inicial)) |>
   ggplot2::ggplot(ggplot2::aes(x = valor_avaliacao_inicial)) +
   ggplot2::geom_histogram(fill = cores_abj[1], bins = 30) +
-  ggplot2::scale_x_continuous(labels = scales::dollar) +
+  ggplot2::scale_x_continuous(labels = scales::dollar_format(prefix = "R$", big.mark = ".", decimal.mark = ",")) +
   ggplot2::geom_vline(
     xintercept = c(104, 3755), colour = c("red", "green"),
     linetype = c(1, 2)
+  ) +
+  ggthemes::theme_hc() +
+  ggplot2::labs(
+    x = "Valor da avaliação inicial",
+    y = "Quantidade de casos"
   )
 
 ```
 
-Observamos neste gráfico uma altissima concentração em valores, que, por causa da escala, estão representados em cima do 0. Não é que, de fato, os valores sejam 0, mas é que, dentro de uma escala que vai até 150 milhões, a faixa de valores em que se encontram 50% dos dados é muito pequena (é uma faixa que varia de R\$ 104,00 até R\$ 3.755,00).
+Observamos neste gráfico uma altíssima concentração em valores, que, por causa da escala, estão representados no 0. Não é que, de fato, os valores sejam 0, mas é que, dentro de uma escala que vai até 150 milhões, a faixa de valores em que se concentram os dados é muito pequena (50% estão na faixa entre R\$ 104,00 e R\$ 3.755,00).

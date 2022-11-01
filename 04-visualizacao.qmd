@@ -1,8 +1,8 @@
-# Visualização {#visualizacao}
+# Visualização {#sec-visualizacao}
 
-No capítulo \@ref(planejamento), nós vimos questões sobre o método quantitativo, já no capítulo \@ref(estatisticas), passamos do método às medidas. Nesta ocasião, vimos as medidas de duas formas diferentes: as medidas das observações consideradas individualmente e as medidas de resumo do conjunto de observações. Na parte das medidas individuais de cada observação, vimos que as características das observações podem ter duas naturezas distintas, ou elas são categóricas (pois indicam uma categoria de resposta), ou elas são quantitativas (pois indicam uma resposta numérica). Essas duas naturezas possíveis possuem suas subdivisões, mas o mais importante é considerarmos essas duas grandes classes. Em seguida, na parte de medidas resumo do conjunto das observações, tivemos que separar as medidas resumo das variáveis categóricas das medidas resumo das variáveis quantitativas.  
+No [Capítulo -@sec-planejamento], nós vimos questões sobre o método quantitativo, já no [Capítulo -@sec-estatistica], passamos do método às medidas. Nesta ocasião, vimos as medidas de duas formas diferentes: as medidas das observações consideradas individualmente e as medidas de resumo do conjunto de observações. Na parte das medidas individuais de cada observação, vimos que as características das observações podem ter duas naturezas distintas, ou elas são categóricas (pois indicam uma categoria de resposta), ou elas são quantitativas (pois indicam uma resposta numérica). Essas duas naturezas possíveis possuem suas subdivisões, mas o mais importante é considerarmos essas duas grandes classes. Em seguida, na parte de medidas resumo do conjunto das observações, tivemos que separar as medidas resumo das variáveis categóricas das medidas resumo das variáveis quantitativas.  
 
-Neste capítulo, ainda vamos nos valer desta distinção – entre variáveis categóricas e numéricas –, mas não vamos falar de medidas de resumo. O foco deste capítulo são as visualizações relacionadas a cada tipo de dado. Inicialmente, precisamos discutir para que servem as visualizações suas vantagens e desvantagens. Em seguida, vamos falar das visualizações específicas de cada tipo de variável (categórica ou quantitativa), começando pelas visualizações das variáveis categóricas para seguir então para as visualizações das variáveis quantitativas. Depois de olhar como representar individualmente as variáveis, vamos olhar para gráficos bivariados. 
+Neste capítulo, ainda vamos nos valer desta distinção -- entre variáveis categóricas e numéricas --, mas não vamos falar de medidas de resumo. O foco deste capítulo são as visualizações relacionadas a cada tipo de dado. Inicialmente, precisamos discutir para que servem as visualizações suas vantagens e desvantagens. Em seguida, vamos falar das visualizações específicas de cada tipo de variável (categórica ou quantitativa), começando pelas visualizações das variáveis categóricas para seguir então para as visualizações das variáveis quantitativas. Depois de olhar como representar individualmente as variáveis, vamos olhar para gráficos bivariados. 
 
 ## Para que servem visualizações?
 
@@ -10,18 +10,21 @@ Hoje em dia, nós vemos gráficos em vários contextos da vida cotidiana. Vemos 
 
 Vamos começar essa discussão com uma citação importante, retirada do livro The *Elements of Graphing Data* [Os Elementos da Representação Gráfica dos Dados] (1985) do William S. Cleveland. Na sessão *the power of graphical display* [o poder da representação gráfica], Cleveland diz:
 
-> Representações gráficas são uma ferramenta excepcional para a análise de dados. A razão disso está bem resumida em uma sentença de uma carta de 1982 escrita pelo senhor W. Edwards Deming a mim: "Os métodos gráficos podem reter a informação nos dados". Procedimentos numéricos de análise de dados – tais como a média, o desvio padrão, coeficientes de correlação e teste-t – são essencialmente técnicas de redução dos dados. Os métodos gráficos complementam essas técnicas. Os métodos gráficos tendem a mostrar conjuntos de dados como um todo, permitindo-nos resumir o comportamento geral e estudar o detalhe. Isso nos leva a uma análise de dados mais minuciosa. 
+> Representações gráficas são uma ferramenta excepcional para a análise de dados. A razão disso está bem resumida em uma sentença de uma carta de 1982 escrita pelo senhor W. Edwards Deming a mim: "Os métodos gráficos podem reter a informação nos dados". Procedimentos numéricos de análise de dados -- tais como a média, o desvio padrão, coeficientes de correlação e teste-t -- são essencialmente técnicas de redução dos dados. Os métodos gráficos complementam essas técnicas. Os métodos gráficos tendem a mostrar conjuntos de dados como um todo, permitindo-nos resumir o comportamento geral e estudar o detalhe. Isso nos leva a uma análise de dados mais minuciosa. 
 Uma razão para as representações gráficas conseguirem reter as informações dos dados é que uma grande quantidade de informação quantitativa pode ser exibida e absorvida[^cleveland].
   
 [^cleveland]: @Cleveland1985, pp. 9-10, tradução livre, grifos no original
-  No original: "Graphs are exceptionally powerful tools for data analysis. The reason is nicely encapsulated in a sentence from a 1982 letter written to me by W. Edwards Deming: "Graphical methods can retain the information in the data." Numerical data analytic procedures – such as means, standard deviations, correlation coefficients, and t-tests – are essentially data reduction techniques. Graphical methods complement such numerical techniques. Graphical methods tend to show data sets as a whole, allowing us to summarize the general behavior and to study detail. This leads to much more thorough data analysis.
+  No original: "Graphs are exceptionally powerful tools for data analysis. The reason is nicely encapsulated in a sentence from a 1982 letter written to me by W. Edwards Deming: "Graphical methods can retain the information in the data." Numerical data analytic procedures -- such as means, standard deviations, correlation coefficients, and t-tests -- are essentially data reduction techniques. Graphical methods complement such numerical techniques. Graphical methods tend to show data sets as a whole, allowing us to summarize the general behavior and to study detail. This leads to much more thorough data analysis.
   One reason why graphical displays can retain the information in the data is that a large amount of quantitative information can be displayed and absorbed."
 
 Para dar um exemplo do que significa conseguir "exibir e absorver" informações quantitativas, e para explicar também o que significa "técnicas de redução de dados", vamos olhar para um exemplo, no qual nós comparamos três formas de apresentar os mesmos dados. Os dados expostos dizem respeito aos valores das causas de ações de consumo. 
 
 ```{r}
+#| label: tbl-dados-consumo
+#| tbl-cap: "Tabela com dados de valores"
 
 consumo <- abjData::consumo
+cores_abj <- c("#102C68", "#AFCA0A", "#575756")
 set.seed(20)
 da <- consumo |>
   dplyr::sample_n(100) |>
@@ -34,16 +37,17 @@ da2 <- cbind(
   da[61:80, ],
   da[81:100, ])
 
-htmlTable::htmlTable(
+knitr::kable(
   da2,
-  header = c("", "", "valor", "", ""),
-  rnames = FALSE
+  col.names = c("", "", "valor", "", "")
 )
 
 ```
 
 
 ```{r}
+#| label: tbl-medidas-resumo
+#| tbl-cap: "Medidas de resumo"
 da_resumo <- da |>
   dplyr::summarise(
     `média` = mean(valor),
@@ -64,21 +68,28 @@ da_resumo <- da |>
   tidyr::pivot_wider(names_from = "rowname", values_from = "valores") |> 
   dplyr::mutate(valores = abjutils::reais(valores))
 
-da_resumo |>
-  knitr::kable(
-    caption = "Medidas de resumo"
-  )
-
 media <- da_resumo$valores[da_resumo$medidas == "média"]
 mediana <- da_resumo$valores[da_resumo$medidas == "mediana"]
+
+da_resumo |>
+  knitr::kable()
 ```
 
-```{r exemplo-vis, fig.width=8, fig.height=2.5, fig.cap="Exemplo de visualizacao"}
+```{r}
+#| label: fig-exemplo-vis
+#| fig-width: 8.0
+#| fig-height: 2.5
+#| fig-cap: Exemplo de visualização
 options(scipen = 999)
 da |>
   ggplot2::ggplot() +
   ggplot2::aes(x = valor) +
-  ggplot2::geom_histogram(fill = cores_abj[1], bins = 60)
+  ggplot2::geom_histogram(fill = cores_abj[1], bins = 60) +
+  ggthemes::theme_hc() +
+  ggplot2::scale_x_continuous(
+    labels = scales::dollar_format(prefix = "R$", big.mark = ".", decimal.mark = ",")
+  ) +
+  ggplot2::labs(x = "Valor", y = "Contagem")
 ```
 
 As três apresentações de dados que fizemos foram, respectivamente, uma tabela de observações, apresentando 100 valores de causa em ações de consumo; seguido das medidas resumo dessas observações; finalizando com um histograma dessas observações. O que queremos discutir é *o que a apresentação gráfica nos mostra que as demais formas não nos mostram*?
@@ -97,22 +108,30 @@ Com essas características em mente, então, podemos prosseguir à próxima perg
 
 ### Detetive de dados - Análise exploratória de dados
 
-Uma forma de encarar as visualizações gráficas é criar visualizações a fim de se obter evidências e pistas para analisar outros fenômenos. Isso é o que @Tukey1977 chama de "quantitative detective work" [trabalho de detetive quantitativo]. Nesse sentido, a visualização de dados não é um fim em si mesmo, mas é uma etapa para um processo de compreensão maior. Nesse sentido, usamos visualizações gráficas para descobrir como um determinado dado se distribui; e a partir dessa informação, podemos perceber que talvez seja adequado fazer uma transformação de variável. Por exemplo, ao analisar o valor da causa, podemos nos deparar com a seguinte distribuição, conforme a Figura \@ref(fig:hist-causa).
+Uma forma de encarar as visualizações gráficas é criar visualizações a fim de se obter evidências e pistas para analisar outros fenômenos. Isso é o que @Tukey1977 chama de "quantitative detective work" [trabalho de detetive quantitativo]. Nesse sentido, a visualização de dados não é um fim em si mesmo, mas é uma etapa para um processo de compreensão maior. Nesse sentido, usamos visualizações gráficas para descobrir como um determinado dado se distribui; e a partir dessa informação, podemos perceber que talvez seja adequado fazer uma transformação de variável. Por exemplo, ao analisar o valor da causa, podemos nos deparar com a seguinte distribuição, conforme a @fig-hist-causa.
 
-```{r hist-causa, fig.cap="Distribuição do valor da causa"}
-cores_abj <- c("#102C68", "#AFCA0A", "#575756")
+```{r}
+#| label: fig-hist-causa
+#| fig-cap: Distribuição do valor da causa
 
 p_sem_log <- consumo |>
   ggplot2::ggplot() +
   ggplot2::aes(x = valor) +
-  ggplot2::geom_histogram(fill = cores_abj[1], bins = 30)
+  ggplot2::geom_histogram(fill = cores_abj[1], bins = 30) +
+  ggthemes::theme_hc() +
+  ggplot2::scale_x_continuous(
+    labels = scales::dollar_format(prefix = "R$", big.mark = ".", decimal.mark = ",")
+  ) +
+  ggplot2::labs(x = "Valor", y = "Contagem")
 
 p_sem_log
 ```
 
-Não queremos colocar um gráfico desses em um relatório, ou em um artigo a ser publicado. Mas esse gráfico é importante para percebemos que o eixo x (valor) precisa passar por um ajuste. O ajuste que vamos fazer é colocar o valor em escala logarítmica. Essa é uma transformação muito comum. Mais para frente veremos por que, quando e como fazer essa transformação, por hora, basta sabermos que o primeiro gráfico foi um indicativo de que precisávamos mudar a escala da variável `valor`. Esse gráfico conseguiu nos indicar isso pois ele nos revelou a distribuição das observações sobre essa variável. E ao saber a distribuição, conseguimos padronizar melhor os dados. Na Figura \@ref(fig:hist-causa-log), vemos as mesmas informações dispostas na Figura \@ref(fig:hist-causa), ajustadas com log. 
+Não queremos colocar um gráfico desses em um relatório, ou em um artigo a ser publicado. Mas esse gráfico é importante para percebemos que o eixo x (valor) precisa passar por um ajuste. O ajuste que vamos fazer é colocar o valor em escala logarítmica. Essa é uma transformação muito comum. Mais para frente veremos por que, quando e como fazer essa transformação, por hora, basta sabermos que o primeiro gráfico foi um indicativo de que precisávamos mudar a escala da variável `valor`. Esse gráfico conseguiu nos indicar isso pois ele nos revelou a distribuição das observações sobre essa variável. E ao saber a distribuição, conseguimos padronizar melhor os dados. Na @fig-hist-causa-log, vemos as mesmas informações dispostas na @fig-hist-causa, ajustadas com log. 
 
-```{r hist-causa-log, fig.cap="Distribuição do valor de causa (com log);"}
+```{r}
+#| label: fig-hist-causa-log
+#| fig-cap: Distribuição do valor de causa (com log);
 p_com_log <- consumo |>
   dplyr::mutate(valor_log = log10(valor)) |>
   ggplot2::ggplot() +
@@ -120,35 +139,39 @@ p_com_log <- consumo |>
   ggplot2::geom_histogram(fill = cores_abj[1], bins = 50) +
   ggplot2::scale_x_continuous(
     breaks = 0:10, 
-    labels = 10^c(0:10)
-  )
+    labels = scales::dollar_format(prefix = "R$", big.mark = ".", decimal.mark = ",")(10^c(0:10))
+  ) +
+  ggthemes::theme_hc() +
+  ggplot2::labs(x = "Valor", y = "Contagem")
 
 p_com_log
 ```
 
-A partir da Figura \@ref(fig:hist-causa-log), conseguimos observar uma distribuição totalmente diferente daquela expressa na Figura \@ref(fig:hist-causa). Essa nova figura tem alguns problemas de interpretação, por exemplo, o que significa que o valor da causa ser log 8? A informação não está equivocada, mas ela só está de difícil interpretação. O que queríamos mostrar é que a Figura \@ref(fig:hist-causa) foi usada, não para apresentar os dados que ela continha, mas como um meio para chegarmos à Figura \@ref(fig:hist-causa-log). 
+A partir da @fig-hist-causa-log, conseguimos observar uma distribuição totalmente diferente daquela expressa na @fig-hist-causa. Essa nova figura tem alguns problemas de interpretação, por exemplo, o que significa que o valor da causa ser log 8? A informação não está equivocada, mas ela só está de difícil interpretação. O que queríamos mostrar é que a @fig-hist-causa foi usada, não para apresentar os dados que ela continha, mas como um meio para chegarmos à @fig-hist-causa-log. 
+
 São usos deste tipo que aqui estamos chamando de uma análise exploratória de dados. Nesse sentido (de exploratório), os gráficos servem de instrumento de investigação de relações. Veremos ao longo do livro várias formas de usar gráficos nesse sentido, tais como testes de normalidade, verificar pressupostos de modelos, descobrir outliers, entre muitos outros. 
 
 ## Comunicadora de dados - Apresentação de dados
 
 Outra função que podemos dar à visualização de dados é a comunicação dos resultados. Bons gráficos devem ser gráficos que consigam ser facilmente compreendidos; são gráficos claros e intuitivos. Existe uma série de estudos sobre como construir gráficos para comunicação, assim como existem muitos exemplos, principalmente no jornalismo, de gráficos que contam boas histórias. 
 
-:::
+:::{.callout-note}
+
 Recomendamos aqui a leitura de Cleveland, William S. The Elements of Graphing Design. California: Wadsworth Advanced Book Program. 1985; ou para um resumo e aplicação prática de Cleveland, recomendamos Kozak, Marcin. Basic principles of graphing data. Sci. Agric. (Piracicaba, Braz.), v.67, n.4, p.483-494, July/August 2010. Neste artigo de Kozak, ele resume os princípios elencados por Cleveland em The Elements of Graphing Data, bem como fornece valiosos exemplos de como esses princípios podem melhorar a apresentação gráfica.
 :::
 
-:::
-Aqui recomendamos os gráficos do Nexo Jornal, disponíveis em: https://www.nexojornal.com.br/grafico/; a sessão Igualdades da Revista Piaui, disponível em: https://piaui.folha.uol.com.br/tag/igualdades/; os gráficos do New York Times, disponíveis em: https://www.nytimes.com/spotlight/graphics; as reportagens do Núcleo de Jornalismo https://www.nucleo.jor.br/; e, por fim, esta reportagem do Estadão sobre adoção de crianças https://arte.estadao.com.br/brasil/adocao/criancas/. Todos os sites foram acessados em 28/04/2022.
+:::{.callout-note}
+Aqui recomendamos os [gráficos do Nexo Jornal]()(https://www.nexojornal.com.br/grafico/); a [sessão Igualdades da Revista Piaui](https://piaui.folha.uol.com.br/tag/igualdades/); os [gráficos do New York Times](https://www.nytimes.com/spotlight/graphics); as [reportagens do Núcleo de Jornalismo](https://www.nucleo.jor.br/); e, por fim, [esta reportagem do Estadão sobre adoção de crianças](https://arte.estadao.com.br/brasil/adocao/criancas/). Todos os sites foram acessados em 28/04/2022.
 :::
 
 Temos que ter alguns cuidados nessa parte de comunicação dos resultados. A comunicação é uma etapa que, se feita de forma equivocada, pode não conseguir passar a interpretação correta dos resultados, ou ainda, se for feita de forma maliciosa, pode passar informações falsas.
 
-:::
+:::{.callout-note}
 Ver o exemplo discutido por Cleveland, 1985, sobre o gráfico que o Carl Sagan apresentou em seu livro Os Dragões do Éden a respeito da relação entre a proporção da massa do cérebro em relação à massa do corpo e a inteligência de diversas espécies. O exemplo se encontra em na sessão 1.3. The Challenge of Graphical Display do livro Cleveland, William S. The Elements of Graphing Design. California: Wadsworth Advanced Book Program. 1985. 
 :::
 
-:::
-Ver o artigo de Caio Lente no blog da Curso-R, em que ele descreve como os dados podem mentir, ao se analisar uma imagem sobre o desenvolvimento econômico da Argentina após a Reforma Constitucional que ensejou o início da Justiça Social. O artigo está disponível em: https://blog.curso-r.com/posts/2020-01-21-fake-news/, acessado em 28/04/2022. 
+:::{.callout-note}
+Ver o artigo de Caio Lente no blog da Curso-R, em que ele descreve como os dados podem mentir, ao se analisar uma imagem sobre o desenvolvimento econômico da Argentina após a Reforma Constitucional que ensejou o início da Justiça Social. O artigo está disponível [neste link](https://blog.curso-r.com/posts/2020-01-21-fake-news/), acessado em 28/04/2022. 
 :::
 
 ## Visualizações em espécie
@@ -181,13 +204,15 @@ Vamos dar um exemplo para compreender o que são as variáveis explicativa e res
 
 #### Gráficos univariados
 
-Os gráficos univariados de variáveis categóricas são marcados por conterem sempre duas informações: as categorias analisadas e a contagem ou proporção dessas categorias. Por mais que os gráficos tenham duas dimensões, eles não contém duas “variáveis”. A única variável são as categorias; a contagem/proporção é simplesmente um atributo dessa variável. Vamos ver duas visualizações mais difundidas desse tipo de variável. Para mais exemplos, ver [From data to Viz](https://www.data-to-viz.com/).
+Os gráficos univariados de variáveis categóricas são marcados por conterem sempre duas informações: as categorias analisadas e a contagem ou proporção dessas categorias. Por mais que os gráficos tenham duas dimensões, eles não contém duas "variáveis". A única variável são as categorias; a contagem/proporção é simplesmente um atributo dessa variável. Vamos ver duas visualizações mais difundidas desse tipo de variável. Para mais exemplos, ver [From data to Viz](https://www.data-to-viz.com/).
 
 ##### Gráfico de barras
 
-O gráfico de barras é o principal meio de visualizar variáveis categóricas. Ele contém dois eixos: a variável categórica e a contagem/proporção. Não importa o eixo em que cada uma dessas informações está. A variável pode ser apresentada tanto no eixo x (horizontal), como no eixo y (vertical, também chamado de gráfico de colunas), conforme a Figura \@ref(fig:vis-barras).
+O gráfico de barras é o principal meio de visualizar variáveis categóricas. Ele contém dois eixos: a variável categórica e a contagem/proporção. Não importa o eixo em que cada uma dessas informações está. A variável pode ser apresentada tanto no eixo x (horizontal), como no eixo y (vertical, também chamado de gráfico de colunas), conforme a @fig-vis-barras.
 
-```{r vis-barras, fig.cap="Gráficos de barras"}
+```{r}
+#| label: fig-vis-barras
+#| fig-cap: Gráficos de barras
 cores_abj <- c("#102C68", "#AFCA0A", "#575756")
 
 consumo <- abjData::consumo |>
@@ -205,7 +230,12 @@ bar_vert1 <- consumo |>
   ggplot2::aes(y = dec_val, x = n) +
   ggplot2::geom_col(fill = cores_abj[1]) +
   ggplot2::ylab("Decisão de segunda instância") +
-  ggplot2::xlab("Quantidade")
+  ggplot2::xlab("Quantidade") +
+  ggthemes::theme_hc() +
+  ggplot2::theme(
+    panel.grid.major.x = ggplot2::element_line(colour = "gray91", size= .3),
+    panel.grid.major.y = ggplot2::element_blank()
+  )
 
 
 bar_hor1 <- consumo |>
@@ -216,7 +246,8 @@ bar_hor1 <- consumo |>
   ggplot2::aes(x = dec_val, y = n) +
   ggplot2::geom_col(fill = cores_abj[1]) +
   ggplot2::xlab("Decisão de segunda instância") +
-  ggplot2::ylab("Quantidade")
+  ggplot2::ylab("Quantidade") +
+  ggthemes::theme_hc()
 
 patchwork::wrap_plots(bar_vert1, bar_hor1) +
   patchwork::plot_annotation(title = "Gráficos de barras na vertical e na horizontal")
@@ -234,6 +265,7 @@ Esse gráfico, apesar de ser amplamente utilizado, ele traz um problema de visua
 Aqui vamos replicar o exemplo elaborado pelo Data to Viz em [The issue with pie chart](https://www.data-to-viz.com/caveat/pie.html). O exemplo que eles dão parte da seguinte pergunta: Tente descobrir nos três grupos abaixo qual é o grupo com mais observaçẽs.
 
 ```{r}
+#| out-width: "100%"
 knitr::include_graphics("assets/img/pie-datatoviz.png")
 ```
 
@@ -241,6 +273,7 @@ knitr::include_graphics("assets/img/pie-datatoviz.png")
 A resposta deveria ser, para a primeira pergunta, que no primeiro gráfico, o maior grupo é o E; no segundo, o C; e no terceiro, o A. Acontece que, por causa da forma como os dados estão dispostos, é difícil chegar a essa conclusão, enquanto, se repetíssemos a pergunta para os mesmos dados dispostos em barras, essa pergunta seria trivial.
 
 ```{r}
+#| out-width: "100%"
 knitr::include_graphics("assets/img/bar-datatoviz.png")
 ```
 Então, a questão com os gráficos de pizza é que eles possuem um iminente problema de comunicação e interpretação. A assimilação desses gráficos não é intuitiva, muitas vezes, sequer possível a olho nu. Dessa forma, deve-se preferir, na maioria das vezes, a utilização de gráficos de barras no lugar de gráficos de pizza. Recomenda-se que se utilize gráficos de pizza para representar 2 ou, no máximo, 3 categorias. Mais do que isso, a visualização fica prejudicada. 
@@ -249,9 +282,13 @@ Então, a questão com os gráficos de pizza é que eles possuem um iminente pro
 
 ##### Gráfico de barras
 
-O mesmo gráfico de barras que pode representar uma única variável, pode ser usado para representar duas variáveis categóricas. Neste caso, não mudamos os eixos. O que fazemos, no lugar, é “quebrar” cada uma das categorias do eixo categórico em algum subgrupo. Por exemplo, na Figura \@ref(fig:barras-2var), pegamos as categorias referentes a “decisões de segunda instância” e quebramos pelo tipo de litígio. Há 4 tipos de litígio possíveis: uma pessoa física (PF) no polo ativo contra alguma não-pessoa física (nPF), tal como uma empresa, um espólio ou o Poder Público (PF-nPF); uma pessoa física contra outra pessoa física (PF-PF); uma pessoa não física no polo ativo, contra uma pessoa física (nPF-PF); ou uma disputa entre duas pessoas não físicas (nPF-nPF).
+O mesmo gráfico de barras que pode representar uma única variável, pode ser usado para representar duas variáveis categóricas. Neste caso, não mudamos os eixos. O que fazemos, no lugar, é "quebrar" cada uma das categorias do eixo categórico em algum subgrupo. Por exemplo, na @fig-barras-2var, pegamos as categorias referentes a "decisões de segunda instância" e quebramos pelo tipo de litígio. Há 4 tipos de litígio possíveis: uma pessoa física (PF) no polo ativo contra alguma não-pessoa física (nPF), tal como uma empresa, um espólio ou o Poder Público (PF-nPF); uma pessoa física contra outra pessoa física (PF-PF); uma pessoa não física no polo ativo, contra uma pessoa física (nPF-PF); ou uma disputa entre duas pessoas não físicas (nPF-nPF).
 
-```{r barras-2var, fig.width=12, fig.height=3.5, fig.cap="Gráficos de barras com duas variáveis, empilhado."}
+```{r}
+#| label: fig-barras-2var
+#| fig-width: 12.0
+#| fig-height: 3.5
+#| fig-cap: Gráficos de barras com duas variáveis, empilhado.
 bar_vert1 <- consumo |>
   dplyr::count(dec_val) |>
   dplyr::mutate(prop = n / sum(n)) |>
@@ -259,6 +296,7 @@ bar_vert1 <- consumo |>
   ggplot2::ggplot() +
   ggplot2::aes(y = dec_val, x = n) +
   ggplot2::geom_col(fill = cores_abj[1]) +
+  ggplot2::theme_minimal() +
   ggplot2::ylab("Decisão de segunda instância") +
   ggplot2::xlab("Quantidade")
 
@@ -274,6 +312,7 @@ bar_vert2 <- consumo |>
     y = "Quantidade"
   ) +
   ggplot2::scale_fill_viridis_d(begin = .2, end = .8) +
+  ggplot2::theme_minimal() +
   ggplot2::theme(
     legend.position = c(0.95, 0.95),
     legend.justification = c("right", "top"),
@@ -289,9 +328,13 @@ patchwork::wrap_plots(bar_vert1, bar_vert2) +
     title = "Gráficos de barras na vertical quebrado em uma segunda variável"
   )
 ```
-Essa “quebra” pode ser feita de diversas maneiras. A escolha entre cada uma delas dependerá dos propósitos do gráfico, ou até mesmo do estilo do próprio pesquisador. A Figura \@ref(fig:barras-2var2) traz outra forma de realizar essa quebra.
+Essa "quebra" pode ser feita de diversas maneiras. A escolha entre cada uma delas dependerá dos propósitos do gráfico, ou até mesmo do estilo do próprio pesquisador. A @fig-barras-2var2 traz outra forma de realizar essa quebra.
 
-```{r barras-2var2, fig.width=8, fig.height=7, fig.cap="Gráficos de barras com duas variáveis, lado a lado."}
+```{r}
+#| label: fig-barras-2var2
+#| fig-width: 8.0
+#| fig-height: 7.0
+#| fig-cap: Gráficos de barras com duas variáveis, lado a lado.
 bar_hor <- consumo |>
   dplyr::count(dec_val) |>
   dplyr::mutate(prop = n / sum(n)) |>
@@ -303,6 +346,7 @@ bar_hor <- consumo |>
     x = "Decisão de segunda instância",
     y = "Quantidade"
   ) +
+  ggplot2::theme_minimal() +
   ggplot2::theme(
     legend.position = c(0.95, 0.95),
     legend.justification = c("right", "top"),
@@ -311,8 +355,6 @@ bar_hor <- consumo |>
     legend.background = ggplot2::element_rect(fill = "white", color = "black")
   ) +
   ggplot2::guides(fill=ggplot2::guide_legend("Tipo de litígio", nrow=2, byrow=TRUE))
-
-
 
 bar_hor2 <- consumo |>
   dplyr::count(dec_val, tipo_litigio) |>
@@ -326,6 +368,7 @@ bar_hor2 <- consumo |>
     y = "Quantidade"
   ) +
   ggplot2::scale_fill_viridis_d(begin = .2, end = .8) +
+  ggplot2::theme_minimal() +
   ggplot2::theme(
     legend.position = c(0.95, 0.95),
     legend.justification = c("right", "top"),
@@ -343,9 +386,11 @@ patchwork::wrap_plots(bar_hor1, bar_hor2, ncol = 1) +
 
 ```
 
-O que precisamos compreender é a complexidade que essa segunda variável adiciona à interpretação do gráfico. No gráfico de barras univariado, podíamos comparar apenas o tamanho de cada um dos desfechos da sentença. Na Figura \@ref(fig:highlight-barras), damos um exemplo de um tipo de comparação possível a partir do gráfico univariado, em que comparamos os os grupos “Reformou” com “Não reformou”. 
+O que precisamos compreender é a complexidade que essa segunda variável adiciona à interpretação do gráfico. No gráfico de barras univariado, podíamos comparar apenas o tamanho de cada um dos desfechos da sentença. Na @fig-highlight-barras, damos um exemplo de um tipo de comparação possível a partir do gráfico univariado, em que comparamos os os grupos "Reformou" com "Não reformou". 
 
-```{r highlight-barras, fig.cap="Gráfico de barras com comparação entre os grupos 'Reformou' e 'Não reformou'"}
+```{r}
+#| label: fig-highlight-barras
+#| fig-cap: Gráfico de barras com comparação entre os grupos 'Reformou' e 'Não reformou'
 consumo |>
   dplyr::count(dec_val) |>
   dplyr::mutate(
@@ -362,13 +407,16 @@ consumo |>
   ) +
   gghighlight::gghighlight(
     dec_val == "Reformou" | dec_val == "Não reformou"
-  )
+  ) +
+  ggthemes::theme_hc()
 
 ```
 
-Com os gráficos de barras bivariados, outras comparações são possíveis. No caso, podemos realizar 2 novas comparações. A primeira comparação possível é aquela em que fixamos a variável de interesse para compararmos a variável explicativa. No nosso caso, isso significa comparar, dentro de um único desfecho da sentença, alguns tipos de litígio. Vemos um exemplo desta comparação na Figura \@ref(fig:highlight-bivar).
+Com os gráficos de barras bivariados, outras comparações são possíveis. No caso, podemos realizar 2 novas comparações. A primeira comparação possível é aquela em que fixamos a variável de interesse para compararmos a variável explicativa. No nosso caso, isso significa comparar, dentro de um único desfecho da sentença, alguns tipos de litígio. Vemos um exemplo desta comparação na @fig-highlight-bivar.
 
-```{r highlight-bivar, fig.cap="Contagens de não reforma e configuração das partes."}
+```{r}
+#| label: fig-highlight-bivar
+#| fig-cap: Contagens de não reforma e configuração das partes.
 consumo1 <- consumo |>
   dplyr::count(dec_val, tipo_litigio) |>
   dplyr::transmute(
@@ -404,6 +452,7 @@ ggplot2::ggplot() +
     y = "Quantidade"
   ) +
   ggplot2::scale_fill_viridis_d(begin = .2, end = .8) +
+  ggthemes::theme_hc() +
   ggplot2::theme(
     legend.position = c(0.95, 0.95),
     legend.justification = c("right", "top"),
@@ -416,9 +465,11 @@ ggplot2::ggplot() +
 
 ```
 
-A segunda nova comparação possível é aquela em que fixamos a variável explicativa, ou seja, a variável de quebra, e a analisamos através de todas as categorias de interesse. Vemos um exemplo disto na Figura \@ref(fig:highlight-bivar2), em que olhamos para o tipo de litígio “PF-nPF” para todos os três tipos de desfechos possíveis das decisões de segunda instância. 
+A segunda nova comparação possível é aquela em que fixamos a variável explicativa, ou seja, a variável de quebra, e a analisamos através de todas as categorias de interesse. Vemos um exemplo disto na @fig-highlight-bivar2, em que olhamos para o tipo de litígio "PF-nPF" para todos os três tipos de desfechos possíveis das decisões de segunda instância. 
 
-```{r highlight-bivar2, fig.cap="Contagens de reforma/não reforma e configuração das partes."}
+```{r}
+#| label: fig-highlight-bivar2
+#| fig-cap: Contagens de reforma/não reforma e configuração das partes.
 consumo2 <- consumo |>
   dplyr::count(dec_val, tipo_litigio) |>
   dplyr::transmute(
@@ -453,6 +504,7 @@ ggplot2::ggplot() +
     y = "Quantidade"
   ) +
   ggplot2::scale_fill_viridis_d(begin = .2, end = .8) +
+  ggthemes::theme_hc() +
   ggplot2::theme(
     legend.position = c(0.95, 0.95),
     legend.justification = c("right", "top"),
@@ -469,9 +521,9 @@ Notemos, então, que adicionar uma nova variável ao gráfico de barras, para to
 
 #### Gráficos bivariados (com explicativa numérica)
 
-Nos gráficos de barras bivariados que mostramos acima, a variável explicativa era categórica (no caso, “Tipo de litígio”). A partir dessa variável explicativa categórica, nós pudemos “quebrar” as barras em categorias menores. Vimos diversas formas de realizar essa quebra, bem como as novas interpretações que isso permitia realizar. 
+Nos gráficos de barras bivariados que mostramos acima, a variável explicativa era categórica (no caso, "Tipo de litígio"). A partir dessa variável explicativa categórica, nós pudemos "quebrar" as barras em categorias menores. Vimos diversas formas de realizar essa quebra, bem como as novas interpretações que isso permitia realizar. 
 
-Poderíamos nos perguntar, então, o que aconteceria se, no lugar de “Tipo de litígio”, colocássemos alguma variável numérica contínua, tal como “valor da ação”? Como o gráfico ficaria? 
+Poderíamos nos perguntar, então, o que aconteceria se, no lugar de "Tipo de litígio", colocássemos alguma variável numérica contínua, tal como "valor da ação"? Como o gráfico ficaria? 
 
 Temos de ter cautela com essa pergunta, pois, por mais intuitivo que seja se fazer uma pergunta dessas, esse tipo de visualização só faz sentido em um contexto bem específico: o de regressão. Veremos regressões apenas mais para frente do livro. Quando chegarmos lá, poderemos completar essa explicação. 
 
@@ -483,10 +535,12 @@ No caso das variáveis quantitativas, também temos formas de representá-las de
 
 ##### Histograma
 
-O histograma assemelha-se muito ao gráfico de barras. Eles não devem, entretanto, ser confundidos. O histograma representa variáveis quantitativas contínuas, enquanto o gráfico de barras representa categorias. A diferença essencial é que, enquanto no gráfico de barras nos interesse o tamanho de cada barra, no histograma nos interessa mais a distribuição geral dos dados ao longo do eixo. A Figura \@ref(fig:histograma-tempo) traz um exemplo de um histograma com o valor de tempo de cada processo em dias.
+O histograma assemelha-se muito ao gráfico de barras. Eles não devem, entretanto, ser confundidos. O histograma representa variáveis quantitativas contínuas, enquanto o gráfico de barras representa categorias. A diferença essencial é que, enquanto no gráfico de barras nos interesse o tamanho de cada barra, no histograma nos interessa mais a distribuição geral dos dados ao longo do eixo. A @fig-histograma-tempo traz um exemplo de um histograma com o valor de tempo de cada processo em dias.
 
 
-```{r histograma-tempo, fig.cap="Histograma simples"}
+```{r}
+#| label: fig-histograma-tempo
+#| fig-cap: Histograma simples
 
 format_reais <- function(valor) {
   real <- paste("R$", format(valor, decimal.mark = ",", big.mark = ".", nsmall = 2))
@@ -501,7 +555,8 @@ abjData::consumo |>
     title = "Histograma simples",
     x = "Tempo (em dias)",
     y = "Quantidade de casos"
-  )
+  ) +
+  ggthemes::theme_hc()
 
 ```
 
@@ -509,13 +564,13 @@ abjData::consumo |>
 Trabalhando em cima deste exemplo, vamos compreender (a) como se formam as barras do histograma; (b) como interpretar este gráfico; (c) propriedades do histograma; (d) problemas de visualização e transformação dos dados.
 
 
-A começar pela formação das barras do histograma, precisamos voltar um pouco na natureza das variáveis quantitativas. Existem dois tipos de variáveis quantitativas: as discretas e as contínuas. As discretas representam apenas a contagem de certo número, por exemplo, quando se deseja saber a quantidade de juízes que determinado tribunal possui. Essa quantidade, que expressa apenas uma contagem, será uma variável discreta. As características dessa variável são que ela não pode assumir nem valores negativos, nem valores fracionados, mas apenas valores inteiros. As variáveis contínuas, por outro lado, seriam variáveis que expressam números reais, podendo por natureza envolver números negativos ou fracionados. Acontecem alguns casos em que os números negativos não fazem sentido no mundo real, por exemplo, quando temos uma variável contínua sobre tempos. Por exemplo, se tivermos uma variável sobre o tempo que demora para um processo morrer, não faz sentido que essa variável indique “-100 dias”.
+A começar pela formação das barras do histograma, precisamos voltar um pouco na natureza das variáveis quantitativas. Existem dois tipos de variáveis quantitativas: as discretas e as contínuas. As discretas representam apenas a contagem de certo número, por exemplo, quando se deseja saber a quantidade de juízes que determinado tribunal possui. Essa quantidade, que expressa apenas uma contagem, será uma variável discreta. As características dessa variável são que ela não pode assumir nem valores negativos, nem valores fracionados, mas apenas valores inteiros. As variáveis contínuas, por outro lado, seriam variáveis que expressam números reais, podendo por natureza envolver números negativos ou fracionados. Acontecem alguns casos em que os números negativos não fazem sentido no mundo real, por exemplo, quando temos uma variável contínua sobre tempos. Por exemplo, se tivermos uma variável sobre o tempo que demora para um processo morrer, não faz sentido que essa variável indique "-100 dias".
 
 Essa recapitulação dos tipos de variáveis quantitativas é importante porque os histogramas representam apenas variáveis quantitativas *contínuas*, e isso traz um problema para a representação gráfica. O problema é, se eu for fazer uma barra para cada valor possível, tratando eles como categorias próprias, eu teria, teoricamente, infinitas barras. Por exemplo, eu poderia ter, em uma variável de valor, uma barra para todos os processos cujo valor da ação é de R\$ 1,00; e depois outra barra para os valores de R\$ 1,10. Mas entre uma barra eu poderia ter R$ 1,05; ou ainda 1,025, etc.
 
 A fim de eliminar esse problemas das barras infinitas, cada barra do histograma acaba representando um intervalo, de modo que nenhuma barra represente um único valor, mas sim um intervalo de valores. Assim, no lugar de uma barra para o valor de R\$ 1,00, temos uma barra para os valores de R\$ 1,00 a R\$ 2,00, por exemplo. O tamanho desse intervalo é variável, não é fixo; ele não está predeterminado. O que precisamos saber deste intervalo é que ele é fechado no início e aberto no final, ou seja, se tivermos o intervalo de R\$ 1,00 a R\$ 2,00 e outro intervalo de R\$ 2,00 a R\$ 3,00, isso significa que um processo cujo valor da causa seja R\$ 2,00, ele estará dentro do segundo intervalo e não do primeiro, mas o valor da causa for de R\$ 1,99, ele estará dentro do primeiro intervalo mesmo. 
 
-A representação dos intervalos segue uma notação específica: para os intervalos fechados, representamos um colchete voltado para o número; para os intervalos abertos, um colchete “de costas” para o número. A seguir, damos alguns exemplos para compreender melhor essa notação. 
+A representação dos intervalos segue uma notação específica: para os intervalos fechados, representamos um colchete voltado para o número; para os intervalos abertos, um colchete "de costas" para o número. A seguir, damos alguns exemplos para compreender melhor essa notação. 
 
 - [1,10] significa que o intervalo é fechado no 1 (porque usamos um colchete) e fechado no 10 (porque usamos um colchete);
 - [1, 10) significa que o intervalo é fechado no 1 (porque usamos um colchete) e aberto no 10 (porque usamos um parêntese);
@@ -525,17 +580,22 @@ A representação dos intervalos segue uma notação específica: para os interv
 
 A partir da criação dos intervalos, cada uma das observações da base será colocada dentro de uma das categorias especificadas. Assim, cada um dos intervalos terá uma contagem (igual ao caso do gráfico de barras). Todas as categorias devem ter exatamente o mesmo tamanho. Assim, se foi criada uma categoria que vai do 1 ao 10, então a próxima categoria *tem que ser* do 10 ao 19, pois elas devem ter exatamente o mesmo tamanho. 
 
-Mexer no tamanho das categorias pode gerar histogramas diferentes. Veja o mesmo histograma do exemplo acima com três variações do tamanho dos intervalos de cada barra na Figura \@ref(fig:varios-histogramas).
+Mexer no tamanho das categorias pode gerar histogramas diferentes. Veja o mesmo histograma do exemplo acima com três variações do tamanho dos intervalos de cada barra na @fig-varios-histogramas.
 
-```{r varios-histogramas, fig.cap="O mesmo histograma com intervalos distintos para as barras", fig.height=8, fig.width=8}
+```{r}
+#| label: fig-varios-histogramas
+#| fig-cap: O mesmo histograma com intervalos distintos para as barras
+#| fig-height: 6.0
+#| fig-width: 8.0
 bin_grande <- consumo |>
   ggplot2::ggplot() +
   ggplot2::aes(x = tempo) +
   ggplot2::geom_histogram(fill = cores_abj[1], bins = 5) +
+  ggthemes::theme_hc() +
   ggplot2::labs(
     title = "Histograma com 5 intervalos",
     x = "Tempo (em dias)",
-    y = "Quantidade de casos"
+    y = "Quantidade\nde casos"
   )
 
 
@@ -543,10 +603,11 @@ bin_padrao <- consumo |>
   ggplot2::ggplot() +
   ggplot2::aes(x = tempo) +
   ggplot2::geom_histogram(fill = cores_abj[1], bins = 30) +
+  ggthemes::theme_hc() +
   ggplot2::labs(
     title = "Histograma com 30 intervalos",
     x = "Tempo (em dias)",
-    y = "Quantidade de casos"
+    y = "Quantidade\nde casos"
   )
 
 
@@ -554,10 +615,11 @@ bin_pequeno <- consumo |>
   ggplot2::ggplot() +
   ggplot2::aes(x = tempo) +
   ggplot2::geom_histogram(fill = cores_abj[1], bins = 200) +
+  ggthemes::theme_hc() +
   ggplot2::labs(
     title = "Histograma com 200 intervalos",
     x = "Tempo (em dias)",
-    y = "Quantidade de casos"
+    y = "Quantidade\nde casos"
   )
 
 patchwork::wrap_plots(
@@ -568,13 +630,17 @@ patchwork::wrap_plots(
 
 ```
 
-Uma vez que descobrimos como que as barras do histograma são criadas, podemos passar para o tópico seguinte: como interpretar? No caso do histograma, não nos interessa muito saber a contagem exata de cada “categoria” (até porque as barras não representam categorias, mas apenas intervalos arbitrários). A contagem específica de cada categoria era uma informação importante quando olhávamos para o gráfico de barras, mas no histograma, não é essa informação por que estamos buscando. O essencial do histograma é ver a *distribuição* dos dados como um todo, e não cada barra. 
+Uma vez que descobrimos como que as barras do histograma são criadas, podemos passar para o tópico seguinte: como interpretar? No caso do histograma, não nos interessa muito saber a contagem exata de cada "categoria" (até porque as barras não representam categorias, mas apenas intervalos arbitrários). A contagem específica de cada categoria era uma informação importante quando olhávamos para o gráfico de barras, mas no histograma, não é essa informação por que estamos buscando. O essencial do histograma é ver a *distribuição* dos dados como um todo, e não cada barra. 
 
-Voltando ao nosso exemplo, conseguimos ver que existe uma barra cuja contagem de casos está acima dos 300 casos. Não nos importa saber a contagem exata desta barra. Ao que devemos nos atentar é que a distribuição do tempo dos processos se dá de forma concentrada na esquerda. Esse tipo de distribuição chamamos de distribuição assimétrica para a direita. A indicação da assimetria diz respeito à localização da “cauda” do gráfico. No nosso caso, temos uma série de valores concentrados no início, em tempos mais baixos, e alguns poucos casos esparramados no fim, em tempos mais longos. Então, quando dizemos que a distribuição é assimétrica “para a direita” estamos nos referindo à assimetria que estes casos da cauda do gráfico criaram. 
+Voltando ao nosso exemplo, conseguimos ver que existe uma barra cuja contagem de casos está acima dos 300 casos. Não nos importa saber a contagem exata desta barra. Ao que devemos nos atentar é que a distribuição do tempo dos processos se dá de forma concentrada na esquerda. Esse tipo de distribuição chamamos de distribuição assimétrica para a direita. A indicação da assimetria diz respeito à localização da "cauda" do gráfico. No nosso caso, temos uma série de valores concentrados no início, em tempos mais baixos, e alguns poucos casos esparramados no fim, em tempos mais longos. Então, quando dizemos que a distribuição é assimétrica "para a direita" estamos nos referindo à assimetria que estes casos da cauda do gráfico criaram. 
 
-Como estamos falando, o mais importante dos histogramas é verificar a distribuição dos dados, e não a contagem específica de cada barra. O que precisamos falar ainda é: quais são as distribuições possíveis? Existem muitas distribuições, mas destacamos 3 principais: a distribuição simétrica, a distribuição assimétrica para a direita e a distribuição assimétrica para a esquerda. Essas distribuições estão resumidas na Figura \@ref(fig:distribuicoes-sim).
+Como estamos falando, o mais importante dos histogramas é verificar a distribuição dos dados, e não a contagem específica de cada barra. O que precisamos falar ainda é: quais são as distribuições possíveis? Existem muitas distribuições, mas destacamos 3 principais: a distribuição simétrica, a distribuição assimétrica para a direita e a distribuição assimétrica para a esquerda. Essas distribuições estão resumidas na @fig-distribuicoes-sim.
 
-```{r distribuicoes-sim, fig.cap="Distribuições", fig.width=7, fig.height=3}
+```{r}
+#| label: fig-distribuicoes-sim
+#| fig-cap: Distribuições
+#| fig-width: 7.0
+#| fig-height: 3.0
 N <- 10000
 
 set.seed(2)
@@ -589,18 +655,28 @@ dados_sim <- tibble::tibble(
 dados_sim |> 
   ggplot2::ggplot(ggplot2::aes(x = value)) +
   ggplot2::geom_histogram(fill = cores_abj[1], bins = 20) +
-  ggplot2::facet_wrap(~name)
+  ggplot2::facet_wrap(~name) +
+  ggthemes::theme_hc() +
+  ggplot2::labs(x = "", y = "") +
+  ggplot2::scale_x_continuous(breaks = seq(0, 1, .2)) +
+  ggplot2::theme(
+    axis.title = ggplot2::element_blank()
+  )
 
 ```
 
-A propriedade importante do histograma diz respeito à posição relativa entre média e mediana. Queremos sempre determinar onde os dados estão concentrados. Para tanto, as medidas de resumo que indicam tendência central são excelentes. Lembrando, temos três medidas: a média, a mediana e a moda. A média e a mediana se diferenciam porque a mediana é considerada robusta (isto é, ela não era influenciada pelos valores extremos), enquanto a média é considerada uma medida não robusta. Assim, quando estamos diante de distribuições assimétricas – sejam elas para a esquerda ou para a direita –, a média será afetada pelos valores que estão na cauda, enquanto a mediana não. Essa diferença entre as duas medidas cria um importante atributo para interpretarmos o histograma. O que acontece é que, em distribuições simétricas, a média e a medina irão se sobrepor, assumindo o mesmo valor, ou valores muito próximos, enquanto, no caso das distribuições assimétricas, os valores da média e da mediana irão ficar descompassados. Assim, podemos visualizar, a partir do histograma, como que a média e a mediana se comportam, conforme a Figura \@ref(fig:distribuicoes-sim-lab).
+A propriedade importante do histograma diz respeito à posição relativa entre média e mediana. Queremos sempre determinar onde os dados estão concentrados. Para tanto, as medidas de resumo que indicam tendência central são excelentes. Lembrando, temos três medidas: a média, a mediana e a moda. A média e a mediana se diferenciam porque a mediana é considerada robusta (isto é, ela não era influenciada pelos valores extremos), enquanto a média é considerada uma medida não robusta. Assim, quando estamos diante de distribuições assimétricas -- sejam elas para a esquerda ou para a direita --, a média será afetada pelos valores que estão na cauda, enquanto a mediana não. Essa diferença entre as duas medidas cria um importante atributo para interpretarmos o histograma. O que acontece é que, em distribuições simétricas, a média e a medina irão se sobrepor, assumindo o mesmo valor, ou valores muito próximos, enquanto, no caso das distribuições assimétricas, os valores da média e da mediana irão ficar descompassados. Assim, podemos visualizar, a partir do histograma, como que a média e a mediana se comportam, conforme a @fig-distribuicoes-sim-lab.
 
-```{r distribuicoes-sim-lab, fig.cap="Distribuições", fig.width=7, fig.height=3}
+```{r}
+#| label: fig-distribuicoes-sim-lab
+#| fig-cap: Distribuições
+#| fig-width: 7.0
+#| fig-height: 3.0
 
 medias <- dados_sim |> 
   dplyr::group_by(tipo = name) |> 
-  dplyr::summarise(media = mean(value), mediana = median(value)) |> 
-  tidyr::pivot_longer(c(media, mediana))
+  dplyr::summarise(`Média` = mean(value), Mediana = median(value)) |> 
+  tidyr::pivot_longer(c(`Média`, Mediana))
 
 dados_sim |> 
   dplyr::rename(tipo = name) |> 
@@ -610,7 +686,13 @@ dados_sim |>
     ggplot2::aes(xintercept = value, linetype = name),
     data = medias
   ) +
-  ggplot2::facet_wrap(~tipo)
+  ggplot2::facet_wrap(~tipo) +
+  ggthemes::theme_hc() +
+  ggplot2::labs(x = "", y = "", linetype = "Medida") +
+  ggplot2::scale_x_continuous(breaks = seq(0, 1, .2)) +
+  ggplot2::theme(
+    axis.title = ggplot2::element_blank()
+  )
 
 ```
 
@@ -620,9 +702,11 @@ A partir desses três histogramas, podemos tirar as seguintes propriedades:
 - Distribuição simétrica: Média = Mediana
 - Distribuição assimétrica para direita: Média > Mediana
 
-Por fim, podemos nos atentar à última questão com os histogramas: problemas de visualização e a transformação dos dados. O que acontece é que muitas variáveis possuem uma distribuição muito assimétrica, de forma que existem muitos valores concentrados em um pico e pouquíssimos valores dispersos em uma grande amplitude. Isso é extremamente frequente em todos os dados envolvendo valores. Até agora, estávamos usando como exemplo apenas gráficos com tempos, justamente porque as visualizações com valores são muito difíceis. Na Figura \@ref(fig:histograma-valor-2), temos um exemplo do que acontece com os valores na base de dados de consumo. 
+Por fim, podemos nos atentar à última questão com os histogramas: problemas de visualização e a transformação dos dados. O que acontece é que muitas variáveis possuem uma distribuição muito assimétrica, de forma que existem muitos valores concentrados em um pico e pouquíssimos valores dispersos em uma grande amplitude. Isso é extremamente frequente em todos os dados envolvendo valores. Até agora, estávamos usando como exemplo apenas gráficos com tempos, justamente porque as visualizações com valores são muito difíceis. Na @fig-histograma-valor-2, temos um exemplo do que acontece com os valores na base de dados de consumo. 
 
-```{r histograma-valor-2, fig.cap='Histograma de valores'}
+```{r}
+#| label: fig-histograma-valor-2
+#| fig-cap: Histograma de valores
 options(scipen = 999)
 consumo |>
   ggplot2::ggplot() +
@@ -632,13 +716,22 @@ consumo |>
     title = "Histograma de valores",
     x = "Valor (em reais)",
     y = "Quantidade de casos"
+  ) +
+  ggthemes::theme_hc() +
+  ggplot2::scale_x_continuous(labels = scales::dollar_format(
+    prefix = "R$", big.mark = ".", decimal.mark = ","
+  )) +
+  ggplot2::theme(
+    axis.title = ggplot2::element_blank()
   )
 
 ```
 
-O que acontece é que existem pouquíssimos valores *muito altos* (maiores do que R\$ 40 milhões) e uma massa de casos com valores *muito baixos*. Uma assimetria deste tamanho faz parecer que todos os casos possuem um valor de causa igual a zero. Entretanto, isso não é verdade. Se, simplesmente retirarmos da base 10% dos processos, envolvendo os maiores valores, obtemos o histograma da Figura \@ref(fig:hist-valores-filter).
+O que acontece é que existem pouquíssimos valores *muito altos* (maiores do que R\$ 40 milhões) e uma massa de casos com valores *muito baixos*. Uma assimetria deste tamanho faz parecer que todos os casos possuem um valor de causa igual a zero. Entretanto, isso não é verdade. Se, simplesmente retirarmos da base 10% dos processos, envolvendo os maiores valores, obtemos o histograma da @fig-hist-valores-filter.
 
-```{r hist-valores-filter, fig.cap="Histograma de valores (filtrando os 10% maiores processos)"}
+```{r}
+#| label: fig-hist-valores-filter
+#| fig-cap: Histograma de valores (filtrando os 10% maiores processos)
 consumo |>
   dplyr::filter(valor < quantile(valor, 0.90)) |>
   ggplot2::ggplot() +
@@ -648,6 +741,13 @@ consumo |>
     title = "Histograma de valores (filtrando os 10% maiores processos)",
     x = "Valor (em reais)",
     y = "Quantidade de casos"
+  ) +
+  ggthemes::theme_hc() +
+  ggplot2::scale_x_continuous(labels = scales::dollar_format(
+    prefix = "R$", big.mark = ".", decimal.mark = ","
+  )) +
+  ggplot2::theme(
+    axis.title = ggplot2::element_blank()
   )
 ```
 
@@ -655,9 +755,11 @@ A partir dessa figura conseguimos perceber que são somente os processos acima d
 
 Uma solução já foi dada, que foi justamente excluir da base os processos que estão atravancando a análise e depois analisá-los separadamente. Temos um bom exemplo disto na seguinte reportagem do Nexo Jornal [O saldo do cinema brasileiro](https://www.nexojornal.com.br/grafico/2015/11/11/O-saldo-do-cinema-brasileiro). Essa solução pode servir para alguns casos, principalmente quando estamos falando da função comunicativa das visualizações. Entretanto, para a função exploratória, essa função nem sempre é adequada, pois, como ela fragmenta a base, ela perde de vista a distribuição do todo.
 
-Uma solução muito frequente para este problema, então, é ao invés de excluir os dados, transformá-los. A transformação mais comum é a transformação em log10. No nosso exemplo, iríamos então transformar os valores exatos de cada causa, para os valores em log de base 10. Assim, aquele histograma da Figura \@ref(fig:hist-valores-filter) ficaria com esta aparência depois da transformação em log, conforme a Figura \@ref(fig:hist-valores-log).
+Uma solução muito frequente para este problema, então, é ao invés de excluir os dados, transformá-los. A transformação mais comum é a transformação em log10. No nosso exemplo, iríamos então transformar os valores exatos de cada causa, para os valores em log de base 10. Assim, aquele histograma da @fig-hist-valores-filter ficaria com esta aparência depois da transformação em log, conforme a @fig-hist-valores-log.
 
-```{r hist-valores-log, fig.cap="Histograma de valores (com transformação em log de base 10)"}
+```{r}
+#| label: fig-hist-valores-log
+#| fig-cap: Histograma de valores (com transformação em log de base 10)
 
 consumo |>
   ggplot2::ggplot() +
@@ -667,6 +769,11 @@ consumo |>
     title = "Histograma de valores (com transformação em log de base 10)",
     x = "Valor em escala logarítmica (valores em log)",
     y = "Quantidade de casos"
+  ) +
+  ggthemes::theme_hc() +
+  ggplot2::scale_x_continuous() +
+  ggplot2::theme(
+    axis.title = ggplot2::element_blank()
   )
 
 ```
@@ -674,9 +781,11 @@ consumo |>
 
 Por mais que a visualização das barras fique melhorada, a interpretação deste gráfico fica prejudicada, pois agora temos que interpretar o valor em log. O que significa que existe uma concentração de processos com valor em log igual a 4? Isso significa que existe uma concentração de processos em torno de $10^4=10.000$, ou seja, em torno de R\$ 10.000,00. Por mais que a interpretação fique dificultada, a visualização decerto fica melhor. 
 
-A melhor alternativa para se apresentar um histograma em escala logarítmica, talvez seja a de substituir os valores em log pelos valores reais. A única atenção que temos de ter neste caso é para não se deixar confundir com a escala do gráfico (Figura \@ref(fig:hist-valores-log2): a escala continua sendo logarítmica, apesar de as marcações não indicarem isso. 
+A melhor alternativa para se apresentar um histograma em escala logarítmica, talvez seja a de substituir os valores em log pelos valores reais. A única atenção que temos de ter neste caso é para não se deixar confundir com a escala do gráfico (@fig-hist-valores-log2: a escala continua sendo logarítmica, apesar de as marcações não indicarem isso. 
 
-```{r hist-valores-log2, fig.cap="Histograma de valores (com transformação em log de base 10)"}
+```{r}
+#| label: fig-hist-valores-log2
+#| fig-cap: Histograma de valores (com transformação em log de base 10)
 
 consumo |>
   ggplot2::ggplot() +
@@ -687,7 +796,13 @@ consumo |>
     x = "Valor em escala logarítmica (valores em reais)",
     y = "Quantidade de casos"
   ) +
-  ggplot2::scale_x_log10()
+  ggplot2::scale_x_log10(labels = scales::dollar_format(
+    prefix = "R$", big.mark = ".", decimal.mark = ","
+  )) +
+  ggthemes::theme_hc() +
+  ggplot2::theme(
+    axis.title = ggplot2::element_blank()
+  )
 
 
 ```
@@ -699,7 +814,11 @@ A próxima visualização importante para variáveis numéricas é o boxplot. O 
 Para tratar da formação do boxplot, é importante começar visualizando-o, para que possamos compreender as diferentes partes que o compõem. 
 
 
-```{r boxplot1, fig.cap="Exemplos de boxplot, um em pé e outro deitado", fig.width=8, fig.height=4}
+```{r}
+#| label: fig-boxplot1
+#| fig-cap: Exemplos de boxplot, um em pé e outro deitado
+#| fig-width: 8.0
+#| fig-height: 4.0
 
 p1 <- ggplot2::ggplot(cars) +
   ggplot2::aes(x = dist, y = "") +
@@ -736,10 +855,12 @@ Antes de prosseguirmos a explicação para outras questões relacionadas ao boxp
 
 O primeiro passo para montar o boxplot é determinar os eixos do boxplot. É preciso ter clareza de que o boxplot que estamos vendo agora é univariado, ou seja, ele possui apenas um eixo. Este eixo é o eixo que contém os valores da variável numérica. No nosso caso, será o eixo de valor da causa. Não importa se esse eixo for o x ou o y, pois o boxplot pode ser apresentado tanto na horizontal como na vertical.
 
-O segundo passo é realizar os cálculos das estatísticas de resumo do nosso conjunto de dados. São 5 informações de que precisamos (máximo, mínimo, mediana, quartil superior e inferior), e outras 7 medidas decorrentes dessas 5 (IQR, o limite superior do bigode, o limite inferior do bigode, o ponto superior, o ponto inferior e os potenciais outliers nos limites inferior e superior). A Tabela \@ref(tab:medidas-boxplot) resume essas informações. 
+O segundo passo é realizar os cálculos das estatísticas de resumo do nosso conjunto de dados. São 5 informações de que precisamos (máximo, mínimo, mediana, quartil superior e inferior), e outras 7 medidas decorrentes dessas 5 (IQR, o limite superior do bigode, o limite inferior do bigode, o ponto superior, o ponto inferior e os potenciais outliers nos limites inferior e superior). A @tbl-medidas-boxplot resume essas informações. 
 
 
-```{r medidas-boxplot}
+```{r}
+#| label: tbl-medidas-boxplot
+#| tbl-cap: "Medidas resumo que compõem o boxplot."
 
 set.seed(909)
 sub_set_consumo <- abjData::consumo |>
@@ -799,14 +920,18 @@ tab_stats |>
       TRUE ~ paste0(valores, " pontos")
     )
   ) |> 
-  knitr::kable(caption = "Medidas resumo que compõem o boxplot.")
+  knitr::kable()
 
 ```
 
-A começar pelo centro do boxplot, ele está contido dentro dos limites dos quartis superior e inferior e, portanto, ele começa, no ponto R\$ 10.003,23 e acaba no ponto R\$ 22.370,00. A mediana, que corta o retângulo central, está no ponto R$ 14.066,00. Percebemos já, com isso, que a mediana não está no centro. O retângulo central está representado na Figura \@ref(fig:boxplot-desenho1).
+A começar pelo centro do boxplot, ele está contido dentro dos limites dos quartis superior e inferior e, portanto, ele começa, no ponto R\$ 10.003,23 e acaba no ponto R\$ 22.370,00. A mediana, que corta o retângulo central, está no ponto R$ 14.066,00. Percebemos já, com isso, que a mediana não está no centro. O retângulo central está representado na @fig-boxplot-desenho1.
 
 
-```{r boxplot-desenho1, fig.cap="Boxplot sem bigodes", fig.height=2.8, fig.width=8}
+```{r}
+#| label: fig-boxplot-desenho1
+#| fig-cap: Boxplot sem bigodes
+#| fig-height: 2.8
+#| fig-width: 8.0
 
 
 sub_set_consumo |> 
@@ -838,9 +963,13 @@ sub_set_consumo |>
 
 A seguir, para construir os bigodes, temos que calcular o IQR. O IQR é simplesmente a diferença do quartil superior com o quartil inferior, dando R\$ 12.366,77. Então 3/2 do IQR representa R\$ 18.550,15 (3/2 * 12.366,77). Com base nisso, podemos calcular os bigodes inferior e superior. 
 
-O bigode superior pode andar 18.550,15 unidades acima do quartil superior, podendo assumir, portanto, no máximo o valor de R\$ 40.920,16. Quanto ao bigode inferior, precisamos subtrair 3/2 do IQR do quartil inferior, resultando em R\$ -8.546,94. Como não é possível que o valor da causa seja negativo, então esse número, na verdade, equivale simplesmente a R\$ 0,00, ou seja, o menor valor que o bigode inferior pode assumir é zero. O zero está contido dentro do limite do bigode inferior, então não haverá nenhum valor além do limite inferior para o bigode e, portanto, não haverá nenhum ponto na região inferior. Os limites dos bigodes estão representados na Figura \@ref(fig:boxplot-desenho2).
+O bigode superior pode andar 18.550,15 unidades acima do quartil superior, podendo assumir, portanto, no máximo o valor de R\$ 40.920,16. Quanto ao bigode inferior, precisamos subtrair 3/2 do IQR do quartil inferior, resultando em R\$ -8.546,94. Como não é possível que o valor da causa seja negativo, então esse número, na verdade, equivale simplesmente a R\$ 0,00, ou seja, o menor valor que o bigode inferior pode assumir é zero. O zero está contido dentro do limite do bigode inferior, então não haverá nenhum valor além do limite inferior para o bigode e, portanto, não haverá nenhum ponto na região inferior. Os limites dos bigodes estão representados na @fig-boxplot-desenho2.
 
-```{r boxplot-desenho2, fig.cap="Boxplot com bigodes estendidos", fig.height=2.8, fig.width=8}
+```{r}
+#| label: fig-boxplot-desenho2
+#| fig-cap: Boxplot com bigodes estendidos
+#| fig-height: 2.8
+#| fig-width: 8.0
 
 sub_set_consumo |> 
   ggplot2::ggplot() +
@@ -884,10 +1013,14 @@ sub_set_consumo |>
 
 ```
 
-Mesmo sabendo os pontos máximo que os bigodes poderão assumir, isso ainda não nos diz onde os bigodes irão parar, uma vez que não necessariamente (e via de regra não é assim) o maior valor dentro da região dos bigodes é de fato o maior valor possível. No nosso caso, a observação de maior valor que está dentro do bigode inferior é o valor mínimo, de R\$ 395,26; e a observação de maior valor dentro do limite do bigode superior é o ponto R\$ 40.400,74. Os bigodes estão representados na Figura \@ref(fig:boxplot-desenho3). 
+Mesmo sabendo os pontos máximo que os bigodes poderão assumir, isso ainda não nos diz onde os bigodes irão parar, uma vez que não necessariamente (e via de regra não é assim) o maior valor dentro da região dos bigodes é de fato o maior valor possível. No nosso caso, a observação de maior valor que está dentro do bigode inferior é o valor mínimo, de R\$ 395,26; e a observação de maior valor dentro do limite do bigode superior é o ponto R\$ 40.400,74. Os bigodes estão representados na @fig-boxplot-desenho3. 
 
 
-```{r boxplot-desenho3, fig.cap="Boxplot com bigodes cortados", fig.height=2.8, fig.width=8}
+```{r}
+#| label: fig-boxplot-desenho3
+#| fig-cap: Boxplot com bigodes cortados
+#| fig-height: 2.8
+#| fig-width: 8.0
 
 sub_set_consumo |> 
   ggplot2::ggplot() +
@@ -931,9 +1064,13 @@ sub_set_consumo |>
 
 ```
 
-Por fim, uma vez que os bigodes foram construídos, falta apenas a última parte dos boxplots, que são os pontos. Na parte inferior do gráfico, como vimos, como o limite inferior vai até um número negativo, mas os valores reais podem ir, no máximo, até R$ 0,00, então não há pontos na parte inferior. Na parte superior do gráfico, há três pontos que extrapolam o limite do gráfico. Estes pontos estão representados na Figura \@ref(fig:boxplot-desenho4).
+Por fim, uma vez que os bigodes foram construídos, falta apenas a última parte dos boxplots, que são os pontos. Na parte inferior do gráfico, como vimos, como o limite inferior vai até um número negativo, mas os valores reais podem ir, no máximo, até R$ 0,00, então não há pontos na parte inferior. Na parte superior do gráfico, há três pontos que extrapolam o limite do gráfico. Estes pontos estão representados na @fig-boxplot-desenho4.
 
-```{r boxplot-desenho4, fig.cap="Boxplot com bigodes cortados e valores atípicos", fig.height=2.8, fig.width=8}
+```{r}
+#| label: fig-boxplot-desenho4
+#| fig-cap: Boxplot com bigodes cortados e valores atípicos
+#| fig-height: 2.8
+#| fig-width: 8.0
 
 
 sub_set_consumo |> 
@@ -985,10 +1122,14 @@ sub_set_consumo |>
 
 ```
 
-Com a explicação de como construir o boxplot, seguida de um exemplo, podemos prosseguir ao segundo ponto importante a respeito dos boxplots: como interpretar os boxplots? Os boxplots, assim como os histogramas, indicam distribuições. Então, assim como vimos alguns tipos de distribuições nos histogramas, podemos verificar como essas distribuições reverberam na construção dos boxplots. Na Figura \@ref(fig:distribuicoes-boxplot), vemos a relação do boxplot com as diferentes distribuições existentes. 
+Com a explicação de como construir o boxplot, seguida de um exemplo, podemos prosseguir ao segundo ponto importante a respeito dos boxplots: como interpretar os boxplots? Os boxplots, assim como os histogramas, indicam distribuições. Então, assim como vimos alguns tipos de distribuições nos histogramas, podemos verificar como essas distribuições reverberam na construção dos boxplots. Na @fig-distribuicoes-boxplot, vemos a relação do boxplot com as diferentes distribuições existentes. 
 
 
-```{r distribuicoes-boxplot, fig.cap="Distribuições e boxplots", fig.width=8, fig.height=3}
+```{r}
+#| label: fig-distribuicoes-boxplot
+#| fig-cap: Distribuições e boxplots
+#| fig-width: 8.0
+#| fig-height: 3.0
 
 set.seed(2)
 dados_sim <- tibble::tibble(
@@ -1062,7 +1203,11 @@ A representação das distribuições por meio do boxplot é uma informação qu
 
 Primeiro, o boxplot consegue destacar os dois quartis centrais (o segundo e o terceiro quartis), que, juntos, representam exatamente o meio dos dados. Esse destaque nos permite inferir conclusões mais *robustas* a respeito do comportamento central do nosso conjunto. Se nos lembrarmos da discussão a respeito das medidas no capítulo anterior, uma medida *robusta* é uma medida menos suscetível aos valores extremos. Em muitos conjuntos de dados, os valores extremos distorcem os valores centrais. Então o boxplot consegue representar muito bem os valores centrais, dando destaque a esses valores. A Figura Y deixa em realce a porção dos dados que estão sendo representadas pelo retângulo central do boxplot. 
 
-```{r boxplot-normal, fig.cap="Boxplot comparado com distribuição normal.", fig.width=8, fig.height=8}
+```{r}
+#| label: fig-boxplot-normal
+#| fig-cap: Boxplot comparado com distribuição normal.
+#| fig-width: 8.0
+#| fig-height: 8.0
 set.seed(5)
 dados <- tibble::tibble(
   x = qnorm(seq(0.001, 0.999, .001))
@@ -1151,39 +1296,48 @@ patchwork::wrap_plots(boxplot, p2, ncol = 1)
 
 ```
 
-O último ponto que merece destaque da interpretação dos boxplots são os pontos. A interpretação dos pontos é um ponto importante dos boxplots. Esses pontos indicam potenciais *outliers*. Esta é a primeira vez que falamos de outliers neste livro. Outliers são pontos que se diferem drasticamente do resto dos dados. Essa definição é muito genérica, pois ela é uma definição guarda-chuva. Mas ela não é suficiente. O que significa dizer que algum ponto “difere drasticamente” do resto dos dados? Como que eu meço o que são “o resto dos dados” para comparar com os pontos que “diferem drasticamente”?
+O último ponto que merece destaque da interpretação dos boxplots são os pontos. A interpretação dos pontos é um ponto importante dos boxplots. Esses pontos indicam potenciais *outliers*. Esta é a primeira vez que falamos de outliers neste livro. Outliers são pontos que se diferem drasticamente do resto dos dados. Essa definição é muito genérica, pois ela é uma definição guarda-chuva. Mas ela não é suficiente. O que significa dizer que algum ponto "difere drasticamente" do resto dos dados? Como que eu meço o que são "o resto dos dados" para comparar com os pontos que "diferem drasticamente"?
 
 Essas perguntas são essenciais, porque, na verdade, são justamente elas que dão contornos estatísticos para os outliers. Para cada resposta distinta que damos a essas perguntas, teremos uma definição distinta de outlier e existem muitas definições possíveis. A questão que une todos os outliers é que, em todas as suas acepções, os outliers distorcem os valores dos dados e são pontos cuja incidência na população é muito rara. 
 
 Há duas dificuldades ao lidar com outliers: a identificação e a solução. Sobre a identificação, o problema central é definir o ponto de corte dos dados: a partir de que valores poderemos dizer que existem outliers? A segunda questão é saber o que fazer depois de identificarmos os outliers? Retiramos eles da base? Olharmos separadamente para os outliers e os pontos centrais? Essas perguntas (de identificação e de solução) irão acompanhar o livro em muitos momentos, pois os outliers geram problemas que se manifestam de diversas maneiras na estatística. Voltaremos várias vezes nisso, portanto. 
 
-Neste momento introdutório, em que estamos vendo os outliers pela primeira vez, basta sabermos que eles são pontos discrepantes e que existe uma dificuldade tremenda em se determinar um ponto de corte para bater o martelo e dizer: “qualquer valor que ultrapasse essa fronteira, será considerado um outlier!”. No caso do boxplot, por causa da forma como ele é construído, todos os pontos representados no gráfico estão a 3/2 do IQR, contado a partir dos quartis inferior ou superior. Então, se assumirmos que todos os pontos que aparecem no boxplot são outliers, estaremos definido que “diferir drasticamente” significa “distanciar-se 3/2 do IQR contados a partir do quartil superior ou inferior”. Esse ponto de corte (quartil + 3/2 do IQR) é apenas uma definição dentre muitas possíveis para os outliers. Mas podemos usar critérios de corte mais brandos ou mais severos. Por isso dizemos que os pontos do boxplot indicam apenas “potenciais outliers”.
+Neste momento introdutório, em que estamos vendo os outliers pela primeira vez, basta sabermos que eles são pontos discrepantes e que existe uma dificuldade tremenda em se determinar um ponto de corte para bater o martelo e dizer: "qualquer valor que ultrapasse essa fronteira, será considerado um outlier!". No caso do boxplot, por causa da forma como ele é construído, todos os pontos representados no gráfico estão a 3/2 do IQR, contado a partir dos quartis inferior ou superior. Então, se assumirmos que todos os pontos que aparecem no boxplot são outliers, estaremos definido que "diferir drasticamente" significa "distanciar-se 3/2 do IQR contados a partir do quartil superior ou inferior". Esse ponto de corte (quartil + 3/2 do IQR) é apenas uma definição dentre muitas possíveis para os outliers. Mas podemos usar critérios de corte mais brandos ou mais severos. Por isso dizemos que os pontos do boxplot indicam apenas "potenciais outliers".
 
 É importante pontuar aqui que o critério que usaremos para decidir o ponto de corte do outlier não deve ser um critério automático (como o é no caso dos pontos do boxplot). Para cada caso, para cada dado, para cada propósito, teremos um critério distinto para definir outliers. Cada critério resolve problemas distintos, mas gera vieses distintos também. Veremos com mais detalhes as formas de mensurar outliers ao longo do livro. 
 
-Dada toda essa discussão a respeito dos outliers, podemos voltar à interpretação dos boxplots. Em primeiro lugar, vimos que havia uma semelhança dos boxplots com os histogramas: ambos representavam distribuições dos dados, mas de formas distintos. Em seguida, passamos a ver duas características específicas do boxplot, que não estavam presentes no histograma: o foco no conjunto central e os outliers. Sobre este último ponto, vimos que os pontos que aparecem no boxplot representam apenas “potenciais outliers”, justamente porque eles assumem um critério automático de representação. Em alguns contextos, fará sentido assumir que os outliers são esses pontos mesmos; em outros, entretanto, não será assim.
+Dada toda essa discussão a respeito dos outliers, podemos voltar à interpretação dos boxplots. Em primeiro lugar, vimos que havia uma semelhança dos boxplots com os histogramas: ambos representavam distribuições dos dados, mas de formas distintos. Em seguida, passamos a ver duas características específicas do boxplot, que não estavam presentes no histograma: o foco no conjunto central e os outliers. Sobre este último ponto, vimos que os pontos que aparecem no boxplot representam apenas "potenciais outliers", justamente porque eles assumem um critério automático de representação. Em alguns contextos, fará sentido assumir que os outliers são esses pontos mesmos; em outros, entretanto, não será assim.
 
 Explicada a interpretação e a formação dos boxplots, resta somente abordar seus principais problemas. Há dois problemas: distribuições assimétricas e dados escassos.
 
-A começar pelo problema das distribuições assimétricas, este é o mesmo problema que acontecia com o histograma, de que a visualização ficava impossibilitada por causa de distribuições muito assimétricas. Basta nos lembrarmos da Figura \@ref(fig:histograma-valor-2). No caso do boxplot, aqueles mesmos dados ficam representados conforme a Figura \@ref(fig:boxplot-consumo).
+A começar pelo problema das distribuições assimétricas, este é o mesmo problema que acontecia com o histograma, de que a visualização ficava impossibilitada por causa de distribuições muito assimétricas. Basta nos lembrarmos da @fig-histograma-valor-2. No caso do boxplot, aqueles mesmos dados ficam representados conforme a @fig-boxplot-consumo.
 
-```{r boxplot-consumo, fig.cap="Boxplot da variável consumo"}
+```{r}
+#| label: fig-boxplot-consumo
+#| fig-cap: Boxplot da variável consumo
 options(scipen = 999)
 consumo |>
   ggplot2::ggplot() +
   ggplot2::aes(x = valor) +
   ggplot2::geom_boxplot() +
+  ggplot2::theme_minimal() +
   ggplot2::theme(
     axis.title.y = ggplot2::element_blank(),
     axis.text.y = ggplot2::element_blank(),
     axis.ticks.y = ggplot2::element_blank()
-  )
+  ) +
+  ggplot2::scale_x_continuous(labels = scales::dollar_format(
+    prefix = "R$", big.mark = ".", decimal.mark = ","
+  )) +
+  ggplot2::labs(x = "Valor")
 
 ```
 
-Vemos que o retângulo central está tão achatado, próximo do 0, que ele se torna uma linha. Perdemos, com isso, toda a noção das medidas centrais. Entretanto, se olharmos para a tabela de medidas para compôr este boxplot, veremos os seguintes valores, conforme a Tabela \@ref(tab:tabela-boxplot-consumo).
+Vemos que o retângulo central está tão achatado, próximo do 0, que ele se torna uma linha. Perdemos, com isso, toda a noção das medidas centrais. Entretanto, se olharmos para a tabela de medidas para compôr este boxplot, veremos os seguintes valores, conforme a @tbl-boxplot-consumo.
 
-```{r tabela-boxplot-consumo}
+```{r}
+#| label: tbl-boxplot-consumo
+#| tbl-cap: "Tabela de estatísticas-resumo para construção do boxplot"
 consumo |>
   dplyr::summarise(
     `valor máximo` = max(valor),
@@ -1236,9 +1390,7 @@ consumo |>
       TRUE ~ paste0(valores, " pontos")
     )
   ) |>
-  knitr::kable(
-    caption = "Tabela de estatísticas-resumo para construção do boxplot"
-  )
+  knitr::kable()
 
 ```
 
@@ -1246,20 +1398,31 @@ Por esta tabela, vemos que o valor máximo que estará contido nos bigodes é de
 
 Quanto aos pontos, vemos que há 99 pontos acima do limite superior do boxplot. Entretanto, o que efetivamente conseguimos observar são apenas 4 pontos. Os demais 95 pontos estão todos concentrados, de forma que eles ficam indiscriminados entre si. 
 
-Então o primeiro problema diz respeito à visualização de dados muito dispersos e assimétricos. Como já vimos, isso pode ser resolvido colocando o gráfico em escala logarítmica. Na Figura \@ref(fig:boxplot-consumo-log), o gráfico está em log de base 10.
+Então o primeiro problema diz respeito à visualização de dados muito dispersos e assimétricos. Como já vimos, isso pode ser resolvido colocando o gráfico em escala logarítmica. Na @fig-boxplot-consumo-log, o gráfico está em log de base 10.
 
-```{r boxplot-consumo-log, fig.cap="Boxplot dos valores em log na base 10", fig.width=8, fig.height=2.5}
+```{r}
+#| label: fig-boxplot-consumo-log
+#| fig-cap: Boxplot dos valores em log na base 10
+#| fig-width: 8.0
+#| fig-height: 2.5
 options(scipen = 999)
 consumo |>
   ggplot2::ggplot() +
   ggplot2::aes(x = valor) +
   ggplot2::geom_boxplot() +
-  ggplot2::scale_x_log10(breaks=10^c(3,4,5,6,7,8)) +
+  ggplot2::scale_x_log10(
+    breaks=10^c(3,4,5,6,7,8),
+    labels = scales::dollar_format(
+      prefix = "R$", big.mark = ".", decimal.mark = ","
+    )
+  ) +
+  ggplot2::theme_minimal() +
   ggplot2::theme(
     axis.title.y = ggplot2::element_blank(),
     axis.text.y = ggplot2::element_blank(),
     axis.ticks.y = ggplot2::element_blank()
-  )
+  ) +
+  ggplot2::labs(x = "Valor")
 
 ```
 
@@ -1276,9 +1439,11 @@ A combinação de uma variável numérica com uma variável categórica não ger
 
 ##### Histograma
 
-Para adicionar uma informação categórica nos histogramas, basta “quebrarmos” os dados em várias categorias, indicando como que cada categoria contribui para a distribuição geral. Na Figura \@ref(fig:hist-com-shade) observamos o mesmo histograma de tempos que já vimos anteriormente, mas dividido pelo resultado final da decisão. Cruzando o tempo de decisão com o resultado da decisão poderíamos, por exemplo, investigar se os recursos protelatórios (cujo resultado é sempre negativo, ou, “Não reformou”).
+Para adicionar uma informação categórica nos histogramas, basta "quebrarmos" os dados em várias categorias, indicando como que cada categoria contribui para a distribuição geral. Na @fig-hist-com-shade observamos o mesmo histograma de tempos que já vimos anteriormente, mas dividido pelo resultado final da decisão. Cruzando o tempo de decisão com o resultado da decisão poderíamos, por exemplo, investigar se os recursos protelatórios (cujo resultado é sempre negativo, ou, "Não reformou").
 
-```{r hist-com-shade, fig.cap="Histograma para cada tipo de decisão"}
+```{r}
+#| label: fig-hist-com-shade
+#| fig-cap: Histograma para cada tipo de decisão
 consumo |>
   dplyr::filter(
     dec_val == "Não reformou" |
@@ -1287,16 +1452,20 @@ consumo |>
   ) |>
   ggplot2::ggplot() +
   ggplot2::aes(x = tempo, fill = dec_val) +
-  ggplot2::geom_histogram() +
-  gghighlight::gghighlight() +
-  ggplot2::facet_wrap(~ dec_val)
+  ggplot2::geom_histogram(bins = 30) +
+  gghighlight::gghighlight(label_key = dec_val) +
+  ggplot2::facet_wrap(~ dec_val) +
+  ggthemes::theme_hc() +
+  ggplot2::labs(x = "Tempo (dias)", y = "Contagem")
 ```
 
 ##### Boxplot
 
 Para o boxplot, podemos realizar o mesmo tipo de visualização, em que quebramos o boxplot principal em grupos menores. Isso nos permite comparar medianas e IQRs com maior facilidade.
 
-```{r boxplot-com-cat, fig.cap="Histograma para cada tipo de decisão"}
+```{r}
+#| label: boxplot-com-cat
+#| fig-cap: Histograma para cada tipo de decisão
 consumo |>
   dplyr::filter(
     dec_val == "Não reformou" |
@@ -1305,7 +1474,9 @@ consumo |>
   ) |>
   ggplot2::ggplot() +
   ggplot2::aes(x = tempo, y = dec_val, fill = dec_val) +
-  ggplot2::geom_boxplot(show.legend = FALSE)
+  ggplot2::geom_boxplot(show.legend = FALSE) +
+  ggplot2::theme_minimal() +
+  ggplot2::labs(x = "Tempo (dias)", y = "Decisão")
 ```
 
 #### Gráficos bivariados (com explicativa numérica)
@@ -1314,9 +1485,14 @@ Ao contrário dos gráficos de variável numérica bivariados com uma explicativ
 
 ##### Gráficos de dispersão
 
-O gráfico de dispersão, como já dito, é usado para representar duas variáveis numéricas. Esse tipo de representação nos indica como que duas variáveis numéricas se relacionam. Há duas relações possíveis: uma relação positiva (isto é, quanto maior uma variável, maior a outra também), ou uma relação negativa (isto é, quanto mais de uma variável, menos eu tenho da outra). A Figura \@ref(fig:dispersao) traz dois gráficos de dispersão, demonstrando as relações possíveis.
+O gráfico de dispersão, como já dito, é usado para representar duas variáveis numéricas. Esse tipo de representação nos indica como que duas variáveis numéricas se relacionam. Há duas relações possíveis: uma relação positiva (isto é, quanto maior uma variável, maior a outra também), ou uma relação negativa (isto é, quanto mais de uma variável, menos eu tenho da outra). A @fig-dispersao traz dois gráficos de dispersão, demonstrando as relações possíveis.
 
-```{r dispersao, eval=TRUE, fig.cap="Gráficos de dispersão sobre litigiosidade", fig.width=9, fig.height=4}
+```{r}
+#| label: fig-dispersao
+#| eval: true
+#| fig-cap: Gráficos de dispersão sobre litigiosidade
+#| fig-width: 9.0
+#| fig-height: 4.0
 p_positivo <- abjData::litigiosidade |>
   dplyr::filter(ano == min(ano)) |>
   dplyr::mutate(
@@ -1331,7 +1507,8 @@ p_positivo <- abjData::litigiosidade |>
     title = "Gráfico de dispersão com relação positiva",
     y = "Casos novos por 100 mil habitantes",
     x = "IDH"
-  )
+  ) +
+  ggplot2::theme_minimal()
 
 
 p_negativo <- abjData::litigiosidade |>
@@ -1348,7 +1525,8 @@ p_negativo <- abjData::litigiosidade |>
     title = "Gráfico de dispersão com relação negativa",
     y = "Casos novos por 100 mil habitantes",
     x = "Taxa de analfabetismo - 18 anos ou mais"
-  )
+  ) +
+  ggplot2::theme_minimal()
 
 patchwork::wrap_plots(p_positivo, p_negativo, ncol = 2)
 
@@ -1356,9 +1534,14 @@ patchwork::wrap_plots(p_positivo, p_negativo, ncol = 2)
 
 A linha que demonstra a relação não será tratada neste capítulo. Ela foi meramente ilustrativa para indicar o tipo de relação que está sendo representada entre as variáveis. O que importa é que, ao colocar, nos dois eixos, variáveis numéricas, conseguimos observar como essas variáveis se associam entre si.
 
-Por mais que os gráficos de dispersão sejam usualmente utilizados para relacionar duas variáveis contínuas, podemos dar outras funções a eles. Em um caso exemplar, do Observatório da Insolvência da ABJ sobre Recuperações Judiciais no Estado de São Paulo, analisamos a relação entre a dívida da recuperação com a remuneração do administrador judicial. Ao apresentar a associação entre as variáveis, construímos um gráfico de dispersão. Uma forma de se encarar este gráfico é justamente pela indagação de se quanto maior a dívida total, maior a remuneração do administrador judicial. Mas, para além disso, podemos ter um outro olhar para o gráfico de dispersão. O que sabemos é que o art. 24, § 1º da lei 11.101/2005 estabelece como limite à remuneração do AJ que “o total pago ao administrador judicial não excederá 5% (cinco por cento) do valor devido aos credores submetidos à recuperação judicial ou do valor de venda dos bens na falência.” Neste caso, então, ao colocarmos uma linha de 5%  em relação ao total da dívida, conseguimos observar a distância da remuneração dos AJs em relação ao máximo permitido por lei. Quando adicionamos esta camada de interpretação ao gráfico, não estamos olhando para a relação entre as variáveis (remuneração do AJ e total da dívida), mas estamos olhando para a legalidade dessa remuneração. 
+Por mais que os gráficos de dispersão sejam usualmente utilizados para relacionar duas variáveis contínuas, podemos dar outras funções a eles. Em um caso exemplar, do Observatório da Insolvência da ABJ sobre Recuperações Judiciais no Estado de São Paulo, analisamos a relação entre a dívida da recuperação com a remuneração do administrador judicial. Ao apresentar a associação entre as variáveis, construímos um gráfico de dispersão. Uma forma de se encarar este gráfico é justamente pela indagação de se quanto maior a dívida total, maior a remuneração do administrador judicial. Mas, para além disso, podemos ter um outro olhar para o gráfico de dispersão. O que sabemos é que o art. 24, § 1º da lei 11.101/2005 estabelece como limite à remuneração do AJ que "o total pago ao administrador judicial não excederá 5% (cinco por cento) do valor devido aos credores submetidos à recuperação judicial ou do valor de venda dos bens na falência." Neste caso, então, ao colocarmos uma linha de 5%  em relação ao total da dívida, conseguimos observar a distância da remuneração dos AJs em relação ao máximo permitido por lei. Quando adicionamos esta camada de interpretação ao gráfico, não estamos olhando para a relação entre as variáveis (remuneração do AJ e total da dívida), mas estamos olhando para a legalidade dessa remuneração. 
 
-```{r obs-insolvencia, fig.cap="Relação entre dívida e remuneração de Administradores Judiciais: Observatório da Insolvência", fig.width=8, fig.height=8}
+```{r}
+#| label: fig-obs-insolvencia
+#| fig-cap: 'Relação entre dívida e remuneração de Administradores Judiciais: Observatório
+#|   da Insolvência'
+#| fig-width: 8.0
+#| fig-height: 8.0
 
 da_final <- obsFase2::da_relatorio |> 
   dplyr::select(
@@ -1467,7 +1650,7 @@ da_deferido |>
 
 Chegamos, então, ao fim dos gráficos bivariados com uma variável numérica como variável de interesse. O último gráfico que nos resta observar é o caso das variáveis explicativas temporais. Esse caso é especial porque as variáveis temporais não possuem uma natureza muito definida. 
 
-Por exemplo, se pegarmos a variável categórica de resultado da decisão de segunda instância, ela pode assumir três valores: reformou, não reformou ou reformou parcialmente. Faria sentido, diante dessas três informações possíveis, que a gente substraísse “reformou” de “não reformou”? Obviamente não, pois não há sentido algum neste cálculo. Entretanto, se tivermos duas datas, a subtração dessas duas informações irá sim fazer sentido: ela irá nos indicar um intervalo de tempo. Com isso, já vemos que as variáveis temporais não se comportam exatamente como variáveis categóricas. 
+Por exemplo, se pegarmos a variável categórica de resultado da decisão de segunda instância, ela pode assumir três valores: reformou, não reformou ou reformou parcialmente. Faria sentido, diante dessas três informações possíveis, que a gente substraísse "reformou" de "não reformou"? Obviamente não, pois não há sentido algum neste cálculo. Entretanto, se tivermos duas datas, a subtração dessas duas informações irá sim fazer sentido: ela irá nos indicar um intervalo de tempo. Com isso, já vemos que as variáveis temporais não se comportam exatamente como variáveis categóricas. 
 
 Agora, pensando nas variáveis numéricas contínuas, normalmente, entre um valor e outro, existem infinitos valores possíveis. Por exemplo, entre 1 e 2, existe o número 1,1 e também o 1,2. Mas entre esses valores existe o 1,11 e o 1,12. Mas entre eles, existe o 1,111 e o 1,112. E assim por diante. Essa propriedade das variáveis numéricas contínuas não está presente nas variáveis temporais. Se a variável temporal representa um ano, por exemplo, não há nada entre os anos de 2016 e 2017. Ou ainda, se a variável temporal representa datas, não há nenhum outro número entre um dia e outro. 
 
@@ -1475,20 +1658,23 @@ Por fim, então, comparando as variáveis temporais com variáveis numéricas di
 
 Por causa dessa natureza especial das variáveis temporais é que faz sentido pensarmos nos gráficos bivariados no tempo como um caso especial. 
 
-Antes de entrarmos na visualização gráfica dos gráficos bivariados no tempo, é importante diferenciarmos dois tipos de variáveis relacionadas a tempos. Uma coisa é uma variável que pode receber valores como “27/08/2021”; mas existe outra informação relacionada a tempo que diz respeito ao tempo transcorrido entre duas datas, por exemplo, o tempo entre a distribuição de um processo e a sua sentença. No primeiro caso, a natureza da variável é temporal (uma data); no segundo caso, a natureza da variável é uma variável numérica comum. O tipo de variável especial de que vamos tratar nesta sessão diz respeito somente ao primeiro tipo, e não ao segundo, tanto que já fizemos um gráfico com a variável “tempo”. 
+Antes de entrarmos na visualização gráfica dos gráficos bivariados no tempo, é importante diferenciarmos dois tipos de variáveis relacionadas a tempos. Uma coisa é uma variável que pode receber valores como "27/08/2021"; mas existe outra informação relacionada a tempo que diz respeito ao tempo transcorrido entre duas datas, por exemplo, o tempo entre a distribuição de um processo e a sua sentença. No primeiro caso, a natureza da variável é temporal (uma data); no segundo caso, a natureza da variável é uma variável numérica comum. O tipo de variável especial de que vamos tratar nesta sessão diz respeito somente ao primeiro tipo, e não ao segundo, tanto que já fizemos um gráfico com a variável "tempo". 
 
 ##### Séries temporais
 
 O nome do gráfico que representa uma variável numérica em relação ao tempo se chama série temporal. O gráfico de uma série temporal se apresenta sempre com o tempo no eixo x e a variável numérica no eixo y. 
 
 
-Este gráfico é utilizado para “descrever apenas o comportamaneto da série”, o que vai envolver “a verificação da existência de tendências, ciclos e variações sazonais”.[^morettin-series] 
+Este gráfico é utilizado para "descrever apenas o comportamaneto da série", o que vai envolver "a verificação da existência de tendências, ciclos e variações sazonais".[^morettin-series] 
 
 [^morettin-series]: MORETTIN, Pedro A; TOLOI, Clélia M. C. Análise de Séries Temporais, 2a ed. São Paulo: Editora Blucher. 2006, p. 3.
 
-Na Figura \@ref(fig:time-series-litig), vemos um exemplo desse tipo de relação. 
+Na @fig-time-series-litig, vemos um exemplo desse tipo de relação. 
 
-```{r time-series-litig, eval=TRUE, fig.cap="Série de tempo dos dados de litigiosidade."}
+```{r}
+#| label: fig-time-series-litig
+#| eval: true
+#| fig-cap: Série de tempo dos dados de litigiosidade.
 norte <- c("AM", "TO", "AP", "AC", "RR", "RO")
 nordeste <- c("MA", "BA", "PE", "SE", "AL", "RN", "PB", "CE", "PI", "PA")
 centro_oeste <- c("GO", "MT", "MS", "DF")
@@ -1509,21 +1695,25 @@ abjData::litigiosidade |>
   dplyr::group_by(regiao, ano) |>
   dplyr::summarise(
     novos = sum(novos),
-    pop = sum(pop)
+    pop = sum(pop),
+    .groups = "drop"
   ) |>
-  dplyr::ungroup() |>
   dplyr::mutate(
     novos_por_100k = novos/pop * 100000
   ) |>
   ggplot2::ggplot() +
-  ggplot2::aes(x = ano, y = novos_por_100k, color = regiao) +
-  ggplot2::geom_point() +
-  ggplot2::geom_line()
+  ggplot2::aes(x = ano, y = novos_por_100k, colour = regiao) +
+  ggplot2::geom_point(size = 2.2) +
+  ggplot2::geom_line(size = 1) +
+  ggthemes::theme_hc() +
+  ggplot2::scale_colour_viridis_d(begin = .1, end = .9) +
+  ggplot2::labs(
+    x = "Ano", y = "Casos novos por\n100 mil habitantes",
+    colour = "Região"
+  )
 
 ```
 
-
 A figura nos mostra uma tendência se aumentar os casos em todas as regiões do Brasil a partir de 2018. Além disso, vemos que, na região Sul, entre 2015 e 2016, houve uma clara queda, no total de casos por 100 mi habitantes, em comparação com outras regiões, que ou demonstraram aumentos, ou demonstraram quedas não tão intensas. 
 
-
-O que vemos é que não estamos fazendo afirmações sobre a relação entre a variável contínua (número de casos novos por 100 mil habitantes) e a variável temporal (ano) do tipo “quanto mais tempo, mais casos”, porque não é esse tipo de relação que séries temporais nos indicam. Esse tipo de visualização está nos apontando para tendências temporais, sejam elas cíclicas, sazonais ou episódios pontuais. 
+O que vemos é que não estamos fazendo afirmações sobre a relação entre a variável contínua (número de casos novos por 100 mil habitantes) e a variável temporal (ano) do tipo "quanto mais tempo, mais casos", porque não é esse tipo de relação que séries temporais nos indicam. Esse tipo de visualização está nos apontando para tendências temporais, sejam elas cíclicas, sazonais ou episódios pontuais. 
