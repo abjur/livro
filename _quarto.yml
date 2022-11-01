@@ -1,0 +1,91 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Metodologia de Pesquisa Jurimétrica"
+  favicon: assets/img/favicon.ico
+  output-file: "livro_jurimetria"
+  author:
+    - Ricardo Feliz Okamoto
+    - Julio Trecenti
+  date: "01/11/2022"
+  chapters:
+    - index.qmd
+    - 01-intro.qmd
+    - 02-planejamento.qmd
+    - 03-estatisticas.qmd
+    - 04-visualizacao.qmd
+    - 05-modelagem.qmd
+    - 06-refs.qmd
+  downloads: [pdf]
+  page-navigation: true
+  page-footer:
+    left: |
+      Introdução à metodologia de pesquisa jurimétrica foi escrito por
+      Ricardo Feliz Okamoto e Julio Trecenti, com apoio da
+      <a href="https://abj.org.br">Associação Brasileira de Jurimetria (ABJ).</a>
+    right: |
+      O livro foi construído usando <a href="https://quarto.org/">Quarto</a>.
+  site-url: https://abjur.github.io/livro
+  repo-url: https://github.com/abjur/livro
+  repo-actions: [edit, issue]
+  sharing: [twitter, linkedin]
+  sidebar:
+    style: floating
+  navbar:
+    logo: assets/img/logo.png
+    title: false
+    search: true
+    right:
+      - icon: twitter
+        href: https://twitter.com/abjurimetria
+        aria-label: Twitter
+
+bibliography: [book.bib]
+nocite: |
+  @*
+
+format:
+  html:
+    code-fold: true
+    code-copy: true
+    code-link: true
+    theme: [cosmo, assets/css/style.scss]
+  pdf:
+    toc: true
+    number-sections: true
+    colorlinks: true
+    documentclass: scrbook
+    toc-title: Sumário
+    lof: true
+    lot: true
+    include-in-header:
+      text: |
+        \usepackage{amsmath}
+        \usepackage{float}
+    fontfamily: libertinus
+    geometry:
+      - top=30mm
+      - left=15mm
+      - right=15mm
+      - heightrounded
+
+lang: pt
+
+execute:
+  echo: false
+  warning: false
+  freeze: auto
+
+knitr:
+  opts_chunk:
+    comment: "#>"
+    echo: false
+    message: false
+    warning: false
+    fig.height: 6
+    fig.width: 9
+    dpi: 300
+    R.options:
+      knitr.graphics.auto_pdf: true
