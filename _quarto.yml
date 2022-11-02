@@ -9,15 +9,15 @@ book:
     Livro sobre metodologia de pesquisa jurimétrica escrito pela
     Associação Brasileira de Jurimetria (ABJ) para ser utilizado em cursos
     de Jurimetria para pessoas do Direito.
-  image: assets/img/abj_inside.png
+  image: https://livro.abj.org.br/assets/img/abj_inside.png
   open-graph:
     description: |
       Livro sobre metodologia de pesquisa jurimétrica escrito pela
       Associação Brasileira de Jurimetria (ABJ) para ser utilizado em cursos
       de Jurimetria para pessoas do Direito.
-    image: assets/img/abj_inside.png
+    image: https://livro.abj.org.br/assets/img/abj_inside.png
   twitter-card:
-    image: assets/img/abj.png
+    image: https://livro.abj.org.br/assets/img/abj.png
     creator: abjurimetria
   favicon: assets/img/favicon.ico
   output-file: "livro_jurimetria"
