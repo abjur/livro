@@ -1,1 +1,1 @@
-Sitemap: https://abjur.github.io/livro/sitemap.xml
+Sitemap: https://livro.abj.org.br/sitemap.xml
