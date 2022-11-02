@@ -1,16 +1,32 @@
 cff-version: 1.2.0
-type: book
 license: MIT
-message: "Se você utilizar esse livro, cite da forma abaixo:."
+message: "Se você utilizar esse livro, cite da forma abaixo:"
 authors:
 - family-names: "Feliz"
   given-names: "Ricardo"
+  country: BR
   orcid: "https://orcid.org/0000-0003-4819-5006"
 - family-names: "Trecenti"
   given-names: "Julio"
+  country: BR
   orcid: "https://orcid.org/0000-0002-1680-6389"
-title: "Metodologia de Pesquisa Jurimétrica"
 version: 0.1
-doi:
-date-released: 2022-01-30
-url: "https://github.com/abjur/livro"
+preferred-citation:
+  type: 'book'
+  title: "Metodologia de Pesquisa Jurimétrica"
+  institution:
+    name: ABJ
+  authors:
+  - family-names: "Feliz"
+    given-names: "Ricardo"
+    country: BR
+    orcid: "https://orcid.org/0000-0003-4819-5006"
+  - family-names: "Trecenti"
+    given-names: "Julio"
+    country: BR
+    orcid: "https://orcid.org/0000-0002-1680-6389"
+  publisher:
+    name: ABJ
+  year: '2022'
+  date-released: 2022-01-30
+  url: "https://livro.abj.org.br"
