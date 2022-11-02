@@ -1,14 +1,15 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# livro: Introdução à Metodologia de Pesquisa Jurimétrica
+# livro: Metodologia de Pesquisa Jurimétrica
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-Este repositório contém os textos e códigos de um livro “Introdução à
-Metodologia de Pesquisa Jurimétrica”. É possível acessar o *website* do
-livro [aqui]() e o PDF do livro [aqui]().
+Este repositório contém os textos e códigos de um livro “Metodologia de
+Pesquisa Jurimétrica”. É possível acessar o *website* do livro
+[aqui](https://livro.abj.org.br) e o PDF do livro
+[aqui](https://livro.abj.org.br/livro_jurimetria.pdf).
 
 ## Descrição
 
@@ -37,7 +38,19 @@ também pode postar no [fórum da ABJ](https://forum.abj.org.br).
 
 Para citar o livro, você pode usar a citação abaixo:
 
+    Feliz R, Trecenti J (2022). Metodologia de Pesquisa Jurimétrica. ABJ.
+    <https://livro.abj.org.br>.
+
 Ou então, no formato bibtex:
+
+    @Book{feliztrecenti:2022,
+      title = {Metodologia de Pesquisa Jurimétrica},
+      author = {Ricardo Feliz and Julio Trecenti},
+      year = {2022},
+      publisher = {ABJ},
+      url = {https://livro.abj.org.br},
+      institution = {ABJ},
+    }
 
 ## Licença
 
