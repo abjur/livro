@@ -17,3 +17,4 @@
 ^\.quarto$
 ^docs$
 ^CITATION\.cff$
+^_cname\.R
