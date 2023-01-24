@@ -214,3 +214,170 @@ O maior problema, portanto, não é o erro amostral (isso é natural, é normal,
 Quanto mais observações temos na nossa amostra, menores são os erros das nossas estimativas. Isso será melhor demonstrado no capítulo dedicado a estudar a Lei dos Grandes Números e o Teorema do Limite Central. Por hora, basta sabermos dessa relação entre o tamanho da amostra e o erro: é uma relação inversamente proporcional, de modo que quanto maior a amostra, menor o erro.
 
 Dessa constatação, é possível concluir, de modo intuitivo e automático, que a nossa amostra deve ter sempre o maior tamanho possível. Se isso é verdade no plano teórico, no plano prático, essa afirmação não se sustenta. O que acontece é que no dia a dia da pesquisa, não dispomos de recurso e de tempo infinitos. Coletar dados é um procedimento caro, que demanda muitas horas para ser realizado. Assim, dadas as limitações do mundo real, discute-se qual é o tamanho ideal da amostra. Para cada tamanho de amostra, há uma precisão relacionada. O ideal seria calcular, a partir da precisão desejada (normalmente de 5% de erro), qual deveria ser o tamanho da amostra. Mas isso nem sempre é possível. Se não for possível determinar o tamanho da amostra, deve-se fazer o procedimento contrário de determinar qual é a precisão que uma amostra de determinado tamanho é capaz de gerar. 
+
+## Viés de seleção em processos judiciais
+
+### Viés de seleção
+
+A palavra **viés**, em estatística, pode ter múltiplos significados. Em geral, a palavra indica que existe diferença entre o que está sendo usado para fazer um estudo e o que se deseja estudar.
+
+O tipo de viés mais conhecido é o *viés do estimador*. Ele é a *diferença entre a média de um estimador e o valor que está sendo estimado*. Por exemplo, ao estudar o valor médio de pedidos de indenização por dano moral em Alagoas (números fictícios), temos:
+
+- Valor real: R\$ 5.000,00
+- Média do estimador: R\$ 5.200,00
+- Viés: R\$ 5.200,00 - R\$ 5.000,00 = R\$ 200,00
+
+__Viés de seleção__ é um tipo de viés estatístico, indicando uma diferença entre os __indivíduos que estamos estudando na base de dados__ de dados e __a população que desejamos estudar__. Coloquialmente, viés de seleção é uma forma de dizer que estamos __tirando conclusões sobre bananas ao estudar maçãs__. 
+
+Muitas vezes, no entanto, não é tão claro que estamos estudando maçãs. Para não concluir sobre bananas usando maçãs, é importante entender o **mecanismo de seleção** que gera os dados que observamos.  O mecanismo de seleção é o conjunto de regras ou critérios que são usados para determinar quais indivíduos serão incluídos na base de dados e quais serão excluídos. 
+
+__Exemplo 1__. Queremos estudar a __letalidade__ da Covid-19. Para isso, precisamos calcular a razão entre a quantidade de mortes e a quantidade de pessoas infectadas. Em um país fictício, o número de pessoas infectadas é calculado a partir dos relatórios de pacientes de hospitais. A estimativa de letalidade no país fictício ficou bem maior do que a letalidade real. Por quê?
+
+Nesse caso, a letalidade estimada apresentará viés, porque as pessoas que vão ao hospital tendem a apresentar sintomas mais graves que a população em geral. O mecanismo de seleção, nesse caso, é a __entrada no hospital__: uma pessoa só entra na base de dados se for para o hospital.
+
+Abaixo, temos também um exemplo computacional. Fizemos a simulação de 10 mil casos. A letalidade foi considerada como 1%, e a gravidade definida por um números entre zero e um, gerados aleatoriamente. O mecanismo de seleção então foi introduzido: a hospitalização como uma função da gravidade; quanto maior a gravidade, maior a probabilidade de hospitalização. Em seguida, calculamos a proporção de pessoas que morreram, comparando com a proporção de pessoas que morreram nos hospitais (que é o que obervamos). Na simulação, a proporção observada é quase o dobro da real.
+
+```{r}
+#| eval: true
+#| echo: true
+set.seed(3)
+
+N <- 10000 # numero de pessoas infectadas
+letalidade <- 0.01 # letalidade real
+gravidade <- runif(N) # número aleatório indicando a gravidade da doença
+morreu_real <- gravidade > 1 - letalidade # indica se a pessoa morreu
+
+# hospitalizacao proporcional à gravidade
+hospitalizacao <- as.logical(rbinom(N, 1, gravidade))
+
+morreu_observados <- morreu_real[hospitalizacao]
+
+mean(morreu_observados)
+
+mean(morreu_real)
+
+```
+
+
+__Exemplo 2__. Aviões foram enviados para a guerra, sendo que muitos caíram e os poucos que voltaram estavam com tiros nas pontas das asas. Os engenheiros, então colocaram mais proteções nas pontas das asas dos aviões, já que, estatisticamente, era a região mais atingidas. Os aviões reforçados continuaram caindo. Por quê?
+
+Nesse caso, os aviões que caíram __foram atingidos em outros lugares__, diferentes da ponta das asas. Ou seja, os engenheiros protegeram a parte menos importante do avião! O mecanismo de seleção, nesse caso, é a __queda do avião__: o avião só entra na base de dados se sobreviver à guerra.
+
+
+Existem vários tipos de viés de seleção. Alguns deles são:
+
+- Amostragem (exemplos anteriores)
+- Auto-seleção (viés do voluntário)
+- Intervalo de tempo (vimos no módulo 1)
+
+Quando passamos para processos judiciais, o mecanismo de seleção está relacionado __à escolha de litigar__. A @tbl-tabela-escolhas mostra algumas alternativas e ações de acordo com as opiniões do autor e do réu. Quando o autor acha que vai ganhar e o réu acha que vai perder, o esperado é que aconteça um acordo. Quando tanto autor quanto réu acham que vão ganhar, espera-se que o processo vá para o judiciário. Se o autor acredita que perderia o processo, em condições normais, o caso não iria a juízo. Ainda assim, se tanto autor quanto réu acreditam que perderiam o caso, dependendo das condições do problema, pode haver um litígio.
+
+
+```{r}
+#| label: tbl-tabela-escolhas
+#| tbl-cap: Ação decorrente da opinião do autor e do réu sobre o possível resultado do processo.
+tibble::tribble(
+  ~opiniao_autor, ~opiniao_reu, ~acao,
+  "Vou ganhar", "Vou perder", "Acordo",
+  "Vou ganhar", "Vou ganhar", "Julgamento",
+  "Vou perder", "Vou perder", "Sem processo*",
+  "Vou perder", "Vou ganhar", "Sem processo"
+) |> 
+  knitr::kable(
+    col.names = c("Expectativa autor", "Expectativa réu", "Ação")
+  )
+```
+
+A @tbl-tabela-escolhas leva a uma característica muito intrigante de processos judiciais: **o processo só acontece se as expectativas das partes forem diferentes.** Esse é o princípio por trás do mecanismo de seleção em processos judiciais. 
+
+Para modelar o problema, vamos criar algumas variáveis:
+
+- $P_p$: Probabilidade do autor ganhar, segundo o autor (*plaintiff*)
+- $P_d$: Probabilidade do autor ganhar, segundo o réu (*defendant*)
+- $C_p$: Custo de litigar do réu
+- $C_d$: Custo de litigar do autor
+- $S_p$: Custo de acordo (*settlement*) do autor
+- $S_d$: Custo de acordo do réu
+- $J$: valor a ser pago pelo réu se o autor ganhar
+
+Considere uma negociação hipotética entre o autor e o réu. O valor de acordo desejado pelo autor (*asking price*) é
+
+$$
+A = P_pJ - C_p + S_p
+$$
+
+O componente $P_pJ + C_d$ indica um cenário de litígio: o autor gastaria $C_p$ ganharia, em média, $P_pJ$. O componente $S_p$ indica o custo de fazer o acordo (que pode ser zero).
+
+Já o valor oferecido pelo réu (*bidding price*) é dado por
+
+$$
+B = P_dJ + C_d - S_d
+$$
+
+O componente $P_dJ + C_d$ indica um cenário de litígio: o réu gastaria, em média, $P_pJ$ mais o custo do processo $C_p$. O componente $-S_d$ indica um cenário de acordo, onde o réu gastaria $S_d$.
+
+O processo só acontece se $A > B$. Ou seja, o valor de acordo pedido é maior que o valor oferecido. Fazendo contas, é possível chegar na formulação alternativa abaixo:
+
+$$
+P_p - P_d > \frac{C_p + C_d - S_p - S_d}{J}
+$$
+
+Ou seja, o processo só ocorre se a diferença de expectativas for maior que a diferença entre os custos de processo e os custos de acordo, em relação ao valor da indenização. A equação mencionada acima é conhecida como *condição de Landes-Posner-Gould* (LPG), atribuída aos autores que contribuíram, em momentos diferentes, para a construção da condição.
+
+::: {.content-visible when-format="html"}
+
+Abaixo, temos um aplicativo que mostra a condição LPG em ação. O ponto em vermelho indica a relação entre as probabilidades subjetivas do autor ($P_p$) e do réu ($P_d$) sobre o evento do autor ganhar o processo. A linha é a condição LPG: se as probabilidades estiverem abaixo da linha, um litígio vai acontecer. Se estiver acima da linha, um acordo vai acontecer.
+
+```{=html}
+<iframe src="https://abjur.shinyapps.io/lpgcond/" width="1000" height="500" frameBorder="0">Browser not compatible.</iframe>
+```
+
+:::
+
+::: {.content-visible when-format="pdf"}
+
+[Neste link](https://abjur.shinyapps.io/lpgcond/), temos um aplicativo que mostra a condição LPG em ação. O ponto em vermelho indica a relação entre as probabilidades subjetivas do autor ($P_p$) e do réu ($P_d$) sobre o evento do autor ganhar o processo. A linha é a condição LPG: se as probabilidades estiverem abaixo da linha, um litígio vai acontecer. Se estiver acima da linha, um acordo vai acontecer.
+
+:::
+
+### Priest & Klein
+
+O artigo de Priest & Klein [-@priest1984selection], discute as implicações da condição LPG quando variamos o nível de informação das partes, criando um modelo para as quantidades $P_p$ e $P_d$.
+
+O artigo "Selection of Disputes for Litigation" de George Priest e Benjamin Klein é uma análise econômica da escolha de disputas para litígios. O artigo argumenta que as partes envolvidas em uma disputa geralmente têm informações assimétricas sobre a probabilidade de sucesso e os custos de um litígio. Isso leva às partes a selecionarem disputas para litígios de forma diferente do que seria ótimo do ponto de vista social.
+
+Os autores apresentam um modelo teórico que mostra como as partes selecionam disputas para litígios e como essa seleção afeta a eficiência econômica. Eles também discutem como as instituições legais, como a arbitragem e a regulamentação, podem afetar a seleção de disputas para litígios e, consequentemente, a eficiência econômica.
+
+O artigo é amplamente citado e considerado como um dos principais trabalhos na área da teoria econômica da litigação. Ele fornece uma base para entender como as partes escolhem entre diferentes opções de resolução de disputas e como as instituições legais afetam a eficiência econômica do processo de resolução de disputas.
+
+__O mérito como variável contínua__. O artigo assume que um conflito possui um __nível de mérito__ $y$, desconhecido, que vem de uma distribuição de probabilidades também desconhecida. O juiz, analisando o caso, decide se $y > y*$, sendo $y*$ um valor limítrofe: se $y > y*$, a decisão é favorável ao autor. Caso contrário, é favorável ao réu.
+
+__Princípio da simetria de informação__: Se as partes têm um nível de informação (medido pela variância das expectativas) parecido, os valores de $P_p$ e $P_d$ são, em média, iguais.  Conforme o nível de informação aumenta, $P_p$ e $P_d$ vão ficando cada vez mais próximos, fazendo com que a ocorrência de um processo fique cada vez mais improvável.
+
+O teorema de Priest e Klein (PK) mostra que, conforme o nível de informação aumenta, os casos que acabam indo ao tribunal acabam ficando próximos do nível de mérito limítrofe $y*$, de forma simétrica. Como efeito, a probabilidade de vitória do autor fica em torno de 50%.
+
+Ou seja, o teorema mostra que, assumindo certas condições, como simetria de informação das partes e a validade da condição LPG, as proporções de vitória observadas nos tribunais serão de 50%.
+
+::: {.content-visible when-format="html"}
+
+O aplicativo abaixo mostra uma simulação dos resultados do teorema. O aplicativo parte das mesmas premissas da condição LPG, mas considerando uma amostra de vários processos. No gráfico de baixo, é apresentada a distribuição do mérito para todos os casos (em azul) e para os casos litigados (em verde). Conforme o nível de informação aumenta (e a variância cai), os casos abaixo da condição LPG vão ficando cada vez mais escassos e, nos poucos casos litigados, a distribuição do mérito fica próxima ao padrão de decisão, o que gera, no limite, proporções de decisão em torno de 50%.
+
+```{=html}
+<iframe src="https://abjur.shinyapps.io/pktheorem/" width="1200" height="800" frameBorder="0">Browser not compatible.</iframe>
+```
+
+:::
+
+::: {.content-visible when-format="pdf"}
+
+O aplicativo [deste link](https://abjur.shinyapps.io/pktheorem/) uma simulação dos resultados do teorema. O aplicativo parte das mesmas premissas da condição LPG, mas considerando uma amostra de vários processos. No gráfico de baixo, é apresentada a distribuição do mérito para todos os casos (em azul) e para os casos litigados (em verde). Conforme o nível de informação aumenta (e a variância cai), os casos abaixo da condição LPG vão ficando cada vez mais escassos e, nos poucos casos litigados, a distribuição do mérito fica próxima ao padrão de decisão, o que gera, no limite, proporções de decisão em torno de 50%.
+
+:::
+
+O Teorema de Priest e Klein mostra que os casos observados no judiciário não são uma amostra aleatória dos conflitos que ocorrem na sociedade. Isso ocorre porque as partes envolvidas em uma disputa geralmente têm informações assimétricas sobre a probabilidade de sucesso e os custos de um litígio. Devido a isso, as partes selecionam disputas para litígios de forma a otimizar o uso do litígio do ponto vista social.
+
+O teorema também mostra que as taxas de vitória sempre ficarão em torno de 50%. Isso pode levar a uma (falsa) ideia de que não é possível fazer inferências sobre o judiciário a partir da análise de taxas de vitória.
+
+No entanto, é importante notar que taxas muito altas ou muito baixas podem significar que os custos de litigar não estão bem ajustados ou que existe assimetria de informação entre as partes. Além disso, mudanças legislativas podem implicar em alterações temporárias nas taxas de vitória.
+
+O Teorema de Priest e Klein tem fortes implicações na análise de processos judiciais. Sua existência deve ser levada em conta em estudos que envolvam análise de proporção de vitórias, para entender melhor as dinâmicas e os fatores que as influenciam. Isso pode ajudar a identificar problemas ou oportunidades para melhorar a eficiência e a eficácia do sistema judiciário.
