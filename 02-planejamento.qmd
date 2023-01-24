@@ -329,7 +329,7 @@ Ou seja, o processo só ocorre se a diferença de expectativas for maior que a d
 Abaixo, temos um aplicativo que mostra a condição LPG em ação. O ponto em vermelho indica a relação entre as probabilidades subjetivas do autor ($P_p$) e do réu ($P_d$) sobre o evento do autor ganhar o processo. A linha é a condição LPG: se as probabilidades estiverem abaixo da linha, um litígio vai acontecer. Se estiver acima da linha, um acordo vai acontecer.
 
 ```{=html}
-<iframe src="https://abjur.shinyapps.io/lpgcond/" width="1000" height="500" frameBorder="0">Browser not compatible.</iframe>
+<iframe src="https://abjur.shinyapps.io/lpgcond/" width="100%" height="500" frameBorder="0">Browser not compatible.</iframe>
 ```
 
 :::
@@ -363,7 +363,7 @@ Ou seja, o teorema mostra que, assumindo certas condições, como simetria de in
 O aplicativo abaixo mostra uma simulação dos resultados do teorema. O aplicativo parte das mesmas premissas da condição LPG, mas considerando uma amostra de vários processos. No gráfico de baixo, é apresentada a distribuição do mérito para todos os casos (em azul) e para os casos litigados (em verde). Conforme o nível de informação aumenta (e a variância cai), os casos abaixo da condição LPG vão ficando cada vez mais escassos e, nos poucos casos litigados, a distribuição do mérito fica próxima ao padrão de decisão, o que gera, no limite, proporções de decisão em torno de 50%.
 
 ```{=html}
-<iframe src="https://abjur.shinyapps.io/pktheorem/" width="1200" height="800" frameBorder="0">Browser not compatible.</iframe>
+<iframe src="https://abjur.shinyapps.io/pktheorem/" width="100%" height="800" frameBorder="0">Browser not compatible.</iframe>
 ```
 
 :::
