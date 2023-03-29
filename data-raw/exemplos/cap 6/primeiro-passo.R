@@ -17,15 +17,50 @@ abjData::consumo |>
   )
 
 # histograma vira prob ----------------------------------------------------
+
+# histograma vira prob ----------------------------------------------------
+set.seed(100)
 tibble::tibble(
   id = 1:365,
   taxa_procedencia = rnorm(365, mean = 0.5, sd = 0.1)
 ) |>
   ggplot2::ggplot() +
   ggplot2::aes(x = taxa_procedencia) +
-  ggplot2::geom_histogram(fill = "#233262") +
+  ggplot2::geom_histogram(fill = "#233262", bins = 100) +
   ggplot2::geom_vline(xintercept = .5, color = "red", linetype = 2) +
+  ggplot2::geom_text(mapping = ggplot2::aes(x = .55, y = 22, label = "Valor real"), color = "red") +
+  ggplot2::scale_x_continuous(limits = c(0,1))
+
+set.seed(100)
+tibble::tibble(
+  id = 1:365,
+  taxa_procedencia = rnorm(365, mean = 0.5, sd = 0.1)
+) |>
+  dplyr::summarise(media = round(mean(taxa_procedencia), 2))
+
+
+set.seed(100)
+tibble::tibble(
+  id = 1:365,
+  taxa_procedencia = rnorm(365, mean = 0.5, sd = 0.1)
+) |>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = taxa_procedencia) +
+  ggplot2::geom_histogram(fill = "#233262", bins = 100) +
+  ggplot2::geom_vline(xintercept = .5, color = "red", linetype = 2) +
+  ggplot2::geom_text(mapping = ggplot2::aes(x = .55, y = 22, label = "Valor real"), color = "red") +
   ggplot2::scale_x_continuous(limits = c(0,1)) +
-  ggplot2::scale_y_continuous(limits = c(0,60)) +
-  gganimate::transition_reveal(taxa_procedencia)
+  gganimate::transition_reveal(along = id)
+
+tibble::tibble(
+  decisao = sample(
+    x = c("P", "I"),
+    size = 100,
+    replace = TRUE,
+    prob = c(.5, .5))
+  ) |>
+  dplyr::count(decisao) |>
+  dplyr::mutate(prop = n/sum(n)) |>
+  dplyr::filter(decisao == "P") |>
+  dplyr::pull(prop)
 

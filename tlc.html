@@ -1,0 +1,44 @@
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="generator" content="R package animation 2.7">
+	<title>Animations Using the R Language</title>
+	<link rel="stylesheet" href="css/reset.css" />
+	<link rel="stylesheet" href="css/styles.css" />
+	<link rel="stylesheet" href="css/scianimator.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css">
+
+	<script src="js/jquery-1.4.4.min.js"></script>
+	<script src="js/jquery.scianimator.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/languages/r.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body>
+
+	<div class="scianimator"><div id="tlc" style="display: inline-block;"></div></div>
+	<div class="scianimator" style="width: 480px; text-align: left"><pre><code class="r">## Animations generated in R version 4.2.2 Patched
+##   (2022-11-10 r83330) using the package animation
+for (i in 1:365) {
+    prop <- dplyr::pull(dplyr::filter(dplyr::mutate(dplyr::count(tibble::tibble(decisao = sample(x = c("P", 
+        "I"), size = 100, replace = TRUE, prob = c(0.5, 0.5))), 
+        decisao), prop = n/sum(n)), decisao == "P"), prop)
+    da <- dplyr::add_row(da, dia = i, taxa_procedencia = prop)
+    plot <- ggplot2::ggplot(da) + ggplot2::aes(x = taxa_procedencia) + 
+        ggplot2::geom_histogram(fill = "#233262", bins = 100) + 
+        ggplot2::geom_vline(xintercept = 0.5, color = "red", 
+            linetype = 2) + ggplot2::geom_text(mapping = ggplot2::aes(x = 0.55, 
+        y = 50, label = "Valor real"), color = "red") + ggplot2::scale_x_continuous(limits = c(0, 
+        1)) + ggplot2::scale_y_continuous(limits = c(0, 60), 
+        breaks = c(0, 10, 20, 30, 40, 50, 60))
+    print(plot)
+}
+## R version 4.2.2 Patched (2022-11-10 r83330)
+## Platform: x86_64-pc-linux-gnu (64-bit)
+## Other packages:</code></pre></div>
+	<script src="js/tlc.js"></script>
+<!-- highlight R code -->
+
+</body>
+</html>
