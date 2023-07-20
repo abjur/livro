@@ -338,9 +338,52 @@ juri |>
 
 # jfsp_sp -----------------------------------------------------------------
 
-# install.packages("textreadr")
+juri_pdf <- tabulizer::extract_tables("data-raw/exemplos/cap 6/edital_jurados_jfsp.pdf", output = "character")
 
+juri_lista <- readtext::readtext("data-raw/exemplos/cap 6/jurados_jfsp.txt") |>
+  dplyr::pull(text) |>
+  stringr::str_split(pattern="[0-9]+\\.")
 
+juri <- tibble::tibble(
+  jurado = juri_lista
+) |>
+  tidyr::unnest(jurado) |>
+  dplyr::mutate(
+    jurado = stringr::str_squish(jurado),
+    jurado = stringr::str_split(jurado, "-+|–+")
+  ) |>
+  tidyr::unnest_wider(jurado, names_sep = "_") |>
+  dplyr::rename(
+    nome = jurado_1,
+    profissao = jurado_2
+  ) |>
+  dplyr::mutate(
+    nome = stringr::str_remove_all(nome, "[\\\\|tn]"),
+    profissao = stringr::str_squish(profissao),
+    profissao = abjutils::rm_accent(profissao),
+    profissao = stringr::str_remove_all(profissao, "[\\\\|tn]"),
+    profissao = stringr::str_remove(profissao, "\\([^()]*\\)"),
+    # profissao = stringr::str_replace(profissao, pattern = "[AO]$", replacement = "O"),
+    profissao = dplyr::case_when(
+      is.na(profissao) ~ "UNIVERSITARIO",
+      stringr::str_detect(profissao, "PSICOLOG") ~ "PSICOLOGO",
+      stringr::str_detect(profissao, "UNIVERSI") ~ "UNIVERSITARIO",
+      stringr::str_detect(profissao, "FUNCION") ~ "FUNCIONARIO PUBLICO MUNICIPAL",
+      stringr::str_detect(profissao, "PROFESS") ~ "PROFESSOR",
+      stringr::str_detect(profissao, "TRIBUT|FEDERAL") ~ "FUNCIONARIO DA RECEITA FEDERAL",
+      stringr::str_detect(profissao, "PORTARIA") ~ "AGENTE DE PORTARIA",
+      TRUE ~ profissao
+    )
+  ) |>
+  dplyr::filter(nome != "\"")
+
+a <- juri |>
+  dplyr::count(profissao) |>
+  dplyr::arrange(desc(n)) |>
+  dplyr::mutate(
+    perc = n/sum(n),
+    perc = formattable::percent(perc)
+  )
 # tjpr_curitiba -----------------------------------------------------------
 
 # https://www.tjpr.jus.br/lista-de-jurados/-/asset_publisher/M4kc/content/lista-definitiva-de-jurados-2023/163849?inheritRedirect=false&redirect=https%3A%2F%2Fwww.tjpr.jus.br%2Flista-de-jurados%3Fp_p_id%3D101_INSTANCE_M4kc%26p_p_lifecycle%3D0%26p_p_state%3Dnormal%26p_p_mode%3Dview%26p_p_col_id%3Dcolumn-4%26p_p_col_count%3D1
